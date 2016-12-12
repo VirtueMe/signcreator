@@ -7,6 +7,7 @@ import square from '../images/square.png';
 const imageStyle = {
   display: 'flex',
   height: '32px',
+  width: '64px',
   flexGrow: 0,
   marginRight: '8px',
   marginLeft: '8px',
@@ -21,7 +22,7 @@ export default class DropdownTest extends React.Component {
   };
 
   albums = [
-    { value: 1, artist: 'Avlangt skilt', album: 'Bedre plass for lange navn', img: image, style: Object.assign({}, imageStyle, { width: '64px' }) },
+    { value: 1, artist: 'Avlangt skilt', album: 'Bedre plass for lange navn', img: image, style: imageStyle },
     { value: 2, artist: 'Kvadratisk skilt', album: 'Når du ikke trenger så stor plass', img: heart, style: squareStyle },
     { value: 3, artist: 'Hjerteformet skilt', album: 'For en kjærlig familie', img: square, style: squareStyle },
   ];
