@@ -21,11 +21,6 @@ const imageStyle = {
   backgroundColor: 'white'
 };
 
-const horizontalStyle = Object.assign({}, imageStyle, horizontal);
-const rotatedHorizontalStyle = Object.assign({}, horizontalStyle, { transform: 'rotate(180deg)' });
-
-
-
 // const rotatedStyle = Object.assign({}, imageStyle, );
 
 const items = [
@@ -35,36 +30,33 @@ const items = [
 function createStyleArray(items, style, offset) {
   offset = offset || 0;
 
-  return
-    items
-      .map(
-        (item) => {
-          return Object.assign({}, item, { style: style, value: item.value + offset });
-        }
-      );
+  return items
+          .map(
+            (item) => {
+              return Object.assign({}, item, { style: style, value: item.value + offset });
+            }
+          );
 }
-
 
 export class DropdownBase extends React.Component {
   constructor(options) {
     super(options);
-    console.info(options, 'hello');
 
-    console.info(createStyleArray(options.items, options.style));
-
-    this.items = options.items && options.items.length ? [].concat(createStyleArray(options.items, options.style), createStyleArray(options.items, options.rotatedStyle, options.items.length)): [];
-
-    console.dir(this.items);
+    this.items = options.items || items;
+    this.label = options.label || 'Velg hvilken linje du ønsker';
   }
 
   state = {
     selected: -1
   };
 
-
   handleChange = (value) => {
     this.setState({ selected: value });
   };
+
+  allItems() {
+    return this.items &&  this.items.length ? [{ value: -1, text: 'Ingen linje'}].concat(createStyleArray(this.items, this.style), createStyleArray(this.items, this.rotatedStyle, this.items.length)): [];
+  }
 
   customItem (item) {
     const containerStyle = {
@@ -72,22 +64,22 @@ export class DropdownBase extends React.Component {
       flexDirection: 'row'
     };
 
+    const content = item.img ? <img src={item.img} style={item.style} /> : <span style={imageStyle}>{item.text}</span>;
+
     return (
       <div style={containerStyle}>
-        <img src={item.img} style={item.style} />
+        {content}
       </div>
     );
   }
 
   render () {
-    console.info(this.items);
-
     return (
       <Dropdown
         auto={false}
-        source={this.items}
+        source={this.allItems()}
         onChange={this.handleChange}
-        label='Velg hvilket skilt du ønsker'
+        label={this.label}
         template={this.customItem}
         value={this.state.selected}
       />
@@ -95,8 +87,12 @@ export class DropdownBase extends React.Component {
   }
 }
 
-export default class HorizontalDropdown extends DropdownBase {
+export class HorizontalDropdown extends DropdownBase {
   constructor(options) {
-    super(Object.assign({}, options || {}, { items: items, style: horizontalStyle, rotatedStyle: rotatedHorizontalStyle }));
+    super(options);
+    this.style = Object.assign({}, imageStyle, horizontal);
+    this.rotatedStyle = Object.assign({}, this.style, { transform: 'rotate(180deg)' });
   }
 }
+
+export default HorizontalDropdown;

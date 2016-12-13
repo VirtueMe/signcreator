@@ -3,8 +3,12 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
 import Welcome from './Welcome';
 import DropDown from './signdropdown';
-import LineDropDown from './linedropdown';
+import LineDropdown from './linedropdown';
+import AddLineMenu from './menu';
+import EditList from './editlist';
 import App from '../App';
+import 'material-design-icons/iconfont/material-icons.css';
+
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
@@ -22,9 +26,28 @@ storiesOf('Sign selector', module)
   ));
 
 storiesOf('Line selector', module)
-    .add('show', () => (
-      <LineDropDown />
-    ));
+  .add('Top', () => (
+    <LineDropdown label='Top linje' />
+  ))
+  .add('Left', () => (
+    <LineDropdown label='Venstre linje' />
+  ))
+  .add('Høyre', () => (
+    <LineDropdown label='Høyre linje' />
+  ))
+  .add('Bottom', () => (
+    <LineDropdown label='Bunn linje' />
+  ));
+
+storiesOf('Add line menu', module)
+  .add('show', () => (
+    <AddLineMenu />
+  ));
+
+storiesOf('EditList', module)
+  .add('show', () => (
+    <EditList />
+  ));
 
 storiesOf('Button', module)
   .add('with text', () => (
