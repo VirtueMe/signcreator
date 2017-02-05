@@ -7,6 +7,11 @@ import LineDropdown from './linedropdown';
 import AddLineMenu from './menu';
 import EditList from './editlist';
 import App from '../App';
+import EmojiItem, { small, child } from './emojiitem';
+import EmojiList from './emojilist';
+import woman from '../images/women.svg';
+import man from '../images/man.svg';
+import baby from '../images/baby.svg';
 import 'material-design-icons/iconfont/material-icons.css';
 
 
@@ -47,6 +52,20 @@ storiesOf('Add line menu', module)
 storiesOf('EditList', module)
   .add('show', () => (
     <EditList />
+  ));
+
+storiesOf('EmojiItem', module)
+  .add('show', () => (
+    <EmojiItem image={woman} />
+  ))
+  .add('list', () => (
+    <EmojiList>
+      <EmojiItem image={woman} />
+      <EmojiItem image={man} />
+      <EmojiItem image={woman} size={child} />
+      <EmojiItem image={man} size={child} />
+      <EmojiItem image={baby} size={small} />
+    </EmojiList>
   ));
 
 storiesOf('Button', module)
