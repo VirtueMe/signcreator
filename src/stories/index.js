@@ -8,12 +8,12 @@ import AddLineMenu from './menu';
 import EditList from './editlist';
 import App from '../App';
 import EmojiItem, { small, child } from './emojiitem';
-import EmojiList from './emojilist';
-import woman from '../images/women.svg';
-import man from '../images/man.svg';
-import baby from '../images/baby.svg';
+import EmojiList from '../containers/app';
+import { Provider } from 'react-redux'
+import configureStore from '../store/configureStore'
 import 'material-design-icons/iconfont/material-icons.css';
 
+const store = configureStore();
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
@@ -55,17 +55,10 @@ storiesOf('EditList', module)
   ));
 
 storiesOf('EmojiItem', module)
-  .add('show', () => (
-    <EmojiItem image={woman} />
-  ))
   .add('list', () => (
-    <EmojiList>
-      <EmojiItem image={woman} />
-      <EmojiItem image={man} />
-      <EmojiItem image={woman} size={child} />
-      <EmojiItem image={man} size={child} />
-      <EmojiItem image={baby} size={small} />
-    </EmojiList>
+    <Provider store={store}>
+      <EmojiList />
+    </Provider>
   ));
 
 storiesOf('Button', module)
