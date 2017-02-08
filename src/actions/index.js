@@ -1,5 +1,9 @@
 import * as types from '../constants/actiontypes'
 
+export function initEmoji(emojis) {
+  return { type: types.INIT_EMOJIS, emojis };
+}
+
 export function addEmoji(image, size) {
   return { type: types.ADD_EMOJI, image, size };
 }

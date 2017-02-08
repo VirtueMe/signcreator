@@ -11,9 +11,23 @@ import EmojiItem, { small, child } from './emojiitem';
 import EmojiList from '../containers/app';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
+import woman from '../images/women.svg';
+import man from '../images/man.svg';
+import baby from '../images/baby.svg';
+
 import 'material-design-icons/iconfont/material-icons.css';
 
-const store = configureStore();
+const initialState = {
+  emojis: [
+    { image: woman, id: 0},
+    { image: man, id: 1},
+    { image: woman, size: child, id: 2 },
+    { image: man, size: child, id: 3 },
+    { image: baby, size: small, id: 4 }
+  ]
+}
+
+const store = configureStore(initialState);
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (

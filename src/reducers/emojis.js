@@ -1,18 +1,8 @@
 import { ADD_EMOJI, MOVE_EMOJI, DELETE_EMOJI, CLEAR_EMOJIS } from '../constants/actiontypes';
 import update from 'immutability-helper';
-import woman from '../images/women.svg';
-import man from '../images/man.svg';
-import baby from '../images/baby.svg';
-import { small, child } from '../stories/emojiitem';
 
 
-const initialState = [
-  { image: woman, id: 0},
-  { image: man, id: 1},
-  { image: woman, size: child, id: 2 },
-  { image: man, size: child, id: 3 },
-  { image: baby, size: small, id: 4 }
-];
+const initialState = [];
 
 
 export default function emojis(state = initialState, action) {

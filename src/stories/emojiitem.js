@@ -89,8 +89,7 @@ EmojiItem.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  size: PropTypes.any.isOptional,
-  index: PropTypes.any.isRequired
+  size: PropTypes.any
 };
 
 export default flow(
