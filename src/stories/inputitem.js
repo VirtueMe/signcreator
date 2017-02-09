@@ -9,13 +9,13 @@ import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 
 const FormatMenu = () => (
   <IconMenu icon='text_format' position='topRight' menuRipple>
-    <MenuItem icon='format_bold' caption="Bold">
+    <MenuItem icon='format_bold' caption="Bold" key="0">
       <FontIcon value='checked' className={width} />
     </MenuItem>
-    <MenuItem icon='format_italic' caption="Italic">
+    <MenuItem icon='format_italic' caption="Italic" key="1">
       <FontIcon value='' className={width} />
     </MenuItem>
-    <MenuItem icon='format_align_center' caption="Align center">
+    <MenuItem icon='format_align_center' caption="Align center" key="2">
       <FontIcon value='' className={width} />
     </MenuItem>
   </IconMenu>
@@ -23,16 +23,16 @@ const FormatMenu = () => (
 
 const PositionMenu = () => (
   <IconMenu icon='more_vert' position='topRight' menuRipple>
-    <MenuItem icon='keyboard_arrow_up' caption="Move up" />
-    <MenuItem icon='keyboard_arrow_down' caption="Move down" />
-    <MenuDivider />
-    <MenuItem icon='delete' caption="Delete line" />
+    <MenuItem icon='keyboard_arrow_up' caption="Move up" key="0" />
+    <MenuItem icon='keyboard_arrow_down' caption="Move down" key="1" />
+    <MenuDivider key="2" />
+    <MenuItem icon='delete' caption="Delete line" key="3" />
   </IconMenu>
 );
 
 const input = <Input type='text' label='Text line' icon='text_fields' />;
 
-const actions = [ <FormatMenu />, <PositionMenu /> ];
+const actions = [ <FormatMenu key="0" />, <PositionMenu key="1" /> ];
 
 const InputItem = () => (
   <ListItem

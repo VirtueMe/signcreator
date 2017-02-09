@@ -14,13 +14,13 @@ const emojiTarget = {
   },
 
   hover(props, monitor) {
-    const { id: draggedId } = monitor.getItem();
+    const { id: draggedId, index } = monitor.getItem();
     const { id: overId } = props;
 
     if (draggedId !== overId) {
      const { index: overIndex } = props.findEmoji(overId);
 
-     props.actions.moveEmoji(draggedId, overIndex);
+     props.actions.moveEmoji(draggedId, overIndex, index);
     }
   }
 };
@@ -30,16 +30,17 @@ const emojiSource = {
   beginDrag(props) {
     return {
       id: props.id,
+      index: props.index,
       originalIndex: props.findEmoji(props.id).index
     };
   },
 
   endDrag(props, monitor) {
-    const { id: droppedId, originalIndex } = monitor.getItem();
+    const { id: droppedId, originalIndex, index } = monitor.getItem();
     const didDrop = monitor.didDrop();
 
-    if (!didDrop) {
-      props.actions.moveEmoji(droppedId, originalIndex);
+    if (didDrop) {
+      props.actions.moveEmoji(droppedId, originalIndex, index);
     }
   }
 };
@@ -56,10 +57,9 @@ export const child = {
   zoom: '70%'
 };
 
-function collect(connect, monitor) {
+function collect(connect) {
   return {
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    connectDropTarget: connect.dropTarget()
   };
 }
 

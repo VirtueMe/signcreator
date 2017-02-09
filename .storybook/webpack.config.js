@@ -1,5 +1,5 @@
 const path = require('path');
-/* 
+/*
 module.exports = {
   module: {
     loaders: [
@@ -35,6 +35,29 @@ module.exports = function(config, env) {
     loader: 'style!css?modules!sass?modules',
     include: path.resolve(__dirname, '../')
   });
+
+  config.module.loaders.push({
+    test: /\.css$/,
+    include: path.resolve(__dirname, '../src'),
+    loader: 'style!css!postcss'
+  });
+
+  config.postcss = () => {
+    console.info('hello world');
+
+    return [
+      require('postcss-import')({
+        root: path.join(__dirname, '../'),
+        path: [path.join(__dirname, '../src')]
+      }),
+      require('postcss-mixins')(),
+      require('postcss-each')(),
+      require('postcss-cssnext')(),
+      require('postcss-reporter')({
+        clearMessages: true
+      })
+    ];
+  };
 
   return config;
 };
