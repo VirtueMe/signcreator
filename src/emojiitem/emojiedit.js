@@ -17,6 +17,8 @@ const factory = (FontIcon) => {
     render() {
       const { theme } = this.props;
 
+      console.info(theme);
+
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight' menuRipple>
           <MenuItem icon='format_bold' caption="Bold">
@@ -39,6 +41,8 @@ const factory = (FontIcon) => {
           <MenuItem icon='delete' caption="Delete line" />
         </IconMenu>
       );
+
+      console.info(theme.icon);
 
       const input = (
         <div data-react-toolbox="imagesselector" className={theme.inputElement}>

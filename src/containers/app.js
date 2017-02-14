@@ -39,7 +39,7 @@ class App extends Component {
       <div>
         <EmojiList items={emojis[0]} index={0} actions={actions} />
 
-        <IconButton icon="move_to_inbox" accent onClick={e => this.initEmoji(e)} disabled={length} />
+        <IconButton icon="move_to_inbox" accent onClick={e => this.initEmoji(e)} disabled={!!length} />
         <IconButton icon="delete" accent onClick={e => this.clearEmojis(e)} disabled={!length} />
       </div>
     );

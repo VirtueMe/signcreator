@@ -8,7 +8,9 @@ import { FontIcon } from 'react-toolbox';
 
 const ImagesSelector = imagesSelectorFactory(FontIcon);
 
-console.dir(Object.keys(theme));
+console.dir(theme);
+
+console.info(Object.keys(theme));
 
 const ThemedImagesSelector = themr(IMAGESSELECTOR, theme)(ImagesSelector);
 

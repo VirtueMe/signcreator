@@ -29,6 +29,14 @@ var genDefaultConfig = require('@kadira/storybook/dist/server/config/defaults/we
 module.exports = function(config, env) {
   var config = genDefaultConfig(config, env);
 
+  config.module.loaders = config.module.loaders.filter(function(loader) {
+    if (loader.test.toString() !== /\.css?$/.toString()) {
+      return loader;
+    }
+
+    return loader.test.toString() !== /\.css?$/.toString();
+  });
+
   // Extend it as you need.
   config.module.loaders.push({
     test: /.scss$/,
@@ -38,8 +46,14 @@ module.exports = function(config, env) {
 
   config.module.loaders.push({
     test: /\.css$/,
-    include: path.resolve(__dirname, '../src'),
+    include: path.resolve(__dirname, '../node_modules'),
     loader: 'style!css!postcss'
+  });
+
+  config.module.loaders.push({
+    test: /\.css$/,
+    include: path.resolve(__dirname, '../src'),
+    loader: 'style!css?modules!postcss'
   });
 
   config.postcss = () => {
