@@ -15,7 +15,7 @@
   @apply --reset;
 
   &.withIcon {
-    margin-left: calc(var(--input-icon-size) + var(--input-icon-right-space));
+    margin-left: calc(var(--input-icon-size));
   }
 }
 
@@ -24,7 +24,7 @@
   display: block;
   font-size: var(--input-icon-font-size) !important;
   height: var(--input-icon-size);
-  left: calc(-1 * (var(--input-icon-size) + var(--input-icon-right-space)));
+  left: calc(-1 * (var(--input-icon-size)));
   line-height: var(--input-icon-size) !important;
   position: absolute;
   text-align: center;
