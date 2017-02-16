@@ -45,7 +45,7 @@ const factory = (FontIcon) => {
       console.info(theme.icon);
 
       const input = (
-        <div data-react-toolbox="imagesselector" className={theme.inputElement}>
+        <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
           <EmojiList className={theme.inputElement} />
           <FontIcon value='insert_photo' className={theme.icon} />
         </div>

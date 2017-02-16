@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { themr } from 'react-css-themr';
 import { imagesSelectorFactory } from './emojiedit';
 import { IMAGESSELECTOR } from '../identifiers';
-import theme from './theme.css';
+import theme from 'react-toolbox/components/input/theme.css';
 import { FontIcon } from 'react-toolbox';
 
 const ImagesSelector = imagesSelectorFactory(FontIcon);

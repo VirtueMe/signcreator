@@ -2,8 +2,7 @@ import React from 'react';
 
 import { width } from './editlist.scss';
 
-import { IconButton, Input, FontIcon } from 'react-toolbox';
-import { ListItem } from 'react-toolbox';
+import { ListItem, IconButton, Input, FontIcon } from 'react-toolbox';
 
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 

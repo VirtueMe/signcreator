@@ -46,23 +46,21 @@ module.exports = function(config, env) {
 
   config.module.loaders.push({
     test: /\.css$/,
-    include: path.resolve(__dirname, '../node_modules'),
-    loader: 'style!css!postcss'
+    include: path.resolve(path.resolve(__dirname, '../node_modules'), 'material-design-icons'),
+    loader: 'style!css'
   });
 
   config.module.loaders.push({
     test: /\.css$/,
-    include: path.resolve(__dirname, '../src'),
-    loader: 'style!css?modules!postcss'
+    exclude: path.resolve(path.resolve(__dirname, '../node_modules'), 'material-design-icons'),
+    loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
   });
 
   config.postcss = () => {
-    console.info('hello world');
-
     return [
       require('postcss-import')({
         root: path.join(__dirname, '../'),
-        path: [path.join(__dirname, '../src')]
+        path: [path.join(__dirname, '../src'), path.join(__dirname, '../node_modules')]
       }),
       require('postcss-mixins')(),
       require('postcss-each')(),
