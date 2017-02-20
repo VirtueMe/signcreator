@@ -15,9 +15,7 @@ import EmojiList from './emojilist';
 const factory = (FontIcon) => {
   class ImagesSelector extends Component {
     render() {
-      const { theme } = this.props;
-
-      console.info(theme);
+      const { theme, menu } = this.props;
 
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight' menuRipple>
@@ -33,17 +31,6 @@ const factory = (FontIcon) => {
         </IconMenu>
       );
 
-      const PositionMenu = () => (
-        <IconMenu icon='more_vert' position='topRight' menuRipple>
-          <MenuItem icon='keyboard_arrow_up' caption="Move up" />
-          <MenuItem icon='keyboard_arrow_down' caption="Move down" />
-          <MenuDivider />
-          <MenuItem icon='delete' caption="Delete line" />
-        </IconMenu>
-      );
-
-      console.info(theme.icon);
-
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
           <EmojiList className={theme.inputElement} />
@@ -51,7 +38,11 @@ const factory = (FontIcon) => {
         </div>
       );
 
-      const actions = [ <FormatMenu key="0" />, <PositionMenu key="1" /> ];
+      const actions = [ <FormatMenu key="0" /> ];
+
+      if (menu) {
+        actions.push(menu);
+      }
 
       return (
         <ListItem

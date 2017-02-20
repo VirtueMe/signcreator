@@ -21,10 +21,10 @@ export default class DropdownTest extends React.Component {
     selected: 3
   };
 
-  albums = [
-    { value: 1, artist: 'Avlangt skilt', album: 'Bedre plass for lange navn', img: image, style: imageStyle },
-    { value: 2, artist: 'Kvadratisk skilt', album: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
-    { value: 3, artist: 'Hjerteformet skilt', album: 'For en kjærlig familie', img: heart, style: squareStyle },
+  items = [
+    { value: 1, name: 'Avlangt skilt', description: 'Bedre plass for lange navn', img: image, style: imageStyle },
+    { value: 2, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
+    { value: 3, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
   ];
 
   handleChange = (value) => {
@@ -47,8 +47,8 @@ export default class DropdownTest extends React.Component {
       <div style={containerStyle}>
         <img src={item.img} style={item.style} />
         <div style={contentStyle}>
-          <strong>{item.artist}</strong>
-          <small>{item.album}</small>
+          <strong>{item.name}</strong>
+          <small>{item.description}</small>
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ export default class DropdownTest extends React.Component {
     return (
       <Dropdown
         auto={false}
-        source={this.albums}
+        source={this.items}
         onChange={this.handleChange}
         label='Velg hvilket skilt du ønsker'
         template={this.customItem}
