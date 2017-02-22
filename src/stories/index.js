@@ -10,10 +10,24 @@ import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from '../containers/app';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
-
+import woman from '../images/standard/dame.png';
+import man from '../images/standard/mann.png';
+import boy from '../images/standard/gutt.png';
+import girl from '../images/standard/jente.png';
 import icons from 'material-design-icons/iconfont/material-icons.css';
 
-const store = configureStore();
+let emojis = {
+  emojis: [[
+    { image: woman, id: 0},
+    { image: man, id: 1},
+    { image: girl, id: 2 },
+    { image: boy, id: 3 }
+  ]]
+};
+
+
+
+const store = configureStore(emojis);
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (

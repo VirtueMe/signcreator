@@ -18,10 +18,14 @@ class EmojiList extends Component {
   }
 
   render() {
+    console.dir(this.props);
+
     const { actions, items, index, className } = this.props;
     const emojis = items.map(item => (
         <EmojiItem key={item.id} id={item.id} index={index} image={item.image} size={item.size} actions={actions} findEmoji={(id) => this.findEmoji(id)} />
     ));
+
+    console.info(emojis);
 
     return (
       <div className={className}>
