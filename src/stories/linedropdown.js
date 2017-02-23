@@ -1,6 +1,11 @@
 import React from 'react';
 import {Dropdown, Avatar} from 'react-toolbox';
-import image from '../images/fancyline.png';
+import image0 from '../images/dekor/bladbord.png';
+import image1 from '../images/dekor/blomst.png';
+import image2 from '../images/dekor/bord.png';
+import image3 from '../images/dekor/bord-2.png';
+import image4 from '../images/dekor/hjerte-bord.png';
+import image5 from '../images/dekor/hjerte-bord-2.png';
 
 const horizontal = {
   height: '32px',
@@ -24,7 +29,12 @@ const imageStyle = {
 // const rotatedStyle = Object.assign({}, imageStyle, );
 
 const items = [
-  { value: 0, img: image}
+  { value: 0, img: image0 },
+  { value: 1, img: image1 },
+  { value: 2, img: image2 },
+  { value: 3, img: image3 },
+  { value: 4, img: image4 },
+  { value: 5, img: image5 }
 ];
 
 function createStyleArray(items, style, offset) {
@@ -64,7 +74,7 @@ export class DropdownBase extends React.Component {
       flexDirection: 'row'
     };
 
-    const content = item.img ? <img src={item.img} style={item.style} /> : <span style={imageStyle}>{item.text}</span>;
+    const content = item.img ? <img key={item.value} src={item.img} style={item.style} /> : <span style={imageStyle}>{item.text}</span>;
 
     return (
       <div style={containerStyle}>

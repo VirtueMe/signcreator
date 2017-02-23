@@ -3,3 +3,7 @@ export const MOVE_EMOJI = 'MOVE_EMOJI';
 export const DELETE_EMOJI = 'DELETE_EMOJI';
 export const CLEAR_EMOJIS = 'CLEAR_EMOJIS';
 export const INIT_EMOJIS = 'INIT_EMOJIS';
+export const ADD_LINE = 'ADD_LINE';
+export const DELETE_LINE = 'DELETE_LINE';
+export const MOVE_LINE = 'MOVE_LINE';
+export const CHANGE_TEXT = 'CHANGE_TEXT';

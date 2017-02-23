@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import EmojiList from '../emojiitem/emojilist';
+import EditList from '../editlist';
 import * as EmojiActions from '../actions';
 
 function mapStateToProps(state) {
   return {
-    value: state.emojis,
-    index: 0
+    items: state.items
   };
 }
 
@@ -20,4 +19,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EmojiList);
+)(EditList);

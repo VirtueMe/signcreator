@@ -15,10 +15,10 @@ import EmojiList from './emojilist';
 const factory = (FontIcon) => {
   class ImagesSelector extends Component {
     render() {
-      const { theme, menu } = this.props;
+      const { theme, menu, value, index, actions } = this.props;
 
       const FormatMenu = () => (
-        <IconMenu icon='text_format' position='topRight' menuRipple>
+        <IconMenu icon='text_format' position='topRight'>
           <MenuItem icon='format_bold' caption="Bold">
             <FontIcon value='checked' className={theme.width} />
           </MenuItem>
@@ -33,21 +33,21 @@ const factory = (FontIcon) => {
 
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
-          <EmojiList className={theme.inputElement} />
+          <EmojiList className={theme.inputElement} value={value} index={index} actions={actions} />
           <FontIcon value='insert_photo' className={theme.icon} />
         </div>
       );
 
-      const actions = [ <FormatMenu key="0" /> ];
+      const menuActions = [ <FormatMenu key="0" /> ];
 
       if (menu) {
-        actions.push(menu);
+        menuActions.push(menu);
       }
 
       return (
         <ListItem
           itemContent={input}
-          rightActions={actions}
+          rightActions={menuActions}
         />
       );
     }

@@ -59,8 +59,11 @@ class EditList extends Component {
   render() {
     const { items, actions, texts } = this.props;
 
+    console.info(this.props);
+
     const list = items.map((item, index) => {
       const menu = (<PositionMenu index={index} length={items.length} actions={actions} texts={texts} deleteLine={() => this.confirmDeleteLine(index)} />);
+      console.info(item);
 
       return (
         <Cond value={item.type}>
@@ -72,7 +75,7 @@ class EditList extends Component {
 
     return (
       <div>
-        <List selectable ripple>
+        <List>
           <ListItem rightActions={[<Menu actions={actions} />]} />
           {list}
         </List>

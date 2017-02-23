@@ -4,6 +4,42 @@ export function initEmoji(emojis, index) {
   return { type: types.INIT_EMOJIS, emojis, index };
 }
 
+function add(item) {
+  return { type: types.ADD_LINE, item };
+}
+
+export function addTextLine() {
+  return add( { type: 1, value: '' } );
+}
+
+export function addEmojiLine() {
+  return add( { type: 2, value: [] } );
+}
+
+export function addDividerLine() {
+  return add ( { type: 3, value: {} } );
+}
+
+export function deleteLine(index) {
+  return { type: types.DELETE_LINE, index };
+}
+
+export function move(index, step) {
+  return { type: types.MOVE_LINE, index, step };
+}
+
+export function moveUp(index) {
+  return move(index, -1);
+}
+
+export function moveDown(index) {
+  return move(index, 1);
+}
+
+export function changeText(value, index) {
+  return { type: types.CHANGE_TEXT, value, index };
+}
+
 export function addEmoji(image, size, index) {
   return { type: types.ADD_EMOJI, image, size, index };
 }

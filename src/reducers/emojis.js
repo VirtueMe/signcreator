@@ -1,9 +1,7 @@
-import { ADD_EMOJI, MOVE_EMOJI, DELETE_EMOJI, CLEAR_EMOJIS, INIT_EMOJIS } from '../constants/actiontypes';
+import { ADD_LINE, ADD_EMOJI, MOVE_EMOJI, DELETE_EMOJI, DELETE_LINE, MOVE_LINE, CLEAR_EMOJIS, INIT_EMOJIS } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
-
-const initialState = [[]];
-
+const initialState = [];
 
 export default function emojis(state = initialState, action) {
   switch (action.type) {
@@ -11,23 +9,50 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[action.index] = {
-        $push: [{
-          id: state.length(),
-          image: action.image,
-          size: action.size
-        }]
+        value: {
+          $push: [{
+            id: state.length(),
+            image: action.image,
+            size: action.size
+          }]
+        }
       };
 
       return update(state, updateData);
     }
-    
+
+    case MOVE_LINE: {
+      const item = state[action.index];
+
+      return update(state, {
+        $splice: [
+          [action.index, 1],
+          [action.index + action.step, 0, item],
+        ]
+      });
+    }
+
+    case ADD_LINE: {
+      return update(state, {
+        $push: [action.item]
+      });
+    }
+
+    case DELETE_LINE: {
+      return update(state, {
+        $splice: [[action.index, 1]]
+      });
+    }
+
     case DELETE_EMOJI: {
       let updateData = {};
 
       updateData[action.index] = {
-        $set: state[action.index].filter(emoji =>
-          emoji.id !== action.id
-        )
+        value: {
+          $set: state[action.index].filter(emoji =>
+            emoji.id !== action.id
+          )
+        }
       };
 
       return update(state, updateData);
@@ -37,7 +62,9 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[action.index] = {
-        $set: [...action.emojis]
+        value: {
+          $set: [...action.emojis]
+        }
       };
 
       return update(state, updateData);
@@ -45,16 +72,18 @@ export default function emojis(state = initialState, action) {
 
     case MOVE_EMOJI: {
       const emojis = state[action.index];
-      const emoji = emojis.filter(e => e.id === action.id)[0];
-      const index = emojis.indexOf(emoji);
+      const emoji = emojis.value.filter(e => e.id === action.id)[0];
+      const index = emojis.value.indexOf(emoji);
 
       let updateData = {};
 
       updateData[action.index] = {
-        $splice: [
-          [index, 1],
-          [action.atIndex, 0, emoji],
-        ]
+        value: {
+          $splice: [
+            [index, 1],
+            [action.atIndex, 0, emoji],
+          ]
+        }
       };
 
       return update(state, updateData);
@@ -64,7 +93,9 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[action.index] = {
-        $set: []
+        value: {
+          $set: []
+        }
       };
 
       return update(state, updateData);

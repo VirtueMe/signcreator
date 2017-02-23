@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import emojis from './emojis';
+import items from './emojis';
 
 const rootReducer = combineReducers({
-  emojis
+  items
 });
 
 export default rootReducer;

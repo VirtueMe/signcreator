@@ -6,7 +6,7 @@ import * as EmojiActions from '../actions';
 
 function mapStateToProps(state) {
   return {
-    value: state.emojis,
+    value: state.items[0].value,
     index: 0
   };
 }

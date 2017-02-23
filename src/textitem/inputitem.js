@@ -15,14 +15,12 @@ const factory = (FontIcon) => {
   class TextInput extends Component {
     render() {
       const PositionMenu = this.props.menu;
-      const { theme, texts } = this.props;
+      const { theme, texts, value, index, actions } = this.props;
       const { menu } = texts;
       const { format, action } = menu;
 
-      console.info(this.props.menu);
-
       const FormatMenu = () => (
-        <IconMenu icon='text_format' position='topRight' menuRipple>
+        <IconMenu icon='text_format' position='topRight'>
           <MenuItem icon='format_bold' caption={format.bold} key="0">
             <FontIcon value='checked' className={theme.width} />
           </MenuItem>
@@ -35,18 +33,22 @@ const factory = (FontIcon) => {
         </IconMenu>
       );
 
-      const input = <Input type='text' label={texts.placeholder} icon='text_fields' className={theme.full} />;
+      const changeText = function(value) {
+        actions.changeText(value, index);
+      }
 
-      const actions = [ <FormatMenu key="0" /> ];
+      const input = <Input type='text' label={texts.placeholder} icon='text_fields' value={value} onChange={changeText} className={theme.full} />;
+
+      const menuActions = [ <FormatMenu key="0" /> ];
 
       if (PositionMenu) {
-        actions.push(PositionMenu);
+        menuActions.push(PositionMenu);
       }
 
       return (
         <ListItem
           itemContent={input}
-          rightActions={actions}
+          rightActions={menuActions}
         />
       );
     }

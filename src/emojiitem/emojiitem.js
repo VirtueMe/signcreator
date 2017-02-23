@@ -45,18 +45,6 @@ const emojiSource = {
   }
 };
 
-const imgStyles = {
-  height: 50
-};
-
-export const small = {
-  zoom: '50%'
-};
-
-export const child = {
-  zoom: '70%'
-};
-
 function collect(connect) {
   return {
     connectDropTarget: connect.dropTarget()
@@ -75,11 +63,10 @@ function collectSource(connect, monitor) {
 
 class EmojiItem extends Component {
   render() {
-    const styles = Object.assign({}, imgStyles, this.props.size);
-    const { isDragging, connectDragSource, connectDropTarget } = this.props;
+    const { isDragging, connectDragSource, connectDropTarget, className } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <span><img src={this.props.image} style={styles}/></span>
+      <span><img src={this.props.image} className={className}/></span>
     ));
   }
 }
@@ -89,7 +76,7 @@ EmojiItem.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  size: PropTypes.any
+  className: PropTypes.string
 };
 
 export default flow(
