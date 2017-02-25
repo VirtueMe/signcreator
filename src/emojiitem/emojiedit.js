@@ -15,7 +15,8 @@ import EmojiList from './emojilist';
 const factory = (FontIcon) => {
   class ImagesSelector extends Component {
     render() {
-      const { theme, menu, value, index, actions } = this.props;
+      const PositionMenu = this.props.menu;
+      const { theme, value, index, actions } = this.props;
 
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
@@ -40,8 +41,8 @@ const factory = (FontIcon) => {
 
       const menuActions = [ <FormatMenu key="0" /> ];
 
-      if (menu) {
-        menuActions.push(menu);
+      if (PositionMenu) {
+        menuActions.push(<PositionMenu key="1" />);
       }
 
       return (

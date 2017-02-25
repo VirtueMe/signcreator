@@ -42,7 +42,7 @@ const factory = (FontIcon) => {
       const menuActions = [ <FormatMenu key="0" /> ];
 
       if (PositionMenu) {
-        menuActions.push(PositionMenu);
+        menuActions.push(<PositionMenu key="1" />);
       }
 
       return (
