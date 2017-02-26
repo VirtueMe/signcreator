@@ -7,11 +7,12 @@ export default function emojis(state = initialState, action) {
   switch (action.type) {
     case ADD_EMOJI: {
       let updateData = {};
+      console.info(state);
 
       updateData[action.index] = {
         value: {
           $push: [{
-            id: state.length(),
+            id: state[action.index].value.length,
             image: action.image,
             size: action.size
           }]

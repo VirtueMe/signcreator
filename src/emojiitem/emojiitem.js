@@ -63,10 +63,10 @@ function collectSource(connect, monitor) {
 
 class EmojiItem extends Component {
   render() {
-    const { isDragging, connectDragSource, connectDropTarget, className } = this.props;
+    const { isDragging, connectDragSource, connectDropTarget, className, theme } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <span><img src={this.props.image} className={className}/></span>
+      <span className={theme.image}><img src={this.props.image} className={className}/></span>
     ));
   }
 }

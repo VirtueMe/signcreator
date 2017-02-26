@@ -19,6 +19,16 @@
   }
 }
 
+.image {
+  &:not(:first-child) {
+    padding-left: 8px;
+  }
+
+  &:not(:last-child) {
+    padding-right: 8px;
+  }
+}
+
 .icon {
   color: var(--input-text-label-color);
   display: block;
@@ -45,7 +55,12 @@
   outline: none;
   padding: var(--input-field-padding) 0;
   width: 100%;
-  height: 29px;
+  height: 65px;
+  margin-top: -15px;
+
+  &:empty {
+    height: 50px
+  }
 
   &:focus:not([disabled]):not([readonly]) {
     & ~ .bar::before,

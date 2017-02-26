@@ -10,10 +10,10 @@ import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
-import woman from '../images/standard/dame.png';
-import man from '../images/standard/mann.png';
-import boy from '../images/standard/gutt.png';
-import girl from '../images/standard/jente.png';
+import woman from '../images/farger/mor-mellom2.png';
+import man from '../images/farger/far-mellom2.png';
+import boy from '../images/farger/gutt-mellom2.png';
+import girl from '../images/farger/jente-mellom2.png';
 import icons from 'material-design-icons/iconfont/material-icons.css';
 
 

@@ -13,15 +13,18 @@ const listItems = (props) => {
 };
 
 const PositionMenu = (props) => {
-  const { index, length, texts, actions, deleteLine } = props;
+  const { index, length, texts, actions, deleteLine, children } = props;
   const { moveUp, moveDown } = actions || {};
   const { menu } = texts;
   const { action } = menu;
+
+  console.info(children);
 
   return (
     <IconMenu icon='more_vert' position='topRight' menuRipple>
       <MenuItem icon='keyboard_arrow_up' caption={action.up} key="0" onClick={() => moveUp(index)} disabled={index === 0} />
       <MenuItem icon='keyboard_arrow_down' caption={action.down} key="1" onClick={() => moveDown(index)} disabled={index + 1 === length}/>
+      {children}
       <MenuDivider key="2" />
       <MenuItem icon='delete' caption={action.delete} key="3" onClick={deleteLine} />
     </IconMenu>
@@ -62,7 +65,11 @@ class EditList extends Component {
     console.info(this.props);
 
     const list = items.map((item, index) => {
-      const menu = () => (<PositionMenu index={index} length={items.length} actions={actions} texts={texts} deleteLine={() => this.confirmDeleteLine(index)} />);
+      const menu = ({children}) => (
+        <PositionMenu index={index} length={items.length} actions={actions} texts={texts} deleteLine={() => this.confirmDeleteLine(index)}>
+          {children}
+        </PositionMenu>
+      );
       console.info(item);
 
       return (

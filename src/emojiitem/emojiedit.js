@@ -10,6 +10,7 @@ import { ListItem } from 'react-toolbox';
 
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 
+import EmojiMenu from './emojiitems';
 import EmojiList from './emojilist';
 
 const factory = (FontIcon) => {
@@ -18,31 +19,21 @@ const factory = (FontIcon) => {
       const PositionMenu = this.props.menu;
       const { theme, value, index, actions } = this.props;
 
-      const FormatMenu = () => (
-        <IconMenu icon='text_format' position='topRight'>
-          <MenuItem icon='format_bold' caption="Bold">
-            <FontIcon value='checked' className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_italic' caption="Italic">
-            <FontIcon value='' className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_align_center' caption="Align center">
-            <FontIcon value='' className={theme.width} />
-          </MenuItem>
-        </IconMenu>
-      );
-
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
-          <EmojiList className={theme.inputElement} value={value} index={index} actions={actions} />
+          <EmojiList theme={theme} className={theme.inputElement} value={value} index={index} actions={actions} />
           <FontIcon value='insert_photo' className={theme.icon} />
         </div>
       );
 
-      const menuActions = [ <FormatMenu key="0" /> ];
+      const menuActions = [ <EmojiMenu key="0" theme={theme} actions={actions} index={index} /> ];
 
       if (PositionMenu) {
-        menuActions.push(<PositionMenu key="1" />);
+        menuActions.push(
+          <PositionMenu key="1">
+            <MenuItem icon='clear' caption={'Tøm'} onClick={() => actions.clearEmojis(index)} />
+          </PositionMenu>
+        );
       }
 
       return (
