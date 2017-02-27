@@ -15,6 +15,7 @@ import man from '../images/farger/far-mellom2.png';
 import boy from '../images/farger/gutt-mellom2.png';
 import girl from '../images/farger/jente-mellom2.png';
 import icons from 'material-design-icons/iconfont/material-icons.css';
+import LandscapePreview from '../preview/landscapepreview';
 
 
 storiesOf('Welcome', module)
@@ -73,6 +74,17 @@ storiesOf('EditList', module)
     return (
       <Provider store={store}>
         <EditList />
+      </Provider>
+    );
+  });
+
+storiesOf('landscape', module)
+  .add('show', () => {
+    const store = configureStore(items);
+
+    return (
+      <Provider store={store}>
+        <LandscapePreview />
       </Provider>
     );
   });

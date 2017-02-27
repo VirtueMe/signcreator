@@ -1,0 +1,13 @@
+@import '../colors.css';
+@import '../variables.css';
+@import './config.css';
+
+.image {
+  height: 100mm;
+  width: 150mm;
+  border: 1px solid red;
+
+  & > img {
+    width: 100%;
+  }
+}
