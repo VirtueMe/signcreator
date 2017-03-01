@@ -3,7 +3,7 @@
 import generator from './generator';
 
 const dimensions = {
-  width: 150,
+  width: 100,
   height: 100,
   padding: 10
 };

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Preview from './index';
 import * as Actions from '../actions';
-import imagegenerator from '../canvas/landscape.js'
+import imagegenerator from '../canvas/square.js'
 
 
 function mapStateToProps(state) {
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 
   return {
     image: image,
-    className: 'landscape'
+    className: 'square'
   };
 }
 

@@ -2,12 +2,48 @@
 @import '../variables.css';
 @import './config.css';
 
-.image {
+
+.landscape {
   height: 100mm;
   width: 150mm;
-  border: 1px solid red;
+  border: var(--image-border-width) solid var(--image-border-color);
 
   & > img {
     width: 100%;
+  }
+}
+
+.square {
+  height: 100mm;
+  width: 100mm;
+  border: var(--image-border-width) solid var(--image-border-color);
+
+  & > img {
+    width: 100%;
+  }
+}
+
+.portrait {
+  height: 150mm;
+  width: 100mm;
+  border: var(--image-border-width) solid var(--image-border-color);
+
+  & > img {
+    width: 100%;
+  }
+}
+
+.heart {
+  height: 200mm;
+  width: 200mm;
+  background-image: url(../images/heart.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  & > img {
+    margin-top: 50mm;
+    margin-left: 50mm;
+    width: 100mm;
+    border: 1px dashed lightblue;
   }
 }

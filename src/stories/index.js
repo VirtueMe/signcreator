@@ -16,6 +16,9 @@ import boy from '../images/farger/gutt-mellom2.png';
 import girl from '../images/farger/jente-mellom2.png';
 import icons from 'material-design-icons/iconfont/material-icons.css';
 import LandscapePreview from '../preview/landscapepreview';
+import PortraitPreview from '../preview/portraitpreview';
+import SquarePreview from '../preview/squarepreview';
+import HeartPreview from '../preview/heartpreview';
 
 
 storiesOf('Welcome', module)
@@ -78,8 +81,8 @@ storiesOf('EditList', module)
     );
   });
 
-storiesOf('landscape', module)
-  .add('show', () => {
+storiesOf('images', module)
+  .add('landscape', () => {
     const store = configureStore(items);
 
     return (
@@ -87,7 +90,36 @@ storiesOf('landscape', module)
         <LandscapePreview />
       </Provider>
     );
+  })
+  .add('portrait', () => {
+    const store = configureStore(items);
+
+    return (
+      <Provider store={store}>
+        <PortraitPreview />
+      </Provider>
+    );
+  })
+  .add('square', () => {
+    const store = configureStore(items);
+
+    return (
+      <Provider store={store}>
+        <SquarePreview />
+      </Provider>
+    );
+  })
+  .add('heart', () => {
+    const store = configureStore(items);
+
+    return (
+      <Provider store={store}>
+        <HeartPreview />
+      </Provider>
+    );
   });
+
+
 
 storiesOf('EmojiItem', module)
   .add('list', () => {

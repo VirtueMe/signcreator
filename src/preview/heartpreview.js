@@ -3,15 +3,20 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Preview from './index';
 import * as Actions from '../actions';
-import imagegenerator from '../canvas/landscape.js'
+import imagegenerator from '../canvas/heart.js'
+import heart from '../images/heart.png';
+
 
 
 function mapStateToProps(state) {
-  const {image} = imagegenerator([{ value: 'Her bor:', height: 20 }, { value: 'Familien Thomas', height: 10 }]).getImage();
+  const {image} = imagegenerator([{ value: 'Her bor:', height: 12 }, { value: '', height: 12 }, { value: 'Familien Thomas', height: 12 }]).getImage();
 
   return {
     image: image,
-    className: 'landscape'
+    className: 'heart',
+    style: {
+      backgroundImage: 'url(' + heart + ')'
+    }
   };
 }
 

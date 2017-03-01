@@ -1,6 +1,7 @@
 import React from 'react';
 import {Dropdown, Avatar} from 'react-toolbox';
-import image from '../images/rectangle.png';
+import landscape from '../images/landscape.png';
+import portrait from '../images/portrait.png';
 import heart from '../images/heart.png';
 import square from '../images/square.png';
 
@@ -15,6 +16,7 @@ const imageStyle = {
 };
 
 const squareStyle = Object.assign({}, imageStyle, { width: '32px' });
+const portraitStyle = Object.assign({}, imageStyle, { width: '16px'})
 
 export default class DropdownTest extends React.Component {
   state = {
@@ -22,9 +24,10 @@ export default class DropdownTest extends React.Component {
   };
 
   items = [
-    { value: 1, name: 'Avlangt skilt', description: 'Bedre plass for lange navn', img: image, style: imageStyle },
-    { value: 2, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
-    { value: 3, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
+    { value: 1, name: 'Liggende skilt', description: 'Bedre plass for lange navn', img: landscape, style: imageStyle },
+    { value: 2, name: 'Stående skilt', description: 'Bedre plass i høyden', img: portrait, style: portraitStyle },
+    { value: 3, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
+    { value: 4, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
   ];
 
   handleChange = (value) => {

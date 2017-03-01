@@ -8,11 +8,13 @@ import { PREVIEW } from '../identifiers';
 const factory = () => {
   class Preview extends Component {
     render() {
-      const { image, theme } = this.props;
+      const { image, theme, className, style } = this.props;
       const img = image ? <img src={image} /> : null;
 
+      console.dir(this.props);
+
       return (
-        <div className={theme.image}>{img}</div>
+        <div className={theme[className]} style={style}>{img}</div>
       )
     }
   }
