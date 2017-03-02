@@ -49,6 +49,12 @@ function createTextTool(context) {
       }
     },
 
+    drawImage: function(image) {
+      if (image.img) {
+        _context.drawImage(image.img, image.x, image.y, image.width, image.height);
+      }
+    },
+
     measureText: function(line) {
       _context.font = this.font(line);
 
@@ -57,19 +63,46 @@ function createTextTool(context) {
   };
 }
 
+
+const height = {
+  1: function(item) {
+    return Math.ceil(item.height * ppmm);
+  },
+
+  2: function(item) {
+    const items = item.value.map(src => (src.size.height));
+
+    return Math.max(...items);
+  }
+};
+
+
+function calculateImageBounds(item) {
+  const items = item.text.map(src => (src.size));
+
+  return items.reduce((acc, item) => (acc + item.width), 0);
+}
+
 export default function generator(dimensions) {
   return function imagegenerator(lines, center) {
 
-    const width = Math.ceil(dimensions.width * ppmm);
+    const areaWidth = Math.ceil(dimensions.width * ppmm);
     const areaheight = Math.ceil(dimensions.height * ppmm);
     const padding = Math.ceil(dimensions.padding * ppmm);
     const maxAreaHeightFont = areaheight - (padding * 2);
+
+    const calculateHeight = function calculateHeight(item) {
+      const type = item.type || 1;
+
+      return height[type](item);
+    }
+
 
 
     const createCanvas = function createCanvas() {
       let canvas = document.createElement('canvas');
 
-      canvas.width = Math.ceil(width * scaleFactor);
+      canvas.width = Math.ceil(areaWidth * scaleFactor);
       canvas.height = Math.ceil(areaheight * scaleFactor);
 
       return canvas;
@@ -81,7 +114,7 @@ export default function generator(dimensions) {
 
       getImage: function getImage() {
         const divider = 2, multiplier = 1, mwidth = 0;
-        const maxwidth = width - (padding * 2);
+        const maxwidth = areaWidth - (padding * 2);
 
         const canvas = createCanvas();
 
@@ -92,20 +125,37 @@ export default function generator(dimensions) {
         // var measureText = createSpaceCalculator(context);
         const textTool = createTextTool(context);
 
+        const width = {
+          1: function(item) {
+            return textTool.measureText(item).width;
+          },
+
+          2: function(item) {
+            const value = calculateImageBounds(item);
+
+            return value;
+          }
+        }
+
+
+        const calculateWidth = function calculateWidth(item) {
+          const type = item.type || 1;
+
+          return width[type](item);
+        }
+
         const calculateItems = function calculateItems(items) {
           let result = [];
 
           var calculateElements = function(start, item, ...rest) {
-            const size = Math.ceil(item.height * ppmm);
-
-            console.dir(start, item, rest);
-
+            const size = calculateHeight(item);
             result.push({
-                size: size,
-                start: start,
-                text: item.value,
-                font: item.font,
-                color: item.color
+              type: item.type,
+              size: size,
+              start: start,
+              text: item.value,
+              font: item.font,
+              color: item.color
             });
 
             if (rest && rest.length > 0) {
@@ -120,23 +170,59 @@ export default function generator(dimensions) {
 
         const items = calculateItems(this.lines);
 
-        console.dir(items);
-
-        const totalheight = this.lines.reduce((sum, item) => (sum + Math.ceil(item.height * ppmm) + (sum !== 0 ? 20 : 0)), 0);
-        const arr = items.map(item => (textTool.measureText(item).width));
+        const totalheight = this.lines.reduce((sum, item) => (sum + calculateHeight(item) + (sum !== 0 ? 20 : 0)), 0);
+        const arr = items.map(item => (calculateWidth(item)));
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
 
-        items.forEach(({ text, size, start}) => textTool.fillText({
-          text: text,
-          size: size,
-          x: padding + startOffset,
-          y: padding + y + start,
-          baseline: 'hanging',
-          color: '#000000'
-        }));
+        const print = {
+          1: function(item) {
+            const { text, size, start} = item;
+
+            textTool.fillText({
+              text: text,
+              size: size,
+              x: padding + startOffset,
+              y: padding + y + start,
+              baseline: 'hanging',
+              color: item.color || '#000000'
+            });
+          },
+
+          2: function(item) {
+            const { text, start} = item;
+            const imageFactor = 2;
+            const imageSpace = 10;
+            let x = padding + Math.ceil( (maxwidth - (( calculateWidth(item) * imageFactor) + ((item.text.length - 1) * imageSpace) )) / 2);
+
+            text.forEach(value => {
+              const {image, size, img} = value;
+
+              textTool.drawImage({
+                src: image,
+                img: img,
+                x: x,
+                y: padding + y + start,
+                height: size.height * imageFactor,
+                width: size.width * imageFactor
+              })
+
+              x += ((size.width * imageFactor) + imageSpace);
+            });
+          }
+        }
+
+        const printItem = function printItem(item) {
+          const type = item.type || 1;
+
+          print[type](item);
+        }
+
+        items.forEach(printItem);
 
         var data = canvas.toDataURL();
+
+        console.info('letting go');
 
         return {
           image: data

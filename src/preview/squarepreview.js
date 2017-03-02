@@ -7,7 +7,7 @@ import imagegenerator from '../canvas/square.js'
 
 
 function mapStateToProps(state) {
-  const {image} = imagegenerator([{ value: 'Her bor:', height: 20 }, { value: 'Familien Thomas', height: 10 }]).getImage();
+  const {image} = imagegenerator(state.items).getImage();
 
   return {
     image: image,

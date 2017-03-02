@@ -23,9 +23,20 @@ import m_girl from '../images/farger/jente-mellom2.png';
 import b_girl from '../images/farger/jente-blond2.png';
 import d_girl from '../images/farger/jente-dark2.png';
 
+function getImageBounds(actions, image, index) {
+  return new Promise((resolve) => {
+    let img = document.createElement('img');
+
+    img.onload = function () { actions.addEmoji(image, { height: img.height, width: img.width }, index); };
+
+    img.src = image;
+  });
+}
+
+
 
 const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
-  <MenuItem icon={<img src={image} style={style} />} onClick={() => actions.addEmoji(image, null, index)}>
+  <MenuItem icon={<img src={image} style={style} />} onClick={() => getImageBounds(actions, image, index)}>
     <FontIcon value='' className={theme.width} />
   </MenuItem>
 );
@@ -37,13 +48,11 @@ const zoom = {
 
 const EmojiMenu = ({ theme, actions, index }) => (
   <IconMenu icon='add' position='topRight'>
-    <IconMenu icon='add'>
-      <EmojiMenuItem key='0' image={woman} theme={actions} actions={actions} index={index} />
-      <EmojiMenuItem key='0f' image={f_woman} theme={actions} actions={actions} index={index} />
-      <EmojiMenuItem key='0m' image={m_woman} theme={actions} actions={actions} index={index} />
-      <EmojiMenuItem key='0b' image={b_woman} theme={actions} actions={actions} index={index} />
-      <EmojiMenuItem key='0d' image={d_woman} theme={actions} actions={actions} index={index} />
-    </IconMenu>
+    <EmojiMenuItem key='0' image={woman} theme={actions} actions={actions} index={index} />
+    <EmojiMenuItem key='0f' image={f_woman} theme={actions} actions={actions} index={index} />
+    <EmojiMenuItem key='0m' image={m_woman} theme={actions} actions={actions} index={index} />
+    <EmojiMenuItem key='0b' image={b_woman} theme={actions} actions={actions} index={index} />
+    <EmojiMenuItem key='0d' image={d_woman} theme={actions} actions={actions} index={index} />
     <EmojiMenuItem key='1' image={man} theme={theme} actions={actions} index={index} style={zoom} />
     <EmojiMenuItem key='1f' image={f_man} theme={theme} actions={actions} index={index} style={zoom} />
     <EmojiMenuItem key='1m' image={m_man} theme={theme} actions={actions} index={index} style={zoom} />

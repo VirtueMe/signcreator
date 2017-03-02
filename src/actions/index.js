@@ -37,12 +37,11 @@ export function moveDown(index) {
 }
 
 export function changeText(value, index) {
-  console.info('value changed: ', value, index);
   return { type: types.CHANGE_TEXT, value, index };
 }
 
-export function addEmoji(image, size, index) {
-  return { type: types.ADD_EMOJI, image, size, index };
+export function addEmoji(image, size, index, img) {
+  return { type: types.ADD_EMOJI, image, size, index, img };
 }
 
 export function deleteEmoji(id, index) {

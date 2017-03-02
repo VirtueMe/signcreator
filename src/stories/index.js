@@ -55,18 +55,29 @@ storiesOf('Add line menu', module)
     <AddLineMenu />
   ));
 
+let img1 = document.createElement('img');
+let img2 = document.createElement('img');
+let img3 = document.createElement('img');
+let img4 = document.createElement('img');
+
+img1.src = woman;
+img2.src = man;
+img3.src = girl;
+img4.src = boy;
+
 let items = {
   items: [
-    { type: 1, value: 'Benny' },
-    { type: 1, value: '' },
+    { type: 1, value: 'Benny', height: 12 },
+    { type: 1, value: '', height: 12 },
     {
       type: 2,
       value: [
-      { image: woman, id: 0},
-      { image: man, id: 1},
-      { image: girl, id: 2 },
-      { image: boy, id: 3 }
-    ]}
+        { image: woman, id: 0, size: { height: 50, width: 19 }, img: img1 },
+        { image: man, id: 1, size: { height: 50, width: 18 }, img: img2 },
+        { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 },
+        { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 }
+      ]
+    }
   ]
 };
 
@@ -127,8 +138,8 @@ storiesOf('EmojiItem', module)
       items: [{
         type: 2,
         value: [
-          { image: woman, id: 0},
-          { image: man, id: 1},
+          { image: woman, id: 0 },
+          { image: man, id: 1 },
           { image: girl, id: 2 },
           { image: boy, id: 3 }
         ]

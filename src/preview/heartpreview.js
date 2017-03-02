@@ -9,7 +9,7 @@ import heart from '../images/heart.png';
 
 
 function mapStateToProps(state) {
-  const {image} = imagegenerator([{ value: 'Her bor:', height: 12 }, { value: '', height: 12 }, { value: 'Familien Thomas', height: 12 }]).getImage();
+  const {image} = imagegenerator(state.items).getImage();
 
   return {
     image: image,
