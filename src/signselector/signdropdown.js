@@ -1,5 +1,5 @@
-import React from 'react';
-import {Dropdown, Avatar} from 'react-toolbox';
+import React, { Component } from 'react';
+import { Dropdown, Avatar } from 'react-toolbox';
 import landscape from '../images/landscape.png';
 import portrait from '../images/portrait.png';
 import heart from '../images/heart.png';
@@ -18,7 +18,7 @@ const imageStyle = {
 const squareStyle = Object.assign({}, imageStyle, { width: '32px' });
 const portraitStyle = Object.assign({}, imageStyle, { width: '16px'})
 
-export default class DropdownTest extends React.Component {
+export default class SignDropdown extends Component {
   state = {
     selected: 3
   };
