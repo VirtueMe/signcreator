@@ -8,6 +8,26 @@ function add(item) {
   return { type: types.ADD_LINE, item };
 }
 
+export function setType(value) {
+  return { type: types.SET_TYPE, value };
+}
+
+export function setTop(top) {
+  return { type: types.ADD_TOPLINE, top };
+}
+
+export function setLeft(left) {
+  return { type: types.ADD_LEFTLINE, left };
+}
+
+export function setRight(right) {
+  return { type: types.ADD_RIGHTLINE, right };
+}
+
+export function setBottom(bottom) {
+  return { type: types.ADD_BOTTOMLINE, bottom };
+}
+
 export function addTextLine() {
   return add( { type: 1, value: '' } );
 }

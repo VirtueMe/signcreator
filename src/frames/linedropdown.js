@@ -49,23 +49,13 @@ function createStyleArray(items, style, offset) {
 }
 
 export class DropdownBase extends React.Component {
-  constructor(options) {
-    super(options);
-
-    this.items = options.items || items;
-    this.label = options.label || 'Velg hvilken linje du ønsker';
+  constructor(props) {
+    super(props);
   }
 
-  state = {
-    selected: -1
-  };
-
-  handleChange = (value) => {
-    this.setState({ selected: value });
-  };
-
   allItems() {
-    return this.items &&  this.items.length ? [{ value: -1, text: 'Ingen linje'}].concat(createStyleArray(this.items, this.style), createStyleArray(this.items, this.rotatedStyle, this.items.length)): [];
+    const { items, rotatedStyle, style, texts } = this.props;
+    return items &&  items.length ? [{ value: -1, text: texts.noLineText }].concat(createStyleArray(items, style), createStyleArray(items, rotatedStyle, items.length)): [];
   }
 
   customItem (item) {
@@ -84,25 +74,36 @@ export class DropdownBase extends React.Component {
   }
 
   render () {
+    const { action, texts, value } = this.props;
+
     return (
       <Dropdown
         auto={false}
         source={this.allItems()}
-        onChange={this.handleChange}
-        label={this.label}
+        onChange={action}
+        label={texts.label}
         template={this.customItem}
-        value={this.state.selected}
+        value={value}
       />
     );
   }
 }
 
 export class HorizontalDropdown extends DropdownBase {
-  constructor(options) {
-    super(options);
-    this.style = Object.assign({}, imageStyle, horizontal);
-    this.rotatedStyle = Object.assign({}, this.style, { transform: 'rotate(180deg)' });
+  constructor(props) {
+    super(props);
   }
 }
+
+HorizontalDropdown.defaultProps = {
+  items: items,
+  rotatedStyle: Object.assign({}, imageStyle, horizontal,  { transform: 'rotate(180deg)' }),
+  style: Object.assign({}, imageStyle, horizontal),
+  texts: {
+    label: 'Velg hvilken linje du ønsker',
+    noLineText: 'Ingen linje'
+  },
+  value: -1
+};
 
 export default HorizontalDropdown;

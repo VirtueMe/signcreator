@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Welcome from './Welcome';
 import DropDown from './signdropdown';
-import LineDropdown from './linedropdown';
+import LineDropdown from '../frames/linedropdown';
 import AddLineMenu from './menu';
 import EditList from './listcontainer';
 import App from '../App';
