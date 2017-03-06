@@ -22,7 +22,7 @@ class BackplateCard extends Component {
 BackplateCard.defaultProps = {
   backplate: '0',
   texts: {
-    title: 'Backplate',
+    title: 'Bakplate',
     '0': 'Ingen',
     '1': 'Børstet aluminium',
     '2': 'Hvit plast'
