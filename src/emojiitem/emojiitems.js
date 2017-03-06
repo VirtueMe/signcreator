@@ -23,11 +23,11 @@ import m_girl from '../images/farger/jente-mellom2.png';
 import b_girl from '../images/farger/jente-blond2.png';
 import d_girl from '../images/farger/jente-dark2.png';
 
-function getImageBounds(actions, image, index) {
+function getImageBounds(addEmoji, image, index) {
   return new Promise((resolve) => {
     let img = document.createElement('img');
 
-    img.onload = function () { actions.addEmoji(image, { height: img.height, width: img.width }, index); };
+    img.onload = function () { addEmoji(image, { height: img.height, width: img.width }, index, img); };
 
     img.src = image;
   });
@@ -36,7 +36,7 @@ function getImageBounds(actions, image, index) {
 
 
 const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
-  <MenuItem icon={<img src={image} style={style} />} onClick={() => getImageBounds(actions, image, index)}>
+  <MenuItem icon={<img src={image} style={style} />} onClick={() => getImageBounds(actions.addEmoji, image, index)}>
     <FontIcon value='' className={theme.width} />
   </MenuItem>
 );

@@ -7,17 +7,12 @@ class SignSelectorCard extends Component {
     const { texts } = this.props;
 
     return (
-      <Card>
+      <Card style={ { overflow: 'visible' } }>
         <CardTitle>
           {texts.title}
         </CardTitle>
         <CardText>
           <SignDropdown {...this.props} />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </CardText>
       </Card>
     );

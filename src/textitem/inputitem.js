@@ -34,6 +34,7 @@ const factory = (FontIcon) => {
       );
 
       const changeText = function(value) {
+        console.info('what?');        
         actions.changeText(value, index);
       }
 

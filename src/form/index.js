@@ -2,28 +2,21 @@ import React, { Component, PropTypes } from 'react';
 import { Button, Card, CardActions, CardText, CardTitle } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 
-import Settings from '../settings';
 import EditList from '../editlist';
-import LandscapePreview from '../preview/landscapepreview';
-import PortraitPreview from '../preview/portraitpreview';
-import SquarePreview from '../preview/squarepreview';
-import HeartPreview from '../preview/heartpreview';
-
-const PreviewList = [LandscapePreview, PortraitPreview, SquarePreview, HeartPreview];
+import Preview from '../preview';
+import Settings from '../settings';
 
 
 class Step1 extends Component {
   render() {
-    const { actions, items, settings, texts, toPayment } = this.props;
-
-    const Preview = PreviewList[settings.type];
+    const { actions, image, imageClassName, items, settings, texts, toPayment } = this.props;
 
     return (
       <Container fluid>
         <Row>
           <Col lg={4} md={6} xs={12}>
             <br />
-            <Card>
+            <Card style={ { overflow: 'visible' } }>
               <CardTitle>
                 {texts.settings.title}
               </CardTitle>
@@ -35,7 +28,7 @@ class Step1 extends Component {
           </Col>
           <Col lg={4} md={6} xs={12}>
             <br />
-            <Card>
+            <Card style={ { overflow: 'visible' } }>
               <CardTitle>
                 {texts.editlist.title}
               </CardTitle>
@@ -52,7 +45,7 @@ class Step1 extends Component {
                 {texts.preview.title}
               </CardTitle>
               <CardText>
-                <Preview items={items} />
+                <Preview image={image} className={imageClassName} />
               </CardText>
               <CardActions>
                 <Button label={texts.preview.continue.text} onClick={toPayment || actions.toPayment} raised primary />

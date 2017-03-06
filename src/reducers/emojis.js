@@ -26,7 +26,7 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[action.index] = {
-        value: action.value
+        value: { $set: action.value }
       };
 
       return update(state, updateData);

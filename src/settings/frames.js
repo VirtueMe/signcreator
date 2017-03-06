@@ -10,15 +10,15 @@ class Frames extends Component {
     const [topItem, bottomItem] = type !== 4 ? [<DropDownline key='top' value={top} action={actions.setTop} texts={ { label: texts.labelTop, noLineText: texts.noLineText } } />, <DropDownline key='bottom' value={bottom} action={actions.setBottom} texts={ { label: texts.labelBottom, noLineText: texts.noLineText } } />] : [null, null];
 
     return (
-      <Card>
+      <Card style={ { overflow: 'visible' } }>
         <CardTitle>
           {texts.title}
         </CardTitle>
         <CardText>
-        {topItem}
-        <DropDownline key='left' value={left} action={actions.setLeft} texts={ { label: texts.labelLeft, noLineText: texts.noLineText } } />
-        <DropDownline key='right' value={right} action={actions.setRight} texts={ { label: texts.labelRight, noLineText: texts.noLineText } } />
-        {bottomItem}
+          {topItem}
+          <DropDownline key='left' value={left} action={actions.setLeft} texts={ { label: texts.labelLeft, noLineText: texts.noLineText } } />
+          <DropDownline key='right' value={right} action={actions.setRight} texts={ { label: texts.labelRight, noLineText: texts.noLineText } } />
+          {bottomItem}
         </CardText>
       </Card>
     );

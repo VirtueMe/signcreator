@@ -11,8 +11,6 @@ const factory = () => {
       const { image, theme, className, style } = this.props;
       const img = image ? <img src={image} /> : null;
 
-      console.dir(this.props);
-
       return (
         <div className={theme[className]} style={style}>{img}</div>
       )
@@ -20,6 +18,7 @@ const factory = () => {
   }
 
   Preview.propTypes = {
+    className: PropTypes.string,
     image: PropTypes.string,
     theme: PropTypes.shape({
       preview: PropTypes.string
