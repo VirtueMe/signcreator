@@ -1,7 +1,7 @@
 import { SET_TYPE, SET_BACKPLATE, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
-const initialState = { type: 1, backplate: 0, top: 0, left: 0, right: 0, bottom: 0 };
+const initialState = { type: 1, backplate: 0, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
 
 export default function settings(state = initialState, action) {
   console.info(state, action);
@@ -25,7 +25,7 @@ export default function settings(state = initialState, action) {
 
     case ADD_TOPLINE: {
       if (action.top !== state.top) {
-        return update(state, { top: { $set: action.top } });
+        return update(state, { top: { $set: action.top }, topImage: { $set: action.img } });
       }
 
       return state;
@@ -33,7 +33,7 @@ export default function settings(state = initialState, action) {
 
     case ADD_LEFTLINE: {
       if (action.left !== state.left) {
-        return update(state, { left: { $set: action.left } });
+        return update(state, { left: { $set: action.left }, leftImage: { $set: action.img } });
       }
 
       return state;
@@ -41,7 +41,7 @@ export default function settings(state = initialState, action) {
 
     case ADD_RIGHTLINE: {
       if (action.right !== state.right) {
-        return update(state, { right: { $set: action.right } });
+        return update(state, { right: { $set: action.right }, rightImage: { $set: action.img } });
       }
 
       return state;
@@ -49,7 +49,7 @@ export default function settings(state = initialState, action) {
 
     case ADD_BOTTOMLINE: {
       if (action.bottom !== state.bottom) {
-        return update(state, { bottom: { $set: action.bottom } });
+        return update(state, { bottom: { $set: action.bottom }, bottomImage: { $set: action.img } });
       }
 
       return state;

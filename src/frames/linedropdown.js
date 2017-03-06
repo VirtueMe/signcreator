@@ -35,13 +35,13 @@ const items = [
   { value: 6, img: image5 }
 ];
 
-function createStyleArray(items, style, offset) {
+function createStyleArray(items, style, offset=1) {
   offset = offset || 0;
 
   return items
           .map(
             (item) => {
-              return Object.assign({}, item, { style: style, value: item.value + offset });
+              return Object.assign({}, item, { style: style, value: item.value * offset });
             }
           );
 }
@@ -49,7 +49,7 @@ function createStyleArray(items, style, offset) {
 export class DropdownBase extends React.Component {
   allItems() {
     const { items, rotatedStyle, style, texts } = this.props;
-    return items &&  items.length ? [{ value: 0, text: texts.noLineText }].concat(createStyleArray(items, style), createStyleArray(items, rotatedStyle, items.length)): [];
+    return items &&  items.length ? [{ value: 0, text: texts.noLineText }].concat(createStyleArray(items, style), createStyleArray(items, rotatedStyle, -1)): [];
   }
 
   customItem (item) {
@@ -67,14 +67,37 @@ export class DropdownBase extends React.Component {
     );
   }
 
+  onChange(action, items, value) {
+    const item = items.find(item => (item.value === value));
+
+    console.info('values selected: ', value, item);
+
+    if (!item.img) {
+      return action(value)
+    }
+    else {
+      let img = document.createElement('img');
+
+      if (value < 0) {
+        img.style= 'transform: rotate(180deg);';
+      }
+
+      img.onload = function () { action(value, img); };
+
+      img.src = item.img;
+    }
+  }
+
   render () {
     const { action, texts, value } = this.props;
+
+    const items = this.allItems();
 
     return (
       <Dropdown
         auto={false}
-        source={this.allItems()}
-        onChange={action}
+        source={items}
+        onChange={(value) => this.onChange(action, items, value)}
         label={texts.label}
         template={this.customItem}
         value={value}

@@ -55,6 +55,15 @@ function createTextTool(context) {
       }
     },
 
+    drawFlipImage: function(image) {
+      if (image.img) {
+        _context.save();
+        _context.scale(1, -1);
+        _context.drawImage(image.img, image.x, image.y * -1, image.width, image.height);
+        _context.restore();
+      }
+    },
+
     measureText: function(line) {
       _context.font = this.font(line);
 
@@ -84,7 +93,7 @@ function calculateImageBounds(item) {
 }
 
 export default function generator(dimensions) {
-  return function imagegenerator(lines, center) {
+  return function imagegenerator(lines, settings, center) {
 
     const areaWidth = Math.ceil(dimensions.width * ppmm);
     const areaheight = Math.ceil(dimensions.height * ppmm);
@@ -96,7 +105,6 @@ export default function generator(dimensions) {
 
       return height[type](item);
     }
-
 
 
     const createCanvas = function createCanvas() {
@@ -174,6 +182,7 @@ export default function generator(dimensions) {
         const arr = items.map(item => (calculateWidth(item)));
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
+        const imageFactor = 2;
 
         const print = {
           1: function(item) {
@@ -191,7 +200,6 @@ export default function generator(dimensions) {
 
           2: function(item) {
             const { text, start} = item;
-            const imageFactor = 2;
             const imageSpace = 10;
             let x = padding + Math.ceil( (maxwidth - (( calculateWidth(item) * imageFactor) + ((item.text.length - 1) * imageSpace) )) / 2);
 
@@ -205,7 +213,7 @@ export default function generator(dimensions) {
                 y: padding + y + start,
                 height: size.height * imageFactor,
                 width: size.width * imageFactor
-              })
+              });
 
               x += ((size.width * imageFactor) + imageSpace);
             });
@@ -219,6 +227,44 @@ export default function generator(dimensions) {
         }
 
         items.forEach(printItem);
+
+        if (settings) {
+          if (settings.topImage) {
+            let start = padding + Math.ceil((maxwidth - ( settings.topImage.width * 4 * imageFactor) ) / 2);
+
+            console.info('top value: ', settings.top);
+
+            const drawImage = settings.top > 0 ? textTool.drawImage : textTool.drawFlipImage;
+
+            for (let i = 0; i<4; i++) {
+              drawImage({
+                img: settings.topImage,
+                x: start + (i * settings.topImage.width * imageFactor),
+                y: 10,
+                height: settings.topImage.height * imageFactor,
+                width: settings.topImage.width * imageFactor
+              });
+            }
+          }
+
+          if (settings.bottomImage) {
+            let start = padding + Math.ceil((maxwidth - ( settings.bottomImage.width * 4 * imageFactor) ) / 2);
+            let y = areaheight - 10;
+
+            const drawImage = settings.bottom > 0 ? textTool.drawImage : textTool.drawFlipImage;
+            y = y - (settings.bottom > 0 ? settings.bottomImage.height * imageFactor : 0);
+
+            for (let i = 0; i<4; i++) {
+              drawImage({
+                img: settings.bottomImage,
+                x: start + (i * settings.bottomImage.width * imageFactor),
+                y: y,
+                height: settings.bottomImage.height * imageFactor,
+                width: settings.bottomImage.width * imageFactor
+              });
+            }
+          }
+        }
 
         var data = canvas.toDataURL();
 

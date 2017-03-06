@@ -17,9 +17,11 @@ const classNames = ['landscape', 'portrait', 'square', 'heart'];
 
 const typeSelector = state => state.settings.type;
 const itemsSelector = state => state.items;
+const settingsSelector = state => state.settings;
+
 const imageSelector = createSelector(
-  [typeSelector, itemsSelector],
-  (type, items) => generators[type](items).getImage().image
+  [typeSelector, itemsSelector, settingsSelector],
+  (type, items, settings) => generators[type](items, settings).getImage().image
 );
 
 const classNameSelector = createSelector(

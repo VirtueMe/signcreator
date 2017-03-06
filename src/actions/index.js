@@ -23,7 +23,9 @@ export function changeCity(value) {
   return { type: types.CHANGE_CITY, value };
 }
 
-/* Payment */
+/*
+ * Payment
+ */
 export function changePayment(value) {
   return { type: types.CHANGE_PAYMENT_TYPE, value };
 }
@@ -45,16 +47,8 @@ export function changeCCV2(value) {
 }
 
 /*
- * Emojis
+ * Settings
  */
-export function initEmoji(emojis, index) {
-  return { type: types.INIT_EMOJIS, emojis, index };
-}
-
-function add(item) {
-  return { type: types.ADD_LINE, item };
-}
-
 export function setType(value) {
   return { type: types.SET_TYPE, value };
 }
@@ -63,20 +57,30 @@ export function setBackPlate(value) {
   return { type: types.SET_BACKPLATE, value };
 }
 
-export function setTop(top) {
-  return { type: types.ADD_TOPLINE, top };
+export function setTop(top, img) {
+  return { type: types.ADD_TOPLINE, top, img };
 }
 
-export function setLeft(left) {
-  return { type: types.ADD_LEFTLINE, left };
+export function setLeft(left, img) {
+  return { type: types.ADD_LEFTLINE, left, img };
 }
 
-export function setRight(right) {
-  return { type: types.ADD_RIGHTLINE, right };
+export function setRight(right, img) {
+  return { type: types.ADD_RIGHTLINE, right, img };
 }
 
-export function setBottom(bottom) {
-  return { type: types.ADD_BOTTOMLINE, bottom };
+export function setBottom(bottom, img) {
+  return { type: types.ADD_BOTTOMLINE, bottom, img };
+}
+
+/* Emojis */
+
+export function initEmoji(emojis, index) {
+  return { type: types.INIT_EMOJIS, emojis, index };
+}
+
+function add(item) {
+ return { type: types.ADD_LINE, item };
 }
 
 export function addTextLine() {
