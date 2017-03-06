@@ -6,6 +6,7 @@ import AddLineMenu from './menu';
 import CustomerForm from './customerformcontainer'
 import EditList from './listcontainer';
 import Step1 from './step1container';
+import Step2 from './step2container';
 import App from '../App';
 import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
@@ -35,6 +36,8 @@ img3.src = girl;
 img4.src = boy;
 
 let state = {
+  customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
+  payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
   items: [
     { type: 1, value: 'Her bor', height: 10 },
     { type: 1, value: 'Familien Thomas', height: 10 },
@@ -119,16 +122,26 @@ storiesOf('Settings', module)
     );
   });
 
-storiesOf('Step1', module)
-  .add('show', () => {
+storiesOf('Steps', module)
+  .add('Step 1', () => {
     const store = configureStore(state);
 
     return (
       <Provider store={store}>
-        <Step1 />
+        <Step1 toPayment={ action('button-click') } />
+      </Provider>
+    );
+  })
+  .add('Step 2', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <Step2 toReceipt={ action('button-click') } />
       </Provider>
     );
   });
+
 
 storiesOf('Line selector', module)
   .add('Top', () => {

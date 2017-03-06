@@ -46,7 +46,6 @@ class EditList extends Component {
   ];
 
   confirmDeleteLine(index) {
-    console.info(index);
     this.setState({ active: true, index: index });
   }
 
@@ -70,7 +69,6 @@ class EditList extends Component {
           {children}
         </PositionMenu>
       );
-      console.info(item);
 
       return (
         <Cond value={item.type}>
