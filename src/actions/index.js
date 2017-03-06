@@ -59,6 +59,10 @@ export function setType(value) {
   return { type: types.SET_TYPE, value };
 }
 
+export function setBackPlate(value) {
+  return { type: types.SET_BACKPLATE, value };
+}
+
 export function setTop(top) {
   return { type: types.ADD_TOPLINE, top };
 }

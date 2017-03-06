@@ -4,8 +4,7 @@
 
 
 .landscape {
-  height: 100mm;
-  width: 150mm;
+  max-width: 100%;
   border: var(--image-border-width) solid var(--image-border-color);
 
   & > img {
@@ -14,8 +13,7 @@
 }
 
 .square {
-  height: 100mm;
-  width: 100mm;
+  max-width: 100%;
   border: var(--image-border-width) solid var(--image-border-color);
 
   & > img {
@@ -24,8 +22,7 @@
 }
 
 .portrait {
-  height: 150mm;
-  width: 100mm;
+  max-width: 100%;
   border: var(--image-border-width) solid var(--image-border-color);
 
   & > img {
@@ -34,16 +31,14 @@
 }
 
 .heart {
-  height: 200mm;
-  width: 200mm;
+  max-width: 100%;
+  padding: 25%;
   background-image: url(../images/heart.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 
   & > img {
-    margin-top: 50mm;
-    margin-left: 50mm;
-    width: 100mm;
+    width: 100%;
     border: 1px dashed lightblue;
   }
 }

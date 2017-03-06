@@ -11,6 +11,7 @@ export const CHANGE_TEXT = 'CHANGE_TEXT';
 
 /* Settings */
 export const SET_TYPE = 'SET_TYPE';
+export const SET_BACKPLATE = 'SET_BACKPLATE';
 export const ADD_TOPLINE = 'ADD_TOPLINE';
 export const ADD_LEFTLINE = 'ADD_LEFTLINE';
 export const ADD_RIGHTLINE = 'ADD_RIGHTLINE';

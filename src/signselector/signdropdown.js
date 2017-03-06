@@ -19,10 +19,10 @@ const squareStyle = Object.assign({}, imageStyle, { width: '32px' });
 const portraitStyle = Object.assign({}, imageStyle, { width: '16px'})
 
 const items = [
-  { value: 1, name: 'Liggende skilt', description: 'Bedre plass for lange navn', img: landscape, style: imageStyle },
-  { value: 2, name: 'Stående skilt', description: 'Bedre plass i høyden', img: portrait, style: portraitStyle },
-  { value: 3, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
-  { value: 4, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
+  { value: 0, name: 'Liggende skilt', description: 'Bedre plass for lange navn', img: landscape, style: imageStyle },
+  { value: 1, name: 'Stående skilt', description: 'Bedre plass i høyden', img: portrait, style: portraitStyle },
+  { value: 2, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
+  { value: 3, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
 ];
 
 

@@ -1,7 +1,7 @@
-import { SET_TYPE, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
+import { SET_TYPE, SET_BACKPLATE, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
-const initialState = { type: 1, top: 0, left: 0, right: 0, bottom: 0 };
+const initialState = { type: 1, backplate: 0, top: 0, left: 0, right: 0, bottom: 0 };
 
 export default function settings(state = initialState, action) {
   console.info(state, action);
@@ -10,6 +10,14 @@ export default function settings(state = initialState, action) {
     case SET_TYPE: {
       if (action.value !== state.type) {
         return update(state, { type: { $set: action.value } });
+      }
+
+      return state;
+    }
+
+    case SET_BACKPLATE: {
+      if (action.value !== state.backplate) {
+        return update(state, { backplate: { $set: action.value } });
       }
 
       return state;

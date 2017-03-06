@@ -5,6 +5,7 @@ import SignDropdown from '../signselector/signdropdown';
 import AddLineMenu from './menu';
 import CustomerForm from './customerformcontainer'
 import EditList from './listcontainer';
+import Step1 from './step1container';
 import App from '../App';
 import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
@@ -35,19 +36,20 @@ img4.src = boy;
 
 let state = {
   items: [
-    { type: 1, value: 'Benny', height: 12 },
-    { type: 1, value: '', height: 12 },
+    { type: 1, value: 'Her bor', height: 10 },
+    { type: 1, value: 'Familien Thomas', height: 10 },
+    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8 },
     {
       type: 2,
       value: [
         { image: woman, id: 0, size: { height: 50, width: 19 }, img: img1 },
         { image: man, id: 1, size: { height: 50, width: 18 }, img: img2 },
-        { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 },
-        { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 }
+        { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 },
+        { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 }
       ]
     }
   ],
-  settings: { type: 1, top: 0, left: 0, right: 0, bottom: 0 }
+  settings: { type: 1, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 }
 };
 
 
@@ -117,6 +119,16 @@ storiesOf('Settings', module)
     );
   });
 
+storiesOf('Step1', module)
+  .add('show', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <Step1 />
+      </Provider>
+    );
+  });
 
 storiesOf('Line selector', module)
   .add('Top', () => {
