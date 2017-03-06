@@ -58,8 +58,29 @@ function createTextTool(context) {
     drawFlipImage: function(image) {
       if (image.img) {
         _context.save();
-        _context.scale(1, -1);
-        _context.drawImage(image.img, image.x, image.y * -1, image.width, image.height);
+        _context.translate(image.x, image.y);
+        _context.rotate(Math.PI);
+        _context.drawImage(image.img, -image.width, -image.height, image.width, image.height);
+        _context.restore();
+      }
+    },
+
+    drawFlip90Imagefunction(image) {
+      if (image.img) {
+        _context.save();
+        _context.translate(image.x, image.y);
+        _context.rotate(Math.PI/2);
+        _context.drawImage(image.img, -image.width, -image.height, image.width, image.height);
+        _context.restore();
+      }
+    },
+
+    drawFlip270Imagefunction(image) {
+      if (image.img) {
+        _context.save();
+        _context.translate(image.x, image.y);
+        _context.rotate(-Math.PI/2);
+        _context.drawImage(image.img, -image.width, -image.height, image.width, image.height);
         _context.restore();
       }
     },
@@ -230,17 +251,16 @@ export default function generator(dimensions) {
 
         if (settings) {
           if (settings.topImage) {
-            let start = padding + Math.ceil((maxwidth - ( settings.topImage.width * 4 * imageFactor) ) / 2);
-
-            console.info('top value: ', settings.top);
+            const repeats = 4;
+            let start = padding + Math.ceil((maxwidth - ( settings.topImage.width * repeats * imageFactor) ) / 2);
 
             const drawImage = settings.top > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
-            for (let i = 0; i<4; i++) {
+            for (let i = 0; i<repeats; i++) {
               drawImage({
                 img: settings.topImage,
                 x: start + (i * settings.topImage.width * imageFactor),
-                y: 10,
+                y: 10 * imageFactor,
                 height: settings.topImage.height * imageFactor,
                 width: settings.topImage.width * imageFactor
               });
@@ -248,11 +268,11 @@ export default function generator(dimensions) {
           }
 
           if (settings.bottomImage) {
+            const repeats = 4;
             let start = padding + Math.ceil((maxwidth - ( settings.bottomImage.width * 4 * imageFactor) ) / 2);
-            let y = areaheight - 10;
+            let y = areaheight - (settings.bottomImage.height * imageFactor) -  (10 * imageFactor);
 
             const drawImage = settings.bottom > 0 ? textTool.drawImage : textTool.drawFlipImage;
-            y = y - (settings.bottom > 0 ? settings.bottomImage.height * imageFactor : 0);
 
             for (let i = 0; i<4; i++) {
               drawImage({
@@ -264,11 +284,26 @@ export default function generator(dimensions) {
               });
             }
           }
+
+          if (settings.leftImage) {
+            const repeats = 3;
+            let y = Math.ceil((maxAreaHeightFont - ( settings.bottomImage.height * repeats * imageFactor) ) / 2);
+
+            const drawImage = settings.left > 0 ? textTool.drawFlip90Imagefunction : textTool.drawFlip270Imagefunction;
+
+            for (let i = 0; i<repeats; i++) {
+              drawImage({
+                img: settings.leftImage,
+                x: (10 * imageFactor),
+                y: y + (i * settings.topImage.height * imageFactor),
+                height: settings.bottomImage.height * imageFactor,
+                width: settings.bottomImage.width * imageFactor
+              });
+            }
+          }
         }
 
         var data = canvas.toDataURL();
-
-        console.info('letting go');
 
         return {
           image: data
