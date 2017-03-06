@@ -26,8 +26,6 @@ const imageStyle = {
   backgroundColor: 'white'
 };
 
-// const rotatedStyle = Object.assign({}, imageStyle, );
-
 const items = [
   { value: 1, img: image0 },
   { value: 2, img: image1 },
@@ -37,23 +35,21 @@ const items = [
   { value: 6, img: image5 }
 ];
 
-function createStyleArray(items, style, offset=1) {
+function createStyleArray(items, style, offset) {
+  offset = offset || 0;
+
   return items
           .map(
             (item) => {
-              return Object.assign({}, item, { style: style, value: item.value * offset });
+              return Object.assign({}, item, { style: style, value: item.value + offset });
             }
           );
 }
 
 export class DropdownBase extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   allItems() {
     const { items, rotatedStyle, style, texts } = this.props;
-    return items &&  items.length ? [{ value: 0, text: texts.noLineText }].concat(createStyleArray(items, style), createStyleArray(items, rotatedStyle, -1)): [];
+    return items &&  items.length ? [{ value: 0, text: texts.noLineText }].concat(createStyleArray(items, style), createStyleArray(items, rotatedStyle, items.length)): [];
   }
 
   customItem (item) {
@@ -72,48 +68,36 @@ export class DropdownBase extends React.Component {
   }
 
   render () {
-    const { action, actionIndex, actions, label, settings, texts, value, valueIndex } = this.props;
-
-    console.info(this.props);
+    const { action, texts, value } = this.props;
 
     return (
       <Dropdown
         auto={false}
         source={this.allItems()}
-        onChange={action || actions[actionIndex]}
-        label={label || texts.label}
+        onChange={action}
+        label={texts.label}
         template={this.customItem}
-        value={valueIndex ? settings[valueIndex] : value}
+        value={value}
       />
     );
   }
 }
 
-export class LineDropdown extends DropdownBase {
+export class HorizontalDropdown extends DropdownBase {
   constructor(props) {
     super(props);
   }
 }
 
-LineDropdown.defaultProps = {
-  action: null,
-  actionIndex: 'setTop',
-  actions: {
-    setTop: function() {
-      console.info('setTop: ', arguments);
-    }
-  },
+HorizontalDropdown.defaultProps = {
   items: items,
-  label: null,
   rotatedStyle: Object.assign({}, imageStyle, horizontal,  { transform: 'rotate(180deg)' }),
-  settings: null,
   style: Object.assign({}, imageStyle, horizontal),
   texts: {
     label: 'Velg hvilken linje du ønsker',
     noLineText: 'Ingen linje'
   },
-  value: 0,
-  valueIndex: null
+  value: 0
 };
 
-export default LineDropdown;
+export default HorizontalDropdown;

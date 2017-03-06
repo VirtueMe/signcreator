@@ -1,5 +1,52 @@
 import * as types from '../constants/actiontypes'
 
+/*
+ * customer
+ */
+export function changeEmail(value) {
+  return { type: types.CHANGE_EMAIL, value };
+}
+
+export function changeName(value) {
+  return { type: types.CHANGE_NAME, value };
+}
+
+export function changeAddress(value) {
+  return { type: types.CHANGE_ADDRESS, value };
+}
+
+export function changeZip(value) {
+  return { type: types.CHANGE_ZIP, value };
+}
+
+export function changeCity(value) {
+  return { type: types.CHANGE_CITY, value };
+}
+
+/* Payment */
+export function changePayment(value) {
+  return { type: types.CHANGE_PAYMENT_TYPE, value };
+}
+
+export function changeNumber(value) {
+  return { type: types.CHANGE_CREDITCARD_NUMBER, value };
+}
+
+export function changeMonth(value) {
+  return { type: types.CHANGE_EXPIRES_MONTH, value };
+}
+
+export function changeYear(value) {
+  return { type: types.CHANGE_EXPIRES_YEAR, value };
+}
+
+export function changeCCV2(value) {
+  return { type: types.CHANGE_CCV2, value };
+}
+
+/*
+ * Emojis
+ */
 export function initEmoji(emojis, index) {
   return { type: types.INIT_EMOJIS, emojis, index };
 }

@@ -18,17 +18,15 @@ const imageStyle = {
 const squareStyle = Object.assign({}, imageStyle, { width: '32px' });
 const portraitStyle = Object.assign({}, imageStyle, { width: '16px'})
 
-export default class SignDropdown extends Component {
-  state = {
-    selected: 3
-  };
+const items = [
+  { value: 1, name: 'Liggende skilt', description: 'Bedre plass for lange navn', img: landscape, style: imageStyle },
+  { value: 2, name: 'Stående skilt', description: 'Bedre plass i høyden', img: portrait, style: portraitStyle },
+  { value: 3, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
+  { value: 4, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
+];
 
-  items = [
-    { value: 1, name: 'Liggende skilt', description: 'Bedre plass for lange navn', img: landscape, style: imageStyle },
-    { value: 2, name: 'Stående skilt', description: 'Bedre plass i høyden', img: portrait, style: portraitStyle },
-    { value: 3, name: 'Kvadratisk skilt', description: 'Når du ikke trenger så stor plass', img: square, style: squareStyle },
-    { value: 4, name: 'Hjerteformet skilt', description: 'For en kjærlig familie', img: heart, style: squareStyle },
-  ];
+
+export default class SignDropdown extends Component {
 
   handleChange = (value) => {
     this.setState({ selected: value });
@@ -58,15 +56,28 @@ export default class SignDropdown extends Component {
   }
 
   render () {
+    const { actions, items, label, value } = this.props;
+
     return (
       <Dropdown
         auto={false}
-        source={this.items}
-        onChange={this.handleChange}
-        label='Velg hvilket skilt du ønsker'
+        source={items}
+        onChange={actions.setType}
+        label={label}
         template={this.customItem}
-        value={this.state.selected}
+        value={value}
       />
     );
   }
+}
+
+SignDropdown.defaultProps = {
+  actions: {
+    setType: function() {
+      console.info(arguments);
+    }
+  },
+  items: items,
+  label: 'Velg hvilket skilt du ønsker',
+  value: null,
 }

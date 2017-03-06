@@ -3,12 +3,14 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Welcome from './Welcome';
 import SignDropdown from '../signselector/signdropdown';
 import AddLineMenu from './menu';
+import CustomerForm from './customerformcontainer'
 import EditList from './listcontainer';
 import App from '../App';
 import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
 import LineDropdown from './linecontainer';
-import Settings from '../settings/';
+import Settings from './settingscontainer';
+import PaymentOptions from './paymentoptionscontainer';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import woman from '../images/farger/mor-mellom2.png';
@@ -59,15 +61,61 @@ storiesOf('App', module)
     <App />
   ));
 
+storiesOf('PaymentOptions', module)
+  .add('show', () => {
+    const paymentState = {
+      payment: {
+        type: 0,
+        number: '',
+        month: '',
+        year: '',
+        ccv2: ''
+      }
+    };
+    const paymentStore = configureStore(paymentState);
+
+    return (
+      <Provider store={paymentStore}>
+        <PaymentOptions />
+      </Provider>
+    )
+  });
+
+storiesOf('Customerform', module)
+  .add('show', () => {
+    const customerState = {
+      customer: {
+        email: '',
+        name: '',
+        address: '',
+        zip: '',
+        city: ''
+      }
+    };
+    const customerStore = configureStore(customerState);
+
+    return (
+      <Provider store={customerStore}>
+        <CustomerForm />
+      </Provider>
+    )
+  });
+
 storiesOf('Sign selector', module)
   .add('show', () => (
     <SignDropdown />
   ));
 
 storiesOf('Settings', module)
-  .add('show', () => (
-    <Settings />
-  ));
+  .add('show', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <Settings />
+      </Provider>
+    );
+  });
 
 
 storiesOf('Line selector', module)

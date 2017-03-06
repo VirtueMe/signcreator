@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import SignDropdown from '../signselector/signdropdown';
-import DropDownline from '../frames/linedropdown';
+import Frames from './frames';
 
 class Settings extends Component {
   render() {
+    const { settings, actions } = this.props;
+    const { type } = settings;
+
     return (
       <div>
-        <SignDropdown />
-        <DropDownline />
-        <DropDownline />
-        <DropDownline />
-        <DropDownline />
+        <SignDropdown value={type} actions={actions} />
+        <Frames {...settings} actions={actions} />
       </div>
     );
   }
