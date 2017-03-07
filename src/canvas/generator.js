@@ -249,7 +249,7 @@ export default function generator(dimensions) {
 
         items.forEach(printItem);
 
-        if (settings) {
+        if (settings && settings.type !== 3) {
           if (settings.topImage) {
             const imageWidth = settings.topImage.width * imageFactor;
             const repeats = (maxwidth - (maxwidth % imageWidth)) / imageWidth;
