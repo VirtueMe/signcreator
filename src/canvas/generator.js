@@ -41,7 +41,9 @@ function createTextTool(context) {
           _context.textBaseline = line.baseline;
         }
 
-        context.fillStyle = line.color;
+        if (line.color) {
+          context.fillStyle = line.color;
+        }
 
         context.fillText(line.text, line.x, line.y);
 
@@ -105,6 +107,12 @@ const height = {
     return Math.max(...items);
   }
 };
+
+function createRGBAString(color) {
+  const { r, g, b, a} = color;
+
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
 
 
 function calculateImageBounds(item) {
@@ -178,6 +186,7 @@ export default function generator(dimensions) {
 
           var calculateElements = function(start, item, ...rest) {
             const size = calculateHeight(item);
+
             result.push({
               type: item.type,
               size: size,
@@ -215,7 +224,7 @@ export default function generator(dimensions) {
               x: padding + startOffset,
               y: padding + y + start,
               baseline: 'hanging',
-              color: item.color || '#000000'
+              color: createRGBAString(item.color || { r: 0, g: 0, b: 0, a: 1 })
             });
           },
 

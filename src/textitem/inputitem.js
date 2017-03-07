@@ -5,36 +5,48 @@ import classnames from 'classnames';
 import { themr } from 'react-css-themr';
 import { TEXTINPUT } from '../identifiers';
 
+import { SketchPicker } from 'react-color';
+
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { ListItem, IconButton, Input, FontIcon } from 'react-toolbox';
+import { Dialog, FontIcon, IconButton, Input, ListItem } from 'react-toolbox';
 
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 
 const factory = (FontIcon) => {
   class TextInput extends Component {
+
     render() {
       const PositionMenu = this.props.menu;
-      const { theme, texts, value, index, actions } = this.props;
+      const { theme, texts, value, index, actions, selectColor } = this.props;
       const { menu } = texts;
-      const { format, action } = menu;
-
+      const { format, action } = menu
+      const center = (
+        <MenuItem icon='format_align_center' caption={format.center} key="2a">
+          <FontIcon value='' className={theme.width} />
+        </MenuItem>
+      );
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
-          <MenuItem icon='format_bold' caption={format.bold} key="0">
-            <FontIcon value='checked' className={theme.width} />
+          <MenuItem icon='format_size' caption={format.increase} key="0" onclick={() => actions.increaseFont(index)}>
+            <FontIcon className={theme.width} />
           </MenuItem>
-          <MenuItem icon='format_italic' caption={format.italic} key="1">
+          <MenuItem icon='text_fields' caption={format.decrease} key="1" onclick={() => actions.decreaseFont(index)}>
+            <FontIcon className={theme.width} />
+          </MenuItem>
+          <MenuItem icon='format_bold' caption={format.bold} key="2">
+            <FontIcon className={theme.width} />
+          </MenuItem>
+          <MenuItem icon='format_italic' caption={format.italic} key="3">
             <FontIcon value='' className={theme.width} />
           </MenuItem>
-          <MenuItem icon='format_align_center' caption={format.center} key="2">
+          <MenuItem icon='format_color_text' caption={format.color} key="4" onClick={selectColor}>
             <FontIcon value='' className={theme.width} />
           </MenuItem>
         </IconMenu>
       );
 
       const changeText = function(value) {
-        console.info('what?');        
         actions.changeText(value, index);
       }
 
@@ -71,9 +83,12 @@ const factory = (FontIcon) => {
     texts: {
       menu: {
         format: {
+          increase: "Øk skrift",
+          decrease: 'Mink skrift',
           bold: 'Fet',
           italic: 'Italic',
-          center: 'Sentrer'
+          center: 'Sentrer',
+          color: 'Farge'
         }
       },
       placeholder: 'Text linje'

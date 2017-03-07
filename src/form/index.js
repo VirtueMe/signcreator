@@ -74,6 +74,24 @@ Step1.defaultProps = {
           down: 'Flytt ned',
           up: 'Flytt opp'
         }
+      },
+      dialogs: {
+        remove: {
+          title: 'Bekreft sletting',
+          description: 'Slette linjen?',
+          buttons: {
+            cancel: 'Avbryt',
+            delete: 'Slett'
+          }
+        },
+        
+        color: {
+          title: 'Velg tekst farge',
+          buttons: {
+            cancel: 'Avbryt',
+            select: 'Velg'
+          }
+        }
       }
     },
     preview: {

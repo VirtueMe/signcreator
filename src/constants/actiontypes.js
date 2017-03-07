@@ -8,7 +8,8 @@ export const ADD_LINE = 'ADD_LINE';
 export const DELETE_LINE = 'DELETE_LINE';
 export const MOVE_LINE = 'MOVE_LINE';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
-
+export const CHANGE_TEXT_COLOR = 'CHANGE_TEXT_COLOR';
+export const CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE';
 /* Settings */
 export const SET_TYPE = 'SET_TYPE';
 export const SET_BACKPLATE = 'SET_BACKPLATE';

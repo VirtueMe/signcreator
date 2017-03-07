@@ -1,4 +1,4 @@
-import { ADD_LINE, ADD_EMOJI, CHANGE_TEXT, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE } from '../constants/actiontypes';
+import { ADD_LINE, ADD_EMOJI, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
 const initialState = [];
@@ -27,6 +27,26 @@ export default function emojis(state = initialState, action) {
 
       updateData[action.index] = {
         value: { $set: action.value }
+      };
+
+      return update(state, updateData);
+    }
+
+    case CHANGE_TEXT_COLOR: {
+      let updateData = {};
+
+      updateData[action.index] = {
+        color: { $set: action.color }
+      };
+
+      return update(state, updateData);
+    }
+
+    case CHANGE_FONT_SIZE: {
+      let updateData = {};
+
+      updateData[action.index] = {
+        height: { $apply: function(height) { return height + action.step; } }
       };
 
       return update(state, updateData);

@@ -80,11 +80,27 @@ export function initEmoji(emojis, index) {
 }
 
 function add(item) {
- return { type: types.ADD_LINE, item };
+  return { type: types.ADD_LINE, item };
 }
 
 export function addTextLine() {
-  return add( { type: 1, value: '' } );
+  return add( { type: 1, value: '', height: 10, color: { r: '0', g: '0', b: '0', a: '1' } } );
+}
+
+function changeFontSize(index, step) {
+  return { type: types.CHANGE_FONT_SIZE, index, step };
+}
+
+export function increaseFont(index) {
+  return changeFontSize(index, 1);
+}
+
+export function decreaseFont(index) {
+  return changeFontSize(index, -1);
+}
+
+export function changeTextColor(index, color) {
+  return { type: types.CHANGE_TEXT_COLOR, index, color };
 }
 
 export function addEmojiLine() {
