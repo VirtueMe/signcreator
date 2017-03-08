@@ -8,12 +8,12 @@ import Receipt from './step3';
 
 class Form extends Component {
   render() {
-    const { actions, customer, image, imageClassName, index, items, payment, settings } = this.props;
+    const { actions, borders, customer, image, imageClassName, index, items, payment, settings } = this.props;
 
     console.info(this.props);
     return (
       <Transition>
-        { index === 0 ? <Input key='input' actions={actions} image={image} imageClassName={imageClassName} items={items} settings={settings}  /> : <Payment key='payment' actions={actions} customer={customer} payment={payment} /> }
+        { index === 0 ? <Input key='input' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings}  /> : <Payment key='payment' actions={actions} customer={customer} payment={payment} /> }
       </Transition>
     );
   }

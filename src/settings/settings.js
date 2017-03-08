@@ -5,7 +5,7 @@ import Frames from './frames';
 
 class Settings extends Component {
   render() {
-    const { settings, actions } = this.props;
+    const { actions, borders, settings } = this.props;
     const { type, backplate } = settings;
 
     return (
@@ -14,7 +14,7 @@ class Settings extends Component {
         <br />
         <Backplate backplate={backplate}  actions={actions} />
         <br />
-        <Frames {...settings} actions={actions} />
+        <Frames actions={actions} borders={borders} {...settings} />
       </div>
     );
   }

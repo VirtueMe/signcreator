@@ -9,7 +9,7 @@ import Settings from '../settings';
 
 class Step1 extends Component {
   render() {
-    const { actions, image, imageClassName, items, settings, texts, toPayment } = this.props;
+    const { actions, borders, image, imageClassName, items, settings, texts, toPayment } = this.props;
 
     return (
       <Container fluid>
@@ -21,7 +21,7 @@ class Step1 extends Component {
                 {texts.settings.title}
               </CardTitle>
               <CardText>
-                <Settings settings={settings} texts={texts} actions={actions} />
+                <Settings actions={actions} borders={borders} settings={settings} texts={texts} />
               </CardText>
             </Card>
             <br />
@@ -33,7 +33,7 @@ class Step1 extends Component {
                 {texts.editlist.title}
               </CardTitle>
               <CardText>
-                <EditList items={items} texts={texts.editlist} actions={actions} />
+                <EditList items={items} decoration={borders.decoration} texts={texts.editlist} actions={actions} />
               </CardText>
             </Card>
             <br />

@@ -13,6 +13,9 @@ export const ADD_LINE = 'ADD_LINE';
 export const DELETE_LINE = 'DELETE_LINE';
 export const MOVE_LINE = 'MOVE_LINE';
 
+/* Decoration line actions */
+export const CHANGE_LINE = 'CHANGE_LINE';
+
 /* Text line options */
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const CHANGE_TEXT_COLOR = 'CHANGE_TEXT_COLOR';

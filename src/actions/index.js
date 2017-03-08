@@ -106,6 +106,10 @@ export function addTextLine() {
   return add( { type: 1, value: '', height: 8, bold: false, italic: false, cont: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
 }
 
+export function addDecorLine() {
+  return add( { type: 3, value: 0, scale: 1.0 } );
+}
+
 function changeFontSize(index, step) {
   return { type: types.CHANGE_FONT_SIZE, index, step };
 }

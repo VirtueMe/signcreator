@@ -28,7 +28,7 @@ const factory = (FontIcon) => {
       );
 
       console.info(selectFont);
-      
+
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
           <MenuItem icon='format_size' caption={format.increase} key="0" onClick={() => actions.increaseFont(index)}>
@@ -92,12 +92,12 @@ const factory = (FontIcon) => {
           increase: "Øk skrift",
           decrease: 'Mink skrift',
           bold: 'Fet',
-          italic: 'Italic',
+          italic: 'Kursiv',
           center: 'Sentrer',
           color: 'Farge'
         }
       },
-      placeholder: 'Text linje'
+      placeholder: 'Tekstlinje'
     }
   };
 

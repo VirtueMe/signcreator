@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import InputItem from '../textitem';
 import EmojiEdit from '../emojiitem';
+import LineInput from '../lineinput';
 import Menu from './menu';
 import {Cond, eq} from 'react-cond';
 import {SketchPicker} from 'react-color';
@@ -16,7 +17,7 @@ const listItems = (props) => {
 };
 
 const PositionMenu = (props) => {
-  const { index, length, texts, actions, deleteLine, children } = props;
+  const { index, length, texts, actions, deleteLine, children, items } = props;
   const { moveUp, moveDown } = actions || {};
   const { menu } = texts;
   const { action } = menu;
@@ -104,7 +105,7 @@ class EditList extends Component {
   }
 
   render() {
-    const { items, actions, texts } = this.props;
+    const { items, actions, decoration, texts } = this.props;
 
     const delete_actions = [
       { label: texts.dialogs.remove.buttons.cancel, onClick: () => this.cancelDelete() },
@@ -138,6 +139,7 @@ class EditList extends Component {
         <Cond value={item.type}>
           {[ eq(1), <InputItem key={'0' + index} {...item} index={index} texts={texts.textitem} actions={actions} menu={menu} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} /> ]}
           {[ eq(2), <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} /> ]}
+          {[ eq(3), <LineInput key={'0' + index} {...item} index={index} actions={actions} menu={menu} items={decoration} /> ]}
         </Cond>
       );
     });
