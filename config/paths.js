@@ -5,9 +5,16 @@ var url = require('url');
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
 var appDirectory = fs.realpathSync(process.cwd());
+
 function resolveApp(relativePath) {
   return path.resolve(appDirectory, relativePath);
 }
+
+function resolveNodeModule(moduleName) {
+  return path.resolve(resolveApp('node_modules'), moduleName);
+}
+
+
 
 // We support resolving modules according to `NODE_PATH`.
 // This lets you use absolute paths in imports inside large monorepos:
@@ -63,6 +70,7 @@ function getServedPath(appPackageJson) {
 
 // config after eject: we're in ./config/
 module.exports = {
+  appDirectory: appDirectory,
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
@@ -74,6 +82,7 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths,
+  materialDesignIcons: resolveNodeModule('material-design-icons'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json'))
 };
