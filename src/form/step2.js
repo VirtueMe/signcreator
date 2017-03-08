@@ -36,9 +36,14 @@ class Step2 extends Component {
                 <PaymentOptions payment={payment} actions={actions} />
               </CardText>
               <CardActions>
+              <Button
+                label={texts.paymentoptions.back.text}
+                onClick={ actions.showInput}
+                raised  />
+
                 <Button
                   label={texts.paymentoptions.continue.text}
-                  onClick={toReceipt || actions.toReceipt}
+                  onClick={toReceipt || actions.showReceipt}
                   disabled={!(customer.valid && payment.valid)}
                   raised primary />
               </CardActions>
@@ -56,7 +61,7 @@ Step2.propTypes = {
 };
 
 Step2.defaultProps = {
-  toPayment: null,
+  toReceipt: null,
   texts: {
     customer: {
       title: 'Kunde informasjon'
@@ -66,6 +71,9 @@ Step2.defaultProps = {
       continue: {
         text: 'Bestill'
       },
+      back: {
+        text: 'Gå tilbake'
+      }
     }
   }
 };

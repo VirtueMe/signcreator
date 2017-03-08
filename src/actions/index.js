@@ -1,6 +1,25 @@
 import * as types from '../constants/actiontypes'
 
 /*
+ * Form navigation
+ */
+
+function showView(value) {
+  return { type: types.SET_VIEW_INDEX, value };
+}
+export function showInput() {
+  return showView(0);
+}
+
+export function showPayment() {
+  return showView(1);
+}
+
+export function showReceipt() {
+  return showView(2);
+}
+
+/*
  * customer
  */
 export function changeEmail(value) {

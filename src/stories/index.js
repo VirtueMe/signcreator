@@ -7,6 +7,7 @@ import CustomerForm from './customerformcontainer'
 import EditList from './listcontainer';
 import Step1 from './step1container';
 import Step2 from './step2container';
+import Form from '../containers/form';
 import App from '../App';
 import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
@@ -24,6 +25,7 @@ import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
 import SquarePreview from '../preview/squarepreview';
 import HeartPreview from '../preview/heartpreview';
+import AnimationExample from './motion';
 
 let img1 = document.createElement('img');
 let img2 = document.createElement('img');
@@ -36,6 +38,7 @@ img3.src = girl;
 img4.src = boy;
 
 let state = {
+  view: { index: 0 },
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
   items: [
@@ -65,6 +68,12 @@ storiesOf('App', module)
   .add('show', () => (
     <App />
   ));
+
+storiesOf('TransitionMotion', module)
+  .add('show', () => (
+    <AnimationExample />
+  ));
+
 
 storiesOf('PaymentOptions', module)
   .add('show', () => {
@@ -141,6 +150,17 @@ storiesOf('Steps', module)
       </Provider>
     );
   });
+
+storiesOf('Form', module)
+  .add('show', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
+  })
 
 
 storiesOf('Line selector', module)

@@ -1,3 +1,6 @@
+/* form navigation */
+export const SET_VIEW_INDEX = 'SET_VIEW_INDEX';
+
 /* Emoji line */
 export const ADD_EMOJI = 'ADD_EMOJI';
 export const MOVE_EMOJI = 'MOVE_EMOJI';

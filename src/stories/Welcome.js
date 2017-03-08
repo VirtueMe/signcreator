@@ -62,7 +62,7 @@ export default class Welcome extends React.Component {
           This is a UI component dev environment for your app.
         </p>
         <p>
-          We've added some basic stories inside the <code style={styles.code}>src/stories</code> directory.
+          We´ve added some basic stories inside the <code style={styles.code}>src/stories</code> directory.
           <br/>
           A story is a single state of one or more UI components. You can have as many stories as you want.
           <br/>
@@ -74,7 +74,7 @@ export default class Welcome extends React.Component {
         <p>
           Just like that, you can add your own components as stories.
           <br />
-          Here's how to add your <code style={styles.code}>App</code> component as a story.
+          Here´s how to add your <code style={styles.code}>App</code> component as a story.
           <div
             style={styles.codeBlock}
             dangerouslySetInnerHTML={{__html: `<pre>${codeBlock}</pre>`}}

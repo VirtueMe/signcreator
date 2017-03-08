@@ -34,6 +34,7 @@
     "react-dom": "^15.4.1",
     "react-font-picker": "^1.1.8",
     "react-grid-system": "^2.6.0",
+    "react-motion": "^0.4.7",
     "react-redux": "^5.0.2",
     "react-style-proptype": "^2.0.0",
     "react-toolbox": "^2.0.0-beta.6",
