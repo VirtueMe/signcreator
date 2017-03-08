@@ -84,7 +84,7 @@ function add(item) {
 }
 
 export function addTextLine() {
-  return add( { type: 1, value: '', height: 10, color: { r: '0', g: '0', b: '0', a: '1' } } );
+  return add( { type: 1, value: '', height: 8, bold: false, italic: false, color: { r: '0', g: '0', b: '0', a: '1' } } );
 }
 
 function changeFontSize(index, step) {
@@ -97,6 +97,14 @@ export function increaseFont(index) {
 
 export function decreaseFont(index) {
   return changeFontSize(index, -1);
+}
+
+export function toggleBold(index) {
+  return { type: types.TOGGLE_BOLD, index };
+}
+
+export function toggleItalic(index) {
+  return { type: types.TOGGLE_ITALIC, index };
 }
 
 export function changeTextColor(index, color) {

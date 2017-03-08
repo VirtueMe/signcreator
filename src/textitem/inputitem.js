@@ -18,7 +18,7 @@ const factory = (FontIcon) => {
 
     render() {
       const PositionMenu = this.props.menu;
-      const { theme, texts, value, index, actions, selectColor } = this.props;
+      const { actions, bold, italic, index, selectColor, texts, theme, value } = this.props;
       const { menu } = texts;
       const { format, action } = menu
       const center = (
@@ -28,17 +28,17 @@ const factory = (FontIcon) => {
       );
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
-          <MenuItem icon='format_size' caption={format.increase} key="0" onclick={() => actions.increaseFont(index)}>
+          <MenuItem icon='format_size' caption={format.increase} key="0" onClick={() => actions.increaseFont(index)}>
             <FontIcon className={theme.width} />
           </MenuItem>
-          <MenuItem icon='text_fields' caption={format.decrease} key="1" onclick={() => actions.decreaseFont(index)}>
+          <MenuItem icon='text_fields' caption={format.decrease} key="1" onClick={() => actions.decreaseFont(index)}>
             <FontIcon className={theme.width} />
           </MenuItem>
-          <MenuItem icon='format_bold' caption={format.bold} key="2">
-            <FontIcon className={theme.width} />
+          <MenuItem icon='format_bold' caption={format.bold} key="2" onClick={() => actions.toggleBold(index)}>
+            <FontIcon value={ bold ? 'checked' : ''} className={theme.width} />
           </MenuItem>
-          <MenuItem icon='format_italic' caption={format.italic} key="3">
-            <FontIcon value='' className={theme.width} />
+          <MenuItem icon='format_italic' caption={format.italic} key="3" onClick={() => actions.toggleItalic(index)}>
+            <FontIcon value={ italic ? 'checked' : ''} className={theme.width} />
           </MenuItem>
           <MenuItem icon='format_color_text' caption={format.color} key="4" onClick={selectColor}>
             <FontIcon value='' className={theme.width} />

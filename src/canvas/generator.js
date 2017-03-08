@@ -262,8 +262,8 @@ export default function generator(dimensions) {
           if (settings.topImage) {
             const imageWidth = settings.topImage.width * imageFactor;
             const repeats = (maxwidth - (maxwidth % imageWidth)) / imageWidth;
-            let start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
-            console.info(maxwidth, settings.topImage.width * imageFactor, (maxwidth % (settings.topImage.width * imageFactor)));
+            const start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
+
             const drawImage = settings.top > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
             for (let i = 0; i<repeats; i++) {
@@ -280,8 +280,8 @@ export default function generator(dimensions) {
           if (settings.bottomImage) {
             const imageWidth = settings.bottomImage.width * imageFactor;
             const repeats = (maxwidth - ( maxwidth % imageWidth )) / imageWidth;
-            let start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
-            let y = areaheight - (settings.bottomImage.height * imageFactor) -  (10 * imageFactor);
+            const start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
+            const y = areaheight - (settings.bottomImage.height * imageFactor) -  (10 * imageFactor);
 
             const drawImage = settings.bottom > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
@@ -299,7 +299,7 @@ export default function generator(dimensions) {
           if (settings.leftImage) {
             const imageHeight = settings.leftImage.width * imageFactor;
             const repeats = (maxAreaHeightFont - (maxAreaHeightFont % imageHeight)) / imageHeight;
-            let y = padding + Math.ceil((maxAreaHeightFont - ( settings.leftImage.width * repeats * imageFactor) ) / 2);
+            const y = padding + Math.ceil((maxAreaHeightFont - ( settings.leftImage.width * repeats * imageFactor) ) / 2);
 
             const drawImage = settings.left > 0 ? textTool.drawFlip270Imagefunction : textTool.drawFlip90Imagefunction;
 
