@@ -64,6 +64,7 @@ module.exports = function(config, env) {
       }),
       require('postcss-mixins')(),
       require('postcss-each')(),
+      require('postcss-assets')(),
       require('postcss-cssnext')(),
       require('postcss-reporter')({
         clearMessages: true

@@ -33,7 +33,7 @@
 .heart {
   max-width: 100%;
   padding: 25%;
-  background-image: url(../images/heart.png);
+  background-image: inline(../images/heart.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 
