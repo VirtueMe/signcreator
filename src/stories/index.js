@@ -39,9 +39,9 @@ let state = {
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
   items: [
-    { type: 1, value: 'Her bor', height: 10, italic: false, bold: false, color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Familien Thomas', height: 10, italic: false, bold: false, color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8, italic: false, bold: false, color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Her bor', height: 10, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Familien Thomas', height: 10, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
     {
       type: 2,
       value: [

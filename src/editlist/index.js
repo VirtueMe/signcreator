@@ -5,6 +5,8 @@ import EmojiEdit from '../emojiitem';
 import Menu from './menu';
 import {Cond, eq} from 'react-cond';
 import {SketchPicker} from 'react-color';
+import FontPicker from 'react-font-picker';
+
 
 import { Dialog, IconMenu, List, ListItem, MenuDivider, MenuItem } from 'react-toolbox';
 
@@ -32,12 +34,17 @@ const PositionMenu = (props) => {
 
 class EditList extends Component {
   state = {
+    show_color: false,
     show_delete: false,
-    show_color: false
+    show_font: false
   };
 
   showDelete(display, index=null) {
     this.setState({ show_delete: display, index: index });
+  }
+
+  showDelete(display, index=null) {
+    this.setState({ show_font: display, index: index });
   }
 
   cancelDelete = () => {
@@ -46,11 +53,9 @@ class EditList extends Component {
 
   cancelColor = () => {
     this.showColor(false);
-  }
+  };
 
   showColor(display, index=null, color=null) {
-    console.info('color start: ', color);
-
     this.setState({
       show_color: display,
       index: index,
@@ -67,16 +72,27 @@ class EditList extends Component {
     this.showColor(false);
   }
 
+  showFont = (display=false, index=null, font=null) => {
+    this.setState({ show_font: display, index: index, font: font })
+  };
+
   colorChanged = (color) => {
     const { actions } = this.props;
     const { changeTextColor } = actions;
     const { rgb } = color;
 
-    console.info('color set: ', color);
-
     changeTextColor(this.state.index, rgb);
     this.setState({ color: rgb });
   };
+
+  fontChanged = (font) => {
+    const { actions } = this.props;
+    const { changeFont } = actions;
+
+    changeFont(this.state.index, font);
+
+    this.setState({ font: font });
+  }
 
 
   deleteLine() {
@@ -95,9 +111,8 @@ class EditList extends Component {
       { label: texts.dialogs.remove.buttons.delete, onClick: () => this.deleteLine() }
     ];
 
-    const color_actions = [
-      { label: texts.dialogs.color.buttons.cancel, onClick: () => this.cancelColor() },
-      { label: texts.dialogs.color.buttons.select, onClick: () => this.selectColor() }
+    const font_actions = [
+      { label: 'Lukk', onClick: () => this.showFont(false) }
     ];
 
     const popover = {
@@ -121,8 +136,8 @@ class EditList extends Component {
 
       return (
         <Cond value={item.type}>
-          {[ eq(1), <InputItem key={index} {...item} index={index} actions={actions} menu={menu} selectColor={() => this.showColor(true, index, item.color )} /> ]}
-          {[ eq(2), <EmojiEdit key={index} {...item} index={index} actions={actions} menu={menu} /> ]}
+          {[ eq(1), <InputItem key={'0' + index} {...item} index={index} texts={texts.textitem} actions={actions} menu={menu} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} /> ]}
+          {[ eq(2), <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} /> ]}
         </Cond>
       );
     });
@@ -146,6 +161,20 @@ class EditList extends Component {
             title={texts.dialogs.remove.title}
           >
           <p>{texts.dialogs.remove.description}</p>
+        </Dialog>
+
+        <Dialog
+            actions={font_actions}
+            active={this.state.show_font}
+            onEscKeyDown={this.showFont}
+            onOverlayClick={this.showFont}
+            title={texts.dialogs.font.title}
+          >
+          <FontPicker
+            label={texts.dialogs.font.placeholder}
+            value={this.state.font}
+            onChange={this.fontChanged}
+            />
         </Dialog>
 
       </div>
@@ -177,12 +206,9 @@ EditList.defaultProps = {
         }
       },
 
-      color: {
-        title: 'Velg tekst farge',
-        buttons: {
-          cancel: 'Avbryt',
-          select: 'Velg'
-        }
+      font: {
+        title: 'Velg font',
+        placeholder: 'Velg font'
       }
     }
   }

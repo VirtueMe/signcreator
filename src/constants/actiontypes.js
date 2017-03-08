@@ -13,6 +13,7 @@ export const MOVE_LINE = 'MOVE_LINE';
 /* Text line options */
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const CHANGE_TEXT_COLOR = 'CHANGE_TEXT_COLOR';
+export const CHANGE_FONT = 'CHANGE_FONT';
 export const CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE';
 export const TOGGLE_BOLD = 'TOGGLE_BOLD';
 export const TOGGLE_ITALIC = 'TOGGLE_ITALIC';

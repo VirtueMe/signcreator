@@ -84,11 +84,15 @@ function add(item) {
 }
 
 export function addTextLine() {
-  return add( { type: 1, value: '', height: 8, bold: false, italic: false, color: { r: '0', g: '0', b: '0', a: '1' } } );
+  return add( { type: 1, value: '', height: 8, bold: false, italic: false, cont: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
 }
 
 function changeFontSize(index, step) {
   return { type: types.CHANGE_FONT_SIZE, index, step };
+}
+
+export function changeFont(index, value) {
+  return { type: types.CHANGE_FONT, index, value };
 }
 
 export function increaseFont(index) {

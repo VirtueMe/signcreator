@@ -6,12 +6,20 @@ const ppmm = 11.8;
 const dpi = 300;
 const scaleFactor = dpi / 72;
 
+function createFont(line) {
+  const font = (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
+
+  console.info('Selected font: ', font);
+
+  return font;
+}
+
 
 function createSpaceCalculator(context) {
   var _context = context;
 
-  return function measureText(line, size) {
-    _context.font = (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + size + 'px ' + (line.font || font);
+  return function measureText(line) {
+    _context.font = createFont(line);
 
     line.size = size;
     line.height = line.text ? size : 0;
@@ -27,15 +35,11 @@ function createTextTool(context) {
   var _context = context;
 
   return {
-    font: function (line) {
-      return (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
-    },
-
     fillText: function (line) {
       if (line.text) {
         const color = context.fillStyle;
 
-        _context.font = this.font(line);
+        _context.font = createFont(line);
 
         if (line.baseline) {
           _context.textBaseline = line.baseline;
@@ -88,7 +92,7 @@ function createTextTool(context) {
     },
 
     measureText: function(line) {
-      _context.font = this.font(line);
+      _context.font = createFont(line);
 
       return _context.measureText(line.text);
     }
@@ -193,6 +197,8 @@ export default function generator(dimensions) {
               start: start,
               text: item.value,
               font: item.font,
+              italic: item.italic,
+              bold: item.bold,
               color: item.color
             });
 
@@ -216,13 +222,16 @@ export default function generator(dimensions) {
 
         const print = {
           1: function(item) {
-            const { text, size, start} = item;
+            const { text, size, start, font, italic, bold } = item;
 
             textTool.fillText({
               text: text,
               size: size,
               x: padding + startOffset,
               y: padding + y + start,
+              italic: italic,
+              bold: bold,
+              font: font,
               baseline: 'hanging',
               color: createRGBAString(item.color || { r: 0, g: 0, b: 0, a: 1 })
             });
@@ -231,7 +240,7 @@ export default function generator(dimensions) {
           2: function(item) {
             const { text, start} = item;
             const imageSpace = 10;
-            let x = padding + Math.ceil( (maxwidth - (( calculateWidth(item) * imageFactor) + ((item.text.length - 1) * imageSpace) )) / 2);
+            let x = padding + Math.ceil( (maxwidth - (( calculateWidth(item) * imageFactor * 1.1) + ((item.text.length - 1) * imageSpace) )) / 2);
 
             text.forEach(value => {
               const {image, size, img} = value;

@@ -75,6 +75,20 @@ Step1.defaultProps = {
           up: 'Flytt opp'
         }
       },
+      textitem: {
+        menu: {
+          format: {
+            increase: "Øk skrift",
+            decrease: 'Mink skrift',
+            font: 'Font',
+            bold: 'Fet',
+            italic: 'Italic',
+            center: 'Sentrer',
+            color: 'Farge'
+          }
+        },
+        placeholder: 'Text linje'
+      },
       dialogs: {
         remove: {
           title: 'Bekreft sletting',
@@ -84,13 +98,10 @@ Step1.defaultProps = {
             delete: 'Slett'
           }
         },
-        
-        color: {
-          title: 'Velg tekst farge',
-          buttons: {
-            cancel: 'Avbryt',
-            select: 'Velg'
-          }
+
+        font: {
+          title: 'Velg font',
+          placeholder: 'Velg font'
         }
       }
     },
