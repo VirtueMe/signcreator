@@ -1,3 +1,24 @@
 @import '../colors.css';
 @import '../variables.css';
 @import './config.css';
+
+.inputcontainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.full {
+  width: 100%;
+}
+
+.icon {
+  color: var(--input-icon-color);
+  font-size: var(--input-icon-font-size) !important;
+  height: var(--input-icon-size);
+  line-height: var(--input-icon-size) !important;
+  text-align: center;
+  top: var(--input-icon-offset);
+  transition: color var(--animation-duration) var(--animation-curve-default);
+  width: var(--input-icon-size);
+}

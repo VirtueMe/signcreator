@@ -3,7 +3,7 @@ function image(value, img) {
 }
 
 const imageArrayBuilder = function() {
-  return Array.from(arguments).map((img, index) => image(index, img));
+  return Array.from(arguments).map((img, index) => image(index+1, img));
 };
 
 export default imageArrayBuilder;

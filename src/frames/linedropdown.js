@@ -23,7 +23,9 @@ const imageStyle = {
   flexGrow: 0,
   marginRight: '8px',
   marginLeft: '8px',
-  backgroundColor: 'white'
+  backgroundColor: 'white',
+  maxWidth: '100%',
+  maxHeigth: '30px'
 };
 
 const items = [
@@ -69,8 +71,6 @@ export class DropdownBase extends React.Component {
 
   onChange(action, items, value) {
     const item = items.find(item => (item.value === value));
-
-    console.info('values selected: ', value, item);
 
     if (!item.img) {
       return action(value)

@@ -106,10 +106,6 @@ export function addTextLine() {
   return add( { type: 1, value: '', height: 8, bold: false, italic: false, cont: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
 }
 
-export function addDecorLine() {
-  return add( { type: 3, value: 0, scale: 1.0 } );
-}
-
 function changeFontSize(index, step) {
   return { type: types.CHANGE_FONT_SIZE, index, step };
 }
@@ -143,7 +139,7 @@ export function addEmojiLine() {
 }
 
 export function addDividerLine() {
-  return add ( { type: 3, value: {} } );
+  return add ( { type: 3, value: null, selected: 0, scale: 1 } );
 }
 
 export function deleteLine(index) {
@@ -165,6 +161,11 @@ export function moveDown(index) {
 export function changeText(value, index) {
   return { type: types.CHANGE_TEXT, value, index };
 }
+
+export function changeDividerLine(index, value, image) {
+  return { type: types.CHANGE_DIVIDER, index, value, image };
+}
+
 
 export function addEmoji(image, size, index, img) {
   return { type: types.ADD_EMOJI, image, size, index, img };

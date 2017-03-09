@@ -14,7 +14,7 @@ export const DELETE_LINE = 'DELETE_LINE';
 export const MOVE_LINE = 'MOVE_LINE';
 
 /* Decoration line actions */
-export const CHANGE_LINE = 'CHANGE_LINE';
+export const CHANGE_DIVIDER = 'CHANGE_DIVIDER';
 
 /* Text line options */
 export const CHANGE_TEXT = 'CHANGE_TEXT';

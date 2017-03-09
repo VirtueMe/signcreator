@@ -66,6 +66,7 @@ const factory = (FontIcon) => {
 
       return (
         <ListItem
+          key={'i' + index}
           itemContent={input}
           rightActions={menuActions}
         />

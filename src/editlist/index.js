@@ -128,6 +128,8 @@ class EditList extends Component {
       left: '0px',
     }
 
+    console.info(items);
+
     const list = items.map((item, index) => {
       const menu = ({children}) => (
         <PositionMenu index={index} length={items.length} actions={actions} texts={texts} deleteLine={() => this.showDelete(true, index)}>

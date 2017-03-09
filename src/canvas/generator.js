@@ -5,6 +5,9 @@ const font = 'Arial';
 const ppmm = 11.8;
 const dpi = 300;
 const scaleFactor = dpi / 72;
+const imageFactor = 2;
+const dividerGap = 24;
+const imageSpace = 10;
 
 function createFont(line) {
   const font = (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
@@ -108,7 +111,11 @@ const height = {
   2: function(item) {
     const items = item.value.map(src => (src.size.height));
 
-    return Math.max(...items);
+    return Math.max(...items) * imageFactor;
+  },
+
+  3: function (item) {
+    return dividerGap + (item.value ? (item.value.height * imageFactor) : Math.ceil(8 * ppmm));
   }
 };
 
@@ -174,7 +181,11 @@ export default function generator(dimensions) {
           2: function(item) {
             const value = calculateImageBounds(item);
 
-            return value;
+            return value * imageFactor + (item.text.length * imageSpace) - imageSpace;
+          },
+
+          3: function(item) {
+            return (item.text ? item.text.width : 0) * imageFactor;
           }
         }
 
@@ -199,7 +210,8 @@ export default function generator(dimensions) {
               font: item.font,
               italic: item.italic,
               bold: item.bold,
-              color: item.color
+              color: item.color,
+              selected: item.selected
             });
 
             if (rest && rest.length > 0) {
@@ -218,7 +230,7 @@ export default function generator(dimensions) {
         const arr = items.map(item => (calculateWidth(item)));
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
-        const imageFactor = 2;
+
 
         const print = {
           1: function(item) {
@@ -238,9 +250,10 @@ export default function generator(dimensions) {
           },
 
           2: function(item) {
-            const { text, start} = item;
-            const imageSpace = 10;
-            let x = padding + Math.ceil( (maxwidth - (( calculateWidth(item) * imageFactor * 1.1) + ((item.text.length - 1) * imageSpace) )) / 2);
+            const { text, start } = item;
+            const imageWidth = calculateWidth(item);
+
+            let x = padding + Math.ceil((maxwidth - imageWidth) / 2);
 
             text.forEach(value => {
               const {image, size, img} = value;
@@ -256,6 +269,24 @@ export default function generator(dimensions) {
 
               x += ((size.width * imageFactor) + imageSpace);
             });
+          },
+
+          3: function(item) {
+            const { text, start, selected } = item;
+
+            if (text) {
+              const imageWidth = text.width * imageFactor;
+
+              const drawImage = selected > 0 ? textTool.drawImage : textTool.drawFlipImage;
+
+              drawImage({
+                img: text,
+                x: padding + Math.ceil((maxwidth - imageWidth) / 2),
+                y: padding + y + start + (dividerGap / 2),
+                height: text.height * imageFactor,
+                width: imageWidth
+              });
+            }
           }
         }
 

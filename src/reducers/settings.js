@@ -4,8 +4,6 @@ import update from 'immutability-helper';
 const initialState = { type: 1, backplate: 0, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
 
 export default function settings(state = initialState, action) {
-  console.info(state, action);
-
   switch (action.type) {
     case SET_TYPE: {
       if (action.value !== state.type) {

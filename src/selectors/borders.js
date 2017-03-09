@@ -1,7 +1,11 @@
 import { createSelector } from 'reselect'
+import imageArrayBuilder from './imagearraybuilder';
+
+import xsmall from './xtrasmallimages';
 import small from './smallimages';
 import medium from './mediumimages';
 import large from './largeimages';
+
 const typeSelector = state => state.settings.type;
 
 const flattBordersSelector = createSelector(
@@ -9,10 +13,10 @@ const flattBordersSelector = createSelector(
   (type) => {
     switch (type) {
       case 0:
-        return large;
+        return imageArrayBuilder(...large);
 
       default:
-        return medium;
+        return imageArrayBuilder(...medium);
     }
   }
 );
@@ -22,10 +26,10 @@ const standingBorderSelector = createSelector(
   (type) => {
     switch (type) {
       case 1:
-        return large;
+        return imageArrayBuilder(...large);
 
       default:
-        return medium;
+        return imageArrayBuilder(...medium);
     }
   }
 );
@@ -36,10 +40,10 @@ const decorationBorderSelector = createSelector(
   (type) => {
     switch (type) {
       case 0:
-        return [...small, ...medium, ...large];
+        return imageArrayBuilder(...[...xsmall, ...small, ...medium, ...large]);
 
       default:
-        return [...small, ...medium];
+        return imageArrayBuilder(...[...xsmall, ...small, ...medium]);
     }
   }
 );

@@ -9,7 +9,7 @@ import DropDownline from '../frames/linedropdown';
 
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { FontIcon, IconButton, Input, ListItem } from 'react-toolbox';
+import { FontIcon, ListItem } from 'react-toolbox';
 
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 
@@ -18,9 +18,22 @@ const factory = (FontIcon) => {
 
     render() {
       const PositionMenu = this.props.menu;
-      const { actions, index, items, texts, theme, value } = this.props;
+      const { actions, index, items, texts, theme, selected } = this.props;
 
-      const input = <DropDownline key='decor' value={value} items={items} action={actions.addDecorLine} texts={ { label: texts.placeholder, noLineText: texts.noLineText } } />;
+      console.info(this.props);
+
+      const changeDividerLine = function(value, img=null) {
+        actions.changeDividerLine(index, value, img);
+      };
+
+      const input = (
+        <div className={theme.inputcontainer}>
+          <FontIcon value="remove" className={theme.icon} />
+          <div className={theme.full}>
+            <DropDownline key='decor' value={selected} items={items} action={changeDividerLine} texts={ { label: texts.placeholder, noLineText: texts.noLineText } }  />
+          </div>
+        </div>
+      );
 
       const menuActions = [];
 
@@ -30,6 +43,7 @@ const factory = (FontIcon) => {
 
       return (
         <ListItem
+          key={'d' + index}
           itemContent={input}
           rightActions={menuActions}
         />
