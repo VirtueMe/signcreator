@@ -47,7 +47,6 @@ const factory = () => {
       if (valid) {
         return null;
       }
-      console.info('err: ', text);
       return (
         <span>{text}</span>
       );

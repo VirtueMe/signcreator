@@ -15,7 +15,8 @@ function mapStateToProps(state) {
     settings: state.settings,
     index: state.view.index,
     customer: state.customer,
-    payment: state.payment
+    payment: state.payment,
+    texts: state.texts
   };
 }
 

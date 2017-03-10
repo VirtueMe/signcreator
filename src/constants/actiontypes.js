@@ -1,6 +1,9 @@
 /* form navigation */
 export const SET_VIEW_INDEX = 'SET_VIEW_INDEX';
 
+/* Text management */
+export const SET_TEXTS = 'SET_TEXTS';
+
 /* Emoji line */
 export const ADD_EMOJI = 'ADD_EMOJI';
 export const MOVE_EMOJI = 'MOVE_EMOJI';

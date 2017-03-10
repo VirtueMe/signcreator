@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Cond, eq} from 'react-cond';
 
 import Transition from './motion.js';
 import Input from './step1';
@@ -8,12 +7,16 @@ import Receipt from './step3';
 
 class Form extends Component {
   render() {
-    const { actions, borders, customer, image, imageClassName, index, items, payment, settings } = this.props;
+    const { actions, borders, customer, image, imageClassName, index, items, payment, settings, texts } = this.props;
 
-    console.info(this.props);
+    const view = [
+      <Input key='input' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings}  />,
+      <Payment key='payment' actions={actions} customer={customer} payment={payment} />,
+      <Receipt key='receipt' actions={actions} customer={customer} payment={payment} texts={texts.receipt} />
+    ];
     return (
       <Transition>
-        { index === 0 ? <Input key='input' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings}  /> : <Payment key='payment' actions={actions} customer={customer} payment={payment} /> }
+        { view[index]  }
       </Transition>
     );
   }

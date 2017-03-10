@@ -16,47 +16,15 @@ import Settings from './settingscontainer';
 import PaymentOptions from './paymentoptionscontainer';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
-import woman from '../images/farger/mor-mellom2.png';
-import man from '../images/farger/far-mellom2.png';
-import boy from '../images/farger/gutt-mellom2.png';
-import girl from '../images/farger/jente-mellom2.png';
 import icons from 'material-design-icons/iconfont/material-icons.css';
 import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
 import SquarePreview from '../preview/squarepreview';
 import HeartPreview from '../preview/heartpreview';
 import AnimationExample from './motion';
+import testdata from './testdata';
 
-let img1 = document.createElement('img');
-let img2 = document.createElement('img');
-let img3 = document.createElement('img');
-let img4 = document.createElement('img');
-
-img1.src = woman;
-img2.src = man;
-img3.src = girl;
-img4.src = boy;
-
-let state = {
-  view: { index: 0 },
-  customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
-  payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
-  items: [
-    { type: 1, value: 'Her bor', height: 10, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Familien Thomas', height: 10, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
-    {
-      type: 2,
-      value: [
-        { image: woman, id: 0, size: { height: 50, width: 19 }, img: img1 },
-        { image: man, id: 1, size: { height: 50, width: 18 }, img: img2 },
-        { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 },
-        { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 }
-      ]
-    }
-  ],
-  settings: { type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 }
-};
+let state = testdata;
 
 
 storiesOf('Welcome', module)

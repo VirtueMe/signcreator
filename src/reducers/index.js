@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import items from './emojis';
-import settings from './settings';
 import customer from './customer';
+import items from './emojis';
 import payment from './payment';
+import settings from './settings';
+import texts from './texts';
 import view from './view';
 
+
 const rootReducer = combineReducers({
-  items, settings, customer, payment, view
+  items, settings, customer, payment, texts, view
 });
 
 export default rootReducer;
