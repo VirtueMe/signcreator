@@ -12,8 +12,6 @@ const imageSpace = 10;
 function createFont(line) {
   const font = (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
 
-  console.info('Selected font: ', font);
-
   return font;
 }
 
@@ -34,8 +32,10 @@ function createSpaceCalculator(context) {
   };
 }
 
-function createTextTool(context) {
-  var _context = context;
+function createTextTool(context, canvas) {
+  const _canvas = canvas;
+  let _context = context;
+
 
   return {
     fillText: function (line) {
@@ -66,30 +66,42 @@ function createTextTool(context) {
 
     drawFlipImage: function(image) {
       if (image.img) {
+        const img = image.img;
+
         _context.save();
-        _context.translate(image.x, image.y);
+
+        _context.translate(_canvas.width/(scaleFactor * 2), _canvas.height/(scaleFactor * 2));
         _context.rotate(Math.PI);
-        _context.drawImage(image.img, -image.width, -image.height, image.width, image.height);
+        _context.drawImage(img, -image.width / 2, -(image.y - (_canvas.height/(scaleFactor * 2))) - (image.height/2), image.width, image.height);
+
         _context.restore();
       }
     },
 
     drawFlip90Imagefunction(image) {
       if (image.img) {
+        const { img, factor, factor2 } = image;
+
         _context.save();
-        _context.translate(image.x, image.y);
+
+        _context.translate(_canvas.width/(scaleFactor * 2), _canvas.height/(scaleFactor * 2));
         _context.rotate(Math.PI/2);
-        _context.drawImage(image.img, -image.height/2, -image.height, image.width, image.height);
+        _context.drawImage(img, -image.width/2, (factor * image.x/2)  + (factor2), image.width, image.height);
+
         _context.restore();
       }
     },
 
     drawFlip270Imagefunction(image) {
       if (image.img) {
+        const { img, factor, factor2 } = image;
+
         _context.save();
-        _context.translate(image.x, image.y);
-        _context.rotate(-Math.PI/2);
-        _context.drawImage(image.img, -image.width, 0, image.width, image.height);
+
+        _context.translate(_canvas.width/(scaleFactor * 2), _canvas.height/(scaleFactor * 2));
+        _context.rotate(factor * Math.PI/2);
+        _context.drawImage(img, -image.width/2 , (factor * image.x/2) + (factor2), image.width, image.height);
+
         _context.restore();
       }
     },
@@ -111,7 +123,7 @@ const height = {
   2: function(item) {
     const items = item.value.map(src => (src.size.height));
 
-    return Math.max(...items) * imageFactor;
+    return (Math.max(...items) * imageFactor) + dividerGap;
   },
 
   3: function (item) {
@@ -171,7 +183,7 @@ export default function generator(dimensions) {
         context.scale(scaleFactor, scaleFactor);
 
         // var measureText = createSpaceCalculator(context);
-        const textTool = createTextTool(context);
+        const textTool = createTextTool(context, canvas);
 
         const width = {
           1: function(item) {
@@ -262,7 +274,7 @@ export default function generator(dimensions) {
                 src: image,
                 img: img,
                 x: x,
-                y: padding + y + start,
+                y: padding + y + start + (dividerGap / 2),
                 height: size.height * imageFactor,
                 width: size.width * imageFactor
               });
@@ -306,70 +318,57 @@ export default function generator(dimensions) {
 
             const drawImage = settings.top > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
-            for (let i = 0; i<repeats; i++) {
-              drawImage({
-                img: settings.topImage,
-                x: start + (i * settings.topImage.width * imageFactor),
-                y: 10 * imageFactor,
-                height: settings.topImage.height * imageFactor,
-                width: imageWidth
-              });
-            }
+            drawImage({
+              img: settings.topImage,
+              x: areaWidth,
+              y: 10 * imageFactor,
+              height: settings.topImage.height * imageFactor,
+              width: imageWidth
+            });
           }
 
           if (settings.bottomImage) {
             const imageWidth = settings.bottomImage.width * imageFactor;
-            const repeats = (maxwidth - ( maxwidth % imageWidth )) / imageWidth;
-            const start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
-            const y = areaheight - (settings.bottomImage.height * imageFactor) -  (10 * imageFactor);
+            const imageHeight = settings.bottomImage.height * imageFactor;
 
             const drawImage = settings.bottom > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
-            for (let i = 0; i<repeats; i++) {
-              drawImage({
-                img: settings.bottomImage,
-                x: start + (i * imageWidth),
-                y: y,
-                height: settings.bottomImage.height * imageFactor,
-                width: imageWidth
-              });
-            }
+            drawImage({
+              img: settings.bottomImage,
+              x: start + (i * imageWidth),
+              y: areaheight - imageHeight - (10 * imageFactor),
+              height: imageHeight,
+              width: imageWidth
+            });
           }
 
           if (settings.leftImage) {
-            const imageHeight = settings.leftImage.width * imageFactor;
-            const repeats = (maxAreaHeightFont - (maxAreaHeightFont % imageHeight)) / imageHeight;
-            const y = padding + Math.ceil((maxAreaHeightFont - ( settings.leftImage.width * repeats * imageFactor) ) / 2);
+            const imageHeight = settings.leftImage.height * imageFactor;
+            const [factor, factor2] = settings.left > 0 ? [-1, (10 * imageFactor)] : [1, -(settings.leftImage.height * imageFactor) - (10 * imageFactor)];
 
-            const drawImage = settings.left > 0 ? textTool.drawFlip270Imagefunction : textTool.drawFlip90Imagefunction;
-
-            for (let i = 0; i<repeats; i++) {
-              drawImage({
-                img: settings.leftImage,
-                x: (10 * imageFactor),
-                y: y + (i * settings.leftImage.width * imageFactor),
-                height: settings.leftImage.height * imageFactor,
-                width: settings.leftImage.width * imageFactor
-              });
-            }
+            textTool.drawFlip270Imagefunction({
+              img: settings.leftImage,
+              x: areaWidth,
+              factor: factor,
+              factor2: factor2,
+              height: imageHeight,
+              width: settings.leftImage.width * imageFactor
+            });
           }
 
           if (settings.rightImage) {
-            const imageHeight = settings.rightImage.width * imageFactor;
-            const repeats = (maxAreaHeightFont - (maxAreaHeightFont % imageHeight)) / imageHeight;
-            let y = padding + Math.ceil((maxAreaHeightFont - ( imageHeight * repeats ) ) / 2);
+            const imageHeight = settings.rightImage.height * imageFactor;
 
-            const drawImage = settings.right > 0 ? textTool.drawFlip270Imagefunction : textTool.drawFlip90Imagefunction;
+            const [factor, height] = settings.right > 0 ? [-1, imageHeight] : [1, 0];
 
-            for (let i = 0; i<repeats; i++) {
-              drawImage({
-                img: settings.rightImage,
-                x: areaWidth - ( settings.rightImage.height * imageFactor) - (10 * imageFactor),
-                y: y + (i * imageHeight),
-                height: settings.rightImage.height * imageFactor,
-                width: settings.rightImage.width * imageFactor
-              });
-            }
+            textTool.drawFlip270Imagefunction({
+              img: settings.rightImage,
+              x: -areaWidth,
+              factor: factor,
+              factor2: factor * ((height) + (10 * imageFactor)),
+              height: settings.rightImage.height * imageFactor,
+              width: settings.rightImage.width * imageFactor
+            });
           }
         }
 

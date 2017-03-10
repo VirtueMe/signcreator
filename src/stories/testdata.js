@@ -25,6 +25,59 @@ const texts = {
     new: {
       text: 'Lag ditt neste skilt'
     }
+  },
+  step1: {
+    editlist: {
+      title: 'Tekst på skilt',
+      menu: {
+        action: {
+          delete: 'Slett',
+          down: 'Flytt ned',
+          up: 'Flytt opp'
+        }
+      },
+      textitem: {
+        menu: {
+          format: {
+            increase: "Øk skrift",
+            decrease: 'Mink skrift',
+            font: 'Font',
+            bold: 'Fet',
+            italic: 'Italic',
+            center: 'Sentrer',
+            color: 'Farge'
+          }
+        },
+        placeholder: 'Text linje'
+      },
+      dialogs: {
+        remove: {
+          title: 'Bekreft sletting',
+          description: 'Slette linjen?',
+          buttons: {
+            cancel: 'Avbryt',
+            delete: 'Slett'
+          }
+        },
+
+        font: {
+          title: 'Velg font',
+          placeholder: 'Velg font',
+          buttons: {
+            close: 'Lukk'
+          }
+        }
+      }
+    },
+    preview: {
+      title: 'Forhåndsvisning',
+      continue: {
+        text: 'Gå videre'
+      },
+    },
+    settings: {
+      title: 'Lag ditt dørskilt på 1-2-3!'
+    }
   }
 };
 

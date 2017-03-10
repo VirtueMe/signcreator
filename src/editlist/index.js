@@ -44,10 +44,6 @@ class EditList extends Component {
     this.setState({ show_delete: display, index: index });
   }
 
-  showDelete(display, index=null) {
-    this.setState({ show_font: display, index: index });
-  }
-
   cancelDelete = () => {
     this.showDelete(false);
   }
@@ -104,8 +100,32 @@ class EditList extends Component {
     this.showDelete(false);
   }
 
+  createColorPicker () {
+    const popover = {
+      position: 'absolute',
+      zIndex: '2',
+    };
+
+    const cover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    };
+
+    return (
+      <div style={ popover }>
+        <div style={ cover } onClick={ this.cancelColor }/>
+        <SketchPicker color={this.state.color} width={300} onChange={ this.colorChanged } />
+      </div>
+    )
+  }
+
   render() {
     const { items, actions, decoration, texts } = this.props;
+
+    const colorPicker = this.state.show_color ? this.createColorPicker() : null;
 
     const delete_actions = [
       { label: texts.dialogs.remove.buttons.cancel, onClick: () => this.cancelDelete() },
@@ -113,22 +133,10 @@ class EditList extends Component {
     ];
 
     const font_actions = [
-      { label: 'Lukk', onClick: () => this.showFont(false) }
+      { label: texts.dialogs.font.buttons.close, onClick: () => this.showFont(false) }
     ];
 
-    const popover = {
-      position: 'absolute',
-      zIndex: '2',
-    }
-    const cover = {
-      position: 'fixed',
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px',
-    }
 
-    console.info(items);
 
     const list = items.map((item, index) => {
       const menu = ({children}) => (
@@ -148,9 +156,7 @@ class EditList extends Component {
 
     return (
       <div>
-      { this.state.show_color ? <div style={ popover }>
-        <div style={ cover } onClick={ this.cancelColor }/>
-        <SketchPicker color={this.state.color} width={300} onChange={ this.colorChanged } /> </div> : null }
+        { colorPicker}
 
         <List>
           <ListItem rightActions={[<Menu actions={actions} />]} />
@@ -180,7 +186,6 @@ class EditList extends Component {
             onChange={this.fontChanged}
             />
         </Dialog>
-
       </div>
     )
   }
@@ -212,7 +217,10 @@ EditList.defaultProps = {
 
       font: {
         title: 'Velg font',
-        placeholder: 'Velg font'
+        placeholder: 'Velg font',
+        buttons: {
+          close: 'Lukk'
+        }
       }
     }
   }

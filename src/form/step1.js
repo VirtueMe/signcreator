@@ -101,7 +101,10 @@ Step1.defaultProps = {
 
         font: {
           title: 'Velg font',
-          placeholder: 'Velg font'
+          placeholder: 'Velg font',
+          buttons: {
+            close: 'Lukk'
+          }
         }
       }
     },

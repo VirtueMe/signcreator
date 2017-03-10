@@ -27,8 +27,6 @@ const factory = (FontIcon) => {
         </MenuItem>
       );
 
-      console.info(selectFont);
-
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
           <MenuItem icon='format_size' caption={format.increase} key="0" onClick={() => actions.increaseFont(index)}>
