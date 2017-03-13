@@ -18,14 +18,9 @@ const factory = (FontIcon) => {
 
     render() {
       const PositionMenu = this.props.menu;
-      const { actions, bold, selectFont, italic, index, selectColor, texts, theme, value } = this.props;
+      const { actions, bold, center, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
       const { menu } = texts;
-      const { format, action } = menu
-      const center = (
-        <MenuItem icon='format_align_center' caption={format.center} key="2a">
-          <FontIcon value='' className={theme.width} />
-        </MenuItem>
-      );
+      const { format, action } = menu;
 
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight'>
@@ -37,6 +32,9 @@ const factory = (FontIcon) => {
           </MenuItem>
           <MenuItem icon='text_format' caption={format.font} key="1a" onClick={selectFont}>
             <FontIcon value='' className={theme.width} />
+          </MenuItem>
+          <MenuItem icon='format_align_center' caption={format.center} key="2a" onClick={() => actions.toggleCenter(index)}>
+            <FontIcon value={ center ? 'checked' : ''} className={theme.width} />
           </MenuItem>
           <MenuItem icon='format_bold' caption={format.bold} key="2" onClick={() => actions.toggleBold(index)}>
             <FontIcon value={ bold ? 'checked' : ''} className={theme.width} />
@@ -90,6 +88,7 @@ const factory = (FontIcon) => {
         format: {
           increase: "Øk skrift",
           decrease: 'Mink skrift',
+          center: 'Sentrer',
           bold: 'Fet',
           italic: 'Kursiv',
           center: 'Sentrer',

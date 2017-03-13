@@ -15,7 +15,7 @@ const settingsSelector = state => state.settings;
 
 const imageSelector = createSelector(
   [typeSelector, itemsSelector, settingsSelector],
-  (type, items, settings) => generators[type](items, settings).getImage().image
+  (type, items, settings) => new Promise((resolve) => { const result = generators[type](items, settings).getImage(); resolve(result); })
 );
 
 

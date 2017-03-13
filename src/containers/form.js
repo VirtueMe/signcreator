@@ -14,6 +14,7 @@ function mapStateToProps(state) {
     items: state.items,
     settings: state.settings,
     index: state.view.index,
+    sendstatus: state.sendstatus,
     customer: state.customer,
     payment: state.payment,
     texts: state.texts

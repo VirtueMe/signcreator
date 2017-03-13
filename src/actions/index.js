@@ -3,7 +3,6 @@ import * as types from '../constants/actiontypes'
 /*
  * Form navigation
  */
-
 function showView(value) {
   return { type: types.SET_VIEW_INDEX, payload:{value} };
 }
@@ -93,7 +92,6 @@ export function setBottom(bottom, img) {
 }
 
 /* Emojis */
-
 export function initEmoji(emojis, index) {
   return { type: types.INIT_EMOJIS, payload:{emojis, index} };
 }
@@ -103,7 +101,7 @@ function add(item) {
 }
 
 export function addTextLine() {
-  return add( { type: 1, value: '', height: 8, bold: false, italic: false, cont: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
+  return add( { type: 1, value: '', height: 8, center: false, bold: false, italic: false, font: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
 }
 
 function changeFontSize(index, step) {
@@ -120,6 +118,10 @@ export function increaseFont(index) {
 
 export function decreaseFont(index) {
   return changeFontSize(index, -1);
+}
+
+export function toggleCenter(index) {
+  return { type: types.TOGGLE_CENTER, payload:{index} };
 }
 
 export function toggleBold(index) {
@@ -184,6 +186,5 @@ export function clearEmojis(index) {
 }
 
 export function sendOrder(settings, items, image, customer, payment) {
-  console.info('help, showing nothing');
   return { type: types.SEND_ORDER, payload: { customer, image, items, payment, settings }};
 }

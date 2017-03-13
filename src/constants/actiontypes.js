@@ -25,6 +25,8 @@ export const CHANGE_TEXT_COLOR = 'CHANGE_TEXT_COLOR';
 export const CHANGE_FONT = 'CHANGE_FONT';
 export const CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE';
 export const TOGGLE_BOLD = 'TOGGLE_BOLD';
+export const TOGGLE_CENTER = 'TOGGLE_CENTER';
+export const TOGGLE_LEFTJUSTIFIED = 'TOGGLE_LEFTJUSTIFIED';
 export const TOGGLE_ITALIC = 'TOGGLE_ITALIC';
 
 /* Settings */

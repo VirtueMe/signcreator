@@ -7,12 +7,12 @@ import Receipt from './step3';
 
 class Form extends Component {
   render() {
-    const { actions, borders, customer, image, imageClassName, index, items, payment, settings, texts } = this.props;
+    const { actions, borders, customer, image, imageClassName, index, items, payment, sendstatus, settings, texts } = this.props;
 
     const view = [
       <Input key='input' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings}  />,
-      <Payment key='payment' actions={actions} customer={customer} payment={payment} />,
-      <Receipt key='receipt' actions={actions} customer={customer} payment={payment} texts={texts.receipt} />
+      <Payment key='payment' actions={actions} customer={customer} image={image} items={items} payment={payment} settings={settings} sendstatus={sendstatus} />,
+      <Receipt key='receipt' actions={actions} customer={customer} payment={payment}  texts={texts.receipt} />
     ];
     return (
       <Transition>

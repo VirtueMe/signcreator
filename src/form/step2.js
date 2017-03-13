@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button, Card, CardActions, CardText, CardTitle } from 'react-toolbox';
+import { Button, Card, CardActions, CardText, CardTitle, Dialog, ProgressBar } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 import CustomerForm from '../customerform';
 import PaymentOptions from '../payment';
@@ -7,9 +7,7 @@ import PaymentOptions from '../payment';
 
 class Step2 extends Component {
   render() {
-    const { actions, customer, image, items, payment, settings, texts, toReceipt } = this.props;
-
-    console.info(customer);
+    const { actions, customer, image, items, payment, sendstatus, settings, texts, toReceipt } = this.props;
 
     return (
       <Container fluid>
@@ -44,13 +42,24 @@ class Step2 extends Component {
                 <Button
                   label={texts.paymentoptions.continue.text}
                   onClick={() => actions.sendOrder(settings, items, image, customer, payment)}
-                  disabled={!(customer.valid && payment.valid)}
+                  disabled={sendstatus.isSending || !(customer.valid && payment.valid)}
                   raised primary />
               </CardActions>
             </Card>
             <br />
           </Col>
         </Row>
+        <Dialog
+          active={sendstatus.isSending}
+          title='Sender bestilling'
+        >
+          <Row>
+            <Col xs={4} offset={ { xs: 4 }}>
+              <ProgressBar type='circular' mode='indeterminate' multicolor />
+            </Col>
+          </Row>
+        </Dialog>
+
       </Container>
     );
   }
@@ -61,6 +70,9 @@ Step2.propTypes = {
 };
 
 Step2.defaultProps = {
+  sendstatus: {
+    isSending: false,
+  },
   toReceipt: null,
   texts: {
     customer: {

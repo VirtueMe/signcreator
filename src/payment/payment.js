@@ -13,7 +13,7 @@ const factory = () => {
   class PaymentOptions extends Component {
     render() {
       const { actions, payment, texts } = this.props;
-      console.info(texts);
+
       return (
         <Accordion index={payment.type} onChange={actions.changePayment}>
           <Chord labelIcon={<FontIcon value='email' />} label={texts.email.title}>

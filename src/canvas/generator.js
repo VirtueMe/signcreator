@@ -52,7 +52,7 @@ function createTextTool(context, canvas) {
           context.fillStyle = line.color;
         }
 
-        context.fillText(line.text, line.x, line.y);
+        context.fillText(line.text, (line.center ? ((_canvas.width)/(scaleFactor * 2)) - (line.width/2): line.x), line.y);
 
         context.fillStyle = color;
       }
@@ -213,8 +213,7 @@ export default function generator(dimensions) {
 
           var calculateElements = function(start, item, ...rest) {
             const size = calculateHeight(item);
-
-            result.push({
+            const value = {
               type: item.type,
               size: size,
               start: start,
@@ -223,8 +222,13 @@ export default function generator(dimensions) {
               italic: item.italic,
               bold: item.bold,
               color: item.color,
-              selected: item.selected
-            });
+              center: item.center,
+              selected: item.selected,
+            };
+
+            value.width = calculateWidth(value);
+
+            result.push(value);
 
             if (rest && rest.length > 0) {
               calculateElements(start + size, ...rest);
@@ -239,14 +243,14 @@ export default function generator(dimensions) {
         const items = calculateItems(this.lines);
 
         const totalheight = this.lines.reduce((sum, item) => (sum + calculateHeight(item) + (sum !== 0 ? 20 : 0)), 0);
-        const arr = items.map(item => (calculateWidth(item)));
+        const arr = items.map(item => item.width);
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
 
 
         const print = {
           1: function(item) {
-            const { text, size, start, font, italic, bold } = item;
+            const { center, text, width, size, start, font, italic, bold } = item;
 
             textTool.fillText({
               text: text,
@@ -256,6 +260,8 @@ export default function generator(dimensions) {
               italic: italic,
               bold: bold,
               font: font,
+              center: center,
+              width: width,
               baseline: 'hanging',
               color: createRGBAString(item.color || { r: 0, g: 0, b: 0, a: 1 })
             });

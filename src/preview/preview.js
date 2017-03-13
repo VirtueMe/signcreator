@@ -7,8 +7,35 @@ import { PREVIEW } from '../identifiers';
 
 const factory = () => {
   class Preview extends Component {
+    state = {
+      image: null
+    };
+
+    componentDidMount() {
+      this.loadImage(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const { image } = nextProps;
+
+      if (image !== this.props.image) {
+        this.loadImage(nextProps);
+      }
+    }
+
+    loadImage(props) {
+      const { image } = props;
+      const self = this;
+
+      image.then(function(data) {
+        self.setState({ image: data.image });
+      });
+    }
+
     render() {
-      const { image, theme, className, style } = this.props;
+      const { theme, className, style } = this.props;
+      const { image } = this.state;
+
       const img = image ? <img src={image} /> : null;
 
       return (
@@ -19,7 +46,7 @@ const factory = () => {
 
   Preview.propTypes = {
     className: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
     theme: PropTypes.shape({
       preview: PropTypes.string
     })
