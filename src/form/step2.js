@@ -7,7 +7,7 @@ import PaymentOptions from '../payment';
 
 class Step2 extends Component {
   render() {
-    const { actions, customer, payment, settings, texts, toReceipt } = this.props;
+    const { actions, customer, image, items, payment, settings, texts, toReceipt } = this.props;
 
     console.info(customer);
 
@@ -43,7 +43,7 @@ class Step2 extends Component {
 
                 <Button
                   label={texts.paymentoptions.continue.text}
-                  onClick={toReceipt || actions.showReceipt}
+                  onClick={() => actions.sendOrder(settings, items, image, customer, payment)}
                   disabled={!(customer.valid && payment.valid)}
                   raised primary />
               </CardActions>

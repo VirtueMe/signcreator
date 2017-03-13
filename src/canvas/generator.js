@@ -313,14 +313,11 @@ export default function generator(dimensions) {
         if (settings && settings.type !== 3) {
           if (settings.topImage) {
             const imageWidth = settings.topImage.width * imageFactor;
-            const repeats = (maxwidth - (maxwidth % imageWidth)) / imageWidth;
-            const start = padding + Math.ceil((maxwidth - ( imageWidth * repeats ) ) / 2);
-
             const drawImage = settings.top > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
             drawImage({
               img: settings.topImage,
-              x: areaWidth,
+              x: (areaWidth - imageWidth) / 2,
               y: 10 * imageFactor,
               height: settings.topImage.height * imageFactor,
               width: imageWidth
@@ -331,12 +328,13 @@ export default function generator(dimensions) {
             const imageWidth = settings.bottomImage.width * imageFactor;
             const imageHeight = settings.bottomImage.height * imageFactor;
 
-            const drawImage = settings.bottom > 0 ? textTool.drawImage : textTool.drawFlipImage;
+            const [drawImage, offset] = settings.bottom > 0 ? [textTool.drawImage, imageHeight+(10 * imageFactor)] : [textTool.drawFlipImage, imageHeight/2];
 
+            console.info(drawImage);
             drawImage({
               img: settings.bottomImage,
-              x: start + (i * imageWidth),
-              y: areaheight - imageHeight - (10 * imageFactor),
+              x: (areaWidth - imageWidth) / 2,
+              y: areaheight-offset,
               height: imageHeight,
               width: imageWidth
             });

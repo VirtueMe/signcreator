@@ -4,17 +4,19 @@ import update from 'immutability-helper';
 const initialState = [];
 
 export default function emojis(state = initialState, action) {
+  const {payload} = action;
+
   switch (action.type) {
     case ADD_EMOJI: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         value: {
           $push: [{
-            id: state[action.index].value.length,
-            image: action.image,
-            size: action.size,
-            img: action.img
+            id: state[payload.index].value.length,
+            image: payload.image,
+            size: payload.size,
+            img: payload.img
           }]
         }
       };
@@ -25,9 +27,9 @@ export default function emojis(state = initialState, action) {
     case CHANGE_DIVIDER: {
       let updateData = {};
 
-      updateData[action.index] = {
-        value: { $set: action.image },
-        selected: { $set: action.value }
+      updateData[payload.index] = {
+        value: { $set: payload.image },
+        selected: { $set: payload.value }
       };
 
       return update(state, updateData);
@@ -36,8 +38,8 @@ export default function emojis(state = initialState, action) {
     case CHANGE_TEXT: {
       let updateData = {};
 
-      updateData[action.index] = {
-        value: { $set: action.value }
+      updateData[payload.index] = {
+        value: { $set: payload.value }
       };
 
       return update(state, updateData);
@@ -46,8 +48,8 @@ export default function emojis(state = initialState, action) {
     case CHANGE_TEXT_COLOR: {
       let updateData = {};
 
-      updateData[action.index] = {
-        color: { $set: action.color }
+      updateData[payload.index] = {
+        color: { $set: payload.color }
       };
 
       return update(state, updateData);
@@ -56,8 +58,8 @@ export default function emojis(state = initialState, action) {
     case CHANGE_FONT: {
       let updateData = {};
 
-      updateData[action.index] = {
-        font: { $set: action.value }
+      updateData[payload.index] = {
+        font: { $set: payload.value }
       };
 
       return update(state, updateData);
@@ -66,8 +68,8 @@ export default function emojis(state = initialState, action) {
     case CHANGE_FONT_SIZE: {
       let updateData = {};
 
-      updateData[action.index] = {
-        height: { $apply: function(height) { return height + action.step; } }
+      updateData[payload.index] = {
+        height: { $apply: function(height) { return height + payload.step; } }
       };
 
       return update(state, updateData);
@@ -76,7 +78,7 @@ export default function emojis(state = initialState, action) {
     case TOGGLE_BOLD: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         bold: { $apply: function(bold) { return !bold; } }
       };
 
@@ -86,7 +88,7 @@ export default function emojis(state = initialState, action) {
     case TOGGLE_ITALIC: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         italic: { $apply: function(italic) { return !italic; } }
       };
 
@@ -94,35 +96,35 @@ export default function emojis(state = initialState, action) {
     }
 
     case MOVE_LINE: {
-      const item = state[action.index];
+      const item = state[payload.index];
 
       return update(state, {
         $splice: [
-          [action.index, 1],
-          [action.index + action.step, 0, item],
+          [payload.index, 1],
+          [payload.index + payload.step, 0, item],
         ]
       });
     }
 
     case ADD_LINE: {
       return update(state, {
-        $push: [action.item]
+        $push: [payload.item]
       });
     }
 
     case DELETE_LINE: {
       return update(state, {
-        $splice: [[action.index, 1]]
+        $splice: [[payload.index, 1]]
       });
     }
 
     case DELETE_EMOJI: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         value: {
-          $set: state[action.index].filter(emoji =>
-            emoji.id !== action.id
+          $set: state[payload.index].filter(emoji =>
+            emoji.id !== payload.id
           )
         }
       };
@@ -133,9 +135,9 @@ export default function emojis(state = initialState, action) {
     case INIT_EMOJIS: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         value: {
-          $set: [...action.emojis]
+          $set: [...payload.emojis]
         }
       };
 
@@ -143,17 +145,17 @@ export default function emojis(state = initialState, action) {
     }
 
     case MOVE_EMOJI: {
-      const emojis = state[action.index];
-      const emoji = emojis.value.filter(e => e.id === action.id)[0];
+      const emojis = state[payload.index];
+      const emoji = emojis.value.filter(e => e.id === payload.id)[0];
       const index = emojis.value.indexOf(emoji);
 
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         value: {
           $splice: [
             [index, 1],
-            [action.atIndex, 0, emoji],
+            [payload.atIndex, 0, emoji],
           ]
         }
       };
@@ -164,7 +166,7 @@ export default function emojis(state = initialState, action) {
     case CLEAR_EMOJIS: {
       let updateData = {};
 
-      updateData[action.index] = {
+      updateData[payload.index] = {
         value: {
           $set: []
         }
