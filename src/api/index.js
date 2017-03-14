@@ -4,21 +4,25 @@ const server = `https:/${beta}offers.sandviks.com`;
 export function sendData(payload) {
   const { customer, image, items, payment, settings } = payload;
   const url = server + '/service/api/orders';
+  var myHeaders = new Headers();
+
+  myHeaders.append('Content-Type', 'application/json; charset=utf-8');
 
   return image
           .then(function(data) {
             return fetch(url, {
                     method: 'post',
+                    headers: myHeaders,
                     body: JSON.stringify({
-                      project: settings.project,
+                      project: settings.project || 'NTN',
                       email: customer.email,
                       name: customer.name,
                       address: customer.address,
                       zip: customer.zip,
                       city: customer.city,
-                      image: data.image,
                       CreditCard: payment.type === 1 ? { number: payment.number, expires: payment.month + payment.year, ccv2: payment.ccv2 } : null,
-                      sign: {
+                      signs: [{
+                        image: data.image,
                         settings: {
                           type: settings.type,
                           backplate: settings.backplate,
@@ -42,8 +46,8 @@ export function sendData(payload) {
                               return item;
                           }
                         })
-                      }
-                    })
+                      }]
+                    })                  
                   })
                   .then(checkStatus)
                   .then(parseJSON);
