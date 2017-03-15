@@ -23,7 +23,7 @@ const factory = (FontIcon) => {
       const { format, action } = menu;
 
       const FormatMenu = () => (
-        <IconMenu icon='text_format' position='topRight'>
+        <IconMenu icon='text_format' position='topRight' iconRipple={false} menuRipple={false}>
           <MenuItem icon='format_size' caption={format.increase} key="0" onClick={() => actions.increaseFont(index)}>
             <FontIcon className={theme.width} />
           </MenuItem>
@@ -65,6 +65,7 @@ const factory = (FontIcon) => {
           key={'i' + index}
           itemContent={input}
           rightActions={menuActions}
+          ripple={false}
         />
       );
     }
@@ -86,10 +87,11 @@ const factory = (FontIcon) => {
     texts: {
       menu: {
         format: {
-          increase: "Øk skrift",
-          decrease: 'Mink skrift',
+          increase: "Større",
+          decrease: 'Mindre',
           center: 'Sentrer',
           bold: 'Fet',
+          font: 'Endre font',
           italic: 'Kursiv',
           center: 'Sentrer',
           color: 'Farge'

@@ -26,7 +26,7 @@ const texts = {
       text: 'Lag ditt neste skilt'
     }
   },
-  step1: {
+  design: {
     editlist: {
       title: 'Tekst på skilt',
       menu: {
@@ -36,7 +36,18 @@ const texts = {
           up: 'Flytt opp'
         }
       },
-      textitem: {
+      dividerline: {
+
+      },
+
+      emojiline: {
+        menu: {
+          larger: 'Øk',
+          smaller: 'Mindre',
+          title: 'Velg emoji'
+        }
+      },
+      textline: {
         menu: {
           format: {
             increase: "Øk skrift",
@@ -49,7 +60,7 @@ const texts = {
             color: 'Farge'
           }
         },
-        placeholder: 'Text linje'
+        placeholder: 'Tekstlinje'
       },
       dialogs: {
         remove: {
@@ -77,7 +88,107 @@ const texts = {
       },
     },
     settings: {
-      title: 'Lag ditt dørskilt på 1-2-3!'
+      title: 'Lag ditt dørskilt på 1-2-3!',
+      frames: {
+        title: 'Dekor',
+        noLineText: 'Ingen linje',
+        labelTop: 'Velg øvre linje',
+        labelLeft: 'Velg venstre linje',
+        labelRight: 'Velg høyre linje',
+        labelBottom: 'Velg nedre linje'
+      },
+      plate: {
+        title: 'Bakgrunn',
+        '0': 'Nei',
+        '4': 'Børstet aluminium',
+        '8': 'Hvit plast'
+      },
+      selector: {
+        title: 'Valg av skilt',
+        label: 'Velg hvilket skilt du ønsker',
+        items: {
+          '0': {
+            title: 'Liggende skilt',
+            description: 'Bedre plass til lange navn'
+          },
+          '1': {
+            title: 'Stående skilt',
+            description: 'Plass til flere linjer tekst'
+          },
+          '2': {
+            title: 'Kvadratisk skilt',
+            description: 'Enkelt og stilrent skilt'
+          },
+          '3': {
+            title: 'Hjerteformet skilt',
+            description: 'Til en kjærlig familie'
+          }
+        }
+      }
+    }
+  },
+  payment: {
+    customer: {
+      title: 'Kundeinformasjon',
+      email: {
+        placeholder: 'E-post',
+        error: 'E-post påkrevd'
+      },
+
+      name: {
+        placeholder: 'Fullt navn',
+        error: 'Navn påkrevd'
+      },
+
+      address: {
+        placeholder: 'Adresse',
+        error: 'Adresse påkrevd'
+      },
+
+      zip: {
+        placeholder: 'Postnummer',
+        error: 'Adresse påkrevde'
+      },
+
+      city: {
+        placeholder: 'Poststed',
+        error: 'Poststed påkrevd'
+      }
+    },
+    paymentoptions: {
+      title: 'Betalingsinformasjon',
+      email: {
+        title: 'Faktura',
+        description: 'Faktura sendes på epost',
+      },
+      creditcard: {
+        title: 'Kredittkort',
+        description: 'Her legger du inn kredittkortopplysningene for kredittkortet du ønsker å benytte.',
+        number: {
+          placeholder: 'Kredittkortnummer',
+          error: 'Ugyldig kredittkortnummer'
+        },
+        month: {
+          placeholder: 'MM'
+        },
+        year: {
+          placeholder: 'ÅÅ'
+        },
+        ccv2: {
+          placeholder: 'CCV2',
+          hint: 'Se på baksiden av ditt kort'
+        },
+        logo: {
+          src: 'https://cdn.dibspayment.com/logo/checkout/combo/horiz/DIBS_checkout_kombo_horizontal_04.png',
+          alt: 'DIBS + Payments made easy'
+        }
+      },
+      continue: {
+        text: 'Bestill'
+      },
+      back: {
+        text: 'Gå tilbake'
+      }
     }
   }
 };
@@ -87,9 +198,9 @@ const state = {
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
   items: [
-    { type: 1, value: 'Her bor', height: 7, center: false, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Familien Thomas', height: 10, center: false, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
-    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8, center: false, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Her bor', height: 7, center: true, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Familien Thomas', height: 8, center: true, italic: false, bold: true, font: 'Arial', color: { r: 144, g: 19, b: 254, a: 1} },
+    { type: 1, value: 'Anita, Benny, Nathaniel og Alea', height: 8, center: true, italic: false, bold: false, font: 'Arial', color: { r: 208, g: 2, b: 27, a: 1} },
     {
       type: 2,
       value: [
@@ -97,7 +208,8 @@ const state = {
         { image: man, id: 1, size: { height: 50, width: 18 }, img: img2 },
         { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 },
         { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 }
-      ]
+      ],
+      scale: 2
     }
   ],
   settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },

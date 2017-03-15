@@ -32,50 +32,50 @@ export default function settings(state = initialState, action) {
 
   switch (action.type) {
     case CHANGE_PAYMENT_TYPE: {
-      if (payment.value !== state.type) {
-        const valid = payment.value === 0 ? true : state.numberValid && state.expiresValid && state.ccv2Valid;
+      if (payload.value !== state.type) {
+        const valid = payload.value === 0 ? true : state.numberValid && state.expiresValid && state.ccv2Valid;
 
-        return update(state, { type: { $set: payment.value }, valid: { $set: valid } });
+        return update(state, { type: { $set: payload.value }, valid: { $set: valid } });
       }
 
       return state;
     }
 
     case CHANGE_CREDITCARD_NUMBER: {
-      if (payment.value !== state.number) {
-        const numberValid = Validator.number(payment.value);
+      if (payload.value !== state.number) {
+        const numberValid = Validator.number(payload.value);
 
-        return update(state, { number: { $set: payment.value }, numberValid: { $set: numberValid }, valid: { $set: numberValid && state.expiresValid && state.ccv2Valid } });
+        return update(state, { number: { $set: payload.value }, numberValid: { $set: numberValid }, valid: { $set: numberValid && state.expiresValid && state.ccv2Valid } });
       }
 
       return state;
     }
 
     case CHANGE_EXPIRES_MONTH: {
-      if (payment.value !== state.month) {
-        const valid = creditcardValidator(Object.assign({}, state, { number: payment.value }));
+      if (payload.value !== state.month) {
+        const valid = expiresValidator(Object.assign({}, state, { month: payload.value }));
 
-        return update(state, { month: { $set: payment.value }, valid: { $set: valid } });
+        return update(state, { month: { $set: payload.value }, valid: { $set: valid } });
       }
 
       return state;
     }
 
     case CHANGE_EXPIRES_YEAR: {
-      if (payment.value !== state.year) {
-        const expiresValid = expiresValidator(Object.assign({}, state, { year: payment.value}));
+      if (payload.value !== state.year) {
+        const expiresValid = expiresValidator(Object.assign({}, state, { year: payload.value}));
 
-        return update(state, { year: { $set: payment.value }, expiresValid: { $set: expiresValid }, valid: { $set: expiresValid && state.numberValid && state.ccv2Valid } });
+        return update(state, { year: { $set: payload.value }, expiresValid: { $set: expiresValid }, valid: { $set: expiresValid && state.numberValid && state.ccv2Valid } });
       }
 
       return state;
     }
 
     case CHANGE_CCV2: {
-      if (payment.value !== state.ccv2) {
-        const ccv2Valid = payment.value.length > 2 ? true : false;
+      if (payload.value !== state.ccv2) {
+        const ccv2Valid = payload.value.length > 2 ? true : false;
 
-        return update(state, { ccv2: { $set: payment.value }, ccv2Valid: { $set: ccv2Valid }, valid: { $set: ccv2Valid && state.numberValid && state.expiresValid } });
+        return update(state, { ccv2: { $set: payload.value }, ccv2Valid: { $set: ccv2Valid }, valid: { $set: ccv2Valid && state.numberValid && state.expiresValid } });
       }
 
       return state;

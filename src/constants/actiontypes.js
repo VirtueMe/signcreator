@@ -10,6 +10,7 @@ export const MOVE_EMOJI = 'MOVE_EMOJI';
 export const DELETE_EMOJI = 'DELETE_EMOJI';
 export const CLEAR_EMOJIS = 'CLEAR_EMOJIS';
 export const INIT_EMOJIS = 'INIT_EMOJIS';
+export const SCALE_EMOJI = 'SCALE_EMOJI';
 
 /* Edit list actions */
 export const ADD_LINE = 'ADD_LINE';

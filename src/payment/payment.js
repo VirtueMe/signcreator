@@ -46,7 +46,7 @@ const factory = () => {
         description: 'Faktura sendes på epost',
       },
       creditcard: {
-        title: 'Kreditkort',
+        title: 'Kredittkort',
         description: 'Her legger du inn kreditkortopplysningene for kreditkortet du ønsker å benytte.',
         number: {
           placeholder: 'Kreditkort nummer',

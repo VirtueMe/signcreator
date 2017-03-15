@@ -17,6 +17,8 @@ const factory = () => {
     render() {
       const {actions, backplate, texts} = this.props;
 
+      console.info(texts);
+
       return (
         <RadioGroup name='comic' value={backplate} onChange={actions.setBackPlate}>
           <RadioButton label={texts[NO_BACKPLATE]} value={NO_BACKPLATE}/>

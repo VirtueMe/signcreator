@@ -46,6 +46,7 @@ const factory = (FontIcon) => {
           key={'d' + index}
           itemContent={input}
           rightActions={menuActions}
+          ripple={false}
         />
       );
     }

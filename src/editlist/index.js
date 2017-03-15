@@ -23,7 +23,7 @@ const PositionMenu = (props) => {
   const { action } = menu;
 
   return (
-    <IconMenu icon='more_vert' position='topRight' menuRipple>
+    <IconMenu icon='more_vert' position='topRight' iconRipple={false} menuRipple={false}>
       <MenuItem icon='keyboard_arrow_up' caption={action.up} key="0" onClick={() => moveUp(index)} disabled={index === 0} />
       <MenuItem icon='keyboard_arrow_down' caption={action.down} key="1" onClick={() => moveDown(index)} disabled={index + 1 === length}/>
       {children}
@@ -147,9 +147,9 @@ class EditList extends Component {
 
       return (
         <Cond value={item.type}>
-          {[ eq(1), <InputItem key={'0' + index} {...item} index={index} texts={texts.textitem} actions={actions} menu={menu} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} /> ]}
-          {[ eq(2), <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} /> ]}
-          {[ eq(3), <LineInput key={'0' + index} {...item} index={index} actions={actions} menu={menu} items={decoration} /> ]}
+          {[ eq(1), <InputItem key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.textline} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} /> ]}
+          {[ eq(2), <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.emojiline} /> ]}
+          {[ eq(3), <LineInput key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.dividerline} items={decoration} /> ]}
         </Cond>
       );
     });
@@ -158,8 +158,8 @@ class EditList extends Component {
       <div>
         { colorPicker}
 
-        <List>
-          <ListItem rightActions={[<Menu actions={actions} />]} />
+        <List ripple={false}>
+          <ListItem rightActions={[<Menu actions={actions} />]} ripple={false} />
           {list}
         </List>
 
@@ -197,14 +197,6 @@ EditList.defaultProps = {
   actions: {},
 
   texts: {
-    menu: {
-      action: {
-        delete: 'Slett',
-        down: 'Flytt ned',
-        up: 'Flytt opp'
-      }
-    },
-
     dialogs: {
       remove: {
         title: 'Bekreft sletting',
@@ -222,6 +214,30 @@ EditList.defaultProps = {
           close: 'Lukk'
         }
       }
+    },
+
+    dividerline: {
+
+    },
+
+    emojiline: {
+      menu: {
+        larger: 'Øk',
+        smaller: 'Mindre',
+        title: 'Velg emoji'
+      }
+    },
+
+    menu: {
+      action: {
+        delete: 'Slett',
+        down: 'Flytt ned',
+        up: 'Flytt opp'
+      }
+    },
+
+    textline: {
+
     }
   }
 };

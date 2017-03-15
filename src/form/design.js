@@ -7,9 +7,11 @@ import Preview from '../preview';
 import Settings from '../settings';
 
 
-class Step1 extends Component {
+class Design extends Component {
   render() {
     const { actions, borders, image, imageClassName, items, settings, texts, toPayment } = this.props;
+
+    console.info(texts.settings);
 
     return (
       <Container fluid>
@@ -21,7 +23,7 @@ class Step1 extends Component {
                 {texts.settings.title}
               </CardTitle>
               <CardText>
-                <Settings actions={actions} borders={borders} settings={settings} texts={texts} />
+                <Settings actions={actions} borders={borders} settings={settings} texts={texts.settings} />
               </CardText>
             </Card>
             <br />
@@ -59,11 +61,11 @@ class Step1 extends Component {
   }
 }
 
-Step1.propTypes = {
+Design.propTypes = {
 
 };
 
-Step1.defaultProps = {
+Design.defaultProps = {
   toPayment: null,
   texts: {
     editlist: {
@@ -115,9 +117,36 @@ Step1.defaultProps = {
       },
     },
     settings: {
-      title: 'Lag ditt dørskilt på 1-2-3!'
+      title: 'Lag ditt dørskilt på 1-2-3!',
+      frames: {
+
+      },
+      plate: {
+
+      },
+      selector: {
+        label: 'Velg hvilket skilt du ønsker',
+        items: {
+          '0': {
+            title: 'Liggende skilt',
+            description: 'Bedre plass til lange navn'
+          },
+          '1': {
+            title: 'Stående skilt',
+            description: 'Plass til flere linjer tekst'
+          },
+          '2': {
+            title: 'Kvadratisk skilt',
+            description: 'Enkelt og stilrent skilt'
+          },
+          '3': {
+            title: 'Hjerteformet skilt',
+            description: 'Til en kjærlig familie'
+          }
+        }
+      }
     }
   }
 };
 
-export default Step1;
+export default Design;

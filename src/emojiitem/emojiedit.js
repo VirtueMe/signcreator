@@ -17,7 +17,7 @@ const factory = (FontIcon) => {
   class ImagesSelector extends Component {
     render() {
       const PositionMenu = this.props.menu;
-      const { theme, value, index, actions } = this.props;
+      const { theme, value, index, actions, texts } = this.props;
 
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
@@ -26,7 +26,7 @@ const factory = (FontIcon) => {
         </div>
       );
 
-      const menuActions = [ <EmojiMenu key="0" theme={theme} actions={actions} index={index} /> ];
+      const menuActions = [ <EmojiMenu key="0" theme={theme} actions={actions} index={index} texts={texts.menu} /> ];
 
       if (PositionMenu) {
         menuActions.push(
@@ -41,17 +41,37 @@ const factory = (FontIcon) => {
           key={'e' + index}
           itemContent={input}
           rightActions={menuActions}
+          ripple={false}
         />
       );
     }
   }
 
+
+
   ImagesSelector.propTypes = {
+    texts: PropTypes.shape({
+      menu: PropTypes.shape({
+        larger: PropTypes.string,
+        smaller: PropTypes.string,
+        title: PropTypes.string,
+      })
+    }),
     theme: PropTypes.shape({
       icon: PropTypes.string,
       inputElement: PropTypes.string,
       width: PropTypes.string
     })
+  };
+
+  ImagesSelector.defaultProps = {
+    texts: {
+      menu: {
+        larger: 'Øk',
+        smaller: 'Mindre',  
+        title: 'Velg'
+      }
+    }
   };
 
   return ImagesSelector;

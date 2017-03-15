@@ -1,5 +1,7 @@
 import * as types from '../constants/actiontypes'
 
+const scaleStep = 0.1;
+
 /*
  * Form navigation
  */
@@ -175,6 +177,18 @@ export function addEmoji(image, size, index, img) {
 
 export function deleteEmoji(id, index) {
   return { type: types.DELETE_EMOJI, payload:{id, index} };
+}
+
+function scaleEmoji(index, step) {
+  return { type: types.SCALE_EMOJI, payload:{index, step} };
+}
+
+export function scaleDownEmoji(index) {
+  return scaleEmoji(index, scaleStep * -1);
+}
+
+export function scaleUpEmoji(index) {
+  return scaleEmoji(index, scaleStep);
 }
 
 export function moveEmoji(id, atIndex, index) {

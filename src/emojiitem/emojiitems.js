@@ -36,9 +36,7 @@ function getImageBounds(addEmoji, image, index) {
 
 
 const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
-  <MenuItem icon={<img src={image} style={style} />} onClick={() => getImageBounds(actions.addEmoji, image, index)}>
-    <FontIcon value='' className={theme.width} />
-  </MenuItem>
+  <MenuItem icon={<img src={image} style={style} />} className={theme.menuemoji} onClick={() => getImageBounds(actions.addEmoji, image, index)} />
 );
 
 const zoom = {
@@ -46,13 +44,21 @@ const zoom = {
 };
 
 
-const EmojiMenu = ({ theme, actions, index }) => (
-  <IconMenu icon='add' position='topRight'>
-    <EmojiMenuItem key='0' image={woman} theme={actions} actions={actions} index={index} />
-    <EmojiMenuItem key='0f' image={f_woman} theme={actions} actions={actions} index={index} />
-    <EmojiMenuItem key='0m' image={m_woman} theme={actions} actions={actions} index={index} />
-    <EmojiMenuItem key='0b' image={b_woman} theme={actions} actions={actions} index={index} />
-    <EmojiMenuItem key='0d' image={d_woman} theme={actions} actions={actions} index={index} />
+const EmojiMenu = ({ actions, index, texts, theme }) => (
+  <IconMenu icon='add' position='topRight' iconRipple={false} menuRipple={false}>
+    <MenuItem icon='photo_size_select_large' caption={texts.larger} onClick={() => actions.scaleUpEmoji(index)}>
+      <FontIcon value='' className={theme.width} />
+    </MenuItem>
+    <MenuItem icon='photo_size_select_small' caption={texts.smaller} onClick={() => actions.scaleDownEmoji(index)}>
+      <FontIcon value='' className={theme.width} />
+    </MenuItem>
+    <MenuDivider />
+    { texts.title ? <MenuItem caption={texts.title} disabled /> : null }
+    <EmojiMenuItem key='0' image={woman} theme={theme} actions={actions} index={index} />
+    <EmojiMenuItem key='0f' image={f_woman} theme={theme} actions={actions} index={index} />
+    <EmojiMenuItem key='0m' image={m_woman} theme={theme} actions={actions} index={index} />
+    <EmojiMenuItem key='0b' image={b_woman} theme={theme} actions={actions} index={index} />
+    <EmojiMenuItem key='0d' image={d_woman} theme={theme} actions={actions} index={index} />
     <EmojiMenuItem key='1' image={man} theme={theme} actions={actions} index={index} style={zoom} />
     <EmojiMenuItem key='1f' image={f_man} theme={theme} actions={actions} index={index} style={zoom} />
     <EmojiMenuItem key='1m' image={m_man} theme={theme} actions={actions} index={index} style={zoom} />

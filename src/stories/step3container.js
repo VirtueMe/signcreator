@@ -1,22 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { classNameSelector, imageSelector } from '../selectors/image';
-import borderSelector from '../selectors/borders';
-
-import Design from '../form/design';
+import Receipt from '../form/receipt';
 import * as Actions from '../actions';
-
-
 
 function mapStateToProps(state) {
   return {
-    image: imageSelector(state),
-    imageClassName: classNameSelector(state),
-    items: state.items,
-    settings: state.settings,
-    borders: borderSelector(state),
-    texts: state.texts.design
+    customer: state.customer,
+    payment: state.payment,
+    texts: state.texts.receipt
   };
 }
 
@@ -29,4 +21,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Design);
+)(Receipt);

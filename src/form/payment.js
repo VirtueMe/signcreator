@@ -5,7 +5,7 @@ import CustomerForm from '../customerform';
 import PaymentOptions from '../payment';
 
 
-class Step2 extends Component {
+class Payment extends Component {
   render() {
     const { actions, customer, image, items, payment, sendstatus, settings, texts, toReceipt } = this.props;
 
@@ -19,7 +19,7 @@ class Step2 extends Component {
                 {texts.customer.title}
               </CardTitle>
               <CardText>
-                <CustomerForm {...customer} actions={actions} />
+                <CustomerForm {...customer} actions={actions} texts={texts.customer} />
               </CardText>
             </Card>
             <br />
@@ -31,7 +31,7 @@ class Step2 extends Component {
                 {texts.paymentoptions.title}
               </CardTitle>
               <CardText>
-                <PaymentOptions payment={payment} actions={actions} />
+                <PaymentOptions payment={payment} actions={actions} texts={texts.paymentoptions} />
               </CardText>
               <CardActions>
               <Button
@@ -65,11 +65,27 @@ class Step2 extends Component {
   }
 }
 
-Step2.propTypes = {
-
+Payment.propTypes = {
+  sendstatus: PropTypes.shape({
+    isSending: PropTypes.bool
+  }),
+  texts: PropTypes.shape({
+    customer: PropTypes.shape({
+      title: PropTypes.string
+    }),
+    paymentoptions: PropTypes.shape({
+      title: PropTypes.string,
+      continue: PropTypes.shape({
+        text: PropTypes.string
+      }),
+      back: PropTypes.shape({
+        text: PropTypes.string
+      })
+    })
+  })
 };
 
-Step2.defaultProps = {
+Payment.defaultProps = {
   sendstatus: {
     isSending: false,
   },
@@ -79,7 +95,7 @@ Step2.defaultProps = {
       title: 'Kunde informasjon'
     },
     paymentoptions: {
-      title: 'Betaltingsinformasjon',
+      title: 'Betalingsinformasjon',
       continue: {
         text: 'Bestill'
       },
@@ -90,4 +106,4 @@ Step2.defaultProps = {
   }
 };
 
-export default Step2;
+export default Payment;

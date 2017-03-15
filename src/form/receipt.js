@@ -4,7 +4,7 @@ import { Button, Card, CardActions, CardMedia, CardText, CardTitle } from 'react
 
 class Receipt extends Component {
   render() {
-    const { actions, showInput, texts } = this.props;
+    const { actions, showDesign, texts } = this.props;
 
     return (
       <Card>
@@ -25,7 +25,7 @@ class Receipt extends Component {
         <CardActions>
           <Button
             label={texts.new.text}
-            onClick={showInput || actions.showInput}
+            onClick={showDesign || actions.showInput}
             raised primary />
         </CardActions>
       </Card>
@@ -38,7 +38,7 @@ Receipt.propTypes = {
 };
 
 Receipt.defaultProps = {
-  showInput: null,
+  showDesign: null,
   texts: {
     avatar: 'https://placeimg.com/80/80/animals',
     header: 'Navnemerket',

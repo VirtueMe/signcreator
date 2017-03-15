@@ -5,8 +5,9 @@ import SignDropdown from '../signselector/signdropdown';
 import AddLineMenu from './menu';
 import CustomerForm from './customerformcontainer'
 import EditList from './listcontainer';
-import Step1 from './step1container';
-import Step2 from './step2container';
+import Design from './step1container';
+import Payment from './step2container';
+import Receipt from './step3container';
 import Form from '../containers/form';
 import App from '../App';
 import EmojiItem, { small, child } from '../emojiitem/emojiitem';
@@ -33,9 +34,15 @@ storiesOf('Welcome', module)
   ));
 
 storiesOf('App', module)
-  .add('show', () => (
-    <App />
-  ));
+  .add('show', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  });
 
 storiesOf('TransitionMotion', module)
   .add('show', () => (
@@ -100,21 +107,30 @@ storiesOf('Settings', module)
   });
 
 storiesOf('Steps', module)
-  .add('Step 1', () => {
+  .add('Design', () => {
     const store = configureStore(state);
 
     return (
       <Provider store={store}>
-        <Step1 toPayment={ action('button-click') } />
+        <Design toPayment={ action('button-click') } />
       </Provider>
     );
   })
-  .add('Step 2', () => {
+  .add('Payment', () => {
     const store = configureStore(state);
 
     return (
       <Provider store={store}>
-        <Step2 toReceipt={ action('button-click') } />
+        <Payment toReceipt={ action('button-click') } />
+      </Provider>
+    );
+  })
+  .add('Receipt', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <Receipt showDesign={ action('button-click') } />
       </Provider>
     );
   });

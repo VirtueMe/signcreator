@@ -123,7 +123,7 @@ const height = {
   2: function(item) {
     const items = item.value.map(src => (src.size.height));
 
-    return (Math.max(...items) * imageFactor) + dividerGap;
+    return (Math.max(...items) * imageFactor * item.scale) + dividerGap;
   },
 
   3: function (item) {
@@ -193,7 +193,7 @@ export default function generator(dimensions) {
           2: function(item) {
             const value = calculateImageBounds(item);
 
-            return value * imageFactor + (item.text.length * imageSpace) - imageSpace;
+            return (value * imageFactor * item.scale) + (item.text.length * imageSpace * item.scale) - (imageSpace * item.scale);
           },
 
           3: function(item) {
@@ -224,6 +224,7 @@ export default function generator(dimensions) {
               color: item.color,
               center: item.center,
               selected: item.selected,
+              scale: item.scale
             };
 
             value.width = calculateWidth(value);
@@ -247,7 +248,6 @@ export default function generator(dimensions) {
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
 
-
         const print = {
           1: function(item) {
             const { center, text, width, size, start, font, italic, bold } = item;
@@ -268,24 +268,35 @@ export default function generator(dimensions) {
           },
 
           2: function(item) {
-            const { text, start } = item;
+            const { text, start, scale } = item;
             const imageWidth = calculateWidth(item);
+            const posY = padding + y + start + (dividerGap / 2);
 
             let x = padding + Math.ceil((maxwidth - imageWidth) / 2);
+
 
             text.forEach(value => {
               const {image, size, img} = value;
 
-              textTool.drawImage({
+              console.info(image, x, posY, img.height * imageFactor * scale, img.width * imageFactor * scale);
+
+              const theImage = {
                 src: image,
                 img: img,
                 x: x,
-                y: padding + y + start + (dividerGap / 2),
-                height: size.height * imageFactor,
-                width: size.width * imageFactor
-              });
+                y: posY,
+                height: img.height * imageFactor * scale,
+                width: img.width * imageFactor * scale
+              };
+              try {
 
-              x += ((size.width * imageFactor) + imageSpace);
+                textTool.drawImage(theImage);
+              }
+              catch(e) {
+                console.info(e);
+              }
+
+              x += ((size.width * imageFactor * scale) + (imageSpace * scale));
             });
           },
 
