@@ -1,5 +1,3 @@
-
-'use strict';
 import generator from './generator';
 
 const dimensions = {

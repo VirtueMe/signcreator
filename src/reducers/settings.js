@@ -1,7 +1,7 @@
 import { SET_TYPE, SET_BACKPLATE, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
-const initialState = { type: 1, backplate: 0, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
+const initialState = { type: 1, backplate: '0', top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
 
 export default function settings(state = initialState, action) {
   const {payload} = action;
@@ -16,7 +16,7 @@ export default function settings(state = initialState, action) {
     }
 
     case SET_BACKPLATE: {
-      if (payment.value !== state.backplate) {
+      if (payload.value !== state.backplate) {
         return update(state, { backplate: { $set: payload.value } });
       }
 

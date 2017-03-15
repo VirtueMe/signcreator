@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dropdown, Avatar } from 'react-toolbox';
+import { Dropdown } from 'react-toolbox';
 import landscape from '../images/landscape.png';
 import portrait from '../images/portrait.png';
 import heart from '../images/heart.png';
@@ -46,7 +46,7 @@ export default class SignDropdown extends Component {
 
     return (
       <div style={containerStyle}>
-        <img src={item.img} style={item.style} />
+        <img src={item.img} style={item.style} role='presentation' />
         <div style={contentStyle}>
           <strong>{item.name}</strong>
           <small>{item.description}</small>
@@ -56,7 +56,7 @@ export default class SignDropdown extends Component {
   }
 
   render () {
-    const { actions, label, texts, value } = this.props;
+    const { actions, texts, value } = this.props;
 
     const items = [
       { value: 0, name: texts.items['0'].title, description: texts.items['0'].description, img: landscape, style: imageStyle },

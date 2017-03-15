@@ -62,7 +62,8 @@ class Design extends Component {
 }
 
 Design.propTypes = {
-
+  text: PropTypes.shape({
+  })
 };
 
 Design.defaultProps = {

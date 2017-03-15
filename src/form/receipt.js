@@ -34,7 +34,17 @@ class Receipt extends Component {
 }
 
 Receipt.propTypes = {
-
+  texts: PropTypes.shape({
+    avatar: PropTypes.string,
+    header: PropTypes.string,
+    subheader: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    new: PropTypes.shape({
+      text: PropTypes.string
+    })
+  })
 };
 
 Receipt.defaultProps = {

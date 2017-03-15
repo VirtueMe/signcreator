@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
 
 import { themr } from 'react-css-themr';
 import { PREVIEW } from '../identifiers';
@@ -36,7 +35,7 @@ const factory = () => {
       const { theme, className, style } = this.props;
       const { image } = this.state;
 
-      const img = image ? <img src={image} /> : null;
+      const img = image ? <img src={image} role='presentation' /> : null;
 
       return (
         <div className={theme[className]} style={style}>{img}</div>

@@ -5,8 +5,9 @@ function luhn(number) {
 
   for (let digit of digits) {
     digit = parseInt(digit, 10);
+    flag = !flag;
 
-    if ((flag = !flag)) {
+    if (flag) {
       digit *= 2;
       if (digit > 9) {
         digit -= 9;

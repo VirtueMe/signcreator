@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+import { IconMenu, MenuItem } from 'react-toolbox';
 
 const AddLineMenu = (props) => {
   const { addTextLine, addEmojiLine, addDividerLine } = props.actions;

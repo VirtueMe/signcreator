@@ -11,13 +11,8 @@ import FontPicker from 'react-font-picker';
 
 import { Dialog, IconMenu, List, ListItem, MenuDivider, MenuItem } from 'react-toolbox';
 
-const listItems = (props) => {
-
-  return list;
-};
-
 const PositionMenu = (props) => {
-  const { index, length, texts, actions, deleteLine, children, items } = props;
+  const { index, length, texts, actions, deleteLine, children } = props;
   const { moveUp, moveDown } = actions || {};
   const { menu } = texts;
   const { action } = menu;

@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'react-redux';
-import reducers from './reducers';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
 import App from './App';
 import './index.css';
 
-const store = createStore(state);
+import 'material-design-icons/iconfont/material-icons.css';
+
+const store = createStore(reducer);
 
 render(
   <Provider store={store}>

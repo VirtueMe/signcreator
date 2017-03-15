@@ -1,4 +1,3 @@
-import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { classNameSelector, imageSelector } from '../selectors/image';

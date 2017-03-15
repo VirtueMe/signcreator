@@ -4,17 +4,13 @@ import * as Validator from '../utils/validators'
 
 const initialState = { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true };
 
-function creditcardValidator (state) {
-  return false;
-}
-
 function expiresValidator (state) {
   const date = new Date();
-  const year = parseInt(date.getFullYear().toString().substr(2,2));
+  const year = parseInt(date.getFullYear().toString().substr(2,2), 10);
   const month = date.getMonth() + 1;
 
-  const stateYear = parseInt(state.year);
-  const stateMonth = parseInt(state.month);
+  const stateYear = parseInt(state.year, 10);
+  const stateMonth = parseInt(state.month, 10);
 
   if (stateYear === year) {
     return stateMonth >= month;
@@ -84,4 +80,4 @@ export default function settings(state = initialState, action) {
     default:
       return state
   }
-}
+};

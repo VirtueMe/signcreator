@@ -1,4 +1,3 @@
-import React from 'react';
 import { themr } from 'react-css-themr';
 import { previewFactory } from './preview';
 import { PREVIEW } from '../identifiers';

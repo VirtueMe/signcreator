@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
-import { FontIcon } from 'react-toolbox';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash/flow';
 
@@ -63,10 +61,10 @@ function collectSource(connect, monitor) {
 
 class EmojiItem extends Component {
   render() {
-    const { isDragging, connectDragSource, connectDropTarget, className, theme } = this.props;
+    const { connectDragSource, connectDropTarget, className, theme } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <span className={theme.image}><img src={this.props.image} className={className}/></span>
+      <span className={theme.image}><img src={this.props.image} className={className} role='presentation' /></span>
     ));
   }
 }

@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
-import classnames from 'classnames';
-
 import { themr } from 'react-css-themr';
-import { Accordion, Chord} from 'react-toolbox-additions';
-import { Button, Dropdown, FontIcon, Input } from 'react-toolbox';
+import { Accordion, Chord } from 'react-toolbox-additions';
+import { FontIcon } from 'react-toolbox';
 
 import CreditcardForm from '../creditcardform';
 import { PAYMENTOPTIONS } from '../identifiers';

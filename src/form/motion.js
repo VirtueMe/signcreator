@@ -1,6 +1,5 @@
 import React from 'react'
 import { TransitionMotion, spring } from 'react-motion'
-import { Button } from 'react-toolbox';
 
 const stiffness = 170;
 const damping = 25;

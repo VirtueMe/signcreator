@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import classnames from 'classnames';
-
 import { themr } from 'react-css-themr';
 import { LINEINPUT } from '../identifiers';
 
@@ -9,9 +7,7 @@ import DropDownline from '../frames/linedropdown';
 
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { FontIcon, ListItem } from 'react-toolbox';
-
-import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+import { ListItem } from 'react-toolbox';
 
 const factory = (FontIcon) => {
   class LineInput extends Component {

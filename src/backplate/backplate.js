@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import classnames from 'classnames';
-
 import { themr } from 'react-css-themr';
 
 import { BACKPLATE } from '../identifiers';
@@ -30,7 +28,13 @@ const factory = () => {
   }
 
   BackPlate.propTypes = {
+    actions: PropTypes.shape({
 
+    }),
+    backplate: PropTypes.string,
+    texts: PropTypes.shape({
+
+    })
   };
 
   BackPlate.defaultProps = {

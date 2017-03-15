@@ -1,6 +1,3 @@
-
-'use strict';
-
 const font = 'Arial';
 const ppmm = 11.8;
 const dpi = 300;
@@ -10,32 +7,12 @@ const dividerGap = 24;
 const imageSpace = 10;
 
 function createFont(line) {
-  const font = (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
-
-  return font;
-}
-
-
-function createSpaceCalculator(context) {
-  var _context = context;
-
-  return function measureText(line) {
-    _context.font = createFont(line);
-
-    line.size = size;
-    line.height = line.text ? size : 0;
-    line.realHeight =  line.text ? Math.floor(size * (line.bold ? 1.5 : 1.4)) : 0;
-
-    line.width = _context.measureText(line.text).width;
-
-    return line;
-  };
+  return (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
 }
 
 function createTextTool(context, canvas) {
   const _canvas = canvas;
   let _context = context;
-
 
   return {
     fillText: function (line) {
@@ -173,7 +150,6 @@ export default function generator(dimensions) {
       center: center,
 
       getImage: function getImage() {
-        const divider = 2, multiplier = 1, mwidth = 0;
         const maxwidth = areaWidth - (padding * 2);
 
         const canvas = createCanvas();

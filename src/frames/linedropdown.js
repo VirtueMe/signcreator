@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown, Avatar} from 'react-toolbox';
+import { Dropdown } from 'react-toolbox';
 import image0 from '../images/dekor/bladbord.png';
 import image1 from '../images/dekor/blomst.png';
 import image2 from '../images/dekor/bord.png';
@@ -11,12 +11,6 @@ const horizontal = {
   height: '32px',
   width: '256px'
 };
-
-const vertical = {
-  height: horizontal.width,
-  width: horizontal.height
-};
-
 
 const imageStyle = {
   display: 'flex',
@@ -60,7 +54,7 @@ export class DropdownBase extends React.Component {
       flexDirection: 'row'
     };
 
-    const content = item.img ? <img key={item.value} src={item.img} style={item.style} /> : <span style={imageStyle}>{item.text}</span>;
+    const content = item.img ? <img key={item.value} src={item.img} style={item.style} role='presentation' /> : <span style={imageStyle}>{item.text}</span>;
 
     return (
       <div style={containerStyle}>
@@ -107,9 +101,6 @@ export class DropdownBase extends React.Component {
 }
 
 export class HorizontalDropdown extends DropdownBase {
-  constructor(props) {
-    super(props);
-  }
 }
 
 HorizontalDropdown.defaultProps = {

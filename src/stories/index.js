@@ -18,12 +18,15 @@ import PaymentOptions from './paymentoptionscontainer';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import icons from 'material-design-icons/iconfont/material-icons.css';
+
 import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
 import SquarePreview from '../preview/squarepreview';
 import HeartPreview from '../preview/heartpreview';
 import AnimationExample from './motion';
 import testdata from './testdata';
+
+
 
 let state = testdata;
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { themr } from 'react-css-themr';
 import { creditcardFormFactory } from './creditcardform';
 import { CREDITCARDFORM } from '../identifiers';

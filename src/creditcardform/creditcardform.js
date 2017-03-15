@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import classnames from 'classnames';
-
 import { themr } from 'react-css-themr';
 
 import { CREDITCARDFORM } from '../identifiers';

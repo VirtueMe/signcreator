@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 import { FontIcon, IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
 
@@ -36,7 +36,7 @@ function getImageBounds(addEmoji, image, index) {
 
 
 const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
-  <MenuItem icon={<img src={image} style={style} />} className={theme.menuemoji} onClick={() => getImageBounds(actions.addEmoji, image, index)} />
+  <MenuItem icon={<img src={image} style={style} alt='presentation' />} className={theme.menuemoji} onClick={() => getImageBounds(actions.addEmoji, image, index)} />
 );
 
 const zoom = {

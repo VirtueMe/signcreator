@@ -5,10 +5,9 @@ import { themr } from 'react-css-themr';
 import { IMAGESSELECTOR } from '../identifiers';
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { IconButton, FontIcon } from 'react-toolbox';
 import { ListItem } from 'react-toolbox';
 
-import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+import { MenuItem } from 'react-toolbox';
 
 import EmojiMenu from './emojiitems';
 import EmojiList from './emojilist';
@@ -68,7 +67,7 @@ const factory = (FontIcon) => {
     texts: {
       menu: {
         larger: 'Øk',
-        smaller: 'Mindre',  
+        smaller: 'Mindre',
         title: 'Velg'
       }
     }

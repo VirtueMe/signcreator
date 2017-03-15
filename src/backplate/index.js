@@ -1,4 +1,3 @@
-import React from 'react';
 import { themr } from 'react-css-themr';
 import { backPlateFactory } from './backplate';
 import { BACKPLATE } from '../identifiers';

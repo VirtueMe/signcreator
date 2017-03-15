@@ -1,17 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 
-import classnames from 'classnames';
-
 import { themr } from 'react-css-themr';
 import { TEXTINPUT } from '../identifiers';
 
-import { SketchPicker } from 'react-color';
-
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { Dialog, FontIcon, IconButton, Input, ListItem } from 'react-toolbox';
+import { Input, ListItem } from 'react-toolbox';
 
-import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+import { IconMenu, MenuItem } from 'react-toolbox';
 
 const factory = (FontIcon) => {
   class TextInput extends Component {
@@ -20,7 +16,7 @@ const factory = (FontIcon) => {
       const PositionMenu = this.props.menu;
       const { actions, bold, center, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
       const { menu } = texts;
-      const { format, action } = menu;
+      const { format } = menu;
 
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight' iconRipple={false} menuRipple={false}>
@@ -93,7 +89,6 @@ const factory = (FontIcon) => {
           bold: 'Fet',
           font: 'Endre font',
           italic: 'Kursiv',
-          center: 'Sentrer',
           color: 'Farge'
         }
       },
