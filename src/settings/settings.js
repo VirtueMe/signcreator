@@ -23,12 +23,21 @@ class Settings extends Component {
 Settings.defaultProps = {
   texts: {
     frames: {
-
+      title: 'Dekor',
+      noLineText: 'Ingen linje',
+      labelTop: 'Velg øvre linje',
+      labelLeft: 'Velg venstre linje',
+      labelRight: 'Velg høyre linje',
+      labelBottom: 'Velg nedre linje'
     },
     plate: {
-
+      title: 'Bakgrunn',
+      '0': 'Nei',
+      '4': 'Børstet aluminium',
+      '8': 'Hvit plast'
     },
     selector: {
+      title: 'Valg av skilt',
       label: 'Velg hvilket skilt du ønsker',
       items: {
         '0': {

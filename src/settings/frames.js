@@ -7,9 +7,9 @@ class Frames extends Component {
   render() {
     const { actions, borders, bottom, left, right, texts, top, type  } = this.props;
     const { flatt, standing } = borders;
-    
-    const [topItem, bottomItem] = type !== 4 ? [<DropDownline key='top' items={flatt} value={top} action={actions.setTop} texts={ { label: texts.labelTop, noLineText: texts.noLineText } } />, <DropDownline key='bottom' items={flatt} value={bottom} action={actions.setBottom} texts={ { label: texts.labelBottom, noLineText: texts.noLineText } } />] : [null, null];
 
+    const [topItem, bottomItem] = type !== 4 ? [<DropDownline key='top' items={flatt} value={top} action={actions.setTop} texts={ { label: texts.labelTop, noLineText: texts.noLineText } } />, <DropDownline key='bottom' items={flatt} value={bottom} action={actions.setBottom} texts={ { label: texts.labelBottom, noLineText: texts.noLineText } } />] : [null, null];
+    console.info(texts);
     return (
       <Card style={ { overflow: 'visible' } }>
         <CardTitle>

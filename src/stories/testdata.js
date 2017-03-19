@@ -22,8 +22,10 @@ const texts = {
     title: 'Kvittering',
     subtitle: 'Takk for din bestilling',
     description: 'Vi setter pris på at du har valgt å bli kunden vår. Skulle det være noe du lurer på med bestillingen, nøl ikke med å ta kontakt med kundeservice.',
-    new: {
-      text: 'Lag ditt neste skilt'
+    buttons: {
+      new: {
+        text: 'Lag ditt neste skilt'
+      }
     }
   },
   design: {
@@ -49,16 +51,13 @@ const texts = {
       },
       textline: {
         menu: {
-          format: {
-            increase: "Øk skrift",
-            decrease: 'Mink skrift',
-            center: 'Sentrer',
-            font: 'Font',
-            bold: 'Fet',
-            italic: 'Italic',
-            center: 'Sentrer',
-            color: 'Farge'
-          }
+          increase: "Øk skrift",
+          decrease: 'Mink skrift',
+          font: 'Font',
+          bold: 'Fet',
+          italic: 'Italic',
+          center: 'Sentrer',
+          color: 'Farge'
         },
         placeholder: 'Tekstlinje'
       },
@@ -155,7 +154,7 @@ const texts = {
         error: 'Poststed påkrevd'
       }
     },
-    paymentoptions: {
+    options: {
       title: 'Betalingsinformasjon',
       email: {
         title: 'Faktura',

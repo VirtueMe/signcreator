@@ -25,6 +25,8 @@ import SquarePreview from '../preview/squarepreview';
 import HeartPreview from '../preview/heartpreview';
 import AnimationExample from './motion';
 import testdata from './testdata';
+import StartContainer from '../start';
+import Loader from './loadercontainer';
 
 
 
@@ -35,6 +37,22 @@ storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <Welcome showApp={linkTo('EditList')}/>
   ));
+
+storiesOf('Start', module)
+    .add('Start', () => (
+      <StartContainer isFetching={true} />
+    ))
+    .add('Loader', () => {
+      const store = configureStore(state);
+
+      return (
+        <Provider store={store}>
+          <Loader>
+            <App />
+          </Loader>
+        </Provider>
+      );
+    });
 
 storiesOf('App', module)
   .add('show', () => {

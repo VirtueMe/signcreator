@@ -20,7 +20,7 @@ const factory = (FontIcon) => {
 
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
-          <EmojiList theme={theme} className={theme.inputElement} value={value} index={index} actions={actions} />
+          <EmojiList theme={theme} className={theme.inputElement} emptyClassName={theme.empty} value={value} index={index} actions={actions} text={texts.emptyText} />
           <FontIcon value='insert_photo' className={theme.icon} />
         </div>
       );
@@ -30,7 +30,7 @@ const factory = (FontIcon) => {
       if (PositionMenu) {
         menuActions.push(
           <PositionMenu key="1">
-            <MenuItem icon='clear' caption={'Tøm'} onClick={() => actions.clearEmojis(index)} />
+            <MenuItem icon='clear' caption={texts.empty} onClick={() => actions.clearEmojis(index)} />
           </PositionMenu>
         );
       }
@@ -65,6 +65,8 @@ const factory = (FontIcon) => {
 
   ImagesSelector.defaultProps = {
     texts: {
+      empty: 'Tøm',
+      emptyText: 'Velg emoji´s fra menyen',
       menu: {
         larger: 'Øk',
         smaller: 'Mindre',

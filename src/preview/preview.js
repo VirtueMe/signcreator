@@ -26,13 +26,14 @@ const factory = () => {
       const { image } = props;
       const self = this;
 
-      image.then(function(data) {
+      image.image.then(function(data) {
         self.setState({ image: data.image });
       });
     }
 
     render() {
-      const { theme, className, style } = this.props;
+      const { theme, style } = this.props;
+      const { className } = this.props.image;
       const { image } = this.state;
 
       const img = image ? <img src={image} role='presentation' /> : null;

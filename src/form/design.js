@@ -11,8 +11,6 @@ class Design extends Component {
   render() {
     const { actions, borders, image, imageClassName, items, settings, texts, toPayment } = this.props;
 
-    console.info(texts.settings);
-
     return (
       <Container fluid>
         <Row>
@@ -120,10 +118,10 @@ Design.defaultProps = {
     settings: {
       title: 'Lag ditt dørskilt på 1-2-3!',
       frames: {
-
+        title: ''
       },
       plate: {
-
+        title: ''
       },
       selector: {
         label: 'Velg hvilket skilt du ønsker',

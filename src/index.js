@@ -9,10 +9,11 @@ import './index.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
 const store = createStore(reducer);
+const root = document.getElementById('root');
 
 render(
   <Provider store={store}>
-    <App />
+    <App project={root.dataset.project} message={root.dataset.message} />
   </Provider>,
-  document.getElementById('root')
+  root
 );

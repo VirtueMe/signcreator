@@ -50,6 +50,14 @@
   width: var(--input-icon-size);
 }
 
+.empty {
+  color: var(--input-text-label-color);
+  font-size: var(--input-field-font-size);
+  line-height: var(--input-field-font-size);
+  position: absolute;
+  top: 32px;
+}
+
 .inputElement {
   background-color: var(--input-text-background-color);
   border-bottom: 1px solid var(--input-text-bottom-border-color);

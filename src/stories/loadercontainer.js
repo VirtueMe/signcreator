@@ -1,21 +1,22 @@
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { imageSelector } from '../selectors/image';
 import borderSelector from '../selectors/borders';
-import Form from '../form/index';
+
+import Loader from '../loader';
 import * as Actions from '../actions';
+
+
 
 function mapStateToProps(state) {
   return {
-    borders: borderSelector(state),
     image: imageSelector(state),
     items: state.items,
     settings: state.settings,
-    index: state.view.index,
-    sendstatus: state.sendstatus,
-    customer: state.customer,
-    payment: state.payment,
-    texts: state.texts
+    borders: borderSelector(state),
+    texts: state.texts.design,
+    fetch: state.fetch
   };
 }
 
@@ -28,4 +29,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Form);
+)(Loader);

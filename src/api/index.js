@@ -1,9 +1,10 @@
-const beta = process.env.NODE_ENV === 'development' ? 'beta' : '';
-const server = `https:/${beta}offers.sandviks.com`;
+// const beta = process.env.NODE_ENV === 'development' ? 'beta' : '';
+const beta = '';
+const server = `https:/${beta}offers.sandviks.com/service/api`;
 
 export function sendData(payload) {
   const { customer, image, items, payment, settings } = payload;
-  const url = server + '/service/api/orders';
+  const url = server + '/orders';
   var myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json; charset=utf-8');
@@ -47,13 +48,20 @@ export function sendData(payload) {
                           }
                         })
                       }]
-                    })                  
+                    })
                   })
                   .then(checkStatus)
                   .then(parseJSON);
               });
 }
 
+export function fetchTexts(project) {
+  const url = server + `/signs/texts/${project}`;
+
+  return fetch(url)
+           .then(checkStatus)
+           .then(parseJSON);
+}
 
 function checkStatus(response) {
   console.info('response: ', response);

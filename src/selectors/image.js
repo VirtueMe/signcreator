@@ -15,14 +15,13 @@ const settingsSelector = state => state.settings;
 
 const imageSelector = createSelector(
   [typeSelector, itemsSelector, settingsSelector],
-  (type, items, settings) => new Promise((resolve) => { const result = generators[type](items, settings).getImage(); resolve(result); })
+  (type, items, settings) => ({
+    image: new Promise((resolve) => { const result = generators[type](items, settings).getImage(); resolve(result); }),
+    className: classNames[type]
+  })
 );
 
 
 
-const classNameSelector = createSelector(
-  typeSelector,
-  type => classNames[type]
-);
 
-export { classNameSelector, imageSelector };
+export { imageSelector };

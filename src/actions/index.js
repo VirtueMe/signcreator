@@ -192,13 +192,17 @@ export function scaleUpEmoji(index) {
 }
 
 export function moveEmoji(id, atIndex, index) {
-  return { type: types.MOVE_EMOJI, payload:{id, atIndex, index} };
+  return { type: types.MOVE_EMOJI, payload: { id, atIndex, index } };
 }
 
 export function clearEmojis(index) {
-  return { type: types.CLEAR_EMOJIS, payload:{index} };
+  return { type: types.CLEAR_EMOJIS, payload: { index } };
 }
 
 export function sendOrder(settings, items, image, customer, payment) {
   return { type: types.SEND_ORDER, payload: { customer, image, items, payment, settings }};
+}
+
+export function fetchTexts(project) {
+  return { type: types.FETCH_TEXTS, payload: { project }};
 }

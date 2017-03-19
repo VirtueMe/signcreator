@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Form from './containers/form';
+import Loader from './loader';
 
 class App extends Component {
   render() {
+    const { message, project} = this.props;
+
     return (
-      <Form />
+      <Loader project={project} message={message}>
+        <Form />
+      </Loader>
     );
   }
 }
