@@ -98,7 +98,7 @@ const height = {
   },
 
   2: function(item) {
-    const items = item.value.map(src => (src.size.height));
+    const items = item.value.map(src => (src.img ? src.img.height : 50));
 
     return (Math.max(...items) * imageFactor * item.scale) + dividerGap;
   },
@@ -116,9 +116,9 @@ function createRGBAString(color) {
 
 
 function calculateImageBounds(item) {
-  const items = item.text.map(src => (src.size));
+  const items = item.text.map(src => (src.img));
 
-  return items.reduce((acc, item) => (acc + item.width), 0);
+  return items.reduce((acc, item) => (acc + (item ? item.width : 0)), 0);
 }
 
 export default function generator(dimensions) {
@@ -253,8 +253,6 @@ export default function generator(dimensions) {
 
             text.forEach(value => {
               const {image, size, img} = value;
-              console.info(img, scale);
-              console.info(image, x, posY, img.height * imageFactor * scale, img.width * imageFactor * scale);
 
               const theImage = {
                 src: image,
@@ -272,7 +270,7 @@ export default function generator(dimensions) {
                 console.info(e);
               }
 
-              x += ((size.width * imageFactor * scale) + (imageSpace * scale));
+              x += ((img.width * imageFactor * scale) + (imageSpace * scale));
             });
           },
 

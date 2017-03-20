@@ -13,11 +13,21 @@ const typeSelector = state => state.settings.type;
 const itemsSelector = state => state.items;
 const settingsSelector = state => state.settings;
 
+const classNameSelector = createSelector(
+  [typeSelector],
+  (type) => classNames[type]
+);
+
+const generatorSelector = createSelector(
+  [typeSelector],
+  (type) => generators[type]
+);
+
 const imageSelector = createSelector(
-  [typeSelector, itemsSelector, settingsSelector],
-  (type, items, settings) => ({
-    image: new Promise((resolve) => { const result = generators[type](items, settings).getImage(); resolve(result); }),
-    className: classNames[type]
+  [itemsSelector, settingsSelector, generatorSelector, classNameSelector],
+  (items, settings, generator, className) => ({
+    image: () => new Promise((resolve) => { const result = generator(items, settings).getImage(); resolve(result); }),
+    className: className
   })
 );
 

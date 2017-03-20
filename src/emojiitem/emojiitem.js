@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash/flow';
 
@@ -64,7 +65,7 @@ class EmojiItem extends Component {
     const { connectDragSource, connectDropTarget, className, theme } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <span className={theme.image}><img src={this.props.image} className={className} role='presentation' /></span>
+      <span className={theme.image}><img src={this.props.image} className={classnames(className, theme.menuimage)} role='presentation' /></span>
     ));
   }
 }

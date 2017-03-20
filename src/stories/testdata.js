@@ -1,7 +1,7 @@
-import woman from '../images/farger/mor-mellom2.png';
-import man from '../images/farger/far-mellom2.png';
-import boy from '../images/farger/gutt-mellom2.png';
-import girl from '../images/farger/jente-mellom2.png';
+import woman from '../images/farger/mor-mellom3.png';
+import man from '../images/farger/far-mellom3.png';
+import boy from '../images/farger/gutt-mellom3.png';
+import girl from '../images/farger/jente-mellom3.png';
 
 let img1 = document.createElement('img');
 let img2 = document.createElement('img');
@@ -203,10 +203,10 @@ const state = {
     {
       type: 2,
       value: [
-        { image: woman, id: 0, size: { height: 50, width: 19 }, img: img1 },
-        { image: man, id: 1, size: { height: 50, width: 18 }, img: img2 },
-        { image: boy, id: 3, size: { height: 50, width: 11 }, img: img4 },
-        { image: girl, id: 2, size: { height: 50, width: 14 }, img: img3 }
+        { image: woman, id: 0, img: img1 },
+        { image: man, id: 1, img: img2 },
+        { image: boy, id: 3, img: img4 },
+        { image: girl, id: 2, img: img3 }
       ],
       scale: 2
     }

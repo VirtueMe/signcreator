@@ -25,10 +25,27 @@ const factory = () => {
     loadImage(props) {
       const { image } = props;
       const self = this;
+      const date = new Date();
 
-      image.image.then(function(data) {
-        self.setState({ image: data.image });
-      });
+      if (this.timer) {
+        clearTimeout(this.timer);
+        delete this.timer;
+      }
+
+      console.info(date);
+
+      this.timer = setTimeout(function() {
+        if (self.timer) {
+          clearTimeout(self.timer);
+          delete self.timer;
+        }
+
+        image.image().then(function(data) {
+          console.info(date, ': ', new Date());
+          self.setState({ image: data.image });
+        });
+      }, 500);
+
     }
 
     render() {

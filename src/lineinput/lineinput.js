@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 
 import { themr } from 'react-css-themr';
 import { LINEINPUT } from '../identifiers';
@@ -16,18 +17,16 @@ const factory = (FontIcon) => {
       const PositionMenu = this.props.menu;
       const { actions, index, items, texts, theme, selected } = this.props;
 
-      console.info(this.props);
-
       const changeDividerLine = function(value, img=null) {
         actions.changeDividerLine(index, value, img);
       };
 
       const input = (
-        <div className={theme.inputcontainer}>
-          <FontIcon value="remove" className={theme.icon} />
+        <div data-react-toolbox="divideselector" className={ classnames(theme.inputcontainer, theme.withIcon) }>
           <div className={theme.full}>
             <DropDownline key='decor' value={selected} items={items} action={changeDividerLine} texts={ { label: texts.placeholder, noLineText: texts.noLineText } }  />
           </div>
+          <FontIcon value="remove" className={theme.icon} />
         </div>
       );
 
