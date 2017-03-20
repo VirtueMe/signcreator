@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { imageSelector } from '../selectors/image';
 import borderSelector from '../selectors/borders';
-import Form from '../form/index';
+import Form from '../form';
 import * as Actions from '../actions';
 
 function mapStateToProps(state) {
@@ -15,6 +15,7 @@ function mapStateToProps(state) {
     sendstatus: state.sendstatus,
     customer: state.customer,
     payment: state.payment,
+    fetch: state.fetch,
     texts: state.texts
   };
 }

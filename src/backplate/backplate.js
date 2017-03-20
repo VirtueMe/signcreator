@@ -15,13 +15,11 @@ const factory = () => {
     render() {
       const {actions, backplate, texts} = this.props;
 
-      console.info(texts);
-
       return (
         <RadioGroup name='comic' value={backplate} onChange={actions.setBackPlate}>
-          <RadioButton label={texts[NO_BACKPLATE]} value={NO_BACKPLATE}/>
+          <RadioButton label={texts[NO_BACKPLATE]} value={NO_BACKPLATE} />
           <RadioButton label={texts[WHITE_BACKPLATE]} value={WHITE_BACKPLATE} />
-          <RadioButton label={texts[ALUM_BACKPLATE]} value={ALUM_BACKPLATE}/>
+          <RadioButton label={texts[ALUM_BACKPLATE]} value={ALUM_BACKPLATE} />
         </RadioGroup>
       );
     }

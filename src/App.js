@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Loader from './containers/loader';
 import Form from './containers/form';
-import Loader from './loader';
 
 class App extends Component {
   render() {

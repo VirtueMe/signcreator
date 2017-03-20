@@ -17,8 +17,6 @@ const factory = (FontIcon) => {
       const { actions, bold, center, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
       const { menu } = texts;
 
-      console.info(menu);
-
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight' iconRipple={false} menuRipple={false}>
           <MenuItem icon='format_size' caption={menu.increase} key="0" onClick={() => actions.increaseFont(index)}>

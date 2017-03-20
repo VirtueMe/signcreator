@@ -42,7 +42,6 @@ export function sendData(payload) {
                                 }),
                                 scale: item.scale
                               };
-                              break;
                             default:
                               return item;
                           }
@@ -64,11 +63,10 @@ export function fetchTexts(project) {
 }
 
 function checkStatus(response) {
-  console.info('response: ', response);
-
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
+  
   const error = new Error(`HTTP Error ${response.statusText}`);
   error.status = response.statusText;
   error.response = response;

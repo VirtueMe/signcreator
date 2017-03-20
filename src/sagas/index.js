@@ -1,12 +1,8 @@
 import { FETCH_TEXTS, FETCH_TEXTS_FAILED, FETCH_TEXTS_IN_PROGRES, FETCH_TEXTS_SUCCESS, SEND_ORDER, SEND_ORDER_IN_PROGRESS, SEND_ORDER_FAILED, SEND_ORDER_SUCCESS } from '../constants/actiontypes';
 
-import { delay } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from '../api';
 
-export function* helloSaga() {
-  console.log('Hello Sagas!');
-}
 
 // Our worker Saga: will perform the async increment task
 export function* sendOrder(action) {
@@ -29,7 +25,6 @@ export function* fetchTexts(action) {
 
   try {
     const { signs } = yield call(api.fetchTexts, payload.project);
-    console.info(signs.texts);
 
     yield put({ type: FETCH_TEXTS_SUCCESS, payload: { texts: signs.texts } });
   }
@@ -49,7 +44,6 @@ export function* watchFetchTexts() {
 
 export default function* rootSaga() {
   yield [
-    helloSaga(),
     watchSendOrderAsync(),
     watchFetchTexts()
   ];

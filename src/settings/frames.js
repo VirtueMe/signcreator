@@ -9,7 +9,7 @@ class Frames extends Component {
     const { flatt, standing } = borders;
 
     const [topItem, bottomItem] = type !== 4 ? [<DropDownline key='top' items={flatt} value={top} action={actions.setTop} texts={ { label: texts.labelTop, noLineText: texts.noLineText } } />, <DropDownline key='bottom' items={flatt} value={bottom} action={actions.setBottom} texts={ { label: texts.labelBottom, noLineText: texts.noLineText } } />] : [null, null];
-    console.info(texts);
+
     return (
       <Card style={ { overflow: 'visible' } }>
         <CardTitle>

@@ -9,8 +9,6 @@ class Form extends Component {
   render() {
     const { actions, borders, customer, image, imageClassName, index, items, payment, sendstatus, settings, texts } = this.props;
 
-    console.info(payment);
-
     const view = [
       <Design key='design' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings} texts={texts.design}  />,
       <Payment key='payment' actions={actions} customer={customer} image={image} items={items} payment={payment} settings={settings} sendstatus={sendstatus} texts={texts.payment} />,

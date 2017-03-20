@@ -28,19 +28,19 @@ class Payment extends Component {
             <br />
             <Card>
               <CardTitle>
-                {texts.paymentoptions.title}
+                {texts.options.title}
               </CardTitle>
               <CardText>
-                <PaymentOptions payment={payment} actions={actions} texts={texts.paymentoptions} />
+                <PaymentOptions payment={payment} actions={actions} texts={texts.options} />
               </CardText>
               <CardActions>
               <Button
-                label={texts.paymentoptions.back.text}
+                label={texts.buttons.back.text}
                 onClick={ actions.showInput}
                 raised  />
 
                 <Button
-                  label={texts.paymentoptions.continue.text}
+                  label={texts.buttons.continue.text}
                   onClick={() => toReceipt ? toReceipt() : actions.sendOrder(settings, items, image, customer, payment)}
                   disabled={sendstatus.isSending || !(customer.valid && payment.valid)}
                   raised primary />
@@ -73,7 +73,7 @@ Payment.propTypes = {
     customer: PropTypes.shape({
       title: PropTypes.string
     }),
-    paymentoptions: PropTypes.shape({
+    options: PropTypes.shape({
       title: PropTypes.string,
       continue: PropTypes.shape({
         text: PropTypes.string
@@ -94,13 +94,15 @@ Payment.defaultProps = {
     customer: {
       title: 'Kunde informasjon'
     },
-    paymentoptions: {
+    options: {
       title: 'Betalingsinformasjon',
-      continue: {
-        text: 'Bestill'
-      },
-      back: {
-        text: 'Gå tilbake'
+      buttons: {
+        continue: {
+          text: 'Bestill'
+        },
+        back: {
+          text: 'Gå tilbake'
+        }
       }
     }
   }

@@ -3,16 +3,16 @@ import Start from '../start';
 
 class Loader extends Component {
   componentDidMount() {
-    const { actions } = this.props;
+    const { actions, project } = this.props;
 
-    actions.fetchTexts('NTN');
+    actions.fetchTexts(project);
   }
 
   render() {
-    const { children, fetch } = this.props;
+    const { children, fetch, message, project } = this.props;
 
     return (
-      <Start { ...fetch }>
+      <Start { ...fetch } message={message} project={project}>
         { children }
       </Start>
     );

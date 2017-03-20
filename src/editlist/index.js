@@ -4,7 +4,6 @@ import InputItem from '../textitem';
 import EmojiEdit from '../emojiitem';
 import LineInput from '../lineinput';
 import Menu from './menu';
-import {Cond, eq} from 'react-cond';
 import {SketchPicker} from 'react-color';
 import FontPicker from 'react-font-picker';
 
@@ -140,13 +139,22 @@ class EditList extends Component {
         </PositionMenu>
       );
 
-      return (
-        <Cond value={item.type}>
-          {[ eq(1), <InputItem key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.textline} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} /> ]}
-          {[ eq(2), <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.emojiline} /> ]}
-          {[ eq(3), <LineInput key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.dividerline} items={decoration} /> ]}
-        </Cond>
-      );
+      switch (item.type) {
+        case 1:
+          return (
+            <InputItem key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.textline} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} />
+          );
+        case 2:
+          return (
+            <EmojiEdit key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.emojiline} />
+          );
+        case 3:
+          return (
+            <LineInput key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.dividerline} items={decoration} />
+          );
+        default:
+          return null;
+      }
     });
 
     return (
@@ -154,7 +162,7 @@ class EditList extends Component {
         { colorPicker}
 
         <List ripple={false}>
-          <ListItem rightActions={[<Menu actions={actions} />]} ripple={false} />
+          <ListItem key='0' rightActions={[<Menu actions={actions} />]} />
           {list}
         </List>
 
