@@ -139,7 +139,7 @@ export function changeTextColor(index, color) {
 }
 
 export function addEmojiLine() {
-  return add( { type: 2, value: [] } );
+  return add( { type: 2, value: [], scale: 1 } );
 }
 
 export function addDividerLine() {

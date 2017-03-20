@@ -253,7 +253,7 @@ export default function generator(dimensions) {
 
             text.forEach(value => {
               const {image, size, img} = value;
-
+              console.info(img, scale);
               console.info(image, x, posY, img.height * imageFactor * scale, img.width * imageFactor * scale);
 
               const theImage = {
