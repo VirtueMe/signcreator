@@ -1,7 +1,7 @@
-import woman from '../images/farger/mor-mellom3.png';
-import man from '../images/farger/far-mellom3.png';
-import boy from '../images/farger/gutt-mellom3.png';
-import girl from '../images/farger/jente-mellom3.png';
+import woman from '../images/farger/mor-mellom4.png';
+import man from '../images/farger/far-mellom4.png';
+import boy from '../images/farger/gutt-mellom4.png';
+import girl from '../images/farger/jente-mellom4.png';
 
 let img1 = document.createElement('img');
 let img2 = document.createElement('img');
@@ -208,7 +208,7 @@ const state = {
         { image: boy, id: 3, img: img4 },
         { image: girl, id: 2, img: img3 }
       ],
-      scale: 2
+      scale: 1.2
     }
   ],
   settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },

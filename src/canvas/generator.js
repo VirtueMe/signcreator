@@ -5,6 +5,7 @@ const scaleFactor = dpi / 72;
 const imageFactor = 2;
 const dividerGap = 24;
 const imageSpace = 10;
+const lineDivider = 20;
 
 function createFont(line) {
   return (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
@@ -100,7 +101,7 @@ const height = {
   2: function(item) {
     const items = item.value.map(src => (src.img ? src.img.height : 50));
 
-    return (Math.max(...items) * imageFactor * item.scale) + dividerGap;
+    return (Math.max(...items) * item.scale) + dividerGap;
   },
 
   3: function (item) {
@@ -169,7 +170,7 @@ export default function generator(dimensions) {
           2: function(item) {
             const value = calculateImageBounds(item);
 
-            return (value * imageFactor * item.scale) + (item.text.length * imageSpace * item.scale) - (imageSpace * item.scale);
+            return (value * item.scale) + (item.text.length * imageSpace * item.scale) - (imageSpace * item.scale);
           },
 
           3: function(item) {
@@ -189,6 +190,7 @@ export default function generator(dimensions) {
 
           var calculateElements = function(start, item, ...rest) {
             const size = calculateHeight(item);
+
             const value = {
               type: item.type,
               size: size,
@@ -208,7 +210,7 @@ export default function generator(dimensions) {
             result.push(value);
 
             if (rest && rest.length > 0) {
-              calculateElements(start + size, ...rest);
+              calculateElements(start + size + lineDivider, ...rest);
             }
           };
 
@@ -219,7 +221,7 @@ export default function generator(dimensions) {
 
         const items = calculateItems(this.lines);
 
-        const totalheight = this.lines.reduce((sum, item) => (sum + calculateHeight(item) + (sum !== 0 ? 20 : 0)), 0);
+        const totalheight = this.lines.reduce((sum, item) => (sum + calculateHeight(item) + (sum !== 0 ? lineDivider : 0)), 0);
         const arr = items.map(item => item.width);
         const startOffset = Math.ceil((maxwidth - Math.max(...arr)) / 2);
         const y = ((maxAreaHeightFont - totalheight) / 2);
@@ -259,8 +261,8 @@ export default function generator(dimensions) {
                 img: img,
                 x: x,
                 y: posY,
-                height: img.height * imageFactor * scale,
-                width: img.width * imageFactor * scale
+                height: img.height * scale,
+                width: img.width  * scale
               };
               try {
 
@@ -270,7 +272,7 @@ export default function generator(dimensions) {
                 console.info(e);
               }
 
-              x += ((img.width * imageFactor * scale) + (imageSpace * scale));
+              x += ((img.width * scale) + (imageSpace * scale));
             });
           },
 
