@@ -18,6 +18,8 @@ import PaymentOptions from './paymentoptionscontainer';
 import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import icons from 'material-design-icons/iconfont/material-icons.css';
+import Template from '../template';
+import TemplateList from '../templatelist';
 
 import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
@@ -36,6 +38,14 @@ let state = testdata;
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <Welcome showApp={linkTo('EditList')}/>
+  ));
+
+storiesOf('Template', module)
+  .add('show', () => (
+    <Template />
+  ))
+  .add('list', () => (
+    <TemplateList />
   ));
 
 storiesOf('Start', module)
