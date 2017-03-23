@@ -1,11 +1,7 @@
 import { createSelector } from 'reselect'
 
-import landscapeGenerator from '../canvas/landscape';
-import portraitGenerator from '../canvas/portrait';
-import SquareGenerator from '../canvas/square';
-import heartGenerator from '../canvas/heart';
-
-const generators = [landscapeGenerator, portraitGenerator, SquareGenerator, heartGenerator];
+import { landscape, portrait, square, heart } from '../canvas';
+const generators = [landscape, portrait, square, heart];
 const classNames = ['landscape', 'portrait', 'square', 'heart'];
 
 
