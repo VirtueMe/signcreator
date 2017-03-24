@@ -1,4 +1,5 @@
 import generator from './generator';
+import scaleFactor from './scalefactor';
 
 const dimensions = {
   width: 100,
@@ -6,4 +7,8 @@ const dimensions = {
   padding: 10
 };
 
-export default generator(dimensions);
+const smallGenerator = generator(dimensions);
+
+export { smallGenerator }
+
+export default generator(Object.assign({}, dimensions, scaleFactor));

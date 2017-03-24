@@ -42,7 +42,7 @@ storiesOf('Welcome', module)
 
 storiesOf('Template', module)
   .add('show', () => (
-    <Template />
+    <Template theme={{}}/>
   ))
   .add('list', () => (
     <TemplateList />

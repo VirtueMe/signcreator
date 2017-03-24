@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import TemplateListHeader from './templatelistheader';
 import Template from '../template';
-import { imageSelector } from '../selectors/image';
+import { smallImageSelector } from '../selectors/image';
 
 import { themr } from 'react-css-themr';
 import { TEMPLATELIST } from '../identifiers';
@@ -131,7 +131,7 @@ const factory = () => {
       const self = this;
 
       const result = Promise.all(items.map((item) => (
-        imageSelector(item).image()
+        smallImageSelector(item).image()
       ))).then(images => {
         self.setState({ items: images });
       });

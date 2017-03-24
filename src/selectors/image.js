@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect'
 
-import { landscape, portrait, square, heart } from '../canvas';
+import { landscape, smallLandscape, portrait, smallPortrait, square, smallSquare, heart, smallHeart } from '../canvas';
 const generators = [landscape, portrait, square, heart];
+const smallGenerators = [smallLandscape, smallPortrait, smallSquare, smallHeart];
 const classNames = ['landscape', 'portrait', 'square', 'heart'];
 
 
@@ -19,15 +20,28 @@ const generatorSelector = createSelector(
   (type) => generators[type]
 );
 
+const smallGeneratorSelector = createSelector(
+  [typeSelector],
+  (type) => smallGenerators[type]
+);
+
+const generator = (items, settings, generator, className) => ({
+  image: () => new Promise((resolve) => { const result = generator(items, settings).getImage(); resolve(result); }),
+  className: className
+});
+
+
 const imageSelector = createSelector(
   [itemsSelector, settingsSelector, generatorSelector, classNameSelector],
-  (items, settings, generator, className) => ({
-    image: () => new Promise((resolve) => { const result = generator(items, settings).getImage(); resolve(result); }),
-    className: className
-  })
+  generator
+);
+
+const smallImageSelector = createSelector(
+  [itemsSelector, settingsSelector, smallGeneratorSelector, classNameSelector],
+  generator
 );
 
 
 
 
-export { imageSelector };
+export { imageSelector, smallImageSelector };

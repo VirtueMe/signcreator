@@ -1,7 +1,5 @@
 const font = 'Arial';
 const ppmm = 11.8;
-const dpi = 300;
-const scaleFactor = dpi / 72;
 const imageFactor = 2;
 const dividerGap = 24;
 const imageSpace = 10;
@@ -11,7 +9,7 @@ function createFont(line) {
   return (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
 }
 
-function createTextTool(context, canvas) {
+function createTextTool(context, canvas, scaleFactor) {
   const _canvas = canvas;
   let _context = context;
 
@@ -123,6 +121,8 @@ function calculateImageBounds(item) {
 }
 
 export default function generator(dimensions) {
+  const scaleFactor = dimensions.scaleFactor || 1;
+
   return function imagegenerator(lines, settings, center) {
 
     const areaWidth = Math.ceil(dimensions.width * ppmm);
@@ -136,12 +136,20 @@ export default function generator(dimensions) {
       return height[type](item);
     }
 
+    const scaleUp = function (value) {
+      if (scaleFactor === 1) {
+        return value;
+      }
+
+      return Math.ceil(value * scaleFactor)
+    };
+
 
     const createCanvas = function createCanvas() {
       let canvas = document.createElement('canvas');
 
-      canvas.width = Math.ceil(areaWidth * scaleFactor);
-      canvas.height = Math.ceil(areaheight * scaleFactor);
+      canvas.width = scaleUp(areaWidth);
+      canvas.height = scaleUp(areaheight);
 
       return canvas;
     };
@@ -157,10 +165,12 @@ export default function generator(dimensions) {
 
         let context = canvas.getContext('2d');
 
-        context.scale(scaleFactor, scaleFactor);
+        if (scaleFactor !== 1) {
+          context.scale(scaleFactor, scaleFactor);
+        }
 
         // var measureText = createSpaceCalculator(context);
-        const textTool = createTextTool(context, canvas);
+        const textTool = createTextTool(context, canvas, scaleFactor);
 
         const width = {
           1: function(item) {

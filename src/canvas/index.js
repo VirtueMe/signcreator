@@ -1,12 +1,16 @@
-import landscape from './landscape';
-import portrait from './portrait';
-import square from './square';
-import heart from './heart';
+import landscape, { smallGenerator as smallLandscape } from './landscape';
+import portrait, { smallGenerator as smallPortrait } from './portrait';
+import square, { smallGenerator as smallSquare } from './square';
+import heart, { smallGenerator as smallHeart } from './heart';
 
 
 export {
   landscape,
+  smallLandscape,
   portrait,
+  smallPortrait,
   square,
-  heart
+  smallSquare,
+  heart,
+  smallHeart
 };
