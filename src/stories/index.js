@@ -19,7 +19,7 @@ import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import icons from 'material-design-icons/iconfont/material-icons.css';
 import Template from '../template';
-import TemplateList from '../templatelist';
+import TemplateList from './templatecontainer';
 
 import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
@@ -44,9 +44,16 @@ storiesOf('Template', module)
   .add('show', () => (
     <Template theme={{}}/>
   ))
-  .add('list', () => (
-    <TemplateList />
-  ));
+  .add('list', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <TemplateList />
+      </Provider>
+    );
+  });
+
 
 storiesOf('Start', module)
     .add('Start', () => (

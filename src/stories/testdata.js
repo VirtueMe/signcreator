@@ -13,6 +13,85 @@ img2.src = man;
 img3.src = girl;
 img4.src = boy;
 
+const information = {
+  description: 'Start med blanke ark og lag ditt eget unike skilt.',
+  subtitle: 'Bedre plass til lange navn',
+  stylesubtitle: 'Et elegant skilt som vekker oppsikt',
+  styletitle: 'Monokrom',
+  title: 'Liggende skilt'
+};
+
+
+const imageData = [{
+  items: [
+    { type: 1, value: 'Velkommen', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
+    { type: 1, value: 'Familien Thomas', height: 10, center: true, italic: false, bold: true, font: 'Arial', color: { r: 144, g: 19, b: 254, a: 1} },
+    {
+      type: 2,
+      value: [
+        { image: woman, id: 0, img: img1 },
+        { image: man, id: 1, img: img2 },
+        { image: boy, id: 3, img: img4 },
+        { image: girl, id: 2, img: img3 }
+      ],
+      scale: 1.2
+    }
+  ],
+  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  information: information
+}, {
+  items: [
+    { type: 1, value: 'Velkommen', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 13, g: 150, b: 243, a: 1} },
+    { type: 1, value: 'Familien Thomas', height: 10, center: true, italic: false, bold: true, font: 'Arial', color: { r: 13, g: 150, b: 243, a: 1} },
+    {
+      type: 2,
+      value: [
+        { image: woman, id: 0, img: img1 },
+        { image: man, id: 1, img: img2 },
+        { image: boy, id: 3, img: img4 },
+        { image: girl, id: 2, img: img3 }
+      ],
+      scale: 1.2
+    }
+  ],
+  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 }
+}, {
+  items: [
+    { type: 1, value: 'Velkommen', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 76, g: 175, b: 80, a: 1} },
+    { type: 1, value: '', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 76, g: 175, b: 80, a: 1} },
+    { type: 1, value: 'Familien Jensen', height: 10, center: true, italic: false, bold: true, font: 'Arial', color: { r: 76, g: 175, b: 80, a: 1} },
+    {
+      type: 2,
+      value: [
+        { image: woman, id: 0, img: img1 },
+        { image: man, id: 1, img: img2 },
+        { image: boy, id: 3, img: img4 },
+        { image: girl, id: 2, img: img3 }
+      ],
+      scale: 1.2
+    }
+  ],
+  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  information: information
+}, {
+  items: [
+    { type: 1, value: 'Velkommen', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 255, g: 87, b: 34, a: 1} },
+    { type: 1, value: 'Familien Olsen', height: 10, center: true, italic: false, bold: true, font: 'Arial', color: { r: 255, g: 87, b: 34, a: 1} },
+    {
+      type: 2,
+      value: [
+        { image: woman, id: 0, img: img1 },
+        { image: man, id: 1, img: img2 },
+        { image: boy, id: 3, img: img4 },
+        { image: girl, id: 2, img: img3 }
+      ],
+      scale: 1.2
+    }
+  ],
+  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  information: information
+}];
+
 const texts = {
   receipt: {
     avatar: 'https://placeimg.com/80/80/animals',
@@ -26,6 +105,20 @@ const texts = {
       new: {
         text: 'Lag ditt neste skilt'
       }
+    }
+  },
+  templates: {
+    item: {
+      buttons: {
+        select: {
+          text: 'Velg mal'
+        }
+      }
+    },
+    header: {
+      description: 'Velg en av malene under for å lage ditt eget unike skilt, du kan etterpå redigere og endre det slik det passer deg best.',
+      subtitle: 'Noe for en hver smak...',
+      title: 'Lag ditt eget skilt på 1-2-3!'
     }
   },
   design: {
@@ -194,6 +287,9 @@ const texts = {
 
 const state = {
   view: { index: 0 },
+  templates: {
+    items: imageData.concat(imageData.map(item => (Object.assign({}, item, { settings: { type: 2 }}))), imageData.map(item => (Object.assign({}, item, { settings: { type: 1 }}))))
+  },
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
   items: [
