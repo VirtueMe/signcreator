@@ -5,7 +5,7 @@
 
 .landscape {
   max-width: 100%;
-  border: var(--image-border-width) solid var(--image-border-color);
+  border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
 
   & > img {
     width: 100%;
@@ -14,7 +14,7 @@
 
 .square {
   max-width: 100%;
-  border: var(--image-border-width) solid var(--image-border-color);
+  border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
 
   & > img {
     width: 100%;
@@ -23,7 +23,7 @@
 
 .portrait {
   max-width: 100%;
-  border: var(--image-border-width) solid var(--image-border-color);
+  border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
 
   & > img {
     width: 100%;
@@ -32,13 +32,13 @@
 
 .heart {
   max-width: 100%;
-  padding: 25%;
-  background-image: inline(../images/heart.png);
+  padding: 15%;
+  background-image: inline(../images/heart-preview.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 
   & > img {
     width: 100%;
-    border: 1px dashed lightblue;
+    border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
   }
 }

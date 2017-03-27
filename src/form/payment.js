@@ -36,7 +36,7 @@ class Payment extends Component {
               <CardActions>
               <Button
                 label={texts.buttons.back.text}
-                onClick={ actions.showInput}
+                onClick={ actions.showStart}
                 raised  />
 
                 <Button

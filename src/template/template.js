@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 import { Button, Card, CardActions, CardMedia, CardText, CardTitle } from 'react-toolbox';
-import blank from '../images/blank.png';
-import { imageSelector } from '../selectors/image';
+import { smallImageSelector } from '../selectors/image';
 
 
 class Template extends Component {
+  state = {
+    image: null,
+    className: 'img'
+  };
+
+  componentDidMount() {
+    const { image, item } = this.props;
+
+    if (image) {
+      this.setState({ image: image });
+    }
+    else {
+      const result = smallImageSelector(item);
+
+      result
+        .image()
+        .then((smallImage) => {
+          this.setState({ ...smallImage, className: result.className });
+        });
+    }
+  }
+
   render() {
-    const { description, image, stylesubtitle, styletitle, subtitle, texts, theme, title } = this.props;
+    const { actions, description, item, stylesubtitle, styletitle, subtitle, texts, theme, title } = this.props;
+    const { image, className } = this.state;
 
     return (
       <Card>
@@ -16,7 +38,7 @@ class Template extends Component {
         />
         <CardMedia aspectRatio='wide'>
           <div className={theme.imgholder}>
-            <img src={image} role="presentation" className={theme.img} />
+            <img src={image} role="presentation" className={theme[className]} />
           </div>
         </CardMedia>
         <CardTitle
@@ -25,7 +47,7 @@ class Template extends Component {
         />
         <CardText>{description}</CardText>
         <CardActions>
-          <Button label={texts.buttons.select.text} raised primary />
+          <Button label={texts.buttons.select.text} onClick={() => actions.showDesign(item)} raised primary />
         </CardActions>
       </Card>
     );
@@ -33,9 +55,12 @@ class Template extends Component {
 }
 
 Template.defaultProps = {
+  actions: {
+
+  },
   imageData: null,
   description: 'Template description',
-  image: blank,
+  image: null,
   stylesubtitle: 'Style sub title',
   styletitle: 'Style name',
   subtitle: 'Template subtitle',

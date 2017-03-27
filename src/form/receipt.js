@@ -25,7 +25,7 @@ class Receipt extends Component {
         <CardActions>
           <Button
             label={texts.new.text}
-            onClick={showDesign || actions.showInput}
+            onClick={showDesign || actions.showStart}
             raised primary />
         </CardActions>
       </Card>

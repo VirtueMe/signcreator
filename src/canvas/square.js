@@ -2,8 +2,8 @@ import generator from './generator';
 import scaleFactor from './scalefactor';
 
 const dimensions = {
-  width: 100,
-  height: 100,
+  width: 140,
+  height: 140,
   padding: 10
 };
 

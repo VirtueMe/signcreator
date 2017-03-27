@@ -1,7 +1,7 @@
-import { SET_TYPE, SET_BACKPLATE, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
+import { SET_VIEW_INDEX, SET_TYPE, SET_BACKPLATE, SET_PADDING, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
-const initialState = { type: 0, backplate: '0', top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
+const initialState = { type: 0, backplate: '0', padding: 10, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
 
 export default function settings(state = initialState, action) {
   const {payload} = action;
@@ -10,6 +10,22 @@ export default function settings(state = initialState, action) {
     case SET_TYPE: {
       if (payload.value !== state.type) {
         return update(state, { type: { $set: payload.value } });
+      }
+
+      return state;
+    }
+
+    case SET_PADDING: {
+      if (payload.value !== state.padding) {
+        return update(state, { padding: { $set: parseInt(payload.value) } });
+      }
+
+      return state;
+    }
+
+    case SET_VIEW_INDEX: {
+      if (payload.settings) {
+        return Object.assign({}, payload.settings);
       }
 
       return state;

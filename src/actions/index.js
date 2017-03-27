@@ -5,19 +5,24 @@ const scaleStep = 0.1;
 /*
  * Form navigation
  */
-function showView(value) {
-  return { type: types.SET_VIEW_INDEX, payload:{value} };
+function showView(value, item) {
+  return { type: types.SET_VIEW_INDEX, payload:{value, ...item} };
 }
-export function showInput() {
+
+export function showStart() {
   return showView(0);
 }
 
+export function showDesign(item) {
+  return showView(1, item);
+}
+
 export function showPayment() {
-  return showView(1);
+  return showView(2);
 }
 
 export function showReceipt() {
-  return showView(2);
+  return showView(3);
 }
 
 /*
@@ -75,6 +80,10 @@ export function setType(value) {
 
 export function setBackPlate(value) {
   return { type: types.SET_BACKPLATE, payload:{value} };
+}
+
+export function setPadding(value) {
+  return { type: types.SET_PADDING, payload:{value} };
 }
 
 export function setTop(top, img) {

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import Selector from './type';
+
 import Backplate from './backplate';
 import Frames from './frames';
+import Padding from './padding';
+import Selector from './type';
 
 class Settings extends Component {
   render() {
     const { actions, borders, settings, texts } = this.props;
-    const { type, backplate } = settings;
+    const { type, backplate, padding } = settings;
 
     return (
       <div>
         <Selector value={type} actions={actions} texts={texts.selector} />
         <br />
         <Backplate backplate={backplate} actions={actions} texts={texts.plate} />
+        <br />
+        <Padding padding={padding} actions={actions} texts={texts.padding} />
         <br />
         <Frames actions={actions} borders={borders} {...settings} texts={texts.frames} />
       </div>
@@ -23,12 +27,17 @@ class Settings extends Component {
 Settings.defaultProps = {
   texts: {
     frames: {
-      title: 'Dekor',
+      title: 'Border',
       noLineText: 'Ingen linje',
       labelTop: 'Velg øvre linje',
       labelLeft: 'Velg venstre linje',
       labelRight: 'Velg høyre linje',
       labelBottom: 'Velg nedre linje'
+    },
+    padding: {
+      title: 'Linjeavstand',
+      placeholder: 'Linjeavstand',
+      hint: 'Avstand mellom linjene'
     },
     plate: {
       title: 'Bakgrunn',

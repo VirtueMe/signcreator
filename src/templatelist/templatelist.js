@@ -20,9 +20,9 @@ const blank = {
 
 
 const factory = () => {
-  const TemplateCol = ({data, image, texts, theme}) => (
+  const TemplateCol = ({actions, data, image, item, texts, theme}) => (
     <Col xs={12} md={4} xl={3} style={ { padding: '15px' } }>
-      <Template image={image} texts={texts} theme={theme} {...data} />
+      <Template actions={actions} item={item} image={image} texts={texts} theme={theme} {...data} />
     </Col>
   );
 
@@ -31,23 +31,12 @@ const factory = () => {
       items: []
     };
 
-    componentDidMount() {
-      const { items } = this.props;
-      const self = this;
-
-      const result = Promise.all(items.map((item) => (
-        smallImageSelector(item).image()
-      ))).then(images => {
-        self.setState({ items: images });
-      });
-    }
-
     render() {
-      const { texts, theme } = this.props;
-      const { items } = this.state;
+      const { actions, templates, texts, theme } = this.props;
+      const { items } = templates;
 
       const list = items.map((item, index) => (
-        <TemplateCol key={index} image={item.image} texts={texts.item} theme={theme} />
+        <TemplateCol actions={actions} key={index} item={item} texts={texts.item} theme={theme} />
       ));
 
       return (
@@ -58,7 +47,7 @@ const factory = () => {
             </Col>
           </Row>
           <Row>
-            <TemplateCol data={blank} image={Blank} texts={texts.item} theme={theme} />
+            <TemplateCol actions={actions} data={blank} image={Blank} texts={texts.item} theme={theme} />
           </Row>
           <Row>
             {list}

@@ -16,6 +16,7 @@ function mapStateToProps(state) {
     customer: state.customer,
     payment: state.payment,
     fetch: state.fetch,
+    templates: state.templates,
     texts: state.texts
   };
 }

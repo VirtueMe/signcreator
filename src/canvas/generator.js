@@ -3,7 +3,6 @@ const ppmm = 11.8;
 const imageFactor = 2;
 const dividerGap = 24;
 const imageSpace = 10;
-const lineDivider = 20;
 
 function createFont(line) {
   return (line.italic ? 'italic ' : '') + (line.bold ? 'bold ' : '') + (line.size || 12) + 'px ' + (line.font || font);
@@ -129,6 +128,7 @@ export default function generator(dimensions) {
     const areaheight = Math.ceil(dimensions.height * ppmm);
     const padding = Math.ceil(dimensions.padding * ppmm);
     const maxAreaHeightFont = areaheight - (padding * 2);
+    const lineDivider = settings.padding;
 
     const calculateHeight = function calculateHeight(item) {
       const type = item.type || 1;
@@ -274,8 +274,7 @@ export default function generator(dimensions) {
                 height: img.height * scale,
                 width: img.width  * scale
               };
-              try {
-
+              try {                
                 textTool.drawImage(theImage);
               }
               catch(e) {

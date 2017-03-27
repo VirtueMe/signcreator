@@ -37,7 +37,7 @@ const imageData = [{
       scale: 1.2
     }
   ],
-  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  settings: { project: 'NTN', type: 0, padding: 30, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
   information: information
 }, {
   items: [
@@ -54,7 +54,7 @@ const imageData = [{
       scale: 1.2
     }
   ],
-  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 }
+  settings: { project: 'NTN', type: 0, backplate: '0', padding: 30, top: 0, left: 0, right: 0, bottom: 0 }
 }, {
   items: [
     { type: 1, value: 'Velkommen', height: 10, center: true, italic: false, bold: false, font: 'Arial', color: { r: 76, g: 175, b: 80, a: 1} },
@@ -71,7 +71,7 @@ const imageData = [{
       scale: 1.2
     }
   ],
-  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  settings: { project: 'NTN', type: 0, backplate: '0', padding: 30, top: 0, left: 0, right: 0, bottom: 0 },
   information: information
 }, {
   items: [
@@ -88,7 +88,7 @@ const imageData = [{
       scale: 1.2
     }
   ],
-  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  settings: { project: 'NTN', type: 0, backplate: '0', padding: 30, top: 0, left: 0, right: 0, bottom: 0 },
   information: information
 }];
 
@@ -122,6 +122,11 @@ const texts = {
     }
   },
   design: {
+    buttons: {
+      back: {
+        text: 'Endre mal'
+      }
+    },
     editlist: {
       title: 'Tekst på skilt',
       menu: {
@@ -182,7 +187,7 @@ const texts = {
     settings: {
       title: 'Lag ditt dørskilt på 1-2-3!',
       frames: {
-        title: 'Dekor',
+        title: 'Border',
         noLineText: 'Ingen linje',
         labelTop: 'Velg øvre linje',
         labelLeft: 'Velg venstre linje',
@@ -288,7 +293,11 @@ const texts = {
 const state = {
   view: { index: 0 },
   templates: {
-    items: imageData.concat(imageData.map(item => (Object.assign({}, item, { settings: { type: 2 }}))), imageData.map(item => (Object.assign({}, item, { settings: { type: 1 }}))))
+    items: imageData.concat(
+      imageData.map(item => (Object.assign({}, item, { settings: Object.assign({}, item.settings, { type: 1 }) }))),
+      imageData.map(item => (Object.assign({}, item, { settings: Object.assign({}, item.settings, { type: 2 }) }))),
+      imageData.map(item => (Object.assign({}, item, { settings: Object.assign({}, item.settings, { type: 3 }) })))
+    )
   },
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
@@ -307,7 +316,7 @@ const state = {
       scale: 1.2
     }
   ],
-  settings: { project: 'NTN', type: 0, backplate: '0', top: 0, left: 0, right: 0, bottom: 0 },
+  settings: { project: 'NTN', type: 0, backplate: '0', padding: 20, top: 0, left: 0, right: 0, bottom: 0 },
   texts: texts
 };
 

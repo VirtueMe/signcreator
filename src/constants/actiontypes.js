@@ -33,6 +33,7 @@ export const TOGGLE_ITALIC = 'TOGGLE_ITALIC';
 /* Settings */
 export const SET_TYPE = 'SET_TYPE';
 export const SET_BACKPLATE = 'SET_BACKPLATE';
+export const SET_PADDING = 'SET_PADDING';
 export const ADD_TOPLINE = 'ADD_TOPLINE';
 export const ADD_LEFTLINE = 'ADD_LEFTLINE';
 export const ADD_RIGHTLINE = 'ADD_RIGHTLINE';

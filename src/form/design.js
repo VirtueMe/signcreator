@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-grid-system';
 
 import EditList from '../editlist';
 import Preview from '../preview';
-import Settings from '../settings';
+import Settings, { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
 
 class Design extends Component {
@@ -14,19 +14,21 @@ class Design extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col lg={4} md={6} xs={12}>
-            <br />
+          <Col xs={12}>
             <Card style={ { overflow: 'visible' } }>
               <CardTitle>
                 {texts.settings.title}
               </CardTitle>
-              <CardText>
-                <Settings actions={actions} borders={borders} settings={settings} texts={texts.settings} />
-              </CardText>
+              <CardActions>
+                <Button icon='arrow_back' label={texts.buttons.back.text} onClick={actions.showStart} raised  />
+              </CardActions>
             </Card>
-            <br />
           </Col>
+        </Row>
+        <Row>
           <Col lg={4} md={6} xs={12}>
+            <br />
+            <SignSelectorCard actions={actions} value={settings.type} texts={texts.settings.selector} />
             <br />
             <Card style={ { overflow: 'visible' } }>
               <CardTitle>
@@ -36,7 +38,14 @@ class Design extends Component {
                 <EditList items={items} decoration={borders.decoration} texts={texts.editlist} actions={actions} />
               </CardText>
             </Card>
+          </Col>
+          <Col lg={4} md={6} xs={12}>
             <br />
+            <Padding actions={actions} padding={settings.padding} texts={texts.settings.padding} />
+            <br />
+            <Frames actions={actions} borders={borders} {...settings} texts={texts.settings.frames} />
+            <br />
+            <BackplateCard backplate={settings.backplate} actions={actions} texts={texts.settings.plate} />
           </Col>
           <Col lg={4} md={6} xs={12}>
             <br />

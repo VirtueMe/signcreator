@@ -1,4 +1,4 @@
-import { ADD_LINE, ADD_EMOJI, CHANGE_DIVIDER, CHANGE_FONT, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE, SCALE_EMOJI, TOGGLE_CENTER, TOGGLE_BOLD, TOGGLE_ITALIC } from '../constants/actiontypes';
+import { ADD_LINE, ADD_EMOJI, CHANGE_DIVIDER, CHANGE_FONT, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE, SCALE_EMOJI, SET_VIEW_INDEX, TOGGLE_CENTER, TOGGLE_BOLD, TOGGLE_ITALIC } from '../constants/actiontypes';
 import update from 'immutability-helper';
 
 const initialState = [
@@ -24,6 +24,14 @@ export default function emojis(state = initialState, action) {
       };
 
       return update(state, updateData);
+    }
+
+    case SET_VIEW_INDEX: {
+      if (payload.items) {
+        return [...payload.items];
+      }
+
+      return state;
     }
 
     case CHANGE_DIVIDER: {

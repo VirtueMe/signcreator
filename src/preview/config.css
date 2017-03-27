@@ -20,6 +20,7 @@
   --input-icon-right-space: calc(2 * var(--unit));
   --input-chevron-offset: calc(0.8 * var(--unit));
   --input-hint-opacity: 1;
-  --image-border-color: var(--color-black);
-  --image-border-width: 4px;
+  --image-border-color: var(--color-lightblue);
+  --image-border-layout: dashed;
+  --image-border-width: 1px;
 }

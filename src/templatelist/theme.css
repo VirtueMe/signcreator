@@ -17,10 +17,18 @@
   width: 100%;
 }
 
-.img {
-  height: 100%;
-  width: auto;
-  margin: 0 auto;
+.heart {
+  @apply --img;
+  background-image: inline(../images/heart-preview.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 15%;
+  padding-bottom: 15%;
+}
+
+.img, .portrait, .landscape, .square {
+  @apply --img;
+
   border: gray 1px dotted;
-  text-align: center;
 }

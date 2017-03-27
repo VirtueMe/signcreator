@@ -1,10 +1,9 @@
-// const beta = process.env.NODE_ENV === 'development' ? 'beta' : '';
-const beta = '';
-const server = `https:/${beta}offers.sandviks.com/service/api`;
+const server = process.env.NODE_ENV === 'development' ? 'https://betaoffers.sandviks.com' : '';
+const apiroot = `${server}/service/api`;
 
 export function sendData(payload) {
   const { customer, image, items, payment, settings } = payload;
-  const url = server + '/orders';
+  const url = apiroot + '/orders';
   var myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json; charset=utf-8');
@@ -66,7 +65,7 @@ function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
-  
+
   const error = new Error(`HTTP Error ${response.statusText}`);
   error.status = response.statusText;
   error.response = response;

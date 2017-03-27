@@ -272,6 +272,7 @@
   --palette-blue-grey-800: rgb(55, 71, 79);
   --palette-blue-grey-900: rgb(38, 50, 56);
 
+  --color-lightblue: lightblue;
   --color-black: rgb(0, 0, 0);
   --color-white: rgb(255, 255, 255);
   --color-dark-contrast: var(--color-white);
