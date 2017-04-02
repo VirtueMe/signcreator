@@ -1,6 +1,12 @@
 /* form navigation */
 export const SET_VIEW_INDEX = 'SET_VIEW_INDEX';
 
+/* Template management */
+export const SET_TEMPLATES = 'SET_TEMPLATES';
+export const FETCH_TEMPLATES_FAILED = 'FETCH_TEMPLATES_FAILED';
+export const FETCH_TEMPLATES_IN_PROGRES = 'FETCH_TEMPLATES_IN_PROGRES';
+export const FETCH_TEMPLATES_SUCCESS = 'FETCH_TEMPLATES_SUCCESS';
+
 /* Text management */
 export const SET_TEXTS = 'SET_TEXTS';
 

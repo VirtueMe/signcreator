@@ -26,6 +26,13 @@ export function showReceipt() {
 }
 
 /*
+ * templates
+ */
+export function setTemplates(value) {
+  return { type: types.SET_TEMPLATES, value };
+}
+
+/*
  * customer
  */
 export function changeEmail(value) {

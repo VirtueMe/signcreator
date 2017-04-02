@@ -44,7 +44,7 @@ import s_sjf from '../images/standard/jente-stor-farge4.png';
 import s_sj from '../images/standard/jente-stor4.png';
 
 
-const map2emoji = {
+const imagemapper = {
   f_fb,
   f_fme,
   f_fmo,
@@ -84,4 +84,6 @@ const map2emoji = {
   s_sj
 };
 
-export { map2emoji };
+export default imagemapper;
+
+export { imagemapper };

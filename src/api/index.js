@@ -54,7 +54,7 @@ export function sendData(payload) {
 }
 
 export function fetchTexts(project) {
-  const url = server + `/signs/texts/${project}`;
+  const url = apiroot + `/signs/texts/${project}`;
 
   return fetch(url)
            .then(checkStatus)
