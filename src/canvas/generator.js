@@ -264,8 +264,7 @@ export default function generator(dimensions) {
 
 
             text.forEach(value => {
-              const {image, size, img} = value;
-
+              const {image, img} = value;
               const theImage = {
                 src: image,
                 img: img,
@@ -274,7 +273,7 @@ export default function generator(dimensions) {
                 height: img.height * scale,
                 width: img.width  * scale
               };
-              try {                
+              try {
                 textTool.drawImage(theImage);
               }
               catch(e) {

@@ -35,8 +35,6 @@ export function* fetchTexts(action) {
 }
 
 export function* fetchTemplates(action) {
-  const { payload } = action;
-
   yield put({ type: FETCH_TEMPLATES_IN_PROGRES });
 
   try {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Loader from './containers/loader';
 import Form from './containers/form';
 
+import './App.css';
+
 class App extends Component {
   render() {
     const { message, project} = this.props;

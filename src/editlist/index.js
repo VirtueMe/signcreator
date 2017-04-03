@@ -117,7 +117,7 @@ class EditList extends Component {
   }
 
   render() {
-    const { items, actions, decoration, texts } = this.props;
+    const { actions, decoration, fonts, items, texts } = this.props;
 
     const colorPicker = this.state.show_color ? this.createColorPicker() : null;
 
@@ -185,6 +185,7 @@ class EditList extends Component {
           >
           <FontPicker
             label={texts.dialogs.font.placeholder}
+            fonts={fonts}
             value={this.state.font}
             onChange={this.fontChanged}
             />
@@ -196,6 +197,29 @@ class EditList extends Component {
 
 EditList.defaultProps = {
   items: [],
+
+  fonts: [
+    'Alegreya Sans',
+    'Arial',
+    'Arial Narrow',
+		'Arial Black',
+		'Courier New',
+    'Cabin Condensed',
+    'Copse',
+    'Fredoka One',
+    'Gentium Book Basic',
+    'Georgia',
+    'Lobster',
+    'Lucida Console',
+		'Lucida Sans Unicode',
+    'Neucha',
+    'Playball',
+    'Playfair Display SC',
+    'Shadows Into Light Two',
+    'Tahoma',
+		'Times New Roman',
+		'Verdana'
+  ],
 
   actions: {},
 

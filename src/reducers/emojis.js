@@ -37,6 +37,8 @@ export default function emojis(state = initialState, action) {
     case CHANGE_DIVIDER: {
       let updateData = {};
 
+      console.info('selected: ', payload.value);
+
       updateData[payload.index] = {
         value: { $set: payload.image },
         selected: { $set: payload.value }

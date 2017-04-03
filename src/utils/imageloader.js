@@ -1,9 +1,15 @@
 import React from 'react';
 import  { imagemapper, linemapper } from './mappers';
 
+function load(img, src) {
+  img.src = src;
+
+  return img;
+}
+
 function map(mapper, name) {
-  const image = imagemapper[name];
-  const img = image ? <img src={image} role='presentation' /> : null;
+  const image = mapper[name];
+  const img = image ? load(document.createElement('img'), image) : null;
 
   return { image, img };
 }

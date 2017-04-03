@@ -21,6 +21,8 @@ const factory = (FontIcon) => {
         actions.changeDividerLine(index, value, img);
       };
 
+      console.info('line: ', selected, items);
+
       const input = (
         <div data-react-toolbox="divideselector" className={ classnames(theme.inputcontainer, theme.withIcon) }>
           <div className={theme.full}>
