@@ -1,5 +1,4 @@
-const server = process.env.NODE_ENV === 'development' ? 'https://offers.sandviks.com' : '';
-const apiroot = `${server}/service/api`;
+const apiroot = '/service/api';
 
 export function sendData(payload) {
   const { customer, image, items, payment, settings } = payload;

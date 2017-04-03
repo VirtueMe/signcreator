@@ -38,7 +38,7 @@ class Template extends Component {
         />
         <CardMedia aspectRatio='wide'>
           <div className={theme.imgholder}>
-            <img src={image} role="presentation" className={theme[className]} />
+            <img src={image} role="presentation" className={theme[(item && item.className) || className]} />
           </div>
         </CardMedia>
         <CardTitle

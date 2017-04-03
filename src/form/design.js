@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-grid-system';
 
 import EditList from '../editlist';
 import Preview from '../preview';
-import Settings, { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
+import { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
 
 class Design extends Component {

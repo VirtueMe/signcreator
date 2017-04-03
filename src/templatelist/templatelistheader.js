@@ -3,7 +3,7 @@ import { Card, CardText, CardTitle } from 'react-toolbox';
 
 class TemplateListHeader extends Component {
   render() {
-    const { description, subtitle, texts, title } = this.props;
+    const { description, subtitle, title } = this.props;
 
     return (
       <Card>

@@ -2,27 +2,22 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import TemplateListHeader from './templatelistheader';
 import Template from '../template';
-import { smallImageSelector } from '../selectors/image';
+import * as defaults from '../defaults';
 
 import { themr } from 'react-css-themr';
 import { TEMPLATELIST } from '../identifiers';
 
-import Blank from '../images/blank.png';
-
-
 const blank = {
   description: 'Start med blanke ark og lag ditt eget unike skilt.',
-  subtitle: 'Bedre plass til lange navn',
   stylesubtitle: 'For full kontroll',
   styletitle: 'Blankt skilt',
-  title: 'Liggende skilt'
 };
 
 
 const factory = () => {
-  const TemplateCol = ({actions, data, image, item, texts, theme}) => (
+  const TemplateCol = ({actions, data, item, texts, theme}) => (
     <Col xs={12} md={4} xl={3} style={ { padding: '15px' } }>
-      <Template actions={actions} item={item} image={image} texts={texts} theme={theme} {...data} />
+      <Template actions={actions} item={item} texts={texts} theme={theme} {...data} />
     </Col>
   );
 
@@ -32,12 +27,34 @@ const factory = () => {
     };
 
     render() {
-      const { actions, templates, texts, theme } = this.props;
-      const { items } = templates;
+      const { actions, items, templates, texts, theme } = this.props;
+      const { items: templateList } = templates;
 
-      const list = items.map((item, index) => (
-        <TemplateCol actions={actions} key={index} item={item} texts={texts.item} theme={theme} />
-      ));
+      const empties = [0, 1, 2, 3].map(type => {
+        const info = items[type];
+
+        const data = {
+          subtitle: info && info.description,
+          title: info && info.title,
+        };
+
+        return (
+          <TemplateCol actions={actions} item={defaults.items[type]} data={Object.assign({}, blank, data)} texts={texts.item} theme={theme} />
+        );
+      });
+
+      const list = templateList.map((item, index) => {
+        const info = items[item.settings.type];
+
+        const data = {
+          subtitle: info && info.description,
+          title: info && info.title,
+        };
+
+        return (
+          <TemplateCol actions={actions} key={index} data={data} item={item} texts={texts.item} theme={theme} />
+        );
+      });
 
       return (
         <Container fluid>
@@ -47,7 +64,7 @@ const factory = () => {
             </Col>
           </Row>
           <Row>
-            <TemplateCol actions={actions} data={blank} image={Blank} texts={texts.item} theme={theme} />
+            {empties}
           </Row>
           <Row>
             {list}
@@ -58,7 +75,10 @@ const factory = () => {
   }
 
   TemplateList.defaultProps = {
-    items: [],
+    items: {
+
+    },
+    templates: [],
     texts: {
       item: {
         buttons: {

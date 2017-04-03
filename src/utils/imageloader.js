@@ -1,4 +1,3 @@
-import React from 'react';
 import  { imagemapper, linemapper } from './mappers';
 
 function load(img, src) {

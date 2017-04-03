@@ -2,7 +2,7 @@
   "name": "signcreator",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://offers.sandviks.com/",
+  "proxy": "https://betaoffers.sandviks.com/",
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
     "css-loader": "^0.26.1",

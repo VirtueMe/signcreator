@@ -89,19 +89,23 @@ SignDropdown.defaultProps = {
     items: {
       '0': {
         title: 'Liggende skilt',
-        description: 'Bedre plass til lange navn'
+        description: 'Bedre plass til lange navn',
+        longdescription: ''
       },
       '1': {
         title: 'Stående skilt',
-        description: 'Plass til flere linjer tekst'
+        description: 'Plass til flere linjer tekst',
+        longdescription: ''
       },
       '2': {
         title: 'Kvadratisk skilt',
-        description: 'Enkelt og stilrent skilt'
+        description: 'Enkelt og stilrent skilt',
+        longdescription: ''
       },
       '3': {
         title: 'Hjerteformet skilt',
-        description: 'Til en kjærlig familie'
+        description: 'Til en kjærlig familie',
+        longdescription: ''
       }
     }
   },

@@ -1,6 +1,7 @@
-import * as types from '../constants/actiontypes'
+import * as types from '../constants/actiontypes';
+import * as defaults from '../defaults';
 
-const scaleStep = 0.1;
+
 
 /*
  * Form navigation
@@ -119,7 +120,7 @@ function add(item) {
 }
 
 export function addTextLine() {
-  return add( { type: 1, value: '', height: 8, center: false, bold: false, italic: false, font: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } } );
+  return add( defaults.textitem );
 }
 
 function changeFontSize(index, step) {
@@ -155,11 +156,11 @@ export function changeTextColor(index, color) {
 }
 
 export function addEmojiLine() {
-  return add( { type: 2, value: [], scale: 2 } );
+  return add( defaults.imageLine );
 }
 
 export function addDividerLine() {
-  return add ( { type: 3, value: null, selected: 0, scale: 1 } );
+  return add ( defaults.dividerLine );
 }
 
 export function deleteLine(index) {
@@ -200,11 +201,11 @@ function scaleEmoji(index, step) {
 }
 
 export function scaleDownEmoji(index) {
-  return scaleEmoji(index, scaleStep * -1);
+  return scaleEmoji(index, defaults.scaleStep * -1);
 }
 
 export function scaleUpEmoji(index) {
-  return scaleEmoji(index, scaleStep);
+  return scaleEmoji(index, defaults.scaleStep);
 }
 
 export function moveEmoji(id, atIndex, index) {

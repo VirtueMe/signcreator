@@ -4,7 +4,19 @@ import SignDropdown from '../signselector/signdropdown';
 
 class SignSelectorCard extends Component {
   render() {
-    const { texts } = this.props;
+    const { texts, value } = this.props;
+    let desc = null;
+
+    console.info(texts);
+
+    if (value) {
+      const selected = texts.items[value];
+      if (selected && selected.longdesc){
+        desc = (
+          <span>{selected.longdesc}</span>
+        );
+      }
+    }
 
     return (
       <Card style={ { overflow: 'visible' } }>
@@ -13,6 +25,7 @@ class SignSelectorCard extends Component {
         </CardTitle>
         <CardText>
           <SignDropdown {...this.props} />
+          {desc}
         </CardText>
       </Card>
     );
@@ -22,6 +35,13 @@ class SignSelectorCard extends Component {
 SignSelectorCard.defaultProps = {
   texts: {
     title: 'Type skilt',
+    items: {
+      '0': {
+        title: '',
+        description: '',
+        longdesc: ''
+      }
+    }
   }
 };
 

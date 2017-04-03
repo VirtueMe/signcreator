@@ -7,3 +7,4 @@ export const PAYMENTOPTIONS = 'SPaymentOptions';
 export const CREDITCARDFORM = 'SCreditcardForm';
 export const TEMPLATELIST = 'STemplateList';
 export const BACKPLATE = 'SBackPlate';
+export const STARTLOADER = 'SStart'; 

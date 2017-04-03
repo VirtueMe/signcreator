@@ -1,7 +1,8 @@
 import { SET_VIEW_INDEX, SET_TYPE, SET_BACKPLATE, SET_PADDING, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
+import { settings as settingsstate } from '../defaults';
 
-const initialState = { type: 0, backplate: '0', padding: 10, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
+const initialState = settingsstate;
 
 export default function settings(state = initialState, action) {
   const {payload} = action;
@@ -17,7 +18,7 @@ export default function settings(state = initialState, action) {
 
     case SET_PADDING: {
       if (payload.value !== state.padding) {
-        return update(state, { padding: { $set: parseInt(payload.value) } });
+        return update(state, { padding: { $set: parseInt(payload.value, 10) } });
       }
 
       return state;

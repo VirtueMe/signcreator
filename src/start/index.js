@@ -1,48 +1,11 @@
-import React, { Component } from 'react';
-import Loading from 'react-loading';
-import { Container, Row, Col } from 'react-grid-system';
+import { themr } from 'react-css-themr';
+import { startFactory } from './start';
+import { STARTLOADER } from '../identifiers';
+import theme from './theme.css';
 
-const MyRow = ({ children }) => (
-  <Row>
-    <Col xs={12} md={4} offset={{ md: 4 }}>
-      { children }
-    </Col>
-  </Row>
-);
+const Start = startFactory();
 
-class StartContainer extends Component {
+const ThemedStart = themr(STARTLOADER, theme)(Start);
 
-  setup() {
-    const { isFetching, children, message } = this.props;
-
-    if (isFetching) {
-      return (
-        <Container fluid>
-          <MyRow>
-            <Loading type='bubbles' color='#e3e3e3' height='128px' width='100%' />
-          </MyRow>
-          <MyRow>
-            { message }
-          </MyRow>
-        </Container>
-      );
-    }
-
-    return (
-      <div>
-        {children}
-      </div>
-    );
-  }
-  render() {
-    const element = this.setup();
-
-    return element;
-  }
-}
-
-StartContainer.defaultProps = {
-  message: 'We are setting up the system...'
-};
-
-export default StartContainer
+export default ThemedStart;
+export { ThemedStart as Start };
