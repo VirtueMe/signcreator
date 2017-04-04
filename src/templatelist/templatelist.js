@@ -31,6 +31,7 @@ const factory = () => {
       const { items: templateList } = templates;
 
       const empties = [0, 1, 2, 3].map(type => {
+
         const info = items[type];
 
         const data = {
@@ -38,8 +39,11 @@ const factory = () => {
           title: info && info.title,
         };
 
+        const translationblank = texts.items['blank'] || {};
+        const translationtype = texts.items[type] || {};
+
         return (
-          <TemplateCol actions={actions} item={defaults.items[type]} data={Object.assign({}, blank, data)} texts={texts.item} theme={theme} />
+          <TemplateCol actions={actions} item={defaults.items[type]} data={Object.assign({}, blank, data, translationblank, translationtype)} texts={texts.item} theme={theme} />
         );
       });
 
@@ -51,10 +55,20 @@ const factory = () => {
           title: info && info.title,
         };
 
+        const translation = texts.items[item.name] || {};
+
         return (
-          <TemplateCol actions={actions} key={index} data={data} item={item} texts={texts.item} theme={theme} />
+          <TemplateCol actions={actions} key={index} data={Object.assign({}, data, translation)} item={item} texts={texts.item} theme={theme} />
         );
       });
+
+      const section = texts.section ? (
+        <Row>
+          <Col xs={12} className={theme.itemheader} >
+            <TemplateListHeader texts={texts.section} />
+          </Col>
+        </Row>
+      ) : null;
 
       return (
         <Container fluid>
@@ -66,6 +80,7 @@ const factory = () => {
           <Row>
             {empties}
           </Row>
+          {section}
           <Row>
             {list}
           </Row>
@@ -80,16 +95,13 @@ const factory = () => {
     },
     templates: [],
     texts: {
-      item: {
-        buttons: {
-          select: {
-            text: 'Velg mal'
-          }
-        }
-      },
       header: {
 
-      }
+      },
+      items: {
+
+      },
+      section: null,
     }
   };
 
