@@ -43,7 +43,7 @@ const factory = () => {
         const translationtype = texts.items[type] || {};
 
         return (
-          <TemplateCol actions={actions} item={defaults.items[type]} data={Object.assign({}, blank, data, translationblank, translationtype)} texts={texts.item} theme={theme} />
+          <TemplateCol key={type} actions={actions} item={defaults.items[type]} data={Object.assign({}, blank, data, translationblank, translationtype)} texts={texts.item} theme={theme} />
         );
       });
 
@@ -58,12 +58,12 @@ const factory = () => {
         const translation = texts.items[item.name] || {};
 
         return (
-          <TemplateCol actions={actions} key={index} data={Object.assign({}, data, translation)} item={item} texts={texts.item} theme={theme} />
+          <TemplateCol actions={actions} key={'template' + index} data={Object.assign({}, data, translation)} item={item} texts={texts.item} theme={theme} />
         );
       });
 
       const section = texts.section ? (
-        <Row>
+        <Row key='middlesection'>
           <Col xs={12} className={theme.itemheader} >
             <TemplateListHeader texts={texts.section} />
           </Col>
@@ -72,16 +72,16 @@ const factory = () => {
 
       return (
         <Container fluid>
-          <Row>
+          <Row key='header'>
             <Col xs={12} className={theme.itemheader} >
               <TemplateListHeader texts={texts.header} />
             </Col>
           </Row>
-          <Row>
+          <Row key='emptytemplates'>
             {empties}
           </Row>
           {section}
-          <Row>
+          <Row key='templates'>
             {list}
           </Row>
         </Container>

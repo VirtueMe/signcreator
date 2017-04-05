@@ -22,6 +22,7 @@
   "settings": { "type": 1, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },
 {
+  "name": "two",
   "items": [
     { "type": 1, "value": "Nora", "height": 14, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 1, "value": "William", "height": 14, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
@@ -35,6 +36,7 @@
   "settings": { "type": 1, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },
 {
+  "name": "three",
   "items": [
     { "type": 1, "value": "Her bor familien", "height": 14, "center": true, "italic": false, "bold": false, "font": "Shadows Into Light Two", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 1, "value": "Hansen", "height": 14, "center": true, "italic": false, "bold": false, "font": "Shadows Into Light Two", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
@@ -47,6 +49,7 @@
   "settings": { "type": 2, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },
 {
+  "name": "four",
   "items": [
     { "type": 3, "value": "blomst_8", "selected": -8, "scale": 1.2 },
     { "type": 1, "value": "Velkommen", "height": 14, "center": true, "italic": false, "bold": false, "font": "Lobster", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
