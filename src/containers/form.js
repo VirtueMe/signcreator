@@ -1,14 +1,21 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { imageSelector } from '../selectors/image';
+import { imageSelector, smallImageSelector } from '../selectors/image';
 import borderSelector from '../selectors/borders';
 import Form from '../form';
 import * as Actions from '../actions';
 
+function imageCreators(state) {
+  const small = smallImageSelector(state);
+  const large = imageSelector(state);
+
+  return { small, large };
+}
+
 function mapStateToProps(state) {
   return {
     borders: borderSelector(state),
-    image: imageSelector(state),
+    image: imageCreators(state),
     items: state.items,
     settings: state.settings,
     index: state.view.index,

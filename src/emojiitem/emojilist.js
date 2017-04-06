@@ -16,7 +16,7 @@ class EmojiList extends Component {
   }
 
   render() {
-    const { actions, className, emptyClassName, index, text, theme, value } = this.props;
+    const { actions, className, index, theme, value } = this.props;
 
     const items = value.map(item => (
         <EmojiItem key={item.id} id={item.id} theme={theme} index={index} image={item.image} size={item.size} actions={actions} findEmoji={(id) => this.findEmoji(id)} />
@@ -24,7 +24,7 @@ class EmojiList extends Component {
 
     return (
       <div className={className}>
-        {items.length ? items : <span className={emptyClassName}>{text}</span>}
+        {items}
       </div>
     );
   }

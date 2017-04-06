@@ -41,7 +41,7 @@ class Payment extends Component {
 
                 <Button
                   label={texts.buttons.continue.text}
-                  onClick={() => toReceipt ? toReceipt() : actions.sendOrder(settings, items, image, customer, payment)}
+                  onClick={() => toReceipt ? toReceipt() : actions.sendOrder(settings, items, image.large, customer, payment)}
                   disabled={sendstatus.isSending || !(customer.valid && payment.valid)}
                   raised primary />
               </CardActions>

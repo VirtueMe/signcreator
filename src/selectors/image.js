@@ -26,7 +26,7 @@ const smallGeneratorSelector = createSelector(
 );
 
 const generator = (items, settings, generator, className) => ({
-  image: () => new Promise((resolve) => { const result = generator(items, settings).getImage(); resolve(result); }),
+  get: () => new Promise((resolve) => { const result = generator(items, settings).getImage(); resolve(result); }),
   className: className
 });
 

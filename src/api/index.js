@@ -8,6 +8,7 @@ export function sendData(payload) {
   myHeaders.append('Content-Type', 'application/json; charset=utf-8');
 
   return image
+          .get()
           .then(function(data) {
             return fetch(url, {
                     method: 'post',

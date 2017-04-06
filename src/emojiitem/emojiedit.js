@@ -20,8 +20,10 @@ const factory = (FontIcon) => {
 
       const input = (
         <div data-react-toolbox="imagesselector" className={ classnames(theme.input, theme.withIcon) }>
-          <EmojiList theme={theme} className={theme.inputElement} emptyClassName={theme.empty} value={value} index={index} actions={actions} text={texts.emptyText} />
+          <EmojiList theme={theme} className={theme.inputElement} value={value} index={index} actions={actions} />
           <FontIcon value='insert_photo' className={theme.icon} />
+          <span className={theme.bar} />
+          {!texts.emptyText || value.length ? null : (<span className={theme.empty}>{texts.emptyText}</span>)}
         </div>
       );
 

@@ -97,8 +97,8 @@ const height = {
 
   2: function(item) {
     const items = item.value.map(src => (src.img ? src.img.height : 50));
-
-    return (Math.max(...items) * item.scale) + dividerGap;
+    console.info(Math.max(...items));
+    return (items.length > 0 ? (Math.max(...items) * item.scale) : 0 ) + dividerGap;
   },
 
   3: function (item) {

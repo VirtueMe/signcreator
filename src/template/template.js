@@ -19,7 +19,7 @@ class Template extends Component {
       const result = smallImageSelector(item);
 
       result
-        .image()
+        .get()
         .then((smallImage) => {
           this.setState({ ...smallImage, className: result.className });
         });

@@ -5,6 +5,7 @@ import { Button, Card, CardActions, CardMedia, CardText, CardTitle } from 'react
 class Receipt extends Component {
   render() {
     const { actions, showDesign, texts } = this.props;
+    const { new : button } = texts.buttons
 
     return (
       <Card>
@@ -24,7 +25,7 @@ class Receipt extends Component {
         <CardText>{texts.description}</CardText>
         <CardActions>
           <Button
-            label={texts.new.text}
+            label={button.text}
             onClick={showDesign || actions.showStart}
             raised primary />
         </CardActions>
@@ -41,8 +42,10 @@ Receipt.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
-    new: PropTypes.shape({
-      text: PropTypes.string
+    buttons: PropTypes.shape({
+      new: PropTypes.shape({
+        text: PropTypes.string
+      })
     })
   })
 };
@@ -57,8 +60,10 @@ Receipt.defaultProps = {
     title: 'Kvittering',
     subtitle: 'Takk for din bestilling',
     description: 'Vi setter pris på at du har valgt å bli kunden vår. Skulle det være noe du lurer på med bestillingen, nøl ikke med å ta kontakt med kundeservice.',
-    new: {
-      text: 'Lag ditt neste skilt'
+    buttons: {
+      new: {
+        text: 'Lag ditt neste skilt'
+      }
     }
   }
 };

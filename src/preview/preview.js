@@ -25,14 +25,11 @@ const factory = () => {
     loadImage(props) {
       const { image } = props;
       const self = this;
-      const date = new Date();
 
       if (this.timer) {
         clearTimeout(this.timer);
         delete this.timer;
       }
-
-      console.info(date);
 
       this.timer = setTimeout(function() {
         if (self.timer) {
@@ -40,16 +37,16 @@ const factory = () => {
           delete self.timer;
         }
 
-        image.image().then(function(data) {
-          console.info(date, ': ', new Date());
-          self.setState({ image: data.image });
-        });
+        image
+          .get().then(function(data) {
+            self.setState({ image: data.image });
+          });
       }, 500);
 
     }
 
     render() {
-      const { theme, style } = this.props;
+      const { style, theme } = this.props;
       const { className } = this.props.image;
       const { image } = this.state;
 

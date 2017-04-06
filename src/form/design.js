@@ -9,7 +9,7 @@ import { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
 class Design extends Component {
   render() {
-    const { actions, borders, image, imageClassName, items, settings, texts, toPayment } = this.props;
+    const { actions, borders, image, items, settings, texts, toPayment } = this.props;
 
     return (
       <Container fluid>
@@ -54,7 +54,7 @@ class Design extends Component {
                 {texts.preview.title}
               </CardTitle>
               <CardText>
-                <Preview image={image} className={imageClassName} />
+                <Preview image={image.small} />
               </CardText>
               <CardActions>
                 <Button label={texts.preview.continue.text} onClick={toPayment || actions.showPayment} raised primary />
