@@ -6,11 +6,11 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const { message, project} = this.props;
+    const { history, message, project } = this.props;
 
     return (
       <Loader project={project} message={message}>
-        <Form />
+        <Form history={history} />
       </Loader>
     );
   }

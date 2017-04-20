@@ -34,6 +34,8 @@ import Loader from './loadercontainer';
 
 let state = testdata;
 
+const project = 'GBN';
+
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
@@ -57,14 +59,14 @@ storiesOf('Template', module)
 
 storiesOf('Start', module)
     .add('Start', () => (
-      <StartContainer isFetching={true} />
+      <StartContainer isFetching={true} project={project} />
     ))
     .add('Loader', () => {
       const store = configureStore(state);
 
       return (
         <Provider store={store}>
-          <Loader>
+          <Loader project={project}>
             <App />
           </Loader>
         </Provider>
@@ -77,7 +79,7 @@ storiesOf('App', module)
 
     return (
       <Provider store={store}>
-        <App />
+        <App project={project} />
       </Provider>
     );
   });
@@ -99,13 +101,14 @@ storiesOf('PaymentOptions', module)
         ccv2: ''
       }
     };
+
     const paymentStore = configureStore(paymentState);
 
     return (
       <Provider store={paymentStore}>
         <PaymentOptions />
       </Provider>
-    )
+    );
   });
 
 storiesOf('Customerform', module)
@@ -119,13 +122,14 @@ storiesOf('Customerform', module)
         city: ''
       }
     };
+
     const customerStore = configureStore(customerState);
 
     return (
       <Provider store={customerStore}>
         <CustomerForm />
       </Provider>
-    )
+    );
   });
 
 storiesOf('Sign selector', module)
