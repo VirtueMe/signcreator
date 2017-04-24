@@ -6,7 +6,7 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const { history, message, project } = this.props;
+    const { message, project } = this.props;
 
     return (
       <Loader project={project} message={message}>

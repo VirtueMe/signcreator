@@ -38,8 +38,6 @@ class Template extends Component {
     const { actions, description, item, stylesubtitle, styletitle, subtitle, texts, theme, title } = this.props;
     const { image, className } = this.state;
 
-    console.info('a: ', actions);
-
     return (
       <Card>
         <CardTitle
@@ -57,7 +55,7 @@ class Template extends Component {
         />
         <CardText>{description}</CardText>
         <CardActions>
-          <Button label={texts.buttons.select.text} onClick={() => actions.push({ pathname: '/edit', state: item })} raised primary />
+          <Button label={texts.buttons.select.text} onClick={() => actions.push('/edit')} raised primary />
         </CardActions>
       </Card>
     );

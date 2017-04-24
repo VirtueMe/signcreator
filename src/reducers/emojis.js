@@ -1,4 +1,6 @@
 import { ADD_LINE, ADD_EMOJI, CHANGE_DIVIDER, CHANGE_FONT, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE, SCALE_EMOJI, SET_VIEW_INDEX, TOGGLE_CENTER, TOGGLE_BOLD, TOGGLE_ITALIC } from '../constants/actiontypes';
+import { CALL_HISTORY_METHOD, LOCATION_CHANGE } from 'react-router-redux';
+
 import update from 'immutability-helper';
 
 const initialState = [
@@ -9,6 +11,18 @@ export default function emojis(state = initialState, action) {
   const {payload} = action;
 
   switch (action.type) {
+    case CALL_HISTORY_METHOD: {
+      console.info('History.call: ', payload);
+
+      return state;
+    }
+
+    case LOCATION_CHANGE: {
+      console.info('location change: ', payload);
+
+      return state;
+    }
+
     case ADD_EMOJI: {
       let updateData = {};
 

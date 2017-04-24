@@ -11,8 +11,6 @@ import 'material-design-icons/iconfont/material-icons.css';
 const store = configureStore();
 const root = document.getElementById('root');
 
-
-
 render(
   <Provider store={store}>
     <App project={root.dataset.project} message={root.dataset.message} />
