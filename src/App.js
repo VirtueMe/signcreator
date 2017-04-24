@@ -10,7 +10,7 @@ class App extends Component {
 
     return (
       <Loader project={project} message={message}>
-        <Form history={history} />
+        <Form />
       </Loader>
     );
   }
