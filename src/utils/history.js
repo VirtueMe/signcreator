@@ -1,5 +1,5 @@
 import { createBrowserHistory as createHistory } from 'history';
 
-const history = createHistory();
+const history = createHistory({ basename: window.location.pathname });
 
 export default history;
