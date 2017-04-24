@@ -1,4 +1,4 @@
-import  { imagemapper, linemapper } from './mappers';
+import  { imagemapper, linemapper, previewmapper } from './mappers';
 
 function load(img, src) {
   img.src = src;
@@ -21,4 +21,8 @@ function line(name) {
   return map(linemapper, name);
 }
 
-export { image, line };
+function preview(name) {
+  return map(previewmapper, name);
+}
+
+export { image, line, preview };

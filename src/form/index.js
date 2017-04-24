@@ -5,8 +5,11 @@ import Design from './design';
 import Payment from './payment';
 import Receipt from './receipt';
 import TemplateList from './templates';
+import history from '../utils/history';
 
-import { Router, Route, browserHistory } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter as Router } from 'react-router-redux';
+
 
 
 class Form extends Component {
@@ -22,11 +25,12 @@ class Form extends Component {
 
     return (
       <Router history={history}>
-        <Route path="/" component={view[0]}>
-          <Route path="edit" component={view[1]} />
-          <Route path="payment" component={view[2]} />
-          <Route path="receipt" component={view[3]} />
-        </Route>
+        <Switch>
+          <Route path="/" component={view[0]} />
+          <Route path="/edit" component={view[1]} />
+          <Route path="/payment" component={view[2]} />
+          <Route path="/receipt" component={view[3]} />
+        </Switch>
       </Router>
     );
   }
