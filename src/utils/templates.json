@@ -19,7 +19,8 @@
     { "type": 1, "value": "familien", "height": 16, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 1, "value": "Hansen", "height": 16, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
-  "settings": { "type": 1, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
+  "settings": { "type": 0, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 },
+  "image": "white_landscape"
 },
 {
   "name": "two",
@@ -33,7 +34,8 @@
     { "type": 1, "value": "", "height": 10, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 1, "value": "Velkommen", "height": 18, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
-  "settings": { "type": 1, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
+  "settings": { "type": 1, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 },
+  "image": "white_portrait"
 },
 {
   "name": "three",
@@ -46,7 +48,8 @@
     { "type": 1, "value": "Nora, William, Isak, Chris", "height": 10, "center": true, "italic": false, "bold": false, "font": "Shadows Into Light Two", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 1, "value": "Jonas, Even & Magnus", "height": 10, "center": true, "italic": false, "bold": false, "font": "Shadows Into Light Two", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
-  "settings": { "type": 2, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
+  "settings": { "type": 2, "padding": 30," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 },
+  "image": "white_square"
 },
 {
   "name": "four",
@@ -57,5 +60,6 @@
     { "type": 1, "value": "Vik-Hansen", "height": 14, "center": true, "italic": false, "bold": false, "font": "Lobster", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 3, "value": "blomst_8", "selected": 8, "scale": 1.2 }
   ],
-  "settings": { "type": 3, "padding": 70," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
+  "settings": { "type": 3, "padding": 70," backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 },
+  "image": "white_heart"
 }]

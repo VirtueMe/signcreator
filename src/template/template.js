@@ -12,8 +12,10 @@ class Template extends Component {
   componentDidMount() {
     const { image, item } = this.props;
 
-    if (image) {
-      this.setState({ image: image });
+    this.stopState = false;
+
+    if (image || item.image ) {
+      this.setState({ image: image || item.image.image });
     }
     else {
       const result = smallImageSelector(item);
@@ -21,14 +23,22 @@ class Template extends Component {
       result
         .get()
         .then((smallImage) => {
-          this.setState({ ...smallImage, className: result.className });
+          if (!this.stopState) {
+            this.setState(() => ({ ...smallImage, className: result.className }));
+          }
         });
     }
+  }
+
+  componentWillUnmount() {
+    this.stopState = true;
   }
 
   render() {
     const { actions, description, item, stylesubtitle, styletitle, subtitle, texts, theme, title } = this.props;
     const { image, className } = this.state;
+
+    console.info('a: ', actions);
 
     return (
       <Card>
@@ -47,7 +57,7 @@ class Template extends Component {
         />
         <CardText>{description}</CardText>
         <CardActions>
-          <Button label={texts.buttons.select.text} onClick={() => actions.showDesign(item)} raised primary />
+          <Button label={texts.buttons.select.text} onClick={() => actions.push({ pathname: '/edit', state: item })} raised primary />
         </CardActions>
       </Card>
     );

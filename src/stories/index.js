@@ -66,9 +66,7 @@ storiesOf('Start', module)
 
       return (
         <Provider store={store}>
-          <Loader project={project}>
-            <App />
-          </Loader>
+          <App project={project} />
         </Provider>
       );
     });

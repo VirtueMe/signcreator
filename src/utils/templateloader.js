@@ -1,4 +1,4 @@
-import { image, line } from './imageloader';
+import { image, line, preview } from './imageloader';
 import _templates from './templates.json';
 
 function convertImage(item) {
@@ -26,6 +26,10 @@ function convertTypeItem(type) {
 
 function convert(template) {
   template.items = template.items.map(convertTypeItem(template.type));
+
+  if (template.image) {
+    template.image = preview(template.image);
+  }
 
   return template;
 }

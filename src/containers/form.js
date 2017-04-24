@@ -4,6 +4,7 @@ import { imageSelector, smallImageSelector } from '../selectors/image';
 import borderSelector from '../selectors/borders';
 import Form from '../form';
 import * as Actions from '../actions';
+import { routerActions as actions } from 'react-router-redux';
 
 function imageCreators(state) {
   const small = smallImageSelector(state);
@@ -30,7 +31,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators({ ...Actions, ...actions }, dispatch)
   };
 }
 
