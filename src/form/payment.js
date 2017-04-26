@@ -6,11 +6,15 @@ import PaymentOptions from '../payment';
 
 
 class Payment extends Component {
+  componentDidMount() {
+    document.getElementById('paymentinformation').scrollIntoView();
+  }
+
   render() {
     const { actions, customer, image, items, payment, sendstatus, settings, texts, toReceipt } = this.props;
 
     return (
-      <Container fluid>
+      <Container fluid id="paymentinformation">
         <Row>
           <Col lg={8} md={6} xs={12}>
             <br />
@@ -36,7 +40,7 @@ class Payment extends Component {
               <CardActions>
               <Button
                 label={texts.buttons.back.text}
-                onClick={ actions.showStart}
+                onClick={ actions.goBack }
                 raised  />
 
                 <Button

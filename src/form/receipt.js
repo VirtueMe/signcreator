@@ -3,12 +3,16 @@ import React, { Component, PropTypes } from 'react';
 import { Button, Card, CardActions, CardMedia, CardText, CardTitle } from 'react-toolbox';
 
 class Receipt extends Component {
+  componentDidMount() {
+    document.getElementById('receiptinformation').scrollIntoView();
+  }
+
   render() {
-    const { actions, showDesign, texts } = this.props;
+    const { actions, texts } = this.props;
     const { new : button } = texts.buttons
 
     return (
-      <Card>
+      <Card id="receiptinformation">
         <CardTitle
           avatar={texts.avatar}
           title={texts.header}
@@ -26,7 +30,7 @@ class Receipt extends Component {
         <CardActions>
           <Button
             label={button.text}
-            onClick={showDesign || actions.showStart}
+            onClick={() => actions.push('/')}
             raised primary />
         </CardActions>
       </Card>

@@ -15,9 +15,9 @@ const blank = {
 
 
 const factory = () => {
-  const TemplateCol = ({actions, data, item, texts, theme}) => (
+  const TemplateCol = ({actions, data, item, texts, theme, history}) => (
     <Col xs={12} md={4} xl={3} style={ { padding: '15px' } }>
-      <Template actions={actions} item={item} texts={texts} theme={theme} {...data} />
+      <Template actions={actions} item={item} texts={texts} theme={theme} {...data} history={history} />
     </Col>
   );
 
@@ -27,7 +27,7 @@ const factory = () => {
     };
 
     render() {
-      const { actions, items, templates, texts, theme } = this.props;
+      const { actions, history, items, templates, texts, theme } = this.props;
       const { items: templateList } = templates;
 
       const empties = [0, 1, 2, 3].map(type => {
@@ -58,7 +58,7 @@ const factory = () => {
         const translation = texts.items[item.name] || {};
 
         return (
-          <TemplateCol actions={actions} key={'template' + index} data={Object.assign({}, data, translation)} item={item} texts={texts.item} theme={theme} />
+          <TemplateCol actions={actions} key={'template' + index} data={Object.assign({}, data, translation)} item={item} texts={texts.item} theme={theme} history={history} />
         );
       });
 
@@ -77,12 +77,12 @@ const factory = () => {
               <TemplateListHeader texts={texts.header} />
             </Col>
           </Row>
-          <Row key='emptytemplates'>
-            {empties}
-          </Row>
-          {section}
           <Row key='templates'>
             {list}
+          </Row>
+          {section}
+          <Row key='emptytemplates'>
+            {empties}
           </Row>
         </Container>
       );

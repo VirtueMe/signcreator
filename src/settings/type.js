@@ -7,8 +7,6 @@ class SignSelectorCard extends Component {
     const { texts, value } = this.props;
     let desc = null;
 
-    console.info(texts);
-
     if (value) {
       const selected = texts.items[value];
       if (selected && selected.longdesc){

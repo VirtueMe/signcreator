@@ -5,16 +5,15 @@ import Design from './design';
 import Payment from './payment';
 import Receipt from './receipt';
 import TemplateList from './templates';
-import history from '../utils/history';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'react-router-redux';
 
 
 
 class Form extends Component {
   render() {
-    const { actions, borders, customer, image, imageClassName, index, items, payment, sendstatus, settings, templates, texts } = this.props;
+    const { actions, borders, customer, history, image, imageClassName, items, payment, sendstatus, settings, templates, texts } = this.props;
 
     const view = [
       () => (<TemplateList key='templates' actions={actions} texts={texts.templates} templates={templates} items={texts.design.settings.selector.items} />),
@@ -25,12 +24,12 @@ class Form extends Component {
 
     return (
       <Router history={history}>
-        <Switch>
-          <Route path="/" component={view[0]} />
+        <div>
+          <Route path="/" exact component={view[0]} />
           <Route path="/edit" component={view[1]} />
           <Route path="/payment" component={view[2]} />
           <Route path="/receipt" component={view[3]} />
-        </Switch>
+        </div>
       </Router>
     );
   }

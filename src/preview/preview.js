@@ -22,14 +22,22 @@ const factory = () => {
       }
     }
 
-    loadImage(props) {
-      const { image } = props;
-      const self = this;
-
+    clearTimer() {
       if (this.timer) {
         clearTimeout(this.timer);
         delete this.timer;
       }
+    }
+
+    componentWillUnmount() {
+      this.clearTimer();
+    }
+
+    loadImage(props) {
+      const { image } = props;
+      const self = this;
+
+      this.clearTimer();
 
       this.timer = setTimeout(function() {
         if (self.timer) {

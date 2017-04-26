@@ -97,12 +97,12 @@ const height = {
 
   2: function(item) {
     const items = item.value.map(src => (src.img ? src.img.height : 50));
-    console.info(Math.max(...items));
+
     return (items.length > 0 ? (Math.max(...items) * item.scale) : 0 ) + dividerGap;
   },
 
   3: function (item) {
-    return dividerGap + (item.value ? (item.value.height * imageFactor) : Math.ceil(8 * ppmm));
+    return dividerGap + (item.value ? (item.value.height * item.scale * imageFactor) : Math.ceil(8 * ppmm));
   }
 };
 
@@ -184,7 +184,7 @@ export default function generator(dimensions) {
           },
 
           3: function(item) {
-            return (item.text ? item.text.width : 0) * imageFactor;
+            return (item.text ? item.text.width * item.scale: 0) * imageFactor;
           }
         }
 
@@ -285,10 +285,10 @@ export default function generator(dimensions) {
           },
 
           3: function(item) {
-            const { text, start, selected } = item;
+            const { text, scale, selected, start } = item;
 
             if (text) {
-              const imageWidth = text.width * imageFactor;
+              const imageWidth = text.width * scale * imageFactor;
 
               const drawImage = selected > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
@@ -296,7 +296,7 @@ export default function generator(dimensions) {
                 img: text,
                 x: padding + Math.ceil((maxwidth - imageWidth) / 2),
                 y: padding + y + start + (dividerGap / 2),
-                height: text.height * imageFactor,
+                height: text.height * scale * imageFactor,
                 width: imageWidth
               });
             }
@@ -331,7 +331,6 @@ export default function generator(dimensions) {
 
             const [drawImage, offset] = settings.bottom > 0 ? [textTool.drawImage, imageHeight+(10 * imageFactor)] : [textTool.drawFlipImage, imageHeight/2];
 
-            console.info(drawImage);
             drawImage({
               img: settings.bottomImage,
               x: (areaWidth - imageWidth) / 2,

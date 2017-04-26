@@ -1,4 +1,4 @@
-import { SET_VIEW_INDEX, SET_TYPE, SET_BACKPLATE, SET_PADDING, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
+import { EDIT_ITEM, SET_TYPE, SET_BACKPLATE, SET_PADDING, ADD_TOPLINE, ADD_LEFTLINE, ADD_RIGHTLINE, ADD_BOTTOMLINE } from '../constants/actiontypes';
 import update from 'immutability-helper';
 import { settings as settingsstate } from '../defaults';
 
@@ -24,7 +24,7 @@ export default function settings(state = initialState, action) {
       return state;
     }
 
-    case SET_VIEW_INDEX: {
+    case EDIT_ITEM: {
       if (payload.settings) {
         return Object.assign({}, payload.settings);
       }

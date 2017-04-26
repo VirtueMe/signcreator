@@ -5,7 +5,6 @@ import LineDropdown from '../frames/linedropdown';
 import * as Actions from '../actions';
 
 function mapStateToProps(state) {
-  console.info(state);
   return {
     settings: state.settings
   };

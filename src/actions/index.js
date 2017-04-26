@@ -2,9 +2,12 @@ import * as types from '../constants/actiontypes';
 import * as defaults from '../defaults';
 
 
+export function editItem(item) {
+  return { type: types.EDIT_ITEM, payload: { ...item } };
+}
 
 /*
- * Form navigation
+ * Form navigation (Old)
  */
 function showView(value, item) {
   return { type: types.SET_VIEW_INDEX, payload:{value, ...item} };

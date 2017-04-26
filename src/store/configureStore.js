@@ -2,17 +2,17 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/index';
 import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware as createRouterMiddleware } from 'react-router-redux';
-import history from '../utils/history';
+import defaultHistory from '../utils/history';
 
 import rootSaga from '../sagas';
 
 
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState, history) {
   const sagaMiddleware = createSagaMiddleware();
-  const routerMiddleware = createRouterMiddleware(history)
+  const routerMiddleware = createRouterMiddleware(history || defaultHistory)
 
-  const store = createStore(rootReducer, initialState, applyMiddleware(sagaMiddleware), applyMiddleware(routerMiddleware));
+  const store = createStore(rootReducer, initialState, applyMiddleware(sagaMiddleware, routerMiddleware));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

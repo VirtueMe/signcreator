@@ -1,8 +1,9 @@
-import { FETCH_TEMPLATES_FAILED, FETCH_TEMPLATES_IN_PROGRES, FETCH_TEMPLATES_SUCCESS, FETCH_TEXTS, FETCH_TEXTS_FAILED, FETCH_TEXTS_IN_PROGRES, FETCH_TEXTS_SUCCESS, SEND_ORDER, SEND_ORDER_IN_PROGRESS, SEND_ORDER_FAILED, SEND_ORDER_SUCCESS } from '../constants/actiontypes';
+import { EDIT_ITEM, FETCH_TEMPLATES_FAILED, FETCH_TEMPLATES_IN_PROGRES, FETCH_TEMPLATES_SUCCESS, FETCH_TEXTS, FETCH_TEXTS_FAILED, FETCH_TEXTS_IN_PROGRES, FETCH_TEXTS_SUCCESS, SEND_ORDER, SEND_ORDER_IN_PROGRESS, SEND_ORDER_FAILED, SEND_ORDER_SUCCESS } from '../constants/actiontypes';
 
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from '../api';
 import { templates } from '../utils/templateloader';
+import history from '../utils/history';
 
 
 // Our worker Saga: will perform the async increment task
@@ -13,6 +14,7 @@ export function* sendOrder(action) {
   try {
     const products = yield call(api.sendData, payload);
     yield put({ type: SEND_ORDER_SUCCESS, products });
+    yield call(history.push, '/receipt');
   }
   catch(error) {
     yield put({ type: SEND_ORDER_FAILED, error });
@@ -45,6 +47,10 @@ export function* fetchTemplates(action) {
   }
 }
 
+export function* editItem(action) {
+  yield call(history.push, '/edit');
+}
+
 
 // Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
 export function* watchSendOrderAsync() {
@@ -59,10 +65,15 @@ export function* watchFetchTemplates() {
   yield takeEvery(FETCH_TEXTS, fetchTemplates);
 }
 
+export function* watchEditItem() {
+  yield takeEvery(EDIT_ITEM, editItem);
+}
+
 export default function* rootSaga() {
   yield [
     watchSendOrderAsync(),
     watchFetchTexts(),
-    watchFetchTemplates()
+    watchFetchTemplates(),
+    watchEditItem()
   ];
 }

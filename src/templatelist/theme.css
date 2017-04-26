@@ -19,7 +19,7 @@
 
 .heart {
   @apply --img;
-  background-image: inline(../images/heart-preview.png);
+  background-image: inline(../images/preview/Skilt_hjerte_white_tom.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -27,7 +27,38 @@
   padding-bottom: 10%;
 }
 
-.img, .portrait, .landscape, .square {
+.portrait {
+  @apply --img;
+  background-image: inline(../images/preview/Skilt_rektangel_white_tom.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: gray 1px dotted;
+  border-radius: 6px;
+}
+
+.landscape {
+  @apply --img;
+  background-image: inline(../images/preview/landscape_white_empty.png);
+  padding: 4px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: gray 1px dotted;
+  border-radius: 6px;
+}
+
+.square {
+  @apply --img;
+  background-image: inline(../images/preview/Skilt_kvadrat_white_tom.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: gray 1px dotted;
+  border-radius: 6px;
+}
+
+.img {
   @apply --img;
 
   border: gray 1px dotted;

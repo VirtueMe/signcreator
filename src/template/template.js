@@ -55,7 +55,7 @@ class Template extends Component {
         />
         <CardText>{description}</CardText>
         <CardActions>
-          <Button label={texts.buttons.select.text} onClick={() => actions.push('/edit')} raised primary />
+          <Button label={texts.buttons.select.text} onClick={() => actions.editItem(item)} raised primary />
         </CardActions>
       </Card>
     );

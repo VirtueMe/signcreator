@@ -8,11 +8,15 @@ import { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
 
 class Design extends Component {
+  componentDidMount() {
+    document.getElementById('signedit').scrollIntoView();
+  }
+
   render() {
-    const { actions, borders, image, items, settings, texts, toPayment } = this.props;
+    const { actions, borders, image, items, settings, texts } = this.props;
 
     return (
-      <Container fluid>
+      <Container fluid id="signedit">
         <Row>
           <Col xs={12}>
             <Card style={ { overflow: 'visible' } }>
@@ -20,7 +24,7 @@ class Design extends Component {
                 {texts.settings.title}
               </CardTitle>
               <CardActions>
-                <Button icon='arrow_back' label={texts.buttons.back.text} onClick={actions.showStart} raised  />
+                <Button icon='arrow_back' label={texts.buttons.back.text} onClick={actions.goBack} raised  />
               </CardActions>
             </Card>
           </Col>
@@ -57,7 +61,7 @@ class Design extends Component {
                 <Preview image={image.small} />
               </CardText>
               <CardActions>
-                <Button label={texts.preview.continue.text} onClick={toPayment || actions.showPayment} raised primary />
+                <Button label={texts.preview.continue.text} onClick={() => actions.push('/payment')} raised primary />
               </CardActions>
             </Card>
             <br />

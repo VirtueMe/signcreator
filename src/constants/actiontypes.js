@@ -1,6 +1,8 @@
 /* form navigation */
 export const SET_VIEW_INDEX = 'SET_VIEW_INDEX';
 
+export const EDIT_ITEM = 'EDIT_ITEM';
+
 /* Template management */
 export const SET_TEMPLATES = 'SET_TEMPLATES';
 export const FETCH_TEMPLATES_FAILED = 'FETCH_TEMPLATES_FAILED';
