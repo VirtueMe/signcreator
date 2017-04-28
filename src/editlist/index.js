@@ -109,7 +109,7 @@ class EditList extends Component {
     };
 
     return (
-      <div style={ popover }>
+      <div key="cp" style={ popover }>
         <div style={ cover } onClick={ this.cancelColor }/>
         <SketchPicker color={this.state.color} width={300} onChange={ this.colorChanged } />
       </div>
@@ -158,15 +158,15 @@ class EditList extends Component {
     });
 
     return (
-      <div>
+      <div key="root">
         { colorPicker}
 
-        <List ripple={false}>
-          <ListItem key='0' rightActions={[<Menu actions={actions} />]} />
+        <List key="editlist1" ripple={false}>
+          <ListItem key='0' itemContent={<span key="emptycontent"></span>}rightActions={[<Menu key="addActions" actions={actions} />]} />
           {list}
         </List>
 
-        <Dialog
+        <Dialog key="dd"
             actions={delete_actions}
             active={this.state.show_delete}
             onEscKeyDown={this.cancelDelete}
@@ -176,7 +176,7 @@ class EditList extends Component {
           <p>{texts.dialogs.remove.description}</p>
         </Dialog>
 
-        <Dialog
+        <Dialog key="fd"
             actions={font_actions}
             active={this.state.show_font}
             onEscKeyDown={this.showFont}

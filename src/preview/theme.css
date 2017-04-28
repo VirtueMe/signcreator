@@ -5,6 +5,9 @@
 
 .landscape {
   max-width: 100%;
+  background-image: inline(../images/preview/Skilt_rektangel_white_liggende_tom.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
   border-radius: 20px;
 
@@ -15,6 +18,9 @@
 
 .square {
   max-width: 100%;
+  background-image: inline(../images/preview/Skilt_kvadrat_white_tom.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
   border-radius: 20px;
 
@@ -25,6 +31,9 @@
 
 .portrait {
   max-width: 100%;
+  background-image: inline(../images/preview/Skilt_rektangel_white_tom.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   border: var(--image-border-width) var(--image-border-layout) var(--image-border-color);
   border-radius: 20px;
 
@@ -36,7 +45,7 @@
 .heart {
   max-width: 100%;
   padding: 15%;
-  background-image: inline(../images/heart-preview.png);
+  background-image: inline(../images/preview/Skilt_hjerte_white_tom.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 
