@@ -1,0 +1,25 @@
+@import '../colors.css';
+@import '../variables.css';
+@import './config.css';
+
+.discount {
+  font-style: italic;
+}
+
+.amount {
+  text-align: right;
+}
+
+.total {
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 5px;
+  border-top-color: darkgray;
+  border-top-style: solid;
+  border-top-width: thin;
+  /*
+  border-bottom-color: darkgray;
+  border-bottom-style: double;
+  border-bottom-width: initial;
+  */
+}

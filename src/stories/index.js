@@ -20,6 +20,7 @@ import configureStore from '../store/configureStore'
 import icons from 'material-design-icons/iconfont/material-icons.css';
 import Template from '../template';
 import TemplateList from './templatecontainer';
+import AmountInfo from '../amountinfo';
 
 import LandscapePreview from '../preview/landscapepreview';
 import PortraitPreview from '../preview/portraitpreview';
@@ -238,6 +239,17 @@ storiesOf('EditList', module)
     return (
       <Provider store={store}>
         <EditList />
+      </Provider>
+    );
+  });
+
+storiesOf('Amounts', module)
+  .add('Simple', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <AmountInfo />
       </Provider>
     );
   });

@@ -25,6 +25,7 @@
     "url-loader": "^0.5.7"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
     "history": "^4.6.1",
     "immutability-helper": "^2.0.0",
     "material-design-icons": "^3.0.1",
