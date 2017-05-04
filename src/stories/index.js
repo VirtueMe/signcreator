@@ -30,6 +30,7 @@ import AnimationExample from './motion';
 import testdata from './testdata';
 import StartContainer from '../start';
 import Loader from './loadercontainer';
+import { Card } from 'react-toolbox';
 
 
 
@@ -278,7 +279,9 @@ storiesOf('Amounts', module)
 
     return (
       <Provider store={store}>
-        <AmountInfo item={portrait} total={portrait.amount} />
+        <Card>
+          <AmountInfo item={portrait} total={portrait.amount} />
+        </Card>
       </Provider>
     );
   })
@@ -287,7 +290,9 @@ storiesOf('Amounts', module)
 
     return (
       <Provider store={store}>
-        <AmountInfo item={portrait} backplate={white} total={portrait.amount+white.amount} />
+        <Card>
+          <AmountInfo item={portrait} backplate={white} total={portrait.amount+white.amount} />
+        </Card>
       </Provider>
     );
   })
@@ -296,7 +301,9 @@ storiesOf('Amounts', module)
 
     return (
       <Provider store={store}>
-        <AmountInfo item={portrait} backplate={aluminium} texts={swedish} total={portrait.amount+aluminium.amount} />
+        <Card>
+          <AmountInfo item={portrait} backplate={aluminium} texts={swedish} total={portrait.amount+aluminium.amount} />
+        </Card>
       </Provider>
     );
   })
@@ -307,66 +314,78 @@ storiesOf('Amounts', module)
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} texts={swedish} total={item.amount} />
+        <Card>
+          <AmountInfo item={item} texts={swedish} total={item.amount} />
+        </Card>
       </Provider>
     );
   })
   .add('Swedish with white backplate and without fee and shipping', () => {
     const store = configureStore(state);
 
-    const item = Object.assign({}, portrait, { amount: portrait.amount / sek })
-    const backplate = Object.assign({}, white, { amount: white.amount / sek })
+    const item = Object.assign({}, portrait, { amount: portrait.amount / sek });
+    const backplate = Object.assign({}, white, { amount: white.amount / sek });
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+        <Card>
+          <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+        </Card>
       </Provider>
     );
   })
   .add('Swedish with aluminium backplate and without fee and shipping', () => {
     const store = configureStore(state);
 
-    const item = Object.assign({}, portrait, { amount: portrait.amount / sek })
-    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / sek })
+    const item = Object.assign({}, portrait, { amount: portrait.amount / sek });
+    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / sek });
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+        <Card>
+          <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+        </Card>
       </Provider>
     );
   })
   .add('Finnish without backplate fee and shipping', () => {
     const store = configureStore(state);
 
-    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro });
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} texts={finnish} total={item.amount} />
+        <Card>
+          <AmountInfo item={item} texts={finnish} total={item.amount} />
+        </Card>
       </Provider>
     );
   })
   .add('Finnish with white backplate and without fee and shipping', () => {
     const store = configureStore(state);
 
-    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
-    const backplate = Object.assign({}, white, { amount: white.amount / euro })
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro });
+    const backplate = Object.assign({}, white, { amount: white.amount / euro });
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
+        <Card>
+          <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
+        </Card>
       </Provider>
     );
   })
   .add('Finnish with aluminium backplate and without fee and shipping', () => {
     const store = configureStore(state);
 
-    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
-    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / euro })
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro });
+    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / euro });
 
     return (
       <Provider store={store}>
-        <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
+        <Card>
+          <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
+        </Card>
       </Provider>
     );
   });

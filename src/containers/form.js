@@ -1,7 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { imageSelector, smallImageSelector } from '../selectors/image';
 import borderSelector from '../selectors/borders';
+import { imageSelector, smallImageSelector } from '../selectors/image';
+import { priceSelector } from '../selectors/price';
 import Form from '../form';
 import * as Actions from '../actions';
 import { push, goBack } from 'react-router-redux';
@@ -15,6 +16,7 @@ function imageCreators(state) {
 
 function mapStateToProps(state) {
   return {
+    amountoptions: state.texts.amount,
     borders: borderSelector(state),
     image: imageCreators(state),
     items: state.items,
@@ -22,6 +24,7 @@ function mapStateToProps(state) {
     sendstatus: state.sendstatus,
     customer: state.customer,
     payment: state.payment,
+    price: priceSelector(state),
     fetch: state.fetch,
     templates: state.templates,
     texts: state.texts

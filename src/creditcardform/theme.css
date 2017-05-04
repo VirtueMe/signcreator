@@ -1,3 +1,11 @@
 @import '../colors.css';
 @import '../variables.css';
 @import './config.css';
+
+.providerimage {
+  max-width: 100%;
+}
+
+.provider {
+  max-width: 100%;
+}

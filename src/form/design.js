@@ -3,7 +3,10 @@ import { Button, Card, CardActions, CardText, CardTitle } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 
 import EditList from '../editlist';
+import AmountInfo from '../amountinfo';
+
 import Preview from '../preview';
+
 import { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
 
@@ -13,7 +16,7 @@ class Design extends Component {
   }
 
   render() {
-    const { actions, borders, image, items, settings, texts } = this.props;
+    const { actions, amountoptions, borders, image, items, price, settings, texts } = this.props;
 
     return (
       <Container fluid id="signedit">
@@ -60,6 +63,7 @@ class Design extends Component {
               <CardText>
                 <Preview image={image.small} />
               </CardText>
+              <AmountInfo backplate={price.backplate} item={price.sign} texts={ { total: texts.settings.price.total, options: amountoptions } } title={texts.settings.price.title} total={price.total} />
               <CardActions>
                 <Button label={texts.preview.continue.text} onClick={() => actions.push('/payment')} raised primary />
               </CardActions>
@@ -156,6 +160,9 @@ Design.defaultProps = {
             description: 'Til en kjærlig familie'
           }
         }
+      },
+      price: {
+        title: 'Priser'
       }
     }
   }

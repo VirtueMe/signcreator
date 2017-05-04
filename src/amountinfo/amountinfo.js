@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import { themr } from 'react-css-themr';
-import { Card, CardText, CardTitle } from 'react-toolbox';
+import { Avatar, Card, CardText, CardTitle } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 import { AmountRow } from './amountrow';
 import { AMOUNTINFO } from '../identifiers';
@@ -83,7 +83,7 @@ const factory = () => {
     createAmountRow(item) {
       const { texts, theme } = this.props;
 
-      const row =  item.amount > 0 ? <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} /> : null;
+      const row =  item && (item.amount > 0) ? <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} /> : null;
 
       return row;
     }
@@ -93,24 +93,26 @@ const factory = () => {
 
       const shippingRow = this.createAmountRow(shipping);
       const feeRow = this.createAmountRow(fee);
-      const backplateRow = backplate.type !== noplate ? this.createAmountRow(backplate) : null;
+      const backplateRow = backplate.type !== noplate ? <AmountRow amount={backplate.amount} options={texts.options} text={backplate.text} theme={theme} /> : null;
+      const avatar = <Avatar icon='shopping_cart' className={theme.avatar} />;
 
       return (
-        <Card>
+        <div>
           <CardTitle
+            avatar={avatar}
             title={title}
             subtitle={subTitle}
           />
-        <CardText>
-          <Container fluid>
-            <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} />
-            {backplateRow}
-            {feeRow}
-            {shippingRow}
-            <AmountRow amount={total} options={texts.options} className={theme.total} text={texts.total} theme={theme} />
-          </Container>
-        </CardText>
-        </Card>
+          <CardText>
+            <Container fluid>
+              <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} />
+              {backplateRow}
+              {feeRow}
+              {shippingRow}
+              <AmountRow amount={total} options={texts.options} className={theme.total} text={texts.total} theme={theme} total />
+            </Container>
+          </CardText>
+        </div>
       )
     }
   }

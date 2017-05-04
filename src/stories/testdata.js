@@ -93,6 +93,13 @@ const imageData = [{
 }];
 
 const texts = {
+  amount: {
+    symbol: "kr",
+    decimal: ",",
+    thousand: " ",
+    precision: 2,
+    format: "%v %s"
+  },
   receipt: {
     avatar: 'https://placeimg.com/80/80/animals',
     header: 'Navnemerket',
@@ -221,6 +228,10 @@ const texts = {
             description: 'Til en kjærlig familie'
           }
         }
+      },
+      price: {
+        title: 'Priser',
+        total: 'Sum:'
       }
     }
   },
@@ -252,6 +263,10 @@ const texts = {
         error: 'Poststed påkrevd'
       }
     },
+    price: {
+      title: 'Priser',
+      total: 'Totalt:'
+    },
     options: {
       title: 'Betalingsinformasjon',
       email: {
@@ -279,7 +294,9 @@ const texts = {
           src: 'https://cdn.dibspayment.com/logo/checkout/combo/horiz/DIBS_checkout_kombo_horizontal_04.png',
           alt: 'DIBS + Payments made easy'
         }
-      },
+      }
+    },
+    buttons: {
       continue: {
         text: 'Bestill'
       },
@@ -291,7 +308,6 @@ const texts = {
 };
 
 const state = {
-  view: { index: 0 },
   templates: {
     items: imageData.concat(
       imageData.map(item => (Object.assign({}, item, { settings: Object.assign({}, item.settings, { type: 1 }) }))),
@@ -301,6 +317,48 @@ const state = {
   },
   customer: { email: '', emailValid: false, name: '', nameValid: false, address: '', addressValid: false, zip: '', zipValid: false, city: '', cityValid: false, valid: false },
   payment: { type: 0, number: '', numberValid: false, month: '', year: '', expiresValid: false, ccv2: '', ccv2Valid: false, valid: true },
+  prices: {
+    signs: {
+      0: {
+        amount: 399,
+        text: 'Liggende skilt 10x15cm'
+      },
+      1: {
+        amount: 399,
+        text: 'Stående skilt 15x10cm'
+      },
+      2: {
+        amount: 449,
+        text: 'Kvadratisk skilt'
+      },
+      3: {
+        amount: 499,
+        text: 'Hjerteformet skilt'
+      }
+    },
+    backplates: {
+      0: {
+        amount: 0,
+        text: 'Ingen bakplate'
+      },
+      8: {
+        amount: 15,
+        text: 'Hvit plast bakplate'
+      },
+      4: {
+        amount: 30,
+        text: 'Børstet aluminium bakplate'
+      }
+    },
+    fee: {
+      amount: 15,
+      text: 'Fakturagebyr'
+    },
+    shipping: {
+      amount: 50,
+      text: 'Frakt'
+    }
+  },
   items: [
     { type: 1, value: 'Her bor', height: 7, center: true, italic: false, bold: false, font: 'Arial', color: { r: 10, g: 10, b: 10, a: 1} },
     { type: 1, value: 'Familien Thomas', height: 8, center: true, italic: false, bold: true, font: 'Arial', color: { r: 144, g: 19, b: 254, a: 1} },

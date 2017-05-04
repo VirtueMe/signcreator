@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 import { landscape, smallLandscape, portrait, smallPortrait, square, smallSquare, heart, smallHeart } from '../canvas';
 const generators = [landscape, portrait, square, heart];

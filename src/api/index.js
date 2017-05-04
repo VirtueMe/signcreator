@@ -53,12 +53,23 @@ export function sendData(payload) {
               });
 }
 
-export function fetchTexts(project) {
-  const url = apiroot + `/signs/texts/${project}`;
-
+function fetchBase(url) {
   return fetch(url)
            .then(checkStatus)
            .then(parseJSON);
+
+}
+
+export function fetchTexts(project) {
+  const url = apiroot + `/signs/texts/${project}`;
+
+  return fetchBase(url);
+}
+
+export function fetchPrices(project) {
+  const url = apiroot + `/signs/prices/${project}`;
+
+  return fetch(url);
 }
 
 function checkStatus(response) {

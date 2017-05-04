@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Button, Card, CardActions, CardText, CardTitle, Dialog, ProgressBar } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 import CustomerForm from '../customerform';
+import Preview from '../preview';
 import PaymentOptions from '../payment';
+import AmountInfo from '../amountinfo';
 
 
 class Payment extends Component {
@@ -11,7 +13,7 @@ class Payment extends Component {
   }
 
   render() {
-    const { actions, customer, image, items, payment, sendstatus, settings, texts, toReceipt } = this.props;
+    const { actions, amountoptions, customer, image, items, payment, price, sendstatus, settings, texts, toReceipt } = this.props;
 
     return (
       <Container fluid id="paymentinformation">
@@ -25,6 +27,9 @@ class Payment extends Component {
               <CardText>
                 <CustomerForm {...customer} actions={actions} texts={texts.customer} />
               </CardText>
+              <CardText>
+                <Preview image={image.small} />
+              </CardText>
             </Card>
             <br />
           </Col>
@@ -37,11 +42,12 @@ class Payment extends Component {
               <CardText>
                 <PaymentOptions payment={payment} actions={actions} texts={texts.options} />
               </CardText>
+              <AmountInfo backplate={price.backplate} fee={price.fee} item={price.sign} texts={{ total: texts.price.total, options: amountoptions }} shipping={price.shipping} title={texts.price.title} total={price.totalamount} />
               <CardActions>
-              <Button
-                label={texts.buttons.back.text}
-                onClick={ actions.goBack }
-                raised  />
+                <Button
+                  label={texts.buttons.back.text}
+                  onClick={ actions.goBack }
+                  raised  />
 
                 <Button
                   label={texts.buttons.continue.text}
@@ -78,7 +84,9 @@ Payment.propTypes = {
       title: PropTypes.string
     }),
     options: PropTypes.shape({
-      title: PropTypes.string,
+      title: PropTypes.string
+    }),
+    buttons: PropTypes.shape({
       continue: PropTypes.shape({
         text: PropTypes.string
       }),

@@ -2,24 +2,32 @@
 @import '../variables.css';
 @import './config.css';
 
+.amount {
+  text-align: right;
+}
+
+.avatar {
+  padding-top: 8px;
+  background-color: #e45244;
+}
+
 .discount {
   font-style: italic;
 }
 
-.amount {
-  text-align: right;
-}
 
 .total {
   font-weight: bold;
   padding-top: 5px;
   margin-top: 5px;
-  border-top-color: darkgray;
+  border-top-color: var(--border-color);
   border-top-style: solid;
   border-top-width: thin;
-  /*
-  border-bottom-color: darkgray;
+}
+
+.totalamount {
+  padding-bottom: 5px;
+  border-bottom-color: var(--border-color);
   border-bottom-style: double;
-  border-bottom-width: initial;
-  */
+  border-bottom-width: medium;;
 }

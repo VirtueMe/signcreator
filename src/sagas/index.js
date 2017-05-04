@@ -1,4 +1,4 @@
-import { EDIT_ITEM, FETCH_TEMPLATES_FAILED, FETCH_TEMPLATES_IN_PROGRES, FETCH_TEMPLATES_SUCCESS, FETCH_TEXTS, FETCH_TEXTS_FAILED, FETCH_TEXTS_IN_PROGRES, FETCH_TEXTS_SUCCESS, SEND_ORDER, SEND_ORDER_IN_PROGRESS, SEND_ORDER_FAILED, SEND_ORDER_SUCCESS } from '../constants/actiontypes';
+import { EDIT_ITEM, FETCH_PRICES_FAILED, FETCH_PRICES_IN_PROGRES, FETCH_PRICES_SUCCESS, FETCH_TEMPLATES_FAILED, FETCH_TEMPLATES_IN_PROGRES, FETCH_TEMPLATES_SUCCESS, FETCH_TEXTS, FETCH_TEXTS_FAILED, FETCH_TEXTS_IN_PROGRES, FETCH_TEXTS_SUCCESS, SEND_ORDER, SEND_ORDER_IN_PROGRESS, SEND_ORDER_FAILED, SEND_ORDER_SUCCESS } from '../constants/actiontypes';
 
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from '../api';
@@ -36,6 +36,22 @@ export function* fetchTexts(action) {
   }
 }
 
+export function* fetchPrices(action) {
+  const { payload } = action;
+
+  yield put({ type: FETCH_PRICES_IN_PROGRES });
+
+  try {
+    const { prices } = yield call(api.fetchPrices, payload.project);
+
+    yield put({ type: FETCH_PRICES_SUCCESS, payload: prices });
+  }
+  catch(error) {
+    yield put({ type: FETCH_PRICES_FAILED, error });
+  }
+}
+
+
 export function* fetchTemplates(action) {
   yield put({ type: FETCH_TEMPLATES_IN_PROGRES });
 
@@ -65,6 +81,10 @@ export function* watchFetchTemplates() {
   yield takeEvery(FETCH_TEXTS, fetchTemplates);
 }
 
+export function* watchFetchPrices() {
+  yield takeEvery(FETCH_TEXTS, fetchPrices);
+}
+
 export function* watchEditItem() {
   yield takeEvery(EDIT_ITEM, editItem);
 }
@@ -72,6 +92,7 @@ export function* watchEditItem() {
 export default function* rootSaga() {
   yield [
     watchSendOrderAsync(),
+    watchFetchPrices(),
     watchFetchTexts(),
     watchFetchTemplates(),
     watchEditItem()

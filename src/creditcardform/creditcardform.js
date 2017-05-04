@@ -49,12 +49,15 @@ const factory = () => {
         <span>{text}</span>
       );
     }
+
     createImage(logo, alt) {
+      const { theme } = this.props;
+
       if (logo) {
         return (
           <RowCol width={12}>
             <div className="dibs_brand_assets">
-              <img src={logo} alt={alt} />
+              <img src={logo} alt={alt} className={theme.providerimage} />
             </div>
           </RowCol>
         );

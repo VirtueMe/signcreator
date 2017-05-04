@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import accounting from 'accounting';
 import { Row, Col } from 'react-grid-system';
 
@@ -30,14 +31,14 @@ class AmountRow extends Component {
   };
 
   render () {
-    const { amount, className, options, text, theme } = this.props;
+    const { amount, className, options, text, theme, total } = this.props;
 
     return (
       <Row className={className}>
-        <Col xs={9}>
+        <Col md={8} xs={8}>
           {text}
         </Col>
-        <Col xs={3} className={theme.amount}>
+        <Col md={4} xs={4} className={classnames(theme.amount, { [theme.totalamount]: total })}>
           {accounting.formatMoney(amount, options)}
         </Col>
       </Row>
