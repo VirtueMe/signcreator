@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
 import { themr } from 'react-css-themr';
-import { Avatar, Card, CardText, CardTitle } from 'react-toolbox';
-import { Container, Row, Col } from 'react-grid-system';
+import { Avatar, CardText, CardTitle } from 'react-toolbox';
+import { Container } from 'react-grid-system';
 import { AmountRow } from './amountrow';
 import { AMOUNTINFO } from '../identifiers';
 
@@ -123,7 +123,7 @@ const factory = () => {
 
 const AmountInfo = factory();
 
-export default themr(AmountInfo, null)(AmountInfo);
+export default themr(AMOUNTINFO, null)(AmountInfo);
 
 export { factory as amountInfoFactory };
 export { AmountInfo };

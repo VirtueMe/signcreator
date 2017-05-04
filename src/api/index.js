@@ -69,7 +69,7 @@ export function fetchTexts(project) {
 export function fetchPrices(project) {
   const url = apiroot + `/signs/prices/${project}`;
 
-  return fetch(url);
+  return fetchBase(url);
 }
 
 function checkStatus(response) {

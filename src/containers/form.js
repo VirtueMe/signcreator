@@ -25,6 +25,7 @@ function mapStateToProps(state) {
     customer: state.customer,
     payment: state.payment,
     price: priceSelector(state),
+    prices: state.prices,
     fetch: state.fetch,
     templates: state.templates,
     texts: state.texts

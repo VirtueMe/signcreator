@@ -13,7 +13,7 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 
 class Form extends Component {
   render() {
-    const { actions, borders, customer, history, image, imageClassName, items, payment, sendstatus, settings, templates, texts } = this.props;
+    const { actions, borders, customer, history, image, imageClassName, items, payment, price, sendstatus, settings, templates, texts } = this.props;
 
     return (
       <Router history={history}>
@@ -24,11 +24,11 @@ class Form extends Component {
             )} />
           <Route path="/edit" render={() =>
             (
-              <Design key='design' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} settings={settings} texts={texts.design}  />
+              <Design key='design' actions={actions} borders={borders} image={image} imageClassName={imageClassName} items={items} price={price} settings={settings} texts={texts.design}  />
             )} />
           <Route path="/payment" render={() =>
             (
-              <Payment key='payment' actions={actions} customer={customer} image={image} items={items} payment={payment} settings={settings} sendstatus={sendstatus} texts={texts.payment} />
+              <Payment key='payment' actions={actions} customer={customer} image={image} items={items} payment={payment} price={price} settings={settings} sendstatus={sendstatus} texts={texts.payment} />
             )} />
           <Route path="/receipt" render={() =>
             (
