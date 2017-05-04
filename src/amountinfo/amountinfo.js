@@ -18,21 +18,28 @@ const factory = () => {
         text: 'Uten bakplate'
       },
       item: {
-        amount: 399.0,
+        amount: 0.0,
         text: 'Skilt 10x15'
       },
       shipping: {
-        amount: 50.0,
+        amount: 0.0,
         text: 'Frakt:',
       },
       fee: {
-        amount: 30.0,
+        amount: 0.0,
         text: 'Fakturagebyr:',
       },
       subTitle: '',
       title: 'Default title',
       total: 479.0,
       texts: {
+        options: {
+    	    symbol: "kr",
+    	    decimal: ",",
+    	    thousand: " ",
+    	    precision: 2,
+    	    format: "%v %s"
+        },
         total: 'Total:'
       }
     };
@@ -57,6 +64,13 @@ const factory = () => {
       }),
       subTitle: PropTypes.string,
       texts: PropTypes.shape({
+        options: PropTypes.shape({
+          symbol: PropTypes.string,
+          decimal: PropTypes.string,
+          thousand: PropTypes.string,
+          precision: PropTypes.number,
+          format: PropTypes.string
+        }),
         total: PropTypes.string
       }),
       title: PropTypes.string,
@@ -67,9 +81,9 @@ const factory = () => {
     };
 
     createAmountRow(item) {
-      const { theme } = this.props;
+      const { texts, theme } = this.props;
 
-      const row =  item.amount > 0 ? <AmountRow amount={item.amount} text={item.text} theme={theme} /> : null;
+      const row =  item.amount > 0 ? <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} /> : null;
 
       return row;
     }
@@ -89,11 +103,11 @@ const factory = () => {
           />
         <CardText>
           <Container fluid>
-            <AmountRow amount={item.amount} text={item.text} theme={theme} />
+            <AmountRow amount={item.amount} options={texts.options} text={item.text} theme={theme} />
             {backplateRow}
             {feeRow}
             {shippingRow}
-            <AmountRow amount={total} className={theme.total} text={texts.total} theme={theme} />
+            <AmountRow amount={total} options={texts.options} className={theme.total} text={texts.total} theme={theme} />
           </Container>
         </CardText>
         </Card>

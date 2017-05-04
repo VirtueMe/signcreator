@@ -243,16 +243,134 @@ storiesOf('EditList', module)
     );
   });
 
+const portrait = { amount: 399.0, text: 'Stående skilt 15x10cm' };
+const white = { amount: 15.0, text: 'Hvit plast bakplate', type: '1' };
+const aluminium = { amount: 30.0, text: 'Børstet aluminium bakplate', type: '2' };
+
+const swedish = {
+  options: {
+    symbol: "SEK",
+    decimal: ",",
+    thousand: " ",
+    precision: 2,
+    format: "%v %s"
+  },
+  total: 'Totalen:'
+};
+
+const euro = 9.42872965;
+const sek = 0.978679035;
+
+const finnish = {
+  options: {
+    symbol: "€",
+    decimal: ",",
+    thousand: " ",
+    precision: 2,
+    format: "%s %v"
+  },
+  total: 'Totala:'
+};
+
 storiesOf('Amounts', module)
-  .add('Simple', () => {
+  .add('Norwegian without backplate fee and shipping', () => {
     const store = configureStore(state);
 
     return (
       <Provider store={store}>
-        <AmountInfo />
+        <AmountInfo item={portrait} total={portrait.amount} />
+      </Provider>
+    );
+  })
+  .add('Norwegian with white backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={portrait} backplate={white} total={portrait.amount+white.amount} />
+      </Provider>
+    );
+  })
+  .add('Norwegian with aluminium backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={portrait} backplate={aluminium} texts={swedish} total={portrait.amount+aluminium.amount} />
+      </Provider>
+    );
+  })
+  .add('Swedish without backplate fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / sek })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} texts={swedish} total={item.amount} />
+      </Provider>
+    );
+  })
+  .add('Swedish with white backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / sek })
+    const backplate = Object.assign({}, white, { amount: white.amount / sek })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+      </Provider>
+    );
+  })
+  .add('Swedish with aluminium backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / sek })
+    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / sek })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} backplate={backplate} texts={swedish} total={item.amount+backplate.amount} />
+      </Provider>
+    );
+  })
+  .add('Finnish without backplate fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} texts={finnish} total={item.amount} />
+      </Provider>
+    );
+  })
+  .add('Finnish with white backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
+    const backplate = Object.assign({}, white, { amount: white.amount / euro })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
+      </Provider>
+    );
+  })
+  .add('Finnish with aluminium backplate and without fee and shipping', () => {
+    const store = configureStore(state);
+
+    const item = Object.assign({}, portrait, { amount: portrait.amount / euro })
+    const backplate = Object.assign({}, aluminium, { amount: aluminium.amount / euro })
+
+    return (
+      <Provider store={store}>
+        <AmountInfo item={item} backplate={backplate} texts={finnish} total={item.amount+backplate.amount} />
       </Provider>
     );
   });
+
 
 storiesOf('images', module)
   .add('landscape', () => {
