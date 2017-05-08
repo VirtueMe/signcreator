@@ -21,12 +21,6 @@ const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
   <MenuItem icon={<img src={image} alt='presentation' className={theme.menuimage} />} className={theme.menuemoji} onClick={() => getImageBounds(actions.addEmoji, image, index)} />
 );
 
-const zoom = {
-  zoom: '90%'
-};
-
-
-
 const EmojiMenu = ({ actions, index, texts, theme }) => {
   const imagemenuitems = Object.keys(images).map((image, idx) => (
     <EmojiMenuItem key={idx} image={images[image]} theme={theme} actions={actions} index={index} />

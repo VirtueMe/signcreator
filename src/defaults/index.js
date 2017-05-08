@@ -1,7 +1,7 @@
 
 const settings = { type: 0, backplate: '0', padding: 40, top: 0, topImage: null, left: 0, right: 0, bottom: 0 };
 const textitem = { type: 1, value: '', padding: 30, height: 20, center: true, bold: false, italic: false, font: 'Lobster', color: { r: '0', g: '0', b: '0', a: '1' } };
-const imageLine = { type: 2, value: [], scale: 2 }
+const imageLine = { type: 2, value: [], scale: 1.6 }
 const dividerLine = { type: 3, value: null, selected: 0, scale: 1.5 };
 const scaleStep = 0.1;
 
