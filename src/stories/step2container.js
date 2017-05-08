@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 import * as Actions from '../actions';
 import { bindActionCreators } from 'redux';

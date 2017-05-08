@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { PropTypes }  from 'prop-types';
 import { Button, Card, CardActions, CardText, CardTitle } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 

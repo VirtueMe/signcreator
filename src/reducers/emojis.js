@@ -80,7 +80,12 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[payload.index] = {
-        scale: { $apply: function(scale) { return scale + payload.step; } }
+        scale: {
+          $apply: function(scale) {
+            console.info(scale);
+            return scale + payload.step;
+          }
+        }
       };
 
       return update(state, updateData);

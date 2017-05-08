@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { PropTypes }  from 'prop-types'; 
 
 import { themr } from 'react-css-themr';
 import { Avatar, CardText, CardTitle } from 'react-toolbox';
@@ -46,20 +47,20 @@ const factory = () => {
 
     static propTypes = {
       backplate: PropTypes.shape({
-        amount: PropTypes.float,
+        amount: PropTypes.number,
         text: PropTypes.string,
         type: PropTypes.string
       }),
       fee: PropTypes.shape({
-        amount: PropTypes.float,
+        amount: PropTypes.number,
         text: PropTypes.string
       }),
       item: PropTypes.shape({
-        amount: PropTypes.float,
+        amount: PropTypes.number,
         text: PropTypes.string
       }),
       shipping: PropTypes.shape({
-        amount: PropTypes.float,
+        amount: PropTypes.number,
         text: PropTypes.string
       }),
       subTitle: PropTypes.string,
@@ -77,7 +78,7 @@ const factory = () => {
       theme: PropTypes.shape({
         total: PropTypes.string
       }),
-      total: PropTypes.float
+      total: PropTypes.number
     };
 
     createAmountRow(item) {
@@ -95,6 +96,8 @@ const factory = () => {
       const feeRow = this.createAmountRow(fee);
       const backplateRow = backplate.type !== noplate ? <AmountRow amount={backplate.amount} options={texts.options} text={backplate.text} theme={theme} /> : null;
       const avatar = <Avatar icon='shopping_cart' className={theme.avatar} />;
+
+      console.info(item.amount, item);
 
       return (
         <div>
