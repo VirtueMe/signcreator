@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types'; 
+import { PropTypes }  from 'prop-types';
 
 import { themr } from 'react-css-themr';
 import { Accordion, Chord } from 'react-toolbox-additions';
@@ -11,7 +11,9 @@ import { PAYMENTOPTIONS } from '../identifiers';
 const factory = () => {
   class PaymentOptions extends Component {
     render() {
-      const { actions, payment, texts } = this.props;
+      const { actions, payment, texts, theme } = this.props;
+
+      console.info(theme);
 
       return (
         <Accordion index={payment.type} onChange={actions.changePayment}>
@@ -20,7 +22,7 @@ const factory = () => {
               {texts.email.description}
             </div>
           </Chord>
-          <Chord labelIcon={<FontIcon value='payment' />} label={texts.creditcard.title}>
+          <Chord labelIcon={<FontIcon value='payment' />} label={texts.creditcard.title} className={theme.creditcardpane}>
             <CreditcardForm actions={actions} texts={texts.creditcard} {...payment}/>
           </Chord>
         </Accordion>
@@ -30,7 +32,7 @@ const factory = () => {
 
   PaymentOptions.propTypes = {
     theme: PropTypes.shape({
-
+      crecitcardpane: PropTypes.string
     })
   };
 

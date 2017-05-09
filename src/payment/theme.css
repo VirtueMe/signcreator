@@ -1,3 +1,13 @@
 @import '../colors.css';
 @import '../variables.css';
 @import './config.css';
+
+.creditcardpane {
+  &>div {
+    overflow: visible !important;
+  }
+}
+
+.enabler {
+
+}
