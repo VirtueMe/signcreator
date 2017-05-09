@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types'; 
+import { PropTypes }  from 'prop-types';
 import { Button, Card, CardActions, CardText, CardTitle, Dialog, ProgressBar } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 import CustomerForm from '../customerform';
@@ -36,7 +36,7 @@ class Payment extends Component {
           </Col>
           <Col lg={4} md={6} xs={12}>
             <br />
-            <Card>
+            <Card style={ { overflow: 'visible' } }>
               <CardTitle>
                 {texts.options.title}
               </CardTitle>
