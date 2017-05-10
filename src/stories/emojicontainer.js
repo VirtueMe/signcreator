@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import EmojiList from '../emojiitem/emojilist';
+import EmojiList from '../emojiitem';
 import * as EmojiActions from '../actions';
 
 function mapStateToProps(state) {

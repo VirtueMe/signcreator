@@ -15,7 +15,7 @@
 }
 
 .menuimage {
-  height: 50px;
+  height: 40px;
 }
 
 .input {
@@ -31,6 +31,8 @@
 }
 
 .image {
+  height: 100%;
+
   &:not(:first-child) {
     padding-left: 8px;
   }
@@ -69,16 +71,20 @@
   border-right: 0;
   border-top: 0;
   color: var(--color-text);
-  display: block;
+  display: flex;
   font-size: var(--input-field-font-size);
   outline: none;
   padding: var(--input-field-padding) 0;
   width: 100%;
   height: 65px;
   margin-top: -15px;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-direction: row;
 
   &:empty {
-    height: 50px
+    height: 40px
   }
 
   &:focus:not([disabled]):not([readonly]) {
@@ -218,6 +224,12 @@
   & > .label > .required {
     color: var(--input-text-required-color);
   }
+}
+
+.selected {
+  border-color: darkgray;
+  border-width: thin;
+  border-style: dotted;
 }
 
 .hidden {

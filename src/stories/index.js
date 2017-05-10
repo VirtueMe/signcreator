@@ -10,7 +10,6 @@ import Payment from './step2container';
 import Receipt from './step3container';
 import Form from '../containers/form';
 import App from '../App';
-import EmojiItem, { small, child } from '../emojiitem/emojiitem';
 import EmojiList from './emojicontainer';
 import LineDropdown from './linecontainer';
 import Settings from './settingscontainer';
@@ -31,6 +30,7 @@ import testdata from './testdata';
 import StartContainer from '../start';
 import Loader from './loadercontainer';
 import { Card } from 'react-toolbox';
+import imagemapper from '../utils/imagemapper';
 
 
 
@@ -437,10 +437,10 @@ storiesOf('EmojiItem', module)
       items: [{
         type: 2,
         value: [
-          { image: woman, id: 0 },
-          { image: man, id: 1 },
-          { image: girl, id: 2 },
-          { image: boy, id: 3 }
+          { image: imagemapper.f_fb, id: 0 },
+          { image: imagemapper.f_gb, id: 1 },
+          { image: imagemapper.f_jb, id: 2 },
+          { image: imagemapper.f_mb, id: 3 }
         ]
       }]
     };
@@ -448,7 +448,9 @@ storiesOf('EmojiItem', module)
 
     return (
       <Provider store={store}>
-        <EmojiList />
+        <div style={ { width: '250px' }}>
+          <EmojiList />
+        </div>
       </Provider>
     );
   });

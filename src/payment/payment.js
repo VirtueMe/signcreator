@@ -10,19 +10,30 @@ import { PAYMENTOPTIONS } from '../identifiers';
 
 const factory = () => {
   class PaymentOptions extends Component {
+
+    labelSet(icon, title) {
+      const { theme } = this.props;
+
+      return (
+        <span><FontIcon value={icon} /><span className={theme.chordlabel}>&nbsp;{title}</span></span>
+      );
+    }
+
     render() {
       const { actions, payment, texts, theme } = this.props;
+      const email = this.labelSet('email', texts.email.title);
+      const creditcard = this.labelSet('payment', texts.creditcard.title);
 
       console.info(theme);
 
       return (
         <Accordion index={payment.type} onChange={actions.changePayment}>
-          <Chord labelIcon={<FontIcon value='email' />} label={texts.email.title}>
+          <Chord labelIcon={<FontIcon value={payment.type === 0 ? 'radio_button_checked' : 'radio_button_unchecked'} />} label={email}>
             <div>
               {texts.email.description}
             </div>
           </Chord>
-          <Chord labelIcon={<FontIcon value='payment' />} label={texts.creditcard.title} className={theme.creditcardpane}>
+          <Chord labelIcon={<FontIcon value={payment.type === 0 ? 'radio_button_unchecked' : 'radio_button_checked'} />} label={creditcard} className={theme.creditcardpane}>
             <CreditcardForm actions={actions} texts={texts.creditcard} {...payment}/>
           </Chord>
         </Accordion>

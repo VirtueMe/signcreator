@@ -8,6 +8,11 @@
   }
 }
 
-.enabler {
-
+.chordlabel {
+  position: relative;
+  display: inline-block;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  vertical-align: top;
+  margin-right: 1rem;
 }
