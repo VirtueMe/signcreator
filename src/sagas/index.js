@@ -44,8 +44,6 @@ export function* fetchPrices(action) {
   try {
     const { prices } = yield call(api.fetchPrices, payload.project);
 
-    console.info(prices);
-
     yield put({ type: FETCH_PRICES_SUCCESS, payload: prices });
   }
   catch(error) {

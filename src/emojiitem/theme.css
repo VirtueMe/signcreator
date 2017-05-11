@@ -67,10 +67,6 @@
 
 .inputElement {
   background-color: var(--input-text-background-color);
-  border-bottom: 1px solid var(--input-text-bottom-border-color);
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
   color: var(--color-text);
   display: flex;
   font-size: var(--input-field-font-size);
@@ -93,6 +89,7 @@
     & ~ .bar::after {
       width: 50%;
     }
+
 
     & ~ .label:not(.fixed) {
       color: var(--input-text-highlight-color);
@@ -167,6 +164,12 @@
   display: block;
   position: relative;
   width: 100%;
+
+  border-bottom: 1px solid var(--input-text-bottom-border-color);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+
 
   &::before,
   &::after {

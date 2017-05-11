@@ -27,10 +27,8 @@ class EmojiList extends Component {
   render() {
     const { actions, className, index, theme, value } = this.props;
 
-    console.info('info: ', this.state.selected);
-
     const items = value.map(item => (
-        <EmojiItem key={item.id} actions={actions} id={item.id} theme={theme} selected={this.state.selected=== item.id} clickHandler={(e) => this.selectHandler(e, item.id)} index={index} image={item.image} size={item.size} findEmoji={(id) => this.findEmoji(id)} />
+      <EmojiItem key={item.id} actions={actions} id={item.id} theme={theme} selected={this.state.selected=== item.id} clickHandler={(e) => this.selectHandler(e, item.id)} index={index} image={item.image} size={item.size} findEmoji={(id) => this.findEmoji(id)} />
     ));
 
     return (

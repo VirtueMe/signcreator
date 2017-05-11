@@ -49,8 +49,6 @@ export default function sendstatus(state = initialState, action) {
   switch (action.type) {
     case FETCH_PRICES_SUCCESS: {
 
-      console.info(payload);
-
       return payload || state;
     }
 

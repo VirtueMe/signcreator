@@ -19,8 +19,6 @@ class Design extends Component {
   render() {
     const { actions, amountoptions, borders, image, items, price, settings, texts } = this.props;
 
-    console.info(price);
-
     return (
       <Container fluid id="signedit">
         <Row>

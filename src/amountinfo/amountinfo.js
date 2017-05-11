@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types'; 
+import { PropTypes }  from 'prop-types';
 
 import { themr } from 'react-css-themr';
 import { Avatar, CardText, CardTitle } from 'react-toolbox';
@@ -96,8 +96,6 @@ const factory = () => {
       const feeRow = this.createAmountRow(fee);
       const backplateRow = backplate.type !== noplate ? <AmountRow amount={backplate.amount} options={texts.options} text={backplate.text} theme={theme} /> : null;
       const avatar = <Avatar icon='shopping_cart' className={theme.avatar} />;
-
-      console.info(item.amount, item);
 
       return (
         <div>
