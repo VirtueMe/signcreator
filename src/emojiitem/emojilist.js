@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes }  from 'prop-types';
-import classnames from 'classnames';
 import EmojiItem from './emojiitem';
 
 import { DragDropContext } from 'react-dnd';
@@ -31,7 +30,7 @@ class EmojiList extends Component {
     console.info('info: ', this.state.selected);
 
     const items = value.map(item => (
-        <EmojiItem key={item.id} id={item.id} theme={theme} selected={this.state.selected=== item.id} clickHandler={(e) => this.selectHandler(e, item.id)} index={index} image={item.image} size={item.size} actions={actions} findEmoji={(id) => this.findEmoji(id)} />
+        <EmojiItem key={item.id} actions={actions} id={item.id} theme={theme} selected={this.state.selected=== item.id} clickHandler={(e) => this.selectHandler(e, item.id)} index={index} image={item.image} size={item.size} findEmoji={(id) => this.findEmoji(id)} />
     ));
 
     return (

@@ -6,22 +6,34 @@ const initialState = [
   { type: 1, value: '', height: 8, center: false, bold: false, italic: false, font: 'Arial', color: { r: '0', g: '0', b: '0', a: '1' } }
 ];
 
+function getCounter(state) {
+  const counter = state.counter;
+
+  if (counter === 0 || counter) {
+    return counter + 1;
+  }
+
+  return state.value.length + 1;
+}
+
 export default function emojis(state = initialState, action) {
   const {payload} = action;
 
   switch (action.type) {
     case ADD_EMOJI: {
       let updateData = {};
+      const counter = getCounter(state[payload.index]);
 
       updateData[payload.index] = {
         value: {
           $push: [{
-            id: state[payload.index].value.length,
+            id: counter-1,
             image: payload.image,
             size: payload.size,
             img: payload.img
           }]
-        }
+        },
+        counter: { $set: counter }
       };
 
       return update(state, updateData);
@@ -156,12 +168,16 @@ export default function emojis(state = initialState, action) {
 
     case DELETE_EMOJI: {
       let updateData = {};
+      const counter = getCounter(state[payload.index]);
 
       updateData[payload.index] = {
         value: {
-          $set: state[payload.index].filter(emoji =>
+          $set: state[payload.index].value.filter(emoji =>
             emoji.id !== payload.id
           )
+        },
+        counter: {
+          $set: counter - 1
         }
       };
 

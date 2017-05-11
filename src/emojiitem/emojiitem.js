@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes }  from 'prop-types';
 import classnames from 'classnames';
 import { DragSource, DropTarget } from 'react-dnd';
+import { FontIcon } from 'react-toolbox';
 import flow from 'lodash/flow';
 
 const ItemTypes = {
@@ -28,10 +29,12 @@ const emojiTarget = {
 
 const emojiSource = {
   beginDrag(props) {
+    const { id, index } = props;
+
     return {
-      id: props.id,
-      index: props.index,
-      originalIndex: props.findEmoji(props.id).index
+      id,
+      index,
+      originalIndex: props.findEmoji(id).index
     };
   },
 
@@ -62,11 +65,26 @@ function collectSource(connect, monitor) {
 }
 
 class EmojiItem extends Component {
+  handleMenu = (e) => {
+    const { actions, id, index } = this.props;
+
+    console.info('info: ', id, ' : ', index);
+
+    actions.deleteEmoji(id, index);
+
+    e.stopPropagation();
+  };
+
   render() {
     const { clickHandler, connectDragSource, connectDropTarget, image, selected, theme } = this.props;
 
+    const selectButton = selected ? <div className={theme.iconbutton} onClick={this.handleMenu}><FontIcon value='close' className={theme.deleteImage}/></div> : null;
+
     return connectDragSource(connectDropTarget(
-      <span className={classnames(theme.image, { [theme.selected]: selected })} onClick={clickHandler}><img src={image} className={classnames(theme.menuimage)} role='presentation' /></span>
+      <div className={classnames(theme.image, { [theme.selected]: selected })} onClick={clickHandler}>
+        <img src={image} className={classnames(theme.menuimage)} role='presentation' />
+        {selectButton}
+      </div>
     ));
   }
 }

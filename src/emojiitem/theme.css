@@ -31,6 +31,7 @@
 }
 
 .image {
+  position: relative;
   height: 100%;
 
   &:not(:first-child) {
@@ -230,6 +231,24 @@
   border-color: darkgray;
   border-width: thin;
   border-style: dotted;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.deleteImage {
+  height: 100%;
+  position: absolute;
+  font-size: medium !important;
+  right: 0px;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.iconbutton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 15px;
 }
 
 .hidden {
