@@ -1,3 +1,5 @@
 :root {
   --input-padding: calc(2 * var(--unit));
+  --primary-color: color(#e45244);
+  --gray: color(#ccc);
 }
