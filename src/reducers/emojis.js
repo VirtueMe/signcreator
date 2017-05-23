@@ -1,4 +1,4 @@
-import { ADD_LINE, ADD_EMOJI, CHANGE_DIVIDER, CHANGE_FONT, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, EDIT_ITEM, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE, SCALE_EMOJI, TOGGLE_CENTER, TOGGLE_BOLD, TOGGLE_ITALIC } from '../constants/actiontypes';
+import { ADD_LINE, ADD_EMOJI, CHANGE_DIVIDER, CHANGE_FONT, CHANGE_FONT_SIZE, CHANGE_TEXT, CHANGE_TEXT_COLOR, CLEAR_EMOJIS, DELETE_EMOJI, DELETE_LINE, EDIT_ITEM, INIT_EMOJIS, MOVE_EMOJI, MOVE_LINE, SCALE_EMOJI, STEP_FONT_SIZE, TOGGLE_CENTER, TOGGLE_BOLD, TOGGLE_ITALIC } from '../constants/actiontypes';
 
 import update from 'immutability-helper';
 
@@ -104,6 +104,18 @@ export default function emojis(state = initialState, action) {
     }
 
     case CHANGE_FONT_SIZE: {
+      let updateData = {};
+
+      console.info('Change font size', payload);
+
+      updateData[payload.index] = {
+        height: { $set: payload.value }
+      };
+
+      return update(state, updateData);
+    }
+
+    case STEP_FONT_SIZE: {
       let updateData = {};
 
       updateData[payload.index] = {

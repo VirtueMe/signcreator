@@ -127,7 +127,11 @@ export function addTextLine() {
 }
 
 function changeFontSize(index, step) {
-  return { type: types.CHANGE_FONT_SIZE, payload:{index, step} };
+  return { type: types.STEP_FONT_SIZE, payload:{ index, step } };
+}
+
+export function setFontSize(index, value) {
+  return { type: types.CHANGE_FONT_SIZE, payload:{ index, value } };
 }
 
 export function changeFont(index, value) {

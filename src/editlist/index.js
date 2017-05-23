@@ -4,7 +4,7 @@ import InputItem from '../textitem';
 import EmojiEdit from '../emojiitem';
 import LineInput from '../lineinput';
 import Menu from './menu';
-import {SketchPicker} from 'react-color';
+import { SketchPicker } from 'react-color';
 import FontPicker from 'react-font-picker';
 
 
@@ -142,7 +142,7 @@ class EditList extends Component {
       switch (item.type) {
         case 1:
           return (
-            <InputItem key={'0' + index} {...item} index={index} actions={actions} menu={menu} texts={texts.textline} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} />
+            <InputItem key={'0' + index} {...item} index={index} actions={actions} fonts={fonts} fontPlaceholder={texts.dialogs.font.placeholder} menu={menu} texts={texts.textline} selectColor={() => this.showColor(true, index, item.color )} selectFont={() => this.showFont(true, index, item.font)} />
           );
         case 2:
           return (

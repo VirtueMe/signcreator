@@ -1,22 +1,53 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types'; 
+import { PropTypes }  from 'prop-types';
 
 import { themr } from 'react-css-themr';
 import { TEXTINPUT } from '../identifiers';
 
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { Input, ListItem } from 'react-toolbox';
+import { Button, Input, ListItem, Tooltip } from 'react-toolbox';
 
 import { IconMenu, MenuItem } from 'react-toolbox';
 
+import FontPicker from 'react-font-picker';
+
+import { SliderPicker as ColorPicker, CirclePicker as Picker } from 'react-color';
+
+const ToolTipButton = Tooltip(Button);
+
 const factory = (FontIcon) => {
   class TextInput extends Component {
+    state = {
+      showFont: false
+    };
+
+    focus = (value) => {
+      this.setState((prevState) => {
+        return { showFont: value };
+      });
+    }
+
+    fontChanged = (font) => {
+      const { actions, index } = this.props;
+
+      actions.changeFont(index, font);
+    }
+
+    colorChanged = (color) => {
+      const { actions, index } = this.props;
+      const { rgb } = color;
+
+      actions.changeTextColor(index, rgb);
+    };
+
 
     render() {
       const PositionMenu = this.props.menu;
-      const { actions, bold, center, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
+      const { actions, bold, center, color, font, fontPlaceholder, fonts, height, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
       const { menu } = texts;
+
+      console.info(this.props);
 
       const FormatMenu = () => (
         <IconMenu icon='text_format' position='topRight' iconRipple={false} menuRipple={false}>
@@ -48,7 +79,7 @@ const factory = (FontIcon) => {
         actions.changeText(value, index);
       }
 
-      const input = <Input type='text' label={texts.placeholder} icon='text_fields' value={value} onChange={changeText} className={theme.full} />;
+      const input = <Input type='text' label={texts.placeholder} icon='text_fields' value={value} onChange={changeText} onFocus={() => this.focus(true)} className={theme.full} />;
 
       const menuActions = [ <FormatMenu key="0" /> ];
 
@@ -56,13 +87,35 @@ const factory = (FontIcon) => {
         menuActions.push(<PositionMenu key="1" />);
       }
 
+      const content = this.state.showFont ? (<span listItemIgnore={true} className={theme.full}>
+        <div className={theme.maxheight}>
+          <ToolTipButton icon="format_align_center" floating mini primary={center} tooltip="Senter" onMouseUp={() => actions.toggleCenter(index)} />&nbsp;
+          <ToolTipButton label="F" floating mini primary={bold} tooltip="Fet" onMouseUp={() => actions.toggleBold(index)} />&nbsp;
+          <ToolTipButton label="K" floating mini primary={italic} tooltip="Kursiv" onMouseUp={() => actions.toggleItalic(index)} />
+          <Input type='number' label="Font size" error={null} value={height} hint="Font size" name={ 'fontsize' + index } onChange={(value) => actions.setFontSize(index, value ? parseInt(value) : 0)} />
+          <FontPicker
+            label={fontPlaceholder}
+            fonts={fonts}
+            value={font}
+            onChange={this.fontChanged}
+            />
+          <br />
+          <ColorPicker color={color} onChangeComplete={this.colorChanged} />
+          <br />
+          <Picker triangle='hide' color={color} onChangeComplete={this.colorChanged} width='' />
+
+        </div>
+      </span> ) : null;
+
       return (
         <ListItem
           key={'i' + index}
           itemContent={input}
           rightActions={menuActions}
           ripple={false}
-        />
+        >
+          {content}
+        </ListItem>
       );
     }
   }

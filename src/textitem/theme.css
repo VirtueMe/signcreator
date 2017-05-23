@@ -11,6 +11,12 @@
   width: 100%;
 }
 
+.maxheight {
+  padding-left: calc(var(--input-padding) + var(--input-icon-size));
+  padding-right: calc(var(--input-icon-size));
+  min-height: 200px;
+}
+
 .input {
   padding: var(--input-padding) 0;
   position: relative;
