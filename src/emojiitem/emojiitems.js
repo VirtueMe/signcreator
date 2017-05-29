@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { FontIcon, IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+import classnames from 'classnames';
+
+import { Button, FontIcon, IconMenu, MenuItem, MenuDivider } from 'react-toolbox';
+
+import { Container, Row, Col } from 'react-grid-system';
 
 import { imagemapper as images }  from '../utils/imagemapper';
 
@@ -20,6 +24,11 @@ function getImageBounds(addEmoji, image, index) {
 const EmojiMenuItem = ({ image, theme, actions, index, style }) => (
   <MenuItem icon={<img src={image} alt='presentation' className={theme.menuimage} />} className={theme.menuemoji} onClick={() => getImageBounds(actions.addEmoji, image, index)} />
 );
+
+const EmojiButton = ({ image, theme, actions, index, style }) => (
+  <Button icon={<img src={image} alt='presentation' className={theme.menuimage} />} raised className={classnames(theme.menuemoji, theme.menubutton) } onClick={() => getImageBounds(actions.addEmoji, image, index)} />
+);
+
 
 const EmojiMenu = ({ actions, index, texts, theme }) => {
   const imagemenuitems = Object.keys(images).map((image, idx) => (
@@ -41,5 +50,34 @@ const EmojiMenu = ({ actions, index, texts, theme }) => {
   );
 };
 
+const EmojiContent = ({ actions, index, texts, theme }) => {
+  const imagemenuitems = Object.keys(images).map((image, idx) => (
+    <Col xs={3} key={idx}>
+      <EmojiButton image={images[image]} theme={theme} actions={actions} index={index} />
+    </Col>
+  ));
+
+  return (
+    <Container fluid>
+      <Row>
+        <Col xs={12}>
+          <Button icon='photo_size_select_large' raised label={texts.larger} onClick={() => actions.scaleUpEmoji(index)} />&nbsp;
+          <Button icon='photo_size_select_small' raised label={texts.smaller} onClick={() => actions.scaleDownEmoji(index)} />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <br />
+        </Col>
+      </Row>
+      <Row>
+        {imagemenuitems}
+      </Row>
+    </Container>
+  )
+};
+
 
 export default EmojiMenu;
+
+export { EmojiMenu, EmojiContent };

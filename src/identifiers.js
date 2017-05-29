@@ -1,4 +1,5 @@
 export const IMAGESSELECTOR = 'SImagesSelector';
+export const EDITLIST = 'SEditList';
 export const TEXTINPUT = 'STextInput';
 export const LINEINPUT = 'SLineInput';
 export const PREVIEW = 'SPreview';

@@ -7,6 +7,21 @@
   padding-left: 12px;
 }
 
+.full {
+  width: 100%;
+}
+
+.maxheight {
+  padding-left: calc(var(--input-padding) + var(--input-icon-size));
+  padding-right: calc(var(--input-icon-size));
+  min-height: 200px;
+}
+
+.menubutton {
+  height: 45px;
+  margin-top: 5px;
+}
+
 .menuemoji {
   &>span:first-child {
     width: 100%;

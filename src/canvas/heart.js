@@ -2,7 +2,7 @@ import generator from './generator';
 import scaleFactor from './scalefactor';
 
 const dimensions = {
-  width: 150,
+  width: 130,
   height: 100,
   padding: 10
 };

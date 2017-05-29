@@ -6,9 +6,7 @@ import { TEXTINPUT } from '../identifiers';
 
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { Button, Input, ListItem, Tooltip } from 'react-toolbox';
-
-import { IconMenu, MenuItem } from 'react-toolbox';
+import { Button, IconButton, Input, ListItem, Tooltip } from 'react-toolbox';
 
 import FontPicker from 'react-font-picker';
 
@@ -22,9 +20,9 @@ const factory = (FontIcon) => {
       showFont: false
     };
 
-    focus = (value) => {
+    focus = () => {
       this.setState((prevState) => {
-        return { showFont: value };
+        return { showFont: !prevState.showFont };
       });
     }
 
@@ -44,44 +42,16 @@ const factory = (FontIcon) => {
 
     render() {
       const PositionMenu = this.props.menu;
-      const { actions, bold, center, color, font, fontPlaceholder, fonts, height, italic, index, selectColor, selectFont, theme, texts, value } = this.props;
+      const { actions, bold, center, color, font, fontPlaceholder, fonts, height, italic, index, theme, texts, value } = this.props;
       const { menu } = texts;
-
-      console.info(this.props);
-
-      const FormatMenu = () => (
-        <IconMenu icon='text_format' position='topRight' iconRipple={false} menuRipple={false}>
-          <MenuItem icon='format_size' caption={menu.increase} key="0" onClick={() => actions.increaseFont(index)}>
-            <FontIcon className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='text_fields' caption={menu.decrease} key="1" onClick={() => actions.decreaseFont(index)}>
-            <FontIcon className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='text_format' caption={menu.font} key="1a" onClick={selectFont}>
-            <FontIcon value='' className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_align_center' caption={menu.center} key="2a" onClick={() => actions.toggleCenter(index)}>
-            <FontIcon value={ center ? 'checked' : ''} className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_bold' caption={menu.bold} key="2" onClick={() => actions.toggleBold(index)}>
-            <FontIcon value={ bold ? 'checked' : ''} className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_italic' caption={menu.italic} key="3" onClick={() => actions.toggleItalic(index)}>
-            <FontIcon value={ italic ? 'checked' : ''} className={theme.width} />
-          </MenuItem>
-          <MenuItem icon='format_color_text' caption={menu.color} key="4" onClick={selectColor}>
-            <FontIcon value='' className={theme.width} />
-          </MenuItem>
-        </IconMenu>
-      );
 
       const changeText = function(value) {
         actions.changeText(value, index);
       }
 
-      const input = <Input type='text' label={texts.placeholder} icon='text_fields' value={value} onChange={changeText} onFocus={() => this.focus(true)} className={theme.full} />;
+      const input = <Input type='text' label={texts.placeholder} icon='text_fields' value={value} onChange={changeText} className={theme.full} />;
 
-      const menuActions = [ <FormatMenu key="0" /> ];
+      const menuActions = [ <IconButton key="0" icon='text_format' onMouseUp={() => this.focus()} accent={this.state.showFont} /> ];
 
       if (PositionMenu) {
         menuActions.push(<PositionMenu key="1" />);
@@ -89,10 +59,10 @@ const factory = (FontIcon) => {
 
       const content = this.state.showFont ? (<span listItemIgnore={true} className={theme.full}>
         <div className={theme.maxheight}>
-          <ToolTipButton icon="format_align_center" floating mini primary={center} tooltip="Senter" onMouseUp={() => actions.toggleCenter(index)} />&nbsp;
-          <ToolTipButton label="F" floating mini primary={bold} tooltip="Fet" onMouseUp={() => actions.toggleBold(index)} />&nbsp;
-          <ToolTipButton label="K" floating mini primary={italic} tooltip="Kursiv" onMouseUp={() => actions.toggleItalic(index)} />
-          <Input type='number' label="Font size" error={null} value={height} hint="Font size" name={ 'fontsize' + index } onChange={(value) => actions.setFontSize(index, value ? parseInt(value) : 0)} />
+          <ToolTipButton icon="format_align_center" floating mini primary={center} tooltip={menu.center} onMouseUp={() => actions.toggleCenter(index)} />&nbsp;
+          <ToolTipButton label={menu.bold[0]} floating mini primary={bold} tooltip={menu.bold} onMouseUp={() => actions.toggleBold(index)} />&nbsp;
+          <ToolTipButton label={menu.italic[0]} floating mini primary={italic} tooltip={menu.italic} onMouseUp={() => actions.toggleItalic(index)} />&nbsp;
+          <Input type='number' label={menu.fontsize || 'Font size'} error={null} value={height} hint={menu.fontsize || 'Font size'} name={ 'fontsize' + index } onChange={(value) => actions.setFontSize(index, value ? parseInt(value, 10) : 0)} />
           <FontPicker
             label={fontPlaceholder}
             fonts={fonts}
@@ -103,7 +73,7 @@ const factory = (FontIcon) => {
           <ColorPicker color={color} onChangeComplete={this.colorChanged} />
           <br />
           <Picker triangle='hide' color={color} onChangeComplete={this.colorChanged} width='' />
-
+          <br />
         </div>
       </span> ) : null;
 

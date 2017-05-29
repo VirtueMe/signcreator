@@ -1,0 +1,11 @@
+@import '../colors.css';
+@import '../variables.css';
+@import './config.css';
+
+.content {
+  width: 100%;
+}
+
+.helper {
+  /* not needed */
+}

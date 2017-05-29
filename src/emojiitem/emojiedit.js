@@ -6,15 +6,24 @@ import { themr } from 'react-css-themr';
 import { IMAGESSELECTOR } from '../identifiers';
 import { FontIcon as InjectedFontIcon } from 'react-toolbox';
 
-import { ListItem } from 'react-toolbox';
+import { IconButton, ListItem, MenuItem } from 'react-toolbox';
 
-import { MenuItem } from 'react-toolbox';
-
-import EmojiMenu from './emojiitems';
+import { EmojiContent } from './emojiitems';
 import EmojiList from './emojilist';
 
 const factory = (FontIcon) => {
   class ImagesSelector extends Component {
+    state = {
+      showContent: false
+    };
+
+    focus = () => {
+      this.setState((prevState) => {
+        return { showContent: !prevState.showContent };
+      });
+    }
+
+
     render() {
       const PositionMenu = this.props.menu;
       const { theme, value, index, actions, texts } = this.props;
@@ -28,7 +37,7 @@ const factory = (FontIcon) => {
         </div>
       );
 
-      const menuActions = [ <EmojiMenu key="0" theme={theme} actions={actions} index={index} texts={texts.menu} /> ];
+      const menuActions = [ <IconButton key="0" icon='add' onMouseUp={() => this.focus()} accent={this.state.showContent} /> ];
 
       if (PositionMenu) {
         menuActions.push(
@@ -38,13 +47,21 @@ const factory = (FontIcon) => {
         );
       }
 
+      const content = this.state.showContent ? (<span listItemIgnore={true} className={theme.full}>
+        <div className={theme.maxheight}>
+          <EmojiContent theme={theme} actions={actions} index={index} texts={texts.menu} />
+        </div>
+      </span> ) : null;
+
       return (
         <ListItem
           key={'e' + index}
           itemContent={input}
           rightActions={menuActions}
           ripple={false}
-        />
+        >
+        {content}
+        </ListItem>
       );
     }
   }
