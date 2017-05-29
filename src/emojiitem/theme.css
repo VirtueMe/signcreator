@@ -18,7 +18,7 @@
 }
 
 .menubutton {
-  height: 45px;
+  margin-right: 5px;
   margin-top: 5px;
 }
 
@@ -28,6 +28,17 @@
     text-align: center;
   }
 }
+
+.emojilist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menuimagesmall {
+  height: 28px;
+  margin-bottom: -5px;
+}
+
 
 .menuimage {
   height: 40px;
