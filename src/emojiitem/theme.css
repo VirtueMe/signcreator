@@ -41,7 +41,7 @@
 
 
 .menuimage {
-  height: 40px;
+  height: 32px;
 }
 
 .input {
@@ -58,14 +58,13 @@
 
 .image {
   position: relative;
-  height: 100%;
 
   &:not(:first-child) {
-    padding-left: 8px;
+    margin-left: 8px;
   }
 
   &:not(:last-child) {
-    padding-right: 8px;
+    margin-right: 8px;
   }
 }
 
