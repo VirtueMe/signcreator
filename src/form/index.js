@@ -5,6 +5,7 @@ import Design from './design';
 import Payment from './payment';
 import Receipt from './receipt';
 import TemplateList from './templates';
+import { pageView } from '../analytics';
 
 import { Route } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'react-router-redux';
@@ -12,6 +13,16 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 
 
 class Form extends Component {
+  componentDidMount() {
+    const { history } = this.props;
+
+    if (history) {
+      history.listen((location, action) => {
+        pageView();
+      });
+    }
+  }
+
   render() {
     const { actions, borders, customer, history, image, imageClassName, items, payment, price, sendstatus, settings, templates, texts } = this.props;
 

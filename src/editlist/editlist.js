@@ -111,8 +111,6 @@ const factory = (FontIcon) => {
     render() {
       const { actions, decoration, fonts, items, texts, theme } = this.props;
 
-      console.info(theme);
-
       const colorPicker = this.state.show_color ? this.createColorPicker() : null;
 
       const delete_actions = [
