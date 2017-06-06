@@ -18,7 +18,7 @@ class Form extends Component {
 
     if (history) {
       history.listen((location, action) => {
-        pageView();
+        pageView(location && location.pathname);
       });
     }
   }
