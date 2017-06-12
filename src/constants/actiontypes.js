@@ -69,6 +69,7 @@ export const SEND_ORDER = 'SEND_ORDER';
 export const SEND_ORDER_IN_PROGRESS = 'SEND_ORDER_IN_PROGRESS';
 export const SEND_ORDER_FAILED = 'SEND_ORDER_FAILED';
 export const SEND_ORDER_SUCCESS = 'SEND_ORDER_SUCCESS';
+export const CLOSE_FAILMESSAGE = 'CLOSE_FAILMESSAGE';
 
 /* fetch texts */
 export const FETCH_TEXTS = 'FETCH_TEXTS';

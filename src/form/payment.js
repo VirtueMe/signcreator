@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes }  from 'prop-types';
-import { Button, Card, CardActions, CardText, CardTitle, Dialog, ProgressBar } from 'react-toolbox';
+import { Button, Card, CardActions, CardText, CardTitle, Dialog, ProgressBar, Snackbar } from 'react-toolbox';
 import { Container, Row, Col } from 'react-grid-system';
 import CustomerForm from '../customerform';
 import Preview from '../preview';
@@ -70,7 +70,13 @@ class Payment extends Component {
             </Col>
           </Row>
         </Dialog>
-
+        <Snackbar
+          action={ (texts.buttons.action && texts.buttons.action.text) || 'Lukk' }
+          active={(sendstatus.message || '') !== ''}
+          label='Sending feilet, dessverre har vi en feil på iphone for tiden'
+          onClick={() => actions.closeSendMessage()}
+          type='warning'
+        />
       </Container>
     );
   }
@@ -88,6 +94,9 @@ Payment.propTypes = {
       title: PropTypes.string
     }),
     buttons: PropTypes.shape({
+      action:PropTypes.shape({
+        text: PropTypes.string
+      }),
       continue: PropTypes.shape({
         text: PropTypes.string
       }),
@@ -110,6 +119,9 @@ Payment.defaultProps = {
     options: {
       title: 'Betalingsinformasjon',
       buttons: {
+        action: {
+          text: 'Lukk'
+        },
         continue: {
           text: 'Bestill'
         },

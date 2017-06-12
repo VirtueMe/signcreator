@@ -227,6 +227,10 @@ export function sendOrder(settings, items, image, customer, payment) {
   return { type: types.SEND_ORDER, payload: { customer, image, items, payment, settings }};
 }
 
+export function closeSendMessage() {
+  return { type: types.CLOSE_FAILMESSAGE };
+}
+
 export function fetchTexts(project) {
   return { type: types.FETCH_TEXTS, payload: { project }};
 }

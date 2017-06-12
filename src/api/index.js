@@ -10,47 +10,53 @@ export function sendData(payload) {
   return image
           .get()
           .then(function(data) {
-            return fetch(url, {
-                    method: 'post',
-                    headers: myHeaders,
-                    body: JSON.stringify({
-                      project: settings.project || 'NTN',
-                      email: customer.email,
-                      name: customer.name,
-                      address: customer.address,
-                      zip: customer.zip,
-                      city: customer.city,
-                      CreditCard: payment.type === 1 ? { number: payment.number, expires: payment.month + payment.year, ccv2: payment.ccv2 } : null,
-                      signs: [{
-                        image: data.image,
-                        settings: {
-                          type: settings.type,
-                          backplate: settings.backplate,
-                          top: settings.top,
-                          right: settings.right,
-                          left: settings.left,
-                          bottom: settings.bottom
-                        },
-                        items: items.map((item)=> {
-                          switch (item.type) {
-                            case 2:
-                              return {
-                                type: item.type,
-                                value: item.value.map((image) => {
-                                  return image.image
-                                }),
-                                scale: item.scale
-                              };
-                            default:
-                              return item;
-                          }
-                        })
-                      }]
+            if (data.image && data.image !== 'data:,') {
+              return fetch(url, {
+                      method: 'post',
+                      headers: myHeaders,
+                      body: JSON.stringify({
+                        project: settings.project || 'NTN',
+                        email: customer.email,
+                        name: customer.name,
+                        address: customer.address,
+                        zip: customer.zip,
+                        city: customer.city,
+                        CreditCard: payment.type === 1 ? { number: payment.number, expires: payment.month + payment.year, ccv2: payment.ccv2 } : null,
+                        signs: [{
+                          image: data.image,
+                          settings: {
+                            type: settings.type,
+                            backplate: settings.backplate,
+                            top: settings.top,
+                            right: settings.right,
+                            left: settings.left,
+                            bottom: settings.bottom
+                          },
+                          items: items.map((item)=> {
+                            switch (item.type) {
+                              case 2:
+                                return {
+                                  type: item.type,
+                                  value: item.value.map((image) => {
+                                    return image.image
+                                  }),
+                                  scale: item.scale
+                                };
+                              default:
+                                return item;
+                            }
+                          })
+                        }]
+                      })
                     })
-                  })
-                  .then(checkStatus)
-                  .then(parseJSON);
-              });
+                    .then(checkStatus)
+                    .then(parseJSON);
+            }
+            else {
+              const error = new Error(`Image error: no image`);
+              throw error;
+            }
+          });
 }
 
 function fetchBase(url) {
