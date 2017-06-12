@@ -1,7 +1,4 @@
-const FontFaceObserver = require('fontfaceobserver');
-
 const apiroot = '/service/api';
-
 
 export function sendData(payload) {
   const { customer, image, items, payment, settings, small } = payload;
@@ -77,22 +74,10 @@ function fetchBase(url) {
 
 }
 
-
-
-
 export function fetchTexts(project) {
-  var fontA = new FontFaceObserver('Cabin Condensed');
-  var fontB = new FontFaceObserver('Vidaloka');
-  var fontC = new FontFaceObserver('Neucha');
-  var fontD = new FontFaceObserver('Lobster');
-
-  const fonts = [fontA, fontB, fontC, fontD];
-
   const url = apiroot + `/signs/texts/${project}`;
 
-  return Promise.all(fonts.map((f) => f.load())).then(function () {
-    return fetchBase(url);
-  });
+  return fetchBase(url);
 }
 
 export function fetchPrices(project) {

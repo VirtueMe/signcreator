@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, CardActions, CardMedia, CardText, CardTitle } from 'react-toolbox';
 import { smallImageSelector } from '../selectors/image';
+import whenFontsLoaded from '../fontsloader';
 
 
 class Template extends Component {
@@ -20,13 +21,15 @@ class Template extends Component {
     else {
       const result = smallImageSelector(item);
 
-      result
-        .get()
-        .then((smallImage) => {
-          if (!this.stopState) {
-            this.setState(() => ({ ...smallImage, className: result.className }));
-          }
-        });
+      whenFontsLoaded(() => {
+        result
+          .get()
+          .then((smallImage) => {
+            if (!this.stopState) {
+              this.setState(() => ({ ...smallImage, className: result.className }));
+            }
+          });
+      });
     }
   }
 
