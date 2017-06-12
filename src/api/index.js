@@ -1,60 +1,68 @@
 const apiroot = '/service/api';
 
 export function sendData(payload) {
-  const { customer, image, items, payment, settings } = payload;
+  const { customer, image, items, payment, settings, small } = payload;
   const url = apiroot + '/orders';
   var myHeaders = new Headers();
-
   myHeaders.append('Content-Type', 'application/json; charset=utf-8');
+
+
+  const fetcher = function fetcher(img) {
+    return fetch(url, {
+            method: 'post',
+            headers: myHeaders,
+            body: JSON.stringify({
+              project: settings.project || 'NTN',
+              email: customer.email,
+              name: customer.name,
+              address: customer.address,
+              zip: customer.zip,
+              city: customer.city,
+              CreditCard: payment.type === 1 ? { number: payment.number, expires: payment.month + payment.year, ccv2: payment.ccv2 } : null,
+              signs: [{
+                image: img,
+                settings: {
+                  type: settings.type,
+                  backplate: settings.backplate,
+                  top: settings.top,
+                  right: settings.right,
+                  left: settings.left,
+                  bottom: settings.bottom
+                },
+                items: items.map((item)=> {
+                  switch (item.type) {
+                    case 2:
+                      return {
+                        type: item.type,
+                        value: item.value.map((image) => {
+                          return image.image
+                        }),
+                        scale: item.scale
+                      };
+                    default:
+                      return item;
+                  }
+                })
+              }]
+            })
+          })
+          .then(checkStatus)
+          .then(parseJSON);
+  };
+
 
   return image
           .get()
           .then(function(data) {
             if (data.image && data.image !== 'data:,') {
-              return fetch(url, {
-                      method: 'post',
-                      headers: myHeaders,
-                      body: JSON.stringify({
-                        project: settings.project || 'NTN',
-                        email: customer.email,
-                        name: customer.name,
-                        address: customer.address,
-                        zip: customer.zip,
-                        city: customer.city,
-                        CreditCard: payment.type === 1 ? { number: payment.number, expires: payment.month + payment.year, ccv2: payment.ccv2 } : null,
-                        signs: [{
-                          image: data.image,
-                          settings: {
-                            type: settings.type,
-                            backplate: settings.backplate,
-                            top: settings.top,
-                            right: settings.right,
-                            left: settings.left,
-                            bottom: settings.bottom
-                          },
-                          items: items.map((item)=> {
-                            switch (item.type) {
-                              case 2:
-                                return {
-                                  type: item.type,
-                                  value: item.value.map((image) => {
-                                    return image.image
-                                  }),
-                                  scale: item.scale
-                                };
-                              default:
-                                return item;
-                            }
-                          })
-                        }]
-                      })
-                    })
-                    .then(checkStatus)
-                    .then(parseJSON);
+              return fetcher(data.image);
             }
             else {
-              const error = new Error(`Image error: no image`);
-              throw error;
+              return small
+                      .get()
+                      .then(function(data) {
+                        return fetcher(data.image);
+                      });
             }
           });
 }
