@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'Alegreya Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Alegreya+Sans_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Alegreya+Sans_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Alegreya+Sans_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/alegreyasans/v4/KYNzioYhDai7mTMnx_gDgtUFqmyT-Ih543PWa_C0ig4.woff */
+        url(Alegreya+Sans_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/alegreyasans/v4/KYNzioYhDai7mTMnx_gDgkXX4kpEMIkMuCYjxR86fn4.ttf */
+        url(Alegreya+Sans_400_normal.svg#Alegreya+Sans_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=KYNzioYhDai7mTMnx_gDgjjR3xVPJpEcWH1UXm1-s8c&skey=4d4d075d48809241&v=v4#AlegreyaSans */
+}
+@font-face {
+    font-family: 'Cabin Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Cabin+Condensed_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Cabin+Condensed_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Cabin+Condensed_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/cabincondensed/v10/B0txb0blf2N29WdYPJjMShZ1gqmQBTb4Nwa_fF0DajA.woff */
+        url(Cabin+Condensed_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/cabincondensed/v10/B0txb0blf2N29WdYPJjMSqxJyszUI3Z84-H-DGAdQN4.ttf */
+        url(Cabin+Condensed_400_normal.svg#Cabin+Condensed_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=B0txb0blf2N29WdYPJjMSjtVxPYSbTYljQKlacBDHZ4&skey=17b81add35c8280b&v=v10#CabinCondensed */
+}
+@font-face {
+    font-family: 'Copse';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Copse_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Copse_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Copse_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/copse/v6/wpqdPiqIhpZbF5z3WfvSXg.woff */
+        url(Copse_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/copse/v6/aVhEdoq-rFSY93d_ol859qCWcynf_cDxXwCLxiixG1c.ttf */
+        url(Copse_400_normal.svg#Copse_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=onwR-2wcZGKFflael3oXJQ&skey=7baf73252a4811d6&v=v6#Copse */
+}
+@font-face {
+    font-family: 'Fredoka One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Fredoka+One_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Fredoka+One_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Fredoka+One_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YYbN6UDyHWBl620a-IRfuBk.woff */
+        url(Fredoka+One_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YSwlidHJgAgmTjOEEzwu1L8.ttf */
+        url(Fredoka+One_400_normal.svg#Fredoka+One_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=SL0aFUFfkFMMdariYQ3_YXNsigHlcrQGNV8nkUSFQfc&skey=fac42792a60c2aba&v=v4#FredokaOne */
+}
+@font-face {
+    font-family: 'Gentium Book Basic';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Gentium+Book+Basic_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Gentium+Book+Basic_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Gentium+Book+Basic_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/gentiumbookbasic/v7/IRFxB2matTxrjZt6a3FUnsiUQA3_wO-qQTJfqhvSKS0.woff */
+        url(Gentium+Book+Basic_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/gentiumbookbasic/v7/IRFxB2matTxrjZt6a3FUnljjyn84GR_sOkrN_iHsxcs.ttf */
+        url(Gentium+Book+Basic_400_normal.svg#Gentium+Book+Basic_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=IRFxB2matTxrjZt6a3FUnoIkmWj7K_zGT5sTuJkrFwY&skey=e59bbbdff9bf19ed&v=v7#GentiumBookBasic */
+}
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Lobster_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Lobster_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Lobster_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/lobster/v18/MWVf-Rwh4GLQVBEwbyI61Q.woff */
+        url(Lobster_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/lobster/v18/aC971nPl5R8TiGBPHS_HNwLUuEpTyoUstqEm5AMlJo4.ttf */
+        url(Lobster_400_normal.svg#Lobster_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=j6oWj_2FuMvwWoXYXnyDeA&skey=7ed805a363b4659c&v=v18#Lobster */
+}
+@font-face {
+    font-family: 'Neucha';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Neucha_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Neucha_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Neucha_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/neucha/v8/Z14xx5NkAnXABtaPytVZVA.woff */
+        url(Neucha_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/neucha/v8/hZsQ0APk0l-OZ0548cfwCOvvDin1pK8aKteLpeZ5c0A.ttf */
+        url(Neucha_400_normal.svg#Neucha_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=eCUsAUEnCG3j0FiYEA2Pdw&skey=3220290e94c865ad&v=v8#Neucha */
+}
+@font-face {
+    font-family: 'Playball';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Playball_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Playball_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Playball_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/playball/v6/QS5qjU-Gc2sqWEq5kDfWQfesZW2xOQ-xsNqO47m55DA.woff */
+        url(Playball_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/playball/v6/bTcyeVjOJ0HzO36ebPilS3YhjbSpvc47ee6xR_80Hnw.ttf */
+        url(Playball_400_normal.svg#Playball_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=Kyiks4s-rQrwpnkvGj2bZ_esZW2xOQ-xsNqO47m55DA&skey=357bba6f2f2e9ebf&v=v6#Playball */
+}
+@font-face {
+    font-family: 'Playfair Display SC';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Playfair+Display+SC_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Playfair+Display+SC_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Playfair+Display+SC_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/playfairdisplaysc/v5/G0-tvBxd4eQRdwFKB8dRkf5twPfG3l5Gc3nk2Vyncrg.woff */
+        url(Playfair+Display+SC_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/playfairdisplaysc/v5/G0-tvBxd4eQRdwFKB8dRkWBxMjMhGMwcRF6UKHmOGzw.ttf */
+        url(Playfair+Display+SC_400_normal.svg#Playfair+Display+SC_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=G0-tvBxd4eQRdwFKB8dRkZwlwC84Ud89NnhuFKA5n7Q&skey=cd325bbca25040ef&v=v5#PlayfairDisplaySC */
+}
+@font-face {
+    font-family: 'Shadows Into Light Two';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Shadows+Into+Light+Two_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Shadows+Into+Light+Two_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Shadows+Into+Light+Two_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/shadowsintolighttwo/v4/gDxHeefcXIo-lOuZFCn2xU9H8fLq5zs1M0-u6-ewBcM.woff */
+        url(Shadows+Into+Light+Two_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/shadowsintolighttwo/v4/gDxHeefcXIo-lOuZFCn2xYkPW4j7ieGPU4sFV2kAxjrr7w4p9aSvGirXi6XmeXNA.ttf */
+        url(Shadows+Into+Light+Two_400_normal.svg#Shadows+Into+Light+Two_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=gDxHeefcXIo-lOuZFCn2xXx_kxlsf6tUZNGwLMCvJQE&skey=597283c5dde78337&v=v4#ShadowsIntoLightTwo */
+}
+@font-face {
+    font-family: 'Vidaloka';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Vidaloka_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Vidaloka_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Vidaloka_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/vidaloka/v8/ggtjDKUwkCAXpO92rmcBQPesZW2xOQ-xsNqO47m55DA.woff */
+        url(Vidaloka_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/vidaloka/v8/sntaY1Q8xeij0j8FAJb2VnYhjbSpvc47ee6xR_80Hnw.ttf */
+        url(Vidaloka_400_normal.svg#Vidaloka_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=hdjLhegIFCW_MOqteC-lgfesZW2xOQ-xsNqO47m55DA&skey=329f175c9b769a6a&v=v8#Vidaloka */
+}
