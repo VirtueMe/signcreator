@@ -3,6 +3,7 @@ import { EDIT_ITEM, FETCH_PRICES_FAILED, FETCH_PRICES_IN_PROGRES, FETCH_PRICES_S
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from '../api';
 import { templates } from '../utils/templateloader';
+import whenFontsLoaded from '../fontsloader';
 import history from '../utils/history';
 
 
@@ -56,7 +57,9 @@ export function* fetchTemplates(action) {
   yield put({ type: FETCH_TEMPLATES_IN_PROGRES });
 
   try {
-    yield put({ type: FETCH_TEMPLATES_SUCCESS, payload: { templates } });
+    const result = yield call(whenFontsLoaded, () => { return true; });
+
+    yield put({ type: FETCH_TEMPLATES_SUCCESS, payload: { templates, result } });
   }
   catch(error) {
     yield put({ type: FETCH_TEMPLATES_FAILED, error });

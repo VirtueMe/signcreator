@@ -1,23 +1,35 @@
 .container {
-  font-family: 'Vidaloka'
+  font-family: 'Vidaloka';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .firstrow {
-  font-family: 'Alegreya Sans'
+  font-family: 'Vidaloka';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .firstcol {
-  font-family: 'Cabin Condensed'
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .secondrow {
-  font-family: 'Fredoka One'
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .secondcol {
-  font-family: 'Gentium Book Basic'
+  font-family: 'Neucha';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .span {
-  font-family: 'Shadows Into Light Two'
+  font-family: 'Shadows Into Light Two';
+  font-style: normal;
+  font-weight: 400;
 }

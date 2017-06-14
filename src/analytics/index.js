@@ -28,7 +28,7 @@ function ga(method, reference, options /*, action , label */) {
     window.ga(method, reference, options);
   }
   else {
-    console.info(arguments);
+    console.info(method, reference, options);
   }
 }
 

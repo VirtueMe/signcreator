@@ -24,7 +24,7 @@ const factory = () => {
             <MyRow rowClass={theme.firstrow} colClass={theme.firstcol}>
               <Loading type={type} color={color} height={height} width={width} />
             </MyRow>
-            <MyRow rowClass={theme.firstrow} colClass={theme.firstcol}>
+            <MyRow rowClass={theme.secondrow} colClass={theme.secondcol}>
               <span className={theme.span}>{ message }</span>
             </MyRow>
           </Container>

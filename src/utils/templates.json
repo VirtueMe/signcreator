@@ -21,14 +21,14 @@
 {
   "name": "two",
   "items": [
-    { "type": 1, "value": "Nora", "height": 10, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "William", "height": 10, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Even", "height": 10, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "og pus", "height": 10, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "", "height": 4, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Nora", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "William", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Even", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "og pus", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "", "height": 4, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 3, "value": "bord2_13", "selected": 16, "scale": 1.2 },
-    { "type": 1, "value": "", "height": 2, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Velkommen", "height": 15, "center": true, "italic": false, "bold": false, "font": "Vidaloka", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
+    { "type": 1, "value": "", "height": 2, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Velkommen", "height": 15, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
   "settings": { "type": 1, "padding": 30, "backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },
@@ -49,9 +49,9 @@
   "name": "four",
   "items": [
     { "type": 3, "value": "blomst_8", "selected": -8, "scale": 1.2 },
-    { "type": 1, "value": "Velkommen", "height": 14, "center": true, "italic": false, "bold": false, "font": "Lobster", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "til familien", "height": 14, "center": true, "italic": false, "bold": false, "font": "Lobster", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Vik-Hansen", "height": 14, "center": true, "italic": false, "bold": false, "font": "Lobster", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Velkommen", "height": 14, "center": true, "italic": true, "bold": true, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "til familien", "height": 14, "center": true, "italic": true, "bold": true, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Vik-Hansen", "height": 14, "center": true, "italic": true, "bold": true, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 3, "value": "blomst_8", "selected": 8, "scale": 1.2 }
   ],
   "settings": { "type": 3, "padding": 70, "backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
