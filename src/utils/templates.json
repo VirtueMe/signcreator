@@ -1,7 +1,7 @@
 [{
   "name": "one",
   "items": [
-    { "type": 1, "value": "Her bor", "height": 12, "center": true, "italic": false, "bold": false, "font": "Cabin Condensed", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Her bor", "height": 12, "center": true, "italic": false, "bold": false, "font": "Georgia", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     {
       "type": 2,
       "value": [
@@ -14,7 +14,7 @@
       ],
       "scale": 1.6
     },
-    { "type": 1, "value": "familien Selvaag", "height": 14, "center": true, "italic": false, "bold": false, "font": "Cabin Condensed", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
+    { "type": 1, "value": "familien Selvaag", "height": 14, "center": true, "italic": false, "bold": false, "font": "Georgia", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
   "settings": { "type": 0, "padding": 20, "backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },
@@ -35,13 +35,13 @@
 {
   "name": "three",
   "items": [
-    { "type": 1, "value": "Her bor familien", "height": 14, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Smith", "height": 14, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "", "height": 2, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Her bor familien", "height": 14, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Smith", "height": 14, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "", "height": 2, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
     { "type": 3, "value": "bladbord_13", "selected": 13, "scale": 1.1 },
-    { "type": 1, "value": "", "height": 8, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Nora, William, Isak, Chris", "height": 10, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
-    { "type": 1, "value": "Lars, Pål & Magnus", "height": 10, "center": true, "italic": false, "bold": false, "font": "Neucha", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
+    { "type": 1, "value": "", "height": 8, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Nora, William, Isak, Chris", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} },
+    { "type": 1, "value": "Lars, Pål & Magnus", "height": 10, "center": true, "italic": false, "bold": false, "font": "Arial", "color": { "r": 0, "g": 0, "b": 0, "a": 1} }
   ],
   "settings": { "type": 2, "padding": 30, "backplate": "0", "top": 0, "left": 0, "right": 0, "bottom": 0 }
 },

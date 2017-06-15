@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types';
 
 import { themr } from 'react-css-themr';
 import { STICKYPREVIEW } from '../identifiers';
