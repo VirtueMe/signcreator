@@ -1,0 +1,40 @@
+.sticky {
+  position: sticky;
+
+  &.top-right {
+    top: 0;
+
+    &.is-sticky,&.is-absolute {
+      clear: both;
+      max-width: 30%;
+      float: right;
+      z-index: 9999;
+      &>div>div>div>div {
+        padding: 0;
+      }
+    }
+  }
+
+  &.sticky-fixed {
+    &.is-sticky {
+      margin-top: 0;
+      margin-bottom: 0;
+      position: fixed;
+      -webkit-backface-visibility: hidden;
+              -moz-backface-visibility: hidden;
+           backface-visibility: hidden;
+
+      &:not([style*="margin-top"]) {
+         margin-top: 0 !important;
+      }
+
+      &:not([style*="margin-bottom"]) {
+         margin-bottom: 0 !important;
+      }
+    }
+
+    &.is-absolute {
+      position: absolute;
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { PropTypes }  from 'prop-types';
 import { Button, Card, CardActions, CardText, CardTitle } from 'react-toolbox';
-import { Container, Row, Col } from 'react-grid-system';
+import { Col, Container, Row, Visible } from 'react-grid-system';
 
+import StickyPreview from '../stickypreview';
+import Preview from '../preview';
 import EditList from '../editlist';
 import AmountInfo from '../amountinfo';
 
-import Preview from '../preview';
+
 
 import { BackplateCard, Frames, Padding, SignSelectorCard } from '../settings';
 
@@ -18,6 +20,10 @@ class Design extends Component {
 
   render() {
     const { actions, amountoptions, borders, image, items, price, settings, texts } = this.props;
+
+    const PreviewImage = () => (
+      <Preview image={image.small} />
+    );
 
     return (
       <Container fluid id="signedit">
@@ -33,6 +39,19 @@ class Design extends Component {
             </Card>
           </Col>
         </Row>
+        <StickyPreview Preview={PreviewImage}>
+          <Visible xs>
+            <Row>
+              <Col xs={12}>
+                <Card>
+                  <CardText>
+                    <PreviewImage />
+                  </CardText>
+                </Card>
+              </Col>
+            </Row>
+          </Visible>
+        </StickyPreview>
         <Row>
           <Col lg={4} md={6} xs={12}>
             <br />
@@ -62,7 +81,7 @@ class Design extends Component {
                 {texts.preview.title}
               </CardTitle>
               <CardText>
-                <Preview image={image.small} />
+                <PreviewImage />
               </CardText>
               <AmountInfo backplate={price.backplate} item={price.sign} texts={ { total: texts.settings.price.total, options: amountoptions } } title={texts.settings.price.title} total={price.total} />
               <CardActions>

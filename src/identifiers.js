@@ -10,3 +10,4 @@ export const TEMPLATELIST = 'STemplateList';
 export const BACKPLATE = 'SBackPlate';
 export const STARTLOADER = 'SStart';
 export const AMOUNTINFO = 'SAmountInfo';
+export const STICKYPREVIEW = 'SStickyPreview';
