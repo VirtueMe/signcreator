@@ -223,8 +223,8 @@ export function clearEmojis(index) {
   return { type: types.CLEAR_EMOJIS, payload: { index } };
 }
 
-export function sendOrder(settings, items, image, customer, payment, small) {
-  return { type: types.SEND_ORDER, payload: { customer, image, items, payment, settings, small }};
+export function sendOrder(settings, items, image, customer, payment, small, price) {
+  return { type: types.SEND_ORDER, payload: { customer, image, items, payment, settings, small, price }};
 }
 
 export function closeSendMessage() {

@@ -3,9 +3,9 @@ import Start from '../start';
 
 class Loader extends Component {
   componentDidMount() {
-    const { actions, project } = this.props;
+    const { actions, currency, project } = this.props;
 
-    actions.fetchTexts(project);
+    actions.fetchTexts(project, currency);
   }
 
   render() {

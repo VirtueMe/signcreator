@@ -14,7 +14,7 @@ function imageCreators(state) {
   return { small, large };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
     amountoptions: state.texts.amount,
     borders: borderSelector(state),
@@ -24,7 +24,7 @@ function mapStateToProps(state) {
     sendstatus: state.sendstatus,
     customer: state.customer,
     payment: state.payment,
-    price: priceSelector(state),
+    price: priceSelector({ ...state, currency: props.currency }),
     prices: state.prices,
     fetch: state.fetch,
     templates: state.templates,

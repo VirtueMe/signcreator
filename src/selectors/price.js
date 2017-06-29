@@ -7,9 +7,11 @@ const paymentSelector = state => state.payment.type;
 
 const pricesSelector = state => state.prices;
 
+const currencySelector = state => state.currency;
+
 const priceSelector = createSelector(
-  [typeSelector, backplateSelector, paymentSelector, pricesSelector],
-  (type, backplate, payment, prices) => {
+  [typeSelector, backplateSelector, paymentSelector, pricesSelector, currencySelector],
+  (type, backplate, payment, prices, currency) => {
     const sign = prices.signs[type];
     const abackplate = Object.assign({}, prices.backplates[backplate], { type: backplate });
     const fee = payment === 0 ? prices.fee : { amount: 0, text: 'no fee' };
@@ -23,7 +25,8 @@ const priceSelector = createSelector(
       fee,
       shipping,
       total,
-      totalamount
+      totalamount,
+      currency
     };
   }
 );

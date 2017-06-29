@@ -1,7 +1,11 @@
+import { sendItemsData } from '../analytics';
+import { v1 }  from 'uuid';
+
 const apiroot = '/service/api';
 
+
 export function sendData(payload) {
-  const { customer, image, items, payment, settings, small } = payload;
+  const { customer, image, items, payment, settings, small, price } = payload;
   const url = apiroot + '/orders';
   var myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json; charset=utf-8');
@@ -55,6 +59,7 @@ export function sendData(payload) {
             })
           })
           .then(checkStatus)
+          .then(ecommerce(settings.type + '-' + settings.backplate, price))
           .then(parseJSON);
   };
 
@@ -92,6 +97,21 @@ export function fetchPrices(project) {
   const url = apiroot + `/signs/prices/${project}`;
 
   return fetchBase(url);
+}
+
+function ecommerce(sku, price) {
+  const item = {
+    sku: sku,
+    name: price.sign.text,
+    amount: price.total,
+    quantity: 1
+  };
+
+  return function(response) {
+    sendItemsData(v1(), price.totalamount, price.shipping.amount, price.currency, [item]);
+
+    return response;
+  };
 }
 
 function checkStatus(response) {

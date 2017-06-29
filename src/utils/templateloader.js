@@ -1,6 +1,8 @@
 import { image, line, preview } from './imageloader';
 import _templates from './templates.json';
 
+import { v1 } from 'uuid';
+
 function convertImage(item) {
   const img = image(item.image);
   const result = Object.assign({}, item, img);
@@ -15,6 +17,8 @@ function convertTypeItem(type) {
         const { image, img, name } = line(item.value);
 
         item.value = { image, img, name };
+
+        console.info(v1());
 
         return item;
       }

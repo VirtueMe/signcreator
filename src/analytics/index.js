@@ -1,4 +1,5 @@
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 var currentID = null;
 
@@ -31,7 +32,7 @@ function sendItemsData (tranID, amount, shipping, currency, items) {
     'currency': currency  // local currency code.
   });
 
-  items.each(function(item) {
+  items.forEach(function(item) {
     ga('ecommerce:addItem', {
       'id': tranID,
       'name': item.name,

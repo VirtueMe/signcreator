@@ -17,7 +17,7 @@ startTrigger();
 
 render(
   <Provider store={store}>
-    <App project={root.dataset.project} message={root.dataset.message} history={history} />
+    <App project={root.dataset.project} message={root.dataset.message} currency={root.dataset.currency} history={history} />
   </Provider>,
   root
 );
