@@ -18,7 +18,7 @@ function fontsLoader(cb) {
           });
           /*
           .catch((reason) => {
-            console.info('fail: ', reason);
+            // console.info('fail: ', reason);
           });
           */
 }

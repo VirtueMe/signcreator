@@ -18,10 +18,32 @@ function addScript(id, page) {
   ga('create', id, 'auto');
   ga('set', 'anonymizeIp', true);
   ga('require', 'displayfeatures');
+  ga('require', 'ecommerce');
+
   pageView(page);
 }
 
+function sendItemsData (tranID, amount, shipping, currency, items) {
+  ga('ecommerce:addTransaction', {
+    'id': tranID,
+    'revenue': amount,
+    'shipping': shipping,
+    'currency': currency  // local currency code.
+  });
 
+  items.each(function(item) {
+    ga('ecommerce:addItem', {
+      'id': tranID,
+      'name': item.name,
+      'sku': item.sku,
+      'price': item.amount,
+      'quantity': item.quantity,
+      'currency': currency // local currency code.
+    });
+  });
+
+  ga('ecommerce:send');
+}
 
 function ga(method, reference, options /*, action , label */) {
   if (window.ga) {
@@ -98,5 +120,6 @@ export {
   ga,
   pageButtonEvent,
   pageView,
+  sendItemsData,
   GoogleAnalyticsComponent
 };

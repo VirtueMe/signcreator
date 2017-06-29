@@ -31,11 +31,19 @@ export function sendData(payload) {
                 },
                 items: items.map((item)=> {
                   switch (item.type) {
+                    case 3: {
+                      return {
+                        type: item.type,
+                        value: item.value.name,
+                        val: item.value,
+                        scale: item.scale
+                      }
+                    }
                     case 2:
                       return {
                         type: item.type,
                         value: item.value.map((image) => {
-                          return image.image
+                          return image.name
                         }),
                         scale: item.scale
                       };

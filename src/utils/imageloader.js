@@ -10,7 +10,7 @@ function map(mapper, name) {
   const image = mapper[name];
   const img = image ? load(document.createElement('img'), image) : null;
 
-  return { image, img };
+  return { image, img, name };
 }
 
 function image(name) {

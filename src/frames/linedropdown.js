@@ -54,7 +54,7 @@ export class DropdownBase extends React.Component {
       flexDirection: 'row'
     };
 
-    const content = item.img ? <img key={item.value} src={item.img} style={item.style} role='presentation' /> : <span style={imageStyle}>{item.text}</span>;
+    const content = item.img ? <img key={item.value} src={item.img.image} style={item.style} role='presentation' /> : <span style={imageStyle}>{item.text}</span>;
 
     return (
       <div style={containerStyle}>
@@ -76,9 +76,9 @@ export class DropdownBase extends React.Component {
         img.style= 'transform: rotate(180deg);';
       }
 
-      img.onload = function () { action(value, img); };
+      img.onload = function () { action(value, img, item.img.name); };
 
-      img.src = item.img;
+      img.src = item.img.image;
     }
   }
 

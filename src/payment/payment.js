@@ -25,8 +25,6 @@ const factory = () => {
       const email = this.labelSet(payment.type === 0 ? 'radio_button_checked' : 'radio_button_unchecked', 'email', texts.email.title);
       const creditcard = this.labelSet(payment.type !== 0 ? 'radio_button_checked' : 'radio_button_unchecked', 'payment', texts.creditcard.title);
 
-      console.info(payment.type, theme);
-
       return (
         <Accordion openNextAccordionItem={true} activeItems={payment.type} className={theme['react-sanfona']} onChange={({activeItems}) => { actions.changePayment( activeItems.length > 0 ? activeItems[0] : payment.type ); } }>
           <AccordionItem title={email} expanded={payment.type === 0} className={theme['react-sanfona-item']} bodyClassName={theme['react-sanfona-item-body']} expandedClassName={theme['react-sanfona-item-expanded']}>

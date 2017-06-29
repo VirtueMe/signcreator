@@ -1,10 +1,12 @@
-import image0 from '../images/dekor/13/bladbord.png';
-import image1 from '../images/dekor/13/blomst.png';
-import image2 from '../images/dekor/13/bord.png';
-import image3 from '../images/dekor/13/bord2.png';
-import image4 from '../images/dekor/13/hjertebord.png';
-import image5 from '../images/dekor/13/hjertebord2.png';
+import bladbord from '../images/dekor/13/bladbord.png';
+import blomst from '../images/dekor/13/blomst.png';
+import bord from '../images/dekor/13/bord.png';
+import bord2 from '../images/dekor/13/bord2.png';
+import hjerte from '../images/dekor/13/hjertebord.png';
+import hjerte2 from '../images/dekor/13/hjertebord2.png';
 
-const medium = [image0, image1, image2, image3, image4, image5];
+const images = { bladbord, blomst, bord, bord2, hjerte, hjerte2 };
+
+const medium = Object.keys(images).map((name) => ({ image: images[name], name: name + '_13_m' }));
 
 export default medium;

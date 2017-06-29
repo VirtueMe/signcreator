@@ -102,7 +102,8 @@ const height = {
   },
 
   3: function (item) {
-    return dividerGap + (item.value ? (item.value.height * item.scale * imageFactor) : Math.ceil(8 * ppmm));
+    const image = item.value ? (item.value.img || item.value) : null;
+    return dividerGap + (image ? (image.height * item.scale * imageFactor) : Math.ceil(8 * ppmm));
   }
 };
 
@@ -184,7 +185,8 @@ export default function generator(dimensions) {
           },
 
           3: function(item) {
-            return (item.text ? item.text.width * item.scale: 0) * imageFactor;
+            const image = item.text ? (item.text.img || item.text) : null;
+            return (image ? image.width * item.scale: 0) * imageFactor;
           }
         }
 
@@ -288,15 +290,16 @@ export default function generator(dimensions) {
             const { text, scale, selected, start } = item;
 
             if (text) {
-              const imageWidth = text.width * scale * imageFactor;
+              const image = text.img || text;
+              const imageWidth = image.width * scale * imageFactor;
 
               const drawImage = selected > 0 ? textTool.drawImage : textTool.drawFlipImage;
 
               drawImage({
-                img: text,
+                img: image,
                 x: padding + Math.ceil((maxwidth - imageWidth) / 2),
                 y: padding + y + start + (dividerGap / 2),
-                height: text.height * scale * imageFactor,
+                height: image.height * scale * imageFactor,
                 width: imageWidth
               });
             }

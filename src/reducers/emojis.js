@@ -29,8 +29,8 @@ export default function emojis(state = initialState, action) {
           $push: [{
             id: counter-1,
             image: payload.image,
-            size: payload.size,
-            img: payload.img
+            img: payload.img,
+            name: payload.name
           }]
         },
         counter: { $set: counter }
@@ -51,7 +51,13 @@ export default function emojis(state = initialState, action) {
       let updateData = {};
 
       updateData[payload.index] = {
-        value: { $set: payload.image },
+        value: {
+          $set: {
+            image: payload.image && payload.image.src,
+            img: payload.image,
+            name: payload.name
+          }
+        },
         selected: { $set: payload.value }
       };
 
@@ -94,7 +100,6 @@ export default function emojis(state = initialState, action) {
       updateData[payload.index] = {
         scale: {
           $apply: function(scale) {
-            console.info(scale);
             return scale + payload.step;
           }
         }
@@ -105,8 +110,6 @@ export default function emojis(state = initialState, action) {
 
     case CHANGE_FONT_SIZE: {
       let updateData = {};
-
-      console.info('Change font size', payload);
 
       updateData[payload.index] = {
         height: { $set: payload.value }

@@ -37,8 +37,6 @@ const factory = () => {
         absoluteClass: theme['is-absolute']
       };
 
-      console.info(theme);
-
       return (
         <Sticky {...props}>
           <div className={theme['top-right']} onClick={this.toggleDialog}>

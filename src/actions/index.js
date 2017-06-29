@@ -97,20 +97,20 @@ export function setPadding(value) {
   return { type: types.SET_PADDING, payload:{value} };
 }
 
-export function setTop(top, img) {
-  return { type: types.ADD_TOPLINE, payload:{top, img} };
+export function setTop(top, img, name) {
+  return { type: types.ADD_TOPLINE, payload:{top, img, name} };
 }
 
-export function setLeft(left, img) {
-  return { type: types.ADD_LEFTLINE, payload:{left, img} };
+export function setLeft(left, img, name) {
+  return { type: types.ADD_LEFTLINE, payload:{left, img, name} };
 }
 
-export function setRight(right, img) {
-  return { type: types.ADD_RIGHTLINE, payload:{right, img} };
+export function setRight(right, img, name) {
+  return { type: types.ADD_RIGHTLINE, payload:{right, img, name} };
 }
 
-export function setBottom(bottom, img) {
-  return { type: types.ADD_BOTTOMLINE, payload:{bottom, img} };
+export function setBottom(bottom, img, name) {
+  return { type: types.ADD_BOTTOMLINE, payload:{bottom, img, name} };
 }
 
 /* Emojis */
@@ -187,11 +187,11 @@ export function moveDown(index) {
 }
 
 export function changeText(value, index) {
-  return { type: types.CHANGE_TEXT, payload:{value, index} };
+  return { type: types.CHANGE_TEXT, payload:{ value, index } };
 }
 
-export function changeDividerLine(index, value, image) {
-  return { type: types.CHANGE_DIVIDER, payload:{index, value, image} };
+export function changeDividerLine(index, value, image, name) {
+  return { type: types.CHANGE_DIVIDER, payload: { index, value, image, name } };
 }
 
 

@@ -68,8 +68,6 @@ class EmojiItem extends Component {
   handleMenu = (e) => {
     const { actions, id, index } = this.props;
 
-    console.info('info: ', id, ' : ', index);
-
     actions.deleteEmoji(id, index);
 
     e.stopPropagation();

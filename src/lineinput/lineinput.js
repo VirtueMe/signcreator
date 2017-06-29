@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PropTypes }  from 'prop-types'; 
+import { PropTypes }  from 'prop-types';
 import classnames from 'classnames';
 
 import { themr } from 'react-css-themr';
@@ -18,8 +18,8 @@ const factory = (FontIcon) => {
       const PositionMenu = this.props.menu;
       const { actions, index, items, texts, theme, selected } = this.props;
 
-      const changeDividerLine = function(value, img=null) {
-        actions.changeDividerLine(index, value, img);
+      const changeDividerLine = function(value, img=null, name) {
+        actions.changeDividerLine(index, value, img, name);
       };
 
       const input = (

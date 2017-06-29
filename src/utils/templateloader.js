@@ -11,9 +11,13 @@ function convertImage(item) {
 function convertTypeItem(type) {
   return function convertItem(item) {
     switch (item.type) {
-      case 3:
-        item.value = line(item.value).img;
+      case 3: {
+        const { image, img, name } = line(item.value);
+
+        item.value = { image, img, name };
+
         return item;
+      }
       case 2:
         item.value = item.value.map(convertImage);
 
